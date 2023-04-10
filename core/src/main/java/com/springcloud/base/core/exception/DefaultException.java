@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 自定义默认异常
  * @Date: 2023/1/28 10:48
  */
 @EqualsAndHashCode(callSuper = true)
