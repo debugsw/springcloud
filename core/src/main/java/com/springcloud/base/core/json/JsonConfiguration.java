@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: json配置
  * @Date: 2023/1/28 10:52
  */
 public class JsonConfiguration {

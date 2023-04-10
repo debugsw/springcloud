@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 分页返回模型
  * @Date: 2023/1/28 11:01
  */
 @Data

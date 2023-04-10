@@ -15,7 +15,7 @@ import java.util.UUID;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 验证码
  * @Date: 2023/1/28 11:05
  */
 @Slf4j

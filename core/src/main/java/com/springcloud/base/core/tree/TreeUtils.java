@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @Author: ls
- * @Description: 树形结构
+ * @Description: 树形结构工具类
  * @Date: 2023/1/28 11:04
  */
 public class TreeUtils {

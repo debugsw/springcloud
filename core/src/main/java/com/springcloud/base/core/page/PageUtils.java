@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 分页工具类
  * @Date: 2023/1/28 10:59
  */
 public class PageUtils {

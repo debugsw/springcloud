@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 分页回调
  * @Date: 2023/1/28 11:01
  */
 public interface PageExecuteCallback<T> {

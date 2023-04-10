@@ -2,7 +2,7 @@ package com.springcloud.base.core.bean;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 队形转换
  * @Date: 2023/4/6 11:34
  */
 public interface ObjectCastHandler<S, T> {

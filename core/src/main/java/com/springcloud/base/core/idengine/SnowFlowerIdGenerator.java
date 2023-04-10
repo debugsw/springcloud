@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 雪花算法
  * @Date: 2023/4/10 09:53
  */
 @SuppressWarnings("all")

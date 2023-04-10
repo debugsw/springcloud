@@ -2,7 +2,7 @@ package com.springcloud.base.core.result;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 返回code
  * @Date: 2023/1/28 10:46
  */
 public class ResultCode {

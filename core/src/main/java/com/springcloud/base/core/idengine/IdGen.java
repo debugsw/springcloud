@@ -1,11 +1,5 @@
 package com.springcloud.base.core.idengine;
 
-/**
- * @Author: ls
- * @Description:
- * @Date: 2023/4/10 09:53
- */
-
 import cn.hutool.core.util.RandomUtil;
 
 /**

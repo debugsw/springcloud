@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 分页请求模型
  * @Date: 2023/1/28 11:00
  */
 @ApiModel("分页默认参数对象")

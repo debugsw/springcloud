@@ -5,7 +5,7 @@ import java.util.Collection;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 树形模型
  * @Date: 2023/1/28 11:04
  */
 public interface TreeModel<T extends TreeModel<?>> {
