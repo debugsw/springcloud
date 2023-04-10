@@ -25,7 +25,7 @@
         <hutool.version>5.3.6</hutool.version>
         <mybatis-spring-boot-starter.version>2.1.3</mybatis-spring-boot-starter.version>
         <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
-        <xxl-job-core.version>2.2.0</xxl-job-core.version>
+        <xxl-job-core.version>2.3.1</xxl-job-core.version>
         <jjwt.version>0.9.1</jjwt.version>
         <guava.version>22.0</guava.version>
         <jsr305.version>3.1.0</jsr305.version>
