@@ -1,4 +1,4 @@
-package com.spring.cloud.base.common.auth;
+package com.springcloud.base.core.auth;
 
 import lombok.Data;
 

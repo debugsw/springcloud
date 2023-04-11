@@ -1,4 +1,4 @@
-package com.spring.cloud.base.common.condition;
+package com.springcloud.base.core.condition;
 
 import java.lang.annotation.*;
 

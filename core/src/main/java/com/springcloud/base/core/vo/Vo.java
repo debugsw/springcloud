@@ -1,4 +1,4 @@
-package com.spring.cloud.base.common.vo;
+package com.springcloud.base.core.vo;
 
 import java.io.Serializable;
 

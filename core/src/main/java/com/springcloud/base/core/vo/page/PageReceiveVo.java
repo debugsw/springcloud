@@ -1,7 +1,7 @@
-package com.spring.cloud.base.common.vo.page;
+package com.springcloud.base.core.vo.page;
 
-import com.spring.cloud.base.common.vo.Vo;
 import com.springcloud.base.core.page.PageReceiveModel;
+import com.springcloud.base.core.vo.Vo;
 
 /**
  * @Author: ls
