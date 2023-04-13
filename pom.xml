@@ -32,7 +32,6 @@
         <jjwt.version>0.9.1</jjwt.version>
         <guava.version>22.0</guava.version>
         <jsr305.version>3.1.0</jsr305.version>
-        <bouncycastle.version>1.65</bouncycastle.version>
     </properties>
 
     <name>base-common</name>
@@ -122,12 +121,6 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.18.12</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bcpkix-jdk15on</artifactId>
-                <version>${bouncycastle.version}</version>
             </dependency>
 
         </dependencies>
