@@ -6,6 +6,7 @@
         <module>spring-cloud-core</module>
         <module>spring-cloud-common</module>
         <module>spring-cloud-utils</module>
+        <module>spring-cloud-monitor</module>
     </modules>
 
     <parent>
