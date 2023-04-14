@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
+import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.exception.IORuntimeException;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.gm.GMNamedCurves;
 import org.bouncycastle.crypto.CryptoException;
@@ -9,7 +11,6 @@ import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.crypto.signers.StandardDSAEncoding;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.GMCipherSpi;
-import org.bouncycastle.jcajce.provider.digest.SM3;
 import org.bouncycastle.util.Arrays;
 import org.bouncycastle.util.encoders.Hex;
 import org.bouncycastle.util.test.FixedSecureRandom;
@@ -17,12 +18,13 @@ import org.bouncycastle.util.test.FixedSecureRandom;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 开源国密
  * @Date: 2023/4/13 15:49
  */
 public class SmUtil {

@@ -1,14 +1,17 @@
 package com.spring.cloud.base.utils.crypto;
 
-import com.sun.xml.internal.ws.util.UtilException;
+import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.list.ListUtil;
 
 import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -592,59 +595,5 @@ public class RandomUtil {
     public static Color randomColor() {
         final Random random = getRandom();
         return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-    }
-
-    /**
-     * 带有权重的随机生成器
-     *
-     * @param <T>        随机对象类型
-     * @param weightObjs 带有权重的对象列表
-     * @return {@link WeightRandom}
-     * @since 4.0.3
-     */
-    public static <T> WeightRandom<T> weightRandom(WeightObj<T>[] weightObjs) {
-        return new WeightRandom<>(weightObjs);
-    }
-
-    /**
-     * 带有权重的随机生成器
-     *
-     * @param <T>        随机对象类型
-     * @param weightObjs 带有权重的对象列表
-     * @return {@link WeightRandom}
-     * @since 4.0.3
-     */
-    public static <T> WeightRandom<T> weightRandom(Iterable<WeightObj<T>> weightObjs) {
-        return new WeightRandom<>(weightObjs);
-    }
-
-    /**
-     * 以当天为基准，随机产生一个日期
-     *
-     * @param min 偏移最小天，可以为负数表示过去的时间（包含）
-     * @param max 偏移最大天，可以为负数表示过去的时间（不包含）
-     * @return 随机日期（随机天，其它时间不变）
-     * @since 4.0.8
-     */
-    public static DateTime randomDay(int min, int max) {
-        return randomDate(DateUtil.date(), DateField.DAY_OF_YEAR, min, max);
-    }
-
-    /**
-     * 以给定日期为基准，随机产生一个日期
-     *
-     * @param baseDate  基准日期
-     * @param dateField 偏移的时间字段，例如时、分、秒等
-     * @param min       偏移最小量，可以为负数表示过去的时间（包含）
-     * @param max       偏移最大量，可以为负数表示过去的时间（不包含）
-     * @return 随机日期
-     * @since 4.5.8
-     */
-    public static DateTime randomDate(Date baseDate, DateField dateField, int min, int max) {
-        if (null == baseDate) {
-            baseDate = DateUtil.date();
-        }
-
-        return DateUtil.offset(baseDate, dateField, randomInt(min, max));
     }
 }

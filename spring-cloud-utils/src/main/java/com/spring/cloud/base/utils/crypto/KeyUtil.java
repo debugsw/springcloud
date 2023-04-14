@@ -1,10 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
-import com.mybatisflex.core.util.ArrayUtil;
-import com.sun.tools.javac.util.Assert;
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory;
-import org.bouncycastle.util.test.FixedSecureRandom;
+import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.exception.CryptoException;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -18,6 +15,7 @@ import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.*;
 import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.spec.*;
 
@@ -773,104 +771,6 @@ public class KeyUtil {
     }
 
     /**
-     * 读取X.509 Certification文件<br>
-     * Certification为证书文件<br>
-     * see: http://snowolf.iteye.com/blog/391931
-     *
-     * @param in       {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(java.io.File)} 读取
-     * @param password 密码
-     * @param alias    别名
-     * @return {@link KeyStore}
-     * @since 4.4.1
-     */
-    public static Certificate readX509Certificate(InputStream in, char[] password, String alias) {
-        return readCertificate(CERT_TYPE_X509, in, password, alias);
-    }
-
-    /**
-     * 读取X.509 Certification文件中的公钥<br>
-     * Certification为证书文件<br>
-     * see: https://www.cnblogs.com/yinliang/p/10115519.html
-     *
-     * @param in {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(java.io.File)} 读取
-     * @return {@link KeyStore}
-     * @since 4.5.2
-     */
-    public static PublicKey readPublicKeyFromCert(InputStream in) {
-        final Certificate certificate = readX509Certificate(in);
-        if (null != certificate) {
-            return certificate.getPublicKey();
-        }
-        return null;
-    }
-
-    /**
-     * 读取X.509 Certification文件<br>
-     * Certification为证书文件<br>
-     * see: http://snowolf.iteye.com/blog/391931
-     *
-     * @param in {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(java.io.File)} 读取
-     * @return {@link KeyStore}
-     * @since 4.4.1
-     */
-    public static Certificate readX509Certificate(InputStream in) {
-        return readCertificate(CERT_TYPE_X509, in);
-    }
-
-    /**
-     * 读取Certification文件<br>
-     * Certification为证书文件<br>
-     * see: http://snowolf.iteye.com/blog/391931
-     *
-     * @param type     类型，例如X.509
-     * @param in       {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(java.io.File)} 读取
-     * @param password 密码
-     * @param alias    别名
-     * @return {@link KeyStore}
-     * @since 4.4.1
-     */
-    public static Certificate readCertificate(String type, InputStream in, char[] password, String alias) {
-        final KeyStore keyStore = readKeyStore(type, in, password);
-        try {
-            return keyStore.getCertificate(alias);
-        } catch (KeyStoreException e) {
-            throw new CryptoException(e);
-        }
-    }
-
-    /**
-     * 读取Certification文件<br>
-     * Certification为证书文件<br>
-     * see: http://snowolf.iteye.com/blog/391931
-     *
-     * @param type 类型，例如X.509
-     * @param in   {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(java.io.File)} 读取
-     * @return {@link Certificate}
-     */
-    public static Certificate readCertificate(String type, InputStream in) {
-        try {
-            return getCertificateFactory(type).generateCertificate(in);
-        } catch (CertificateException e) {
-            throw new CryptoException(e);
-        }
-    }
-
-    /**
-     * 获得 Certification
-     *
-     * @param keyStore {@link KeyStore}
-     * @param alias    别名
-     * @return {@link Certificate}
-     */
-    public static Certificate getCertificate(KeyStore keyStore, String alias) {
-        try {
-            return keyStore.getCertificate(alias);
-        } catch (Exception e) {
-            throw new CryptoException(e);
-        }
-    }
-
-    /**
      * 获取{@link CertificateFactory}
      *
      * @param type 类型，例如X.509
@@ -950,19 +850,6 @@ public class KeyUtil {
      * @return 公钥
      * @since 5.3.6
      */
-    public static PublicKey getRSAPublicKey(String modulus, String publicExponent) {
-        return getRSAPublicKey(
-                new FixedSecureRandom.BigInteger(modulus, 16), new BigInteger(publicExponent, 16));
-    }
-
-    /**
-     * 获得RSA公钥对象
-     *
-     * @param modulus        Modulus
-     * @param publicExponent Public Exponent
-     * @return 公钥
-     * @since 5.3.6
-     */
     public static PublicKey getRSAPublicKey(BigInteger modulus, BigInteger publicExponent) {
         final RSAPublicKeySpec publicKeySpec = new RSAPublicKeySpec(modulus, publicExponent);
         try {
@@ -970,16 +857,5 @@ public class KeyUtil {
         } catch (InvalidKeySpecException e) {
             throw new CryptoException(e);
         }
-    }
-
-    /**
-     * 将密钥编码为Base64格式
-     *
-     * @param key 密钥
-     * @return Base64格式密钥
-     * @since 5.7.22
-     */
-    public static String toBase64(Key key) {
-        return Base64.encode(key.getEncoded());
     }
 }

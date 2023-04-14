@@ -1,5 +1,8 @@
 package com.spring.cloud.base.utils.crypto;
 
+import com.spring.cloud.base.utils.FastByteArrayOutputStream;
+import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.sun.xml.internal.ws.util.UtilException;
 
 import java.io.ByteArrayInputStream;

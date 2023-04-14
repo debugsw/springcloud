@@ -1,30 +1,23 @@
 package com.spring.cloud.base.utils.crypto;
 
-import com.mybatisflex.core.util.ArrayUtil;
-
-import org.bouncycastle.crypto.AlphabetMapper;
+import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.Base64;
+import com.spring.cloud.base.utils.HexUtil;
+import com.spring.cloud.base.utils.exception.CryptoException;
 
 import javax.crypto.Cipher;
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import java.io.File;
 import java.io.InputStream;
-import java.security.KeyPair;
-import java.security.KeyStore;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.Provider;
-import java.security.PublicKey;
-import java.security.Security;
-import java.security.Signature;
+import java.security.*;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.KeySpec;
 import java.util.Map;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: 安全相关工具类
  * @Date: 2023/4/13 16:05
  */
 public class SecureUtil {
@@ -269,34 +262,6 @@ public class SecureUtil {
             throw new CryptoException(e);
         }
     }
-
-    /**
-     * 读取密钥库(Java Key Store，JKS) KeyStore文件<br>
-     * KeyStore文件用于数字证书的密钥对保存<br>
-     * see: http://snowolf.iteye.com/blog/391931
-     *
-     * @param in       {@link InputStream} 如果想从文件读取.keystore文件，使用 {@link FileUtil#getInputStream(java.io.File)} 读取
-     * @param password 密码
-     * @return {@link KeyStore}
-     */
-    public static KeyStore readJKSKeyStore(InputStream in, char[] password) {
-        return KeyUtil.readJKSKeyStore(in, password);
-    }
-
-    /**
-     * 读取KeyStore文件<br>
-     * KeyStore文件用于数字证书的密钥对保存<br>
-     * see: http://snowolf.iteye.com/blog/391931
-     *
-     * @param type     类型
-     * @param in       {@link InputStream} 如果想从文件读取.keystore文件，使用 {@link FileUtil#getInputStream(java.io.File)} 读取
-     * @param password 密码
-     * @return {@link KeyStore}
-     */
-    public static KeyStore readKeyStore(String type, InputStream in, char[] password) {
-        return KeyUtil.readKeyStore(type, in, password);
-    }
-
 
     // ------------------------------------------------------------------- 对称加密算法
 
@@ -1001,74 +966,5 @@ public class SecureUtil {
         }
 
         return signature;
-    }
-
-    /**
-     * RC4算法
-     *
-     * @param key 密钥
-     * @return {@link RC4}
-     */
-    public static RC4 rc4(String key) {
-        return new RC4(key);
-    }
-
-    /**
-     * 强制关闭Bouncy Castle库的使用，全局有效
-     *
-     * @since 4.5.2
-     */
-    public static void disableBouncyCastle() {
-        GlobalBouncyCastleProvider.setUseBouncyCastle(false);
-    }
-
-    /**
-     * PBKDF2加密密码
-     *
-     * @param password 密码
-     * @param salt     盐
-     * @return 盐，一般为16位
-     * @since 5.6.0
-     */
-    public static String pbkdf2(char[] password, byte[] salt) {
-        return new PBKDF2().encryptHex(password, salt);
-    }
-
-    /**
-     * FPE(Format Preserving Encryption)实现，支持FF1和FF3-1模式。
-     *
-     * @param mode   FPE模式枚举，可选FF1或FF3-1
-     * @param key    密钥，{@code null}表示随机密钥，长度必须是16bit、24bit或32bit
-     * @param mapper Alphabet字典映射，被加密的字符范围和这个映射必须一致，例如手机号、银行卡号等字段可以采用数字字母字典表
-     * @param tweak  Tweak是为了解决因局部加密而导致结果冲突问题，通常情况下将数据的不可变部分作为Tweak
-     * @return {@link FPE}
-     * @since 5.7.12
-     */
-    public static FPE fpe(FPE.FPEMode mode, byte[] key, AlphabetMapper mapper, byte[] tweak) {
-        return new FPE(mode, key, mapper, tweak);
-    }
-
-    /**
-     * 祖冲之算法集（ZUC-128算法）实现，基于BouncyCastle实现。
-     *
-     * @param key 密钥
-     * @param iv  加盐，长度16bytes，{@code null}是随机加盐
-     * @return {@link ZUC}
-     * @since 5.7.12
-     */
-    public static ZUC zuc128(byte[] key, byte[] iv) {
-        return new ZUC(ZUC.ZUCAlgorithm.ZUC_128, key, iv);
-    }
-
-    /**
-     * 祖冲之算法集（ZUC-256算法）实现，基于BouncyCastle实现。
-     *
-     * @param key 密钥
-     * @param iv  加盐，长度25bytes，{@code null}是随机加盐
-     * @return {@link ZUC}
-     * @since 5.7.12
-     */
-    public static ZUC zuc256(byte[] key, byte[] iv) {
-        return new ZUC(ZUC.ZUCAlgorithm.ZUC_256, key, iv);
     }
 }

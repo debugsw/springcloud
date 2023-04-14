@@ -1,25 +1,32 @@
 package com.spring.cloud.base.utils.crypto;
 
+import com.spring.cloud.base.utils.exception.IORuntimeException;
+import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.crypto.params.AsymmetricKeyParameter;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
+import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPrivateKey;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.bouncycastle.jcajce.provider.asymmetric.util.EC5Util;
 import org.bouncycastle.jcajce.provider.asymmetric.util.ECUtil;
-import org.bouncycastle.jcajce.util.ECKeyUtil;
 import org.bouncycastle.jce.spec.ECNamedCurveSpec;
+import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.math.ec.ECCurve;
 
+import java.io.IOException;
+import java.math.BigInteger;
+import java.security.Key;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.spec.ECParameterSpec;
 import java.security.spec.ECPoint;
 import java.security.spec.ECPublicKeySpec;
 
 /**
  * @Author: ls
- * @Description:
+ * @Description: Bouncy Castle相关工具类封装
  * @Date: 2023/4/13 15:56
  */
 public class BCUtil {
@@ -283,30 +290,6 @@ public class BCUtil {
      */
     public static ECPrivateKeyParameters toParams(PrivateKey privateKey) {
         return ECKeyUtil.toPrivateParams(privateKey);
-    }
-
-    /**
-     * 读取PEM格式的私钥
-     *
-     * @param pemStream pem流
-     * @return {@link PrivateKey}
-     * @since 5.2.5
-     * @see PemUtil#readPemPrivateKey(InputStream)
-     */
-    public static PrivateKey readPemPrivateKey(InputStream pemStream) {
-        return PemUtil.readPemPrivateKey(pemStream);
-    }
-
-    /**
-     * 读取PEM格式的公钥
-     *
-     * @param pemStream pem流
-     * @return {@link PublicKey}
-     * @since 5.2.5
-     * @see PemUtil#readPemPublicKey(InputStream)
-     */
-    public static PublicKey readPemPublicKey(InputStream pemStream) {
-        return PemUtil.readPemPublicKey(pemStream);
     }
 
     /**

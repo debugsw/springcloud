@@ -1,7 +1,20 @@
 package com.spring.cloud.base.utils.crypto;
 
+import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.Assert;
+import com.spring.cloud.base.utils.CharUtil;
+import com.spring.cloud.base.utils.exception.UtilException;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * @Author: ls
@@ -1889,12 +1902,12 @@ public class NumberUtil {
      * @return 是否相等
      */
     public static boolean equals(BigDecimal bigNum1, BigDecimal bigNum2) {
-        //noinspection NumberEquality
-        if (bigNum1 == bigNum2) {
+        //noinspection
+        if (bigNum1.equals(bigNum2)) {
             // 如果用户传入同一对象，省略compareTo以提高性能。
             return true;
         }
-        if (bigNum1 == null || bigNum2 == null) {
+        if (bigNum2 == null) {
             return false;
         }
         return 0 == bigNum1.compareTo(bigNum2);
@@ -2879,21 +2892,6 @@ public class NumberUtil {
      */
     public static boolean isValid(float number) {
         return false == (Float.isNaN(number) || Float.isInfinite(number));
-    }
-
-    /**
-     * 计算数学表达式的值，只支持加减乘除和取余<br>
-     * 如：
-     * <pre class="code">
-     *   calculate("(0*1--3)-5/-4-(3*(-2.13))") -》 10.64
-     * </pre>
-     *
-     * @param expression 数学表达式
-     * @return 结果
-     * @since 5.7.6
-     */
-    public static double calculate(String expression) {
-        return Calculator.conversion(expression);
     }
 
     /**
