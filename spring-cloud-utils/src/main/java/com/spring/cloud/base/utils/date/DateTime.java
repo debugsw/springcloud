@@ -2,7 +2,10 @@ package com.spring.cloud.base.utils.date;
 
 import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.CalendarUtil;
+import com.spring.cloud.base.utils.base.SystemPropsUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.exception.DateException;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -318,10 +321,6 @@ public class DateTime extends Date {
 	public DateTime(CharSequence dateStr, DateParser dateParser, boolean lenient) {
 		this(parse(dateStr, dateParser, lenient));
 	}
-
-	// -------------------------------------------------------------------- Constructor end
-
-	// -------------------------------------------------------------------- offset start
 
 	/**
 	 * 调整日期和时间<br>
@@ -730,39 +729,6 @@ public class DateTime extends Date {
 	 */
 	public LocalDateTime toLocalDateTime() {
 		return LocalDateTimeUtil.of(this);
-	}
-
-	/**
-	 * 计算相差时长
-	 *
-	 * @param date 对比的日期
-	 * @return {@link DateBetween}
-	 */
-	public DateBetween between(Date date) {
-		return new DateBetween(this, date);
-	}
-
-	/**
-	 * 计算相差时长
-	 *
-	 * @param date 对比的日期
-	 * @param unit 单位 {@link DateUnit}
-	 * @return 相差时长
-	 */
-	public long between(Date date, DateUnit unit) {
-		return new DateBetween(this, date).between(unit);
-	}
-
-	/**
-	 * 计算相差时长
-	 *
-	 * @param date        对比的日期
-	 * @param unit        单位 {@link DateUnit}
-	 * @param formatLevel 格式化级别
-	 * @return 相差时长
-	 */
-	public String between(Date date, DateUnit unit, BetweenFormatter.Level formatLevel) {
-		return new DateBetween(this, date).toString(unit, formatLevel);
 	}
 
 	/**

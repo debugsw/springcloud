@@ -253,17 +253,6 @@ public class ClassUtil {
 	/**
 	 * 获得指定类过滤后的Public方法列表
 	 *
-	 * @param clazz  查找方法的类
-	 * @param filter 过滤器
-	 * @return 过滤后的方法列表
-	 */
-	public static List<Method> getPublicMethods(Class<?> clazz, Filter<Method> filter) {
-		return ReflectUtil.getPublicMethods(clazz, filter);
-	}
-
-	/**
-	 * 获得指定类过滤后的Public方法列表
-	 *
 	 * @param clazz          查找方法的类
 	 * @param excludeMethods 不包括的方法
 	 * @return 过滤后的方法列表

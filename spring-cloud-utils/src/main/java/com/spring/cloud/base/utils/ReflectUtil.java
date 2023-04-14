@@ -607,21 +607,6 @@ public class ReflectUtil {
 	}
 
 	/**
-	 * 获得指定类过滤后的方法列表
-	 *
-	 * @param clazz  查找方法的类
-	 * @param filter 过滤器
-	 * @return 过滤后的方法列表
-	 * @throws SecurityException 安全异常
-	 */
-	public static Method[] getMethods(Class<?> clazz, Filter<Method> filter) throws SecurityException {
-		if (null == clazz) {
-			return null;
-		}
-		return ArrayUtil.filter(getMethods(clazz), filter);
-	}
-
-	/**
 	 * 获得一个类中所有方法列表，包括其父类中的方法
 	 *
 	 * @param beanClass 类，非{@code null}

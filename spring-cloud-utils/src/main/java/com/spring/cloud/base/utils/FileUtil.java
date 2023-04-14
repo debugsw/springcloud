@@ -4,7 +4,6 @@ import com.spring.cloud.base.utils.crypto.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.ResourceUtil;
-import com.sun.org.apache.xml.internal.serialize.LineSeparator;
 
 import java.io.*;
 import java.net.URI;
@@ -3260,21 +3259,6 @@ public class FileUtil extends PathUtil {
 	 */
 	public static File convertCharset(File file, Charset srcCharset, Charset destCharset) {
 		return CharsetUtil.convert(file, srcCharset, destCharset);
-	}
-
-	/**
-	 * 转换换行符<br>
-	 * 将给定文件的换行符转换为指定换行符
-	 *
-	 * @param file          文件
-	 * @param charset       编码
-	 * @param lineSeparator 换行符枚举{@link LineSeparator}
-	 * @return 被修改的文件
-	 * @since 3.1.0
-	 */
-	public static File convertLineSeparator(File file, Charset charset, LineSeparator lineSeparator) {
-		final List<String> lines = readLines(file, charset);
-		return FileWriter.create(file, charset).writeLines(lines, lineSeparator, false);
 	}
 
 	/**
