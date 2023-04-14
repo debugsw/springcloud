@@ -754,11 +754,9 @@ public class Convert {
 			if (quietly) {
 				return defaultValue;
 			}
-			throw e;
+			throw  e;
 		}
 	}
-
-	// ----------------------------------------------------------------------- 全角半角转换
 
 	/**
 	 * 半角转全角，{@code null}返回{@code null}

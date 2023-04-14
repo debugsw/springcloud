@@ -1,6 +1,9 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.crypto.ValidateObjectInputStream;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
+import com.spring.cloud.base.utils.exception.UtilException;
 
 import java.io.*;
 import java.nio.CharBuffer;
@@ -18,8 +21,6 @@ import java.util.zip.Checksum;
  * @Date: 2023/4/13 16:11
  */
 public class IoUtil extends NioUtil {
-
-	// -------------------------------------------------------------------------------------- Copy start
 
 	/**
 	 * 将Reader中的内容复制到Writer中 使用默认缓存大小，拷贝后不关闭Reader
@@ -677,7 +678,9 @@ public class IoUtil extends NioUtil {
 		}
 	}
 
-	// -------------------------------------------------------------------------------------- read end
+	public static LineIter lineIter(Reader reader) {
+		return new LineIter(reader);
+	}
 
 	/**
 	 * String 转为流
@@ -1228,53 +1231,6 @@ public class IoUtil extends NioUtil {
 	 */
 	public static long checksumValue(InputStream in, Checksum checksum) {
 		return checksum(in, checksum).getValue();
-	}
-
-	/**
-	 * 返回行遍历器
-	 * <pre>
-	 * LineIterator it = null;
-	 * try {
-	 * 	it = IoUtil.lineIter(reader);
-	 * 	while (it.hasNext()) {
-	 * 		String line = it.nextLine();
-	 * 		// do something with line
-	 *    }
-	 * } finally {
-	 * 		it.close();
-	 * }
-	 * </pre>
-	 *
-	 * @param reader {@link Reader}
-	 * @return {@link LineIter}
-	 * @since 5.6.1
-	 */
-	public static LineIter lineIter(Reader reader) {
-		return new LineIter(reader);
-	}
-
-	/**
-	 * 返回行遍历器
-	 * <pre>
-	 * LineIterator it = null;
-	 * try {
-	 * 	it = IoUtil.lineIter(in, CharsetUtil.CHARSET_UTF_8);
-	 * 	while (it.hasNext()) {
-	 * 		String line = it.nextLine();
-	 * 		// do something with line
-	 *    }
-	 * } finally {
-	 * 		it.close();
-	 * }
-	 * </pre>
-	 *
-	 * @param in      {@link InputStream}
-	 * @param charset 编码
-	 * @return {@link LineIter}
-	 * @since 5.6.1
-	 */
-	public static LineIter lineIter(InputStream in, Charset charset) {
-		return new LineIter(in, charset);
 	}
 
 	/**

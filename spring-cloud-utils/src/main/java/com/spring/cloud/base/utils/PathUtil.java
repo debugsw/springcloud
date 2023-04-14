@@ -36,19 +36,6 @@ public class PathUtil {
 	 * 如果提供path为文件，直接返回过滤结果
 	 *
 	 * @param path       当前遍历文件或目录
-	 * @param fileFilter 文件过滤规则对象，选择要保留的文件，只对文件有效，不过滤目录，null表示接收全部文件
-	 * @return 文件列表
-	 * @since 5.4.1
-	 */
-	public static List<File> loopFiles(Path path, FileFilter fileFilter) {
-		return loopFiles(path, -1, fileFilter);
-	}
-
-	/**
-	 * 递归遍历目录以及子目录中的所有文件<br>
-	 * 如果提供path为文件，直接返回过滤结果
-	 *
-	 * @param path       当前遍历文件或目录
 	 * @param maxDepth   遍历最大深度，-1表示遍历到没有目录为止
 	 * @param fileFilter 文件过滤规则对象，选择要保留的文件，只对文件有效，不过滤目录，null表示接收全部文件
 	 * @return 文件列表
@@ -80,18 +67,6 @@ public class PathUtil {
 		});
 
 		return fileList;
-	}
-
-	/**
-	 * 遍历指定path下的文件并做处理
-	 *
-	 * @param start   起始路径，必须为目录
-	 * @param visitor {@link FileVisitor} 接口，用于自定义在访问文件时，访问目录前后等节点做的操作
-	 * @see Files#walkFileTree(Path, java.util.Set, int, FileVisitor)
-	 * @since 5.5.2
-	 */
-	public static void walkFiles(Path start, FileVisitor<? super Path> visitor) {
-		walkFiles(start, -1, visitor);
 	}
 
 	/**
@@ -275,17 +250,6 @@ public class PathUtil {
 	}
 
 	/**
-	 * 获取指定位置的最后一个子路径部分
-	 *
-	 * @param path 路径
-	 * @return 获取的最后一个子路径
-	 * @since 3.1.2
-	 */
-	public static Path getLastPathEle(Path path) {
-		return getPathEle(path, path.getNameCount() - 1);
-	}
-
-	/**
 	 * 获取指定位置的子路径部分，支持负数，例如起始为-1表示从后数第一个节点位置
 	 *
 	 * @param path      路径
@@ -331,27 +295,6 @@ public class PathUtil {
 	}
 
 	/**
-	 * 获取文件属性
-	 *
-	 * @param path          文件路径{@link Path}
-	 * @param isFollowLinks 是否跟踪到软链对应的真实路径
-	 * @return {@link BasicFileAttributes}
-	 * @throws IORuntimeException IO异常
-	 */
-	public static BasicFileAttributes getAttributes(Path path, boolean isFollowLinks) throws IORuntimeException {
-		if (null == path) {
-			return null;
-		}
-
-		final LinkOption[] options = isFollowLinks ? new LinkOption[0] : new LinkOption[]{LinkOption.NOFOLLOW_LINKS};
-		try {
-			return Files.readAttributes(path, BasicFileAttributes.class, options);
-		} catch (IOException e) {
-			throw new IORuntimeException(e);
-		}
-	}
-
-	/**
 	 * 获得输入流
 	 *
 	 * @param path Path
@@ -367,18 +310,6 @@ public class PathUtil {
 			throw new IORuntimeException(e);
 		}
 		return IoUtil.toBuffered(in);
-	}
-
-	/**
-	 * 获得一个文件读取器
-	 *
-	 * @param path 文件Path
-	 * @return BufferedReader对象
-	 * @throws IORuntimeException IO异常
-	 * @since 4.0.0
-	 */
-	public static BufferedReader getUtf8Reader(Path path) throws IORuntimeException {
-		return getReader(path, CharsetUtil.CHARSET_UTF_8);
 	}
 
 	/**
@@ -407,24 +338,6 @@ public class PathUtil {
 		} catch (IOException e) {
 			throw new IORuntimeException(e);
 		}
-	}
-
-	/**
-	 * 获得输出流
-	 *
-	 * @param path Path
-	 * @return 输入流
-	 * @throws IORuntimeException 文件未找到
-	 * @since 5.4.1
-	 */
-	public static BufferedOutputStream getOutputStream(Path path) throws IORuntimeException {
-		final OutputStream in;
-		try {
-			in = Files.newOutputStream(path);
-		} catch (IOException e) {
-			throw new IORuntimeException(e);
-		}
-		return IoUtil.toBuffered(in);
 	}
 
 	/**
@@ -655,7 +568,7 @@ public class PathUtil {
 			Files.delete(path);
 		} catch (AccessDeniedException e) {
 			// 可能遇到只读文件，无法删除.使用 file 方法删除
-			if (false == path.toFile().delete()) {
+			if (!path.toFile().delete()) {
 				throw e;
 			}
 		}

@@ -101,7 +101,7 @@ public class ReflectUtil {
 	}
 
 	/**
-	 * 获取字段名，如果存在{@link Alias}注解，读取注解的值作为名称
+	 * 获取字段名
 	 *
 	 * @param field 字段
 	 * @return 字段名
@@ -161,21 +161,6 @@ public class ReflectUtil {
 	public static Field[] getFields(Class<?> beanClass) throws SecurityException {
 		Assert.notNull(beanClass);
 		return FIELDS_CACHE.computeIfAbsent(beanClass, () -> getFieldsDirectly(beanClass, true));
-	}
-
-
-	/**
-	 * 获得一个类中所有满足条件的字段列表，包括其父类中的字段<br>
-	 * 如果子类与父类中存在同名字段，则这两个字段同时存在，子类字段在前，父类字段在后。
-	 *
-	 * @param beanClass   类
-	 * @param fieldFilter field过滤器，过滤掉不需要的field
-	 * @return 字段列表
-	 * @throws SecurityException 安全检查异常
-	 * @since 5.7.14
-	 */
-	public static Field[] getFields(Class<?> beanClass, Filter<Field> fieldFilter) throws SecurityException {
-		return ArrayUtil.filter(getFields(beanClass), fieldFilter);
 	}
 
 	/**
