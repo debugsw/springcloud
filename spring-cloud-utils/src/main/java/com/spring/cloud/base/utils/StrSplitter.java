@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,6 @@ import java.util.function.Function;
  * @Date: 2023/4/13 16:11
  */
 public class StrSplitter {
-
-	//---------------------------------------------------------------------------------------------- Split by char
 
 	/**
 	 * 切分字符串路径，仅支持Unix分界符：/

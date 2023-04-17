@@ -2,9 +2,9 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.crypto.Func1;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
-import com.spring.cloud.base.utils.crypto.StrUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.map.MapUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -72,23 +72,6 @@ public class ReUtil {
 
 		final Pattern pattern = PatternPool.get(regex, Pattern.DOTALL);
 		return get(pattern, content, groupIndex);
-	}
-
-	/**
-	 * 获得匹配的字符串
-	 *
-	 * @param regex     匹配的正则
-	 * @param content   被匹配的内容
-	 * @param groupName 匹配正则的分组名称
-	 * @return 匹配后得到的字符串，未匹配返回null
-	 */
-	public static String get(String regex, CharSequence content, String groupName) {
-		if (null == content || null == regex) {
-			return null;
-		}
-
-		final Pattern pattern = PatternPool.get(regex, Pattern.DOTALL);
-		return get(pattern, content, groupName);
 	}
 
 	/**
@@ -752,64 +735,6 @@ public class ReUtil {
 			return false;
 		}
 		return pattern.matcher(content).matches();
-	}
-
-	/**
-	 * 正则替换指定值<br>
-	 * 通过正则查找到字符串，然后把匹配到的字符串加入到replacementTemplate中，$1表示分组1的字符串
-	 *
-	 * <p>
-	 * 例如：原字符串是：中文1234，我想把1234换成(1234)，则可以：
-	 *
-	 * <pre>
-	 * ReUtil.replaceAll("中文1234", "(\\d+)", "($1)"))
-	 *
-	 * 结果：中文(1234)
-	 * </pre>
-	 *
-	 * @param content             文本
-	 * @param regex               正则
-	 * @param replacementTemplate 替换的文本模板，可以使用$1类似的变量提取正则匹配出的内容
-	 * @return 处理后的文本
-	 */
-	public static String replaceAll(CharSequence content, String regex, String replacementTemplate) {
-		final Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
-		return replaceAll(content, pattern, replacementTemplate);
-	}
-
-	/**
-	 * 正则替换指定值<br>
-	 * 通过正则查找到字符串，然后把匹配到的字符串加入到replacementTemplate中，$1表示分组1的字符串
-	 *
-	 * @param content             文本
-	 * @param pattern             {@link Pattern}
-	 * @param replacementTemplate 替换的文本模板，可以使用$1类似的变量提取正则匹配出的内容
-	 * @return 处理后的文本
-	 * @since 3.0.4
-	 */
-	public static String replaceAll(CharSequence content, Pattern pattern, String replacementTemplate) {
-		if (StrUtil.isEmpty(content)) {
-			return StrUtil.str(content);
-		}
-
-		final Matcher matcher = pattern.matcher(content);
-		boolean result = matcher.find();
-		if (result) {
-			final Set<String> varNums = findAll(PatternPool.GROUP_VAR, replacementTemplate, 1, new TreeSet<>(LengthComparator.INSTANCE.reversed()));
-			final StringBuffer sb = new StringBuffer();
-			do {
-				String replacement = replacementTemplate;
-				for (final String var : varNums) {
-					final int group = Integer.parseInt(var);
-					replacement = replacement.replace("$" + var, matcher.group(group));
-				}
-				matcher.appendReplacement(sb, escape(replacement));
-				result = matcher.find();
-			} while (result);
-			matcher.appendTail(sb);
-			return sb.toString();
-		}
-		return StrUtil.str(content);
 	}
 
 	/**

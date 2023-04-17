@@ -1,19 +1,16 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.exception.CryptoException;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.gm.GMNamedCurves;
-import org.bouncycastle.crypto.CryptoException;
-import org.bouncycastle.crypto.macs.HMac;
+import org.bouncycastle.crypto.digests.SM3Digest;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.crypto.signers.StandardDSAEncoding;
-import org.bouncycastle.jcajce.provider.asymmetric.ec.GMCipherSpi;
-import org.bouncycastle.util.Arrays;
 import org.bouncycastle.util.encoders.Hex;
-import org.bouncycastle.util.test.FixedSecureRandom;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +18,7 @@ import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.Arrays;
 
 /**
  * @Author: ls
@@ -47,10 +45,10 @@ public class SmUtil {
      * 创建SM2算法对象<br>
      * 生成新的私钥公钥对
      *
-     * @return {@link GMCipherSpi.SM2}
+     * @return {@link SM2}
      */
-    public static GMCipherSpi.SM2 sm2() {
-        return new GMCipherSpi.SM2();
+    public static SM2 sm2() {
+        return new SM2();
     }
 
     /**
@@ -62,8 +60,8 @@ public class SmUtil {
      * @param publicKeyStr  公钥Hex或Base64表示
      * @return {@link SM2}
      */
-    public static GMCipherSpi.SM2 sm2(String privateKeyStr, String publicKeyStr) {
-        return new GMCipherSpi.SM2(privateKeyStr, publicKeyStr);
+    public static SM2 sm2(String privateKeyStr, String publicKeyStr) {
+        return new SM2(privateKeyStr, publicKeyStr);
     }
 
     /**
@@ -75,8 +73,8 @@ public class SmUtil {
      * @param publicKey  公钥，必须使用X509规范
      * @return {@link SM2}
      */
-    public static GMCipherSpi.SM2 sm2(byte[] privateKey, byte[] publicKey) {
-        return new GMCipherSpi.SM2(privateKey, publicKey);
+    public static SM2 sm2(byte[] privateKey, byte[] publicKey) {
+        return new SM2(privateKey, publicKey);
     }
 
     /**
@@ -89,8 +87,8 @@ public class SmUtil {
      * @return {@link SM2}
      * @since 5.5.9
      */
-    public static GMCipherSpi.SM2 sm2(PrivateKey privateKey, PublicKey publicKey) {
-        return new GMCipherSpi.SM2(privateKey, publicKey);
+    public static SM2 sm2(PrivateKey privateKey, PublicKey publicKey) {
+        return new SM2(privateKey, publicKey);
     }
 
     /**
@@ -103,8 +101,8 @@ public class SmUtil {
      * @return {@link SM2}
      * @since 5.5.9
      */
-    public static GMCipherSpi.SM2 sm2(ECPrivateKeyParameters privateKeyParams, ECPublicKeyParameters publicKeyParams) {
-        return new GMCipherSpi.SM2(privateKeyParams, publicKeyParams);
+    public static SM2 sm2(ECPrivateKeyParameters privateKeyParams, ECPublicKeyParameters publicKeyParams) {
+        return new SM2(privateKeyParams, publicKeyParams);
     }
 
     /**
@@ -201,11 +199,11 @@ public class SmUtil {
     public static byte[] changeC1C2C3ToC1C3C2(byte[] c1c2c3, ECDomainParameters ecDomainParameters) {
         // sm2p256v1的这个固定65。可看GMNamedCurves、ECCurve代码。
         final int c1Len = (ecDomainParameters.getCurve().getFieldSize() + 7) / 8 * 2 + 1;
-        final int c3Len = 32; // new SM3Digest().getDigestSize();
+        final int c3Len = 32;
         byte[] result = new byte[c1c2c3.length];
-        System.arraycopy(c1c2c3, 0, result, 0, c1Len); // c1
-        System.arraycopy(c1c2c3, c1c2c3.length - c3Len, result, c1Len, c3Len); // c3
-        System.arraycopy(c1c2c3, c1Len, result, c1Len + c3Len, c1c2c3.length - c1Len - c3Len); // c2
+        System.arraycopy(c1c2c3, 0, result, 0, c1Len);
+        System.arraycopy(c1c2c3, c1c2c3.length - c3Len, result, c1Len, c3Len);
+        System.arraycopy(c1c2c3, c1Len, result, c1Len + c3Len, c1c2c3.length - c1Len - c3Len);
         return result;
     }
 
@@ -219,11 +217,11 @@ public class SmUtil {
     public static byte[] changeC1C3C2ToC1C2C3(byte[] c1c3c2, ECDomainParameters ecDomainParameters) {
         // sm2p256v1的这个固定65。可看GMNamedCurves、ECCurve代码。
         final int c1Len = (ecDomainParameters.getCurve().getFieldSize() + 7) / 8 * 2 + 1;
-        final int c3Len = 32; // new SM3Digest().getDigestSize();
+        final int c3Len = 32;
         byte[] result = new byte[c1c3c2.length];
-        System.arraycopy(c1c3c2, 0, result, 0, c1Len); // c1: 0->65
-        System.arraycopy(c1c3c2, c1Len + c3Len, result, c1Len, c1c3c2.length - c1Len - c3Len); // c2
-        System.arraycopy(c1c3c2, c1Len, result, c1c3c2.length - c3Len, c3Len); // c3
+        System.arraycopy(c1c3c2, 0, result, 0, c1Len);
+        System.arraycopy(c1c3c2, c1Len + c3Len, result, c1Len, c1c3c2.length - c1Len - c3Len);
+        System.arraycopy(c1c3c2, c1Len, result, c1c3c2.length - c3Len, c3Len);
         return result;
     }
 
@@ -249,26 +247,6 @@ public class SmUtil {
     }
 
     /**
-     * BC的SM3withSM2验签需要的rs是asn1格式的，这个方法将直接拼接r||s的字节数组转化成asn1格式
-     *
-     * @param sign in plain byte array
-     * @return rs result in asn1 format
-     * @since 4.5.0
-     */
-    public static byte[] rsPlainToAsn1(byte[] sign) {
-        if (sign.length != RS_LEN * 2) {
-            throw new CryptoException("err rs. ");
-        }
-        FixedSecureRandom.BigInteger r = new FixedSecureRandom.BigInteger(1, Arrays.copyOfRange(sign, 0, RS_LEN));
-        FixedSecureRandom.BigInteger s = new FixedSecureRandom.BigInteger(1, Arrays.copyOfRange(sign, RS_LEN, RS_LEN * 2));
-        try {
-            return StandardDSAEncoding.INSTANCE.encode(SM2_DOMAIN_PARAMS.getN(), r, s);
-        } catch (IOException e) {
-            throw new IORuntimeException(e);
-        }
-    }
-
-    /**
      * 创建HmacSM3算法的{@link MacEngine}
      *
      * @param key 密钥
@@ -290,8 +268,6 @@ public class SmUtil {
         return new HMac(HmacAlgorithm.HmacSM3, key);
     }
 
-    // -------------------------------------------------------------------------------------------------------- Private method start
-
     /**
      * BigInteger转固定长度bytes
      *
@@ -299,9 +275,7 @@ public class SmUtil {
      * @return 固定长度bytes
      * @since 4.5.0
      */
-    private static byte[] bigIntToFixedLengthBytes(FixedSecureRandom.BigInteger rOrS) {
-        // for sm2p256v1, n is 00fffffffeffffffffffffffffffffffff7203df6b21c6052b53bbf40939d54123,
-        // r and s are the result of mod n, so they should be less than n and have length<=32
+    private static byte[] bigIntToFixedLengthBytes(BigInteger rOrS) {
         byte[] rs = rOrS.toByteArray();
         if (rs.length == RS_LEN) {
             return rs;

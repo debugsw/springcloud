@@ -2,7 +2,6 @@ package com.spring.cloud.base.utils.str;
 
 import com.spring.cloud.base.utils.ArrayUtil;
 import com.spring.cloud.base.utils.Convert;
-import com.spring.cloud.base.utils.crypto.StrUtil;
 
 import java.io.Serializable;
 import java.util.Arrays;

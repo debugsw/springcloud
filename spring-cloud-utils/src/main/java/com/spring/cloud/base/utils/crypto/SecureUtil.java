@@ -1,9 +1,10 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.ArrayUtil;
-import com.spring.cloud.base.utils.Base64;
+import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.HexUtil;
 import com.spring.cloud.base.utils.exception.CryptoException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import javax.crypto.Cipher;
 import javax.crypto.Mac;

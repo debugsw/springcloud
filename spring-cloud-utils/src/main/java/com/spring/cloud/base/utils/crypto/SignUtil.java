@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.map.MapUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.util.Map;
 

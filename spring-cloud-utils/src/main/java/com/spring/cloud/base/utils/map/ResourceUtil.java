@@ -2,7 +2,7 @@ package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.FileUtil;
 import com.spring.cloud.base.utils.URLUtil;
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
