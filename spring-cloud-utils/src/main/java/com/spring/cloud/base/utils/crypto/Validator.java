@@ -6,6 +6,7 @@ import com.spring.cloud.base.utils.PatternPool;
 import com.spring.cloud.base.utils.ReUtil;
 import com.spring.cloud.base.utils.date.DateUtil;
 import com.spring.cloud.base.utils.exception.ValidateException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.net.MalformedURLException;
 import java.util.regex.Matcher;

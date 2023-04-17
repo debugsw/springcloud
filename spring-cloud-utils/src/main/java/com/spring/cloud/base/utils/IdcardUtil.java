@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.crypto.Validator;
 import com.spring.cloud.base.utils.date.DatePattern;
 import com.spring.cloud.base.utils.date.DateTime;

@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.impl;
 
 import com.spring.cloud.base.utils.ArrayUtil;
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;

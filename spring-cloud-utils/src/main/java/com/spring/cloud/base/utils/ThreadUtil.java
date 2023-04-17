@@ -1,6 +1,5 @@
 package com.spring.cloud.base.utils;
 
-import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.concurrent.*;
 import java.util.function.Supplier;
 
@@ -43,25 +42,6 @@ public class ThreadUtil {
 	 */
 	public static ExecutorService newExecutor() {
 		return ExecutorBuilder.create().useSynchronousQueue().build();
-	}
-
-	/**
-	 * 获得一个新的线程池，只有单个线程，策略如下：
-	 * <pre>
-	 *    1. 初始线程数为 1
-	 *    2. 最大线程数为 1
-	 *    3. 默认使用LinkedBlockingQueue，默认队列大小为1024
-	 *    4. 同时只允许一个线程工作，剩余放入队列等待，等待数超过1024报错
-	 * </pre>
-	 *
-	 * @return ExecutorService
-	 */
-	public static ExecutorService newSingleExecutor() {
-		return ExecutorBuilder.create()//
-				.setCorePoolSize(1)//
-				.setMaxPoolSize(1)//
-				.setKeepAliveTime(0)//
-				.buildFinalizable();
 	}
 
 	/**
@@ -120,46 +100,6 @@ public class ThreadUtil {
 	}
 
 	/**
-	 * 获取一个新的线程池，默认的策略如下<br>
-	 * <pre>
-	 *     1. 核心线程数与最大线程数为nThreads指定的大小
-	 *     2. 默认使用LinkedBlockingQueue，默认队列大小为1024
-	 *     3. 如果isBlocked为{@code true}，当执行拒绝策略的时候会处于阻塞状态，直到能添加到队列中或者被{@link Thread#interrupt()}中断
-	 * </pre>
-	 *
-	 * @param nThreads         线程池大小
-	 * @param threadNamePrefix 线程名称前缀
-	 * @param isBlocked        是否使用{@link BlockPolicy}策略
-	 * @return ExecutorService
-	 * @author luozongle
-	 * @since 5.8.0
-	 */
-	public static ExecutorService newFixedExecutor(int nThreads, String threadNamePrefix, boolean isBlocked) {
-		return newFixedExecutor(nThreads, 1024, threadNamePrefix, isBlocked);
-	}
-
-	/**
-	 * 获取一个新的线程池，默认的策略如下<br>
-	 * <pre>
-	 *     1. 核心线程数与最大线程数为nThreads指定的大小
-	 *     2. 默认使用LinkedBlockingQueue
-	 *     3. 如果isBlocked为{@code true}，当执行拒绝策略的时候会处于阻塞状态，直到能添加到队列中或者被{@link Thread#interrupt()}中断
-	 * </pre>
-	 *
-	 * @param nThreads         线程池大小
-	 * @param maximumQueueSize 队列大小
-	 * @param threadNamePrefix 线程名称前缀
-	 * @param isBlocked        是否使用{@link BlockPolicy}策略
-	 * @return ExecutorService
-	 * @author luozongle
-	 * @since 5.8.0
-	 */
-	public static ExecutorService newFixedExecutor(int nThreads, int maximumQueueSize, String threadNamePrefix, boolean isBlocked) {
-		return newFixedExecutor(nThreads, maximumQueueSize, threadNamePrefix,
-				(isBlocked ? RejectPolicy.BLOCK : RejectPolicy.ABORT).getValue());
-	}
-
-	/**
 	 * 获得一个新的线程池，默认策略如下<br>
 	 * <pre>
 	 *     1. 核心线程数与最大线程数为nThreads指定的大小
@@ -187,15 +127,6 @@ public class ThreadUtil {
 	}
 
 	/**
-	 * 直接在公共线程池中执行线程
-	 *
-	 * @param runnable 可运行对象
-	 */
-	public static void execute(Runnable runnable) {
-		GlobalThreadPool.execute(runnable);
-	}
-
-	/**
 	 * 执行异步方法
 	 *
 	 * @param runnable 需要执行的方法体
@@ -208,41 +139,6 @@ public class ThreadUtil {
 		thread.start();
 
 		return runnable;
-	}
-
-	/**
-	 * 执行有返回值的异步方法<br>
-	 * Future代表一个异步执行的操作，通过get()方法可以获得操作的结果，如果异步操作还没有完成，则，get()会使当前线程阻塞
-	 *
-	 * @param <T>  回调对象类型
-	 * @param task {@link Callable}
-	 * @return Future
-	 */
-	public static <T> Future<T> execAsync(Callable<T> task) {
-		return GlobalThreadPool.submit(task);
-	}
-
-	/**
-	 * 执行有返回值的异步方法<br>
-	 * Future代表一个异步执行的操作，通过get()方法可以获得操作的结果，如果异步操作还没有完成，则，get()会使当前线程阻塞
-	 *
-	 * @param runnable 可运行对象
-	 * @return {@link Future}
-	 * @since 3.0.5
-	 */
-	public static Future<?> execAsync(Runnable runnable) {
-		return GlobalThreadPool.submit(runnable);
-	}
-
-	/**
-	 * 新建一个CompletionService，调用其submit方法可以异步执行多个任务，最后调用take方法按照完成的顺序获得其结果。<br>
-	 * 若未完成，则会阻塞
-	 *
-	 * @param <T> 回调对象类型
-	 * @return CompletionService
-	 */
-	public static <T> CompletionService<T> newCompletionService() {
-		return new ExecutorCompletionService<>(GlobalThreadPool.getExecutor());
 	}
 
 	/**
@@ -437,17 +333,6 @@ public class ThreadUtil {
 	}
 
 	/**
-	 * 创建ThreadFactoryBuilder
-	 *
-	 * @return ThreadFactoryBuilder
-	 * @see ThreadFactoryBuilder#build()
-	 * @since 4.1.13
-	 */
-	public static ThreadFactoryBuilder createThreadFactoryBuilder() {
-		return ThreadFactoryBuilder.create();
-	}
-
-	/**
 	 * 创建自定义线程名称前缀的{@link ThreadFactory}
 	 *
 	 * @param threadNamePrefix 线程名称前缀
@@ -554,45 +439,6 @@ public class ThreadUtil {
 	}
 
 	/**
-	 * 创建线程工厂
-	 *
-	 * @param prefix   线程名前缀
-	 * @param isDaemon 是否守护线程
-	 * @return {@link ThreadFactory}
-	 * @since 4.0.0
-	 */
-	public static ThreadFactory newNamedThreadFactory(String prefix, boolean isDaemon) {
-		return new NamedThreadFactory(prefix, isDaemon);
-	}
-
-	/**
-	 * 创建线程工厂
-	 *
-	 * @param prefix      线程名前缀
-	 * @param threadGroup 线程组，可以为null
-	 * @param isDaemon    是否守护线程
-	 * @return {@link ThreadFactory}
-	 * @since 4.0.0
-	 */
-	public static ThreadFactory newNamedThreadFactory(String prefix, ThreadGroup threadGroup, boolean isDaemon) {
-		return new NamedThreadFactory(prefix, threadGroup, isDaemon);
-	}
-
-	/**
-	 * 创建线程工厂
-	 *
-	 * @param prefix      线程名前缀
-	 * @param threadGroup 线程组，可以为null
-	 * @param isDaemon    是否守护线程
-	 * @param handler     未捕获异常处理
-	 * @return {@link ThreadFactory}
-	 * @since 4.0.0
-	 */
-	public static ThreadFactory newNamedThreadFactory(String prefix, ThreadGroup threadGroup, boolean isDaemon, UncaughtExceptionHandler handler) {
-		return new NamedThreadFactory(prefix, threadGroup, isDaemon, handler);
-	}
-
-	/**
 	 * 阻塞当前线程，保证在main方法中执行不被退出
 	 *
 	 * @param obj 对象所在线程
@@ -607,22 +453,6 @@ public class ThreadUtil {
 				// ignore
 			}
 		}
-	}
-
-	/**
-	 * 并发测试<br>
-	 * 此方法用于测试多线程下执行某些逻辑的并发性能<br>
-	 * 调用此方法会导致当前线程阻塞。<br>
-	 * 结束后可调用{@link ConcurrencyTester#getInterval()} 方法获取执行时间
-	 *
-	 * @param threadSize 并发线程数
-	 * @param runnable   执行的逻辑实现
-	 * @return {@link ConcurrencyTester}
-	 * @since 4.5.8
-	 */
-	@SuppressWarnings("resource")
-	public static ConcurrencyTester concurrencyTest(int threadSize, Runnable runnable) {
-		return (new ConcurrencyTester(threadSize)).test(runnable);
 	}
 
 	/**

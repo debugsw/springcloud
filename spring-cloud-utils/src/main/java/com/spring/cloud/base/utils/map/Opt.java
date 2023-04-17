@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.map;
 
 import com.mybatisflex.core.util.CollectionUtil;
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.util.Collection;
 import java.util.NoSuchElementException;

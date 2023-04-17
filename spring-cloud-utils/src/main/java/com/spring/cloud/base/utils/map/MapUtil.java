@@ -5,7 +5,7 @@ import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.JdkUtil;
 import com.spring.cloud.base.utils.ReflectUtil;
 import com.spring.cloud.base.utils.ArrayUtil;
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
 
 import java.util.*;

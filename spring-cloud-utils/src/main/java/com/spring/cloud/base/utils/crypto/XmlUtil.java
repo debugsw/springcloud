@@ -1,24 +1,22 @@
 package com.spring.cloud.base.utils.crypto;
 
-import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.CharsetUtil;
-import com.spring.cloud.base.utils.FileUtil;
-import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
-import jdk.internal.org.xml.sax.ContentHandler;
-import jdk.internal.org.xml.sax.InputSource;
-import jdk.internal.org.xml.sax.SAXException;
-import jdk.internal.org.xml.sax.XMLReader;
-import jdk.internal.org.xml.sax.helpers.DefaultHandler;
+import com.spring.cloud.base.utils.map.BiMap;
+import com.spring.cloud.base.utils.map.MapUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
+import org.w3c.dom.*;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
 
-
-import javax.swing.text.Document;
 import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.*;
-import javax.xml.soap.Node;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -29,7 +27,6 @@ import javax.xml.xpath.XPathFactory;
 import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.*;
-
 /**
  * @Author: ls
  * @Description: XML工具类
@@ -947,7 +944,6 @@ public class XmlUtil {
 	 * @param node XML节点
 	 * @param bean bean类
 	 * @return bean
-	 * @see JAXBUtil#xmlToBean(String, Class)
 	 * @since 5.2.4
 	 */
 	public static <T> T xmlToBean(Node node, Class<T> bean) {
@@ -1050,7 +1046,7 @@ public class XmlUtil {
 	 *
 	 * @param data Map类型数据
 	 * @return XML格式的字符串
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.1.2
 	 */
 	public static String mapToXmlStr(Map<?, ?> data) {
@@ -1063,7 +1059,7 @@ public class XmlUtil {
 	 * @param data               Map类型数据
 	 * @param omitXmlDeclaration 是否输出 xml Declaration
 	 * @return XML格式的字符串
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.1.2
 	 */
 	public static String mapToXmlStr(Map<?, ?> data, boolean omitXmlDeclaration) {
@@ -1076,7 +1072,7 @@ public class XmlUtil {
 	 * @param data     Map类型数据
 	 * @param rootName 根节点名
 	 * @return XML格式的字符串
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 4.0.8
 	 */
 	public static String mapToXmlStr(Map<?, ?> data, String rootName) {
@@ -1090,7 +1086,7 @@ public class XmlUtil {
 	 * @param rootName  根节点名
 	 * @param namespace 命名空间，可以为null
 	 * @return XML格式的字符串
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.0.4
 	 */
 	public static String mapToXmlStr(Map<?, ?> data, String rootName, String namespace) {
@@ -1105,7 +1101,7 @@ public class XmlUtil {
 	 * @param namespace          命名空间，可以为null
 	 * @param omitXmlDeclaration 是否输出 xml Declaration
 	 * @return XML格式的字符串
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.1.2
 	 */
 	public static String mapToXmlStr(Map<?, ?> data, String rootName, String namespace, boolean omitXmlDeclaration) {
@@ -1121,7 +1117,7 @@ public class XmlUtil {
 	 * @param isPretty           是否格式化输出
 	 * @param omitXmlDeclaration 是否输出 xml Declaration
 	 * @return XML格式的字符串
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.1.2
 	 */
 	public static String mapToXmlStr(Map<?, ?> data, String rootName, String namespace, boolean isPretty, boolean omitXmlDeclaration) {
@@ -1138,7 +1134,7 @@ public class XmlUtil {
 	 * @param isPretty           是否格式化输出
 	 * @param omitXmlDeclaration 是否输出 xml Declaration
 	 * @return XML格式的字符串
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.1.2
 	 */
 	public static String mapToXmlStr(Map<?, ?> data, String rootName, String namespace, String charset, boolean isPretty, boolean omitXmlDeclaration) {
@@ -1151,7 +1147,7 @@ public class XmlUtil {
 	 * @param data     Map类型数据
 	 * @param rootName 根节点名
 	 * @return XML
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 4.0.9
 	 */
 	public static Document mapToXml(Map<?, ?> data, String rootName) {
@@ -1165,7 +1161,7 @@ public class XmlUtil {
 	 * @param rootName  根节点名
 	 * @param namespace 命名空间，可以为null
 	 * @return XML
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.0.4
 	 */
 	public static Document mapToXml(Map<?, ?> data, String rootName, String namespace) {
@@ -1181,7 +1177,7 @@ public class XmlUtil {
 	 *
 	 * @param bean Bean对象
 	 * @return XML
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.3.4
 	 */
 	public static Document beanToXml(Object bean) {
@@ -1194,7 +1190,7 @@ public class XmlUtil {
 	 * @param bean      Bean对象
 	 * @param namespace 命名空间，可以为null
 	 * @return XML
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.2.4
 	 */
 	public static Document beanToXml(Object bean, String namespace) {
@@ -1208,7 +1204,7 @@ public class XmlUtil {
 	 * @param namespace  命名空间，可以为null
 	 * @param ignoreNull 忽略值为{@code null}的属性
 	 * @return XML
-	 * @see JAXBUtil#beanToXml(Object)
+	 *
 	 * @since 5.7.10
 	 */
 	public static Document beanToXml(Object bean, String namespace, boolean ignoreNull) {
@@ -1373,29 +1369,18 @@ public class XmlUtil {
 	private static DocumentBuilderFactory disableXXE(DocumentBuilderFactory dbf) {
 		String feature;
 		try {
-			// This is the PRIMARY defense. If DTDs (doctypes) are disallowed, almost all XML entity attacks are prevented
-			// Xerces 2 only - http://xerces.apache.org/xerces2-j/features.html#disallow-doctype-decl
 			feature = "http://apache.org/xml/features/disallow-doctype-decl";
 			dbf.setFeature(feature, true);
-			// If you can't completely disable DTDs, then at least do the following:
-			// Xerces 1 - http://xerces.apache.org/xerces-j/features.html#external-general-entities
-			// Xerces 2 - http://xerces.apache.org/xerces2-j/features.html#external-general-entities
-			// JDK7+ - http://xml.org/sax/features/external-general-entities
 			feature = "http://xml.org/sax/features/external-general-entities";
 			dbf.setFeature(feature, false);
-			// Xerces 1 - http://xerces.apache.org/xerces-j/features.html#external-parameter-entities
-			// Xerces 2 - http://xerces.apache.org/xerces2-j/features.html#external-parameter-entities
-			// JDK7+ - http://xml.org/sax/features/external-parameter-entities
 			feature = "http://xml.org/sax/features/external-parameter-entities";
 			dbf.setFeature(feature, false);
-			// Disable external DTDs as well
 			feature = "http://apache.org/xml/features/nonvalidating/load-external-dtd";
 			dbf.setFeature(feature, false);
-			// and these as well, per Timothy Morgan's 2014 paper: "XML Schema, DTD, and Entity Attacks"
 			dbf.setXIncludeAware(false);
 			dbf.setExpandEntityReferences(false);
 		} catch (ParserConfigurationException e) {
-			// ignore
+
 		}
 		return dbf;
 	}
@@ -1501,11 +1486,7 @@ public class XmlUtil {
 
 		@Override
 		public Iterator<String> getPrefixes(String namespaceURI) {
-			// Not implemented
 			return null;
 		}
-
 	}
-	// ---------------------------------------------------------------------------------------- Private method end
-
 }

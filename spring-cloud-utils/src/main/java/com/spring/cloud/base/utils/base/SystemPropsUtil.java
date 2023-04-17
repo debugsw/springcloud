@@ -2,7 +2,7 @@ package com.spring.cloud.base.utils.base;
 
 import com.spring.cloud.base.utils.Console;
 import com.spring.cloud.base.utils.Convert;
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.map.BooleanUtil;
 
 import java.util.Properties;

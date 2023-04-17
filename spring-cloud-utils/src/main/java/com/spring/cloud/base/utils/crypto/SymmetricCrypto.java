@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.IoUtil;
 import com.spring.cloud.base.utils.exception.CryptoException;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.Opt;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;

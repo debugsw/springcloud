@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils.map;
 
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.core.util.ReferenceUtil;
+import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.ReferenceUtil;
+import com.spring.cloud.base.utils.crypto.ObjectUtil;
 
 import java.io.Serializable;
 import java.lang.ref.Reference;
@@ -162,12 +162,13 @@ public class ReferenceConcurrentMap<K, V> implements ConcurrentMap<K, V>, Iterab
 	public void clear() {
 		this.raw.clear();
 		//noinspection StatementWithEmptyBody
-		while (lastQueue.poll() != null) ;
+		while (lastQueue.poll() != null) {
+			;
+		}
 	}
 
 	@Override
 	public Set<K> keySet() {
-		// TODO 非高效方式的set转换，应该返回一个view
 		final Collection<K> trans = CollUtil.trans(this.raw.keySet(), (reference) -> null == reference ? null : reference.get());
 		return new HashSet<>(trans);
 	}

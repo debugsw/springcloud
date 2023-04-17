@@ -2,7 +2,7 @@ package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.ArrayUtil;
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
