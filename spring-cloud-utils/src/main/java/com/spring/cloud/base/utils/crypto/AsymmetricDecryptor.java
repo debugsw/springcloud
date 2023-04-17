@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.CharsetUtil;
 import com.spring.cloud.base.utils.IoUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.InputStream;
 import java.nio.charset.Charset;

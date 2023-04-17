@@ -1,6 +1,9 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.base;
 
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.CharsetUtil;
+import com.spring.cloud.base.utils.FileUtil;
+import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -14,7 +17,6 @@ import java.nio.charset.Charset;
 public class Base64 {
 
 	private static final Charset DEFAULT_CHARSET = CharsetUtil.CHARSET_UTF_8;
-	// -------------------------------------------------------------------- encode
 
 	/**
 	 * 编码为Base64，非URL安全的

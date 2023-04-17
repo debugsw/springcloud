@@ -1,12 +1,13 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.exception.BeanException;
 import com.spring.cloud.base.utils.map.ClassUtil;
 
 import java.beans.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -115,17 +116,6 @@ public class BeanUtil {
 	}
 
 	/**
-	 * 创建动态Bean
-	 *
-	 * @param bean 普通Bean或Map
-	 * @return {@link DynaBean}
-	 * @since 3.0.7
-	 */
-	public static DynaBean createDynaBean(Object bean) {
-		return new DynaBean(bean);
-	}
-
-	/**
 	 * 查找类型转换器 {@link PropertyEditor}
 	 *
 	 * @param type 需要转换的目标类型
@@ -146,18 +136,6 @@ public class BeanUtil {
 		return BeanDescCache.INSTANCE.getBeanDesc(clazz, () -> new BeanDesc(clazz));
 	}
 
-	/**
-	 * 遍历Bean的属性
-	 *
-	 * @param clazz  Bean类
-	 * @param action 每个元素的处理类
-	 * @since 5.4.2
-	 */
-	public static void descForEach(Class<?> clazz, Consumer<? super PropDesc> action) {
-		getBeanDesc(clazz).getProps().forEach(action);
-	}
-
-	// --------------------------------------------------------------------------------------------------------- PropertyDescriptor
 
 	/**
 	 * 获得Bean字段描述数组

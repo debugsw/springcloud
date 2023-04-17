@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.Base64;
+import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.exception.CryptoException;
 
 import java.io.Serializable;

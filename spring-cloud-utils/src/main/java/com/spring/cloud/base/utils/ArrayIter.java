@@ -110,9 +110,6 @@ public class ArrayIter<E> implements IterableIter<E>, ResettableIter<E>, Seriali
 		throw new UnsupportedOperationException("remove() method is not supported");
 	}
 
-	// Properties
-	// -----------------------------------------------------------------------
-
 	/**
 	 * 获得原始数组对象
 	 *

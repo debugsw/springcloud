@@ -1,7 +1,9 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.base;
 
 
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.Decoder;
+import com.spring.cloud.base.utils.Encoder;
+import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
 
 /**
@@ -28,11 +30,11 @@ public class Base16Codec implements Encoder<byte[], char[]>, Decoder<CharSequenc
 	@Override
 	public char[] encode(byte[] data) {
 		final int len = data.length;
-		final char[] out = new char[len << 1];//len*2
+		final char[] out = new char[len << 1];
 		// two characters from the hex value.
 		for (int i = 0, j = 0; i < len; i++) {
-			out[j++] = alphabets[(0xF0 & data[i]) >>> 4];// 高位
-			out[j++] = alphabets[0x0F & data[i]];// 低位
+			out[j++] = alphabets[(0xF0 & data[i]) >>> 4];
+			out[j++] = alphabets[0x0F & data[i]];
 		}
 		return out;
 	}
