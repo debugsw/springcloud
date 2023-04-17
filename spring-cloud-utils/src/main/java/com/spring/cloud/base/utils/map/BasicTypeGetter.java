@@ -9,8 +9,6 @@ import java.util.Date;
  * @Date: 2023/4/13 16:11
  */
 public interface BasicTypeGetter<K> {
-	/*-------------------------- 基本类型 start -------------------------------*/
-
 	/**
 	 * 获取Object属性值
 	 *
@@ -124,5 +122,4 @@ public interface BasicTypeGetter<K> {
 	 * @return Date类型属性值
 	 */
 	Date getDate(K key);
-	/*-------------------------- 基本类型 end -------------------------------*/
 }

@@ -100,7 +100,6 @@ public class BooleanUtil {
 	 *
 	 * @param valueStr 字符串
 	 * @return boolean值
-	 * @since 5.8.1
 	 */
 	public static Boolean toBooleanObject(String valueStr) {
 		if (StrUtil.isNotBlank(valueStr)) {
@@ -501,7 +500,6 @@ public class BooleanUtil {
 	 *
 	 * @param clazz 类
 	 * @return 是否为Boolean或者boolean
-	 * @since 4.5.2
 	 */
 	public static boolean isBoolean(Class<?> clazz) {
 		return (clazz == Boolean.class || clazz == boolean.class);

@@ -12,8 +12,6 @@ public class CamelCaseLinkedMap<K, V> extends CamelCaseMap<K, V> {
 
 	private static final long serialVersionUID = 4043263744224569870L;
 
-	// ------------------------------------------------------------------------- Constructor start
-
 	/**
 	 * 构造
 	 */
@@ -59,5 +57,4 @@ public class CamelCaseLinkedMap<K, V> extends CamelCaseMap<K, V> {
 	public CamelCaseLinkedMap(int initialCapacity, float loadFactor) {
 		super(new LinkedHashMap<>(initialCapacity, loadFactor));
 	}
-	// ------------------------------------------------------------------------- Constructor end
 }

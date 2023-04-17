@@ -2,8 +2,8 @@ package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.CharPool;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.File;
 import java.lang.reflect.Array;
@@ -279,29 +279,24 @@ public class ClassLoaderUtil {
 	private static Class<?> doLoadClass(String name, ClassLoader classLoader, boolean isInitialized) {
 		Class<?> clazz;
 		if (name.endsWith(ARRAY_SUFFIX)) {
-			// 对象数组"java.lang.String[]"风格
 			final String elementClassName = name.substring(0, name.length() - ARRAY_SUFFIX.length());
 			final Class<?> elementClass = loadClass(elementClassName, classLoader, isInitialized);
 			clazz = Array.newInstance(elementClass, 0).getClass();
 		} else if (name.startsWith(NON_PRIMITIVE_ARRAY_PREFIX) && name.endsWith(";")) {
-			// "[Ljava.lang.String;" 风格
 			final String elementName = name.substring(NON_PRIMITIVE_ARRAY_PREFIX.length(), name.length() - 1);
 			final Class<?> elementClass = loadClass(elementName, classLoader, isInitialized);
 			clazz = Array.newInstance(elementClass, 0).getClass();
 		} else if (name.startsWith(INTERNAL_ARRAY_PREFIX)) {
-			// "[[I" 或 "[[Ljava.lang.String;" 风格
 			final String elementName = name.substring(INTERNAL_ARRAY_PREFIX.length());
 			final Class<?> elementClass = loadClass(elementName, classLoader, isInitialized);
 			clazz = Array.newInstance(elementClass, 0).getClass();
 		} else {
-			// 加载普通类
 			if (null == classLoader) {
 				classLoader = getClassLoader();
 			}
 			try {
 				clazz = Class.forName(name, isInitialized, classLoader);
 			} catch (ClassNotFoundException ex) {
-				// 尝试获取内部类，例如java.lang.Thread.State =》java.lang.Thread$State
 				clazz = tryLoadInnerClass(name, classLoader, isInitialized);
 				if (null == clazz) {
 					throw new UtilException(ex);
@@ -321,15 +316,13 @@ public class ClassLoaderUtil {
 	 * @since 4.1.20
 	 */
 	private static Class<?> tryLoadInnerClass(String name, ClassLoader classLoader, boolean isInitialized) {
-		// 尝试获取内部类，例如java.lang.Thread.State =》java.lang.Thread$State
 		final int lastDotIndex = name.lastIndexOf(PACKAGE_SEPARATOR);
-		// 类与内部类的分隔符不能在第一位，因此>0
 		if (lastDotIndex > 0) {
 			final String innerClassName = name.substring(0, lastDotIndex) + INNER_CLASS_SEPARATOR + name.substring(lastDotIndex + 1);
 			try {
 				return Class.forName(innerClassName, isInitialized, classLoader);
 			} catch (ClassNotFoundException ex2) {
-				// 尝试获取内部类失败时，忽略之。
+
 			}
 		}
 		return null;

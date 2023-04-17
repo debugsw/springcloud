@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.*;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +21,7 @@ import java.util.jar.JarFile;
  * @Date: 2023/4/13 16:11
  */
 public class ClassScanner implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -260,8 +261,6 @@ public class ClassScanner implements Serializable {
 					break;
 			}
 		}
-
-		// classpath下未找到，则扫描其他jar包下的类
 		if (forceScanJavaClassPaths || CollUtil.isEmpty(this.classes)) {
 			scanJavaClassPaths();
 		}
@@ -295,8 +294,6 @@ public class ClassScanner implements Serializable {
 	public Set<String> getClassesOfLoadError() {
 		return Collections.unmodifiableSet(this.classesOfLoadError);
 	}
-
-	// --------------------------------------------------------------------------------------------------- Private method start
 
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
@@ -452,5 +449,4 @@ public class ClassScanner implements Serializable {
 		}
 		return StrUtil.addSuffixIfNot(filePath, File.separator);
 	}
-	// --------------------------------------------------------------------------------------------------- Private method end
 }

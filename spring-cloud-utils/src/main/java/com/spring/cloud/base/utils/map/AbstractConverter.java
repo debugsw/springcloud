@@ -23,7 +23,6 @@ public abstract class AbstractConverter<T> implements Converter<T>, Serializable
 	 * @param value        被转换的值
 	 * @param defaultValue 默认值
 	 * @return 转换后的值
-	 * @since 4.5.7
 	 */
 	public T convertQuietly(Object value, T defaultValue) {
 		try {
@@ -62,13 +61,7 @@ public abstract class AbstractConverter<T> implements Converter<T>, Serializable
 	}
 
 	/**
-	 * 内部转换器，被 {@link AbstractConverter#convert(Object, Object)} 调用，实现基本转换逻辑<br>
-	 * 内部转换器转换后如果转换失败可以做如下操作，处理结果都为返回默认值：
-	 *
-	 * <pre>
-	 * 1、返回{@code null}
-	 * 2、抛出一个{@link RuntimeException}异常
-	 * </pre>
+	 * 内部转换器
 	 *
 	 * @param value 值
 	 * @return 转换后的类型
@@ -76,14 +69,7 @@ public abstract class AbstractConverter<T> implements Converter<T>, Serializable
 	protected abstract T convertInternal(Object value);
 
 	/**
-	 * 值转为String，用于内部转换中需要使用String中转的情况<br>
-	 * 转换规则为：
-	 *
-	 * <pre>
-	 * 1、字符串类型将被强转
-	 * 2、数组将被转换为逗号分隔的字符串
-	 * 3、其它类型将调用默认的toString()方法
-	 * </pre>
+	 * 值转为String，用于内部转换中需要使用String中转的情况
 	 *
 	 * @param value 值
 	 * @return String

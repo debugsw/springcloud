@@ -1,13 +1,11 @@
 package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.*;
-import com.spring.cloud.base.utils.ArrayUtil;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -37,38 +35,11 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 获得外围类<br>
-	 * 返回定义此类或匿名类所在的类，如果类本身是在包中定义的，返回{@code null}
-	 *
-	 * @param clazz 类
-	 * @return 外围类
-	 * @since 4.5.7
-	 */
-	public static Class<?> getEnclosingClass(Class<?> clazz) {
-		return null == clazz ? null : clazz.getEnclosingClass();
-	}
-
-	/**
-	 * 是否为顶层类，即定义在包中的类，而非定义在类中的内部类
-	 *
-	 * @param clazz 类
-	 * @return 是否为顶层类
-	 * @since 4.5.7
-	 */
-	public static boolean isTopLevelClass(Class<?> clazz) {
-		if (null == clazz) {
-			return false;
-		}
-		return null == getEnclosingClass(clazz);
-	}
-
-	/**
 	 * 获取类名
 	 *
 	 * @param obj      获取类名对象
 	 * @param isSimple 是否简单类名，如果为true，返回不带包名的类名
 	 * @return 类名
-	 * @since 3.0.7
 	 */
 	public static String getClassName(Object obj, boolean isSimple) {
 		if (null == obj) {
@@ -79,49 +50,17 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 获取类名<br>
-	 * 类名并不包含“.class”这个扩展名<br>
-	 * 例如：ClassUtil这个类<br>
-	 *
-	 * <pre>
-	 * isSimple为false: "com.xiaoleilu.hutool.util.ClassUtil"
-	 * isSimple为true: "ClassUtil"
-	 * </pre>
+	 * 获取类名
 	 *
 	 * @param clazz    类
 	 * @param isSimple 是否简单类名，如果为true，返回不带包名的类名
 	 * @return 类名
-	 * @since 3.0.7
 	 */
 	public static String getClassName(Class<?> clazz, boolean isSimple) {
 		if (null == clazz) {
 			return null;
 		}
 		return isSimple ? clazz.getSimpleName() : clazz.getName();
-	}
-
-	/**
-	 * 获取完整类名的短格式如：<br>
-	 * cn.hutool.core.util.StrUtil -》c.h.c.u.StrUtil
-	 *
-	 * @param className 类名
-	 * @return 短格式类名
-	 * @since 4.1.9
-	 */
-	public static String getShortClassName(String className) {
-		final List<String> packages = StrUtil.split(className, CharUtil.DOT);
-		if (null == packages || packages.size() < 2) {
-			return className;
-		}
-
-		final int size = packages.size();
-		final StringBuilder result = StrUtil.builder();
-		result.append(packages.get(0).charAt(0));
-		for (int i = 1; i < size - 1; i++) {
-			result.append(CharUtil.DOT).append(packages.get(i).charAt(0));
-		}
-		result.append(CharUtil.DOT).append(packages.get(size - 1));
-		return result.toString();
 	}
 
 	/**
@@ -136,7 +75,6 @@ public class ClassUtil {
 		for (int i = 0; i < objects.length; i++) {
 			obj = objects[i];
 			if (obj instanceof NullWrapperBean) {
-				// 自定义null值的参数类型
 				classes[i] = ((NullWrapperBean<?>) obj).getWrappedClass();
 			} else if (null == obj) {
 				classes[i] = Object.class;
@@ -151,10 +89,9 @@ public class ClassUtil {
 	 * 指定类是否与给定的类名相同
 	 *
 	 * @param clazz      类
-	 * @param className  类名，可以是全类名（包含包名），也可以是简单类名（不包含包名）
+	 * @param className  类名，可以全类名（包含包名），也可以简单类名（不包含包名）
 	 * @param ignoreCase 是否忽略大小写
 	 * @return 指定类是否与给定的类名相同
-	 * @since 3.0.7
 	 */
 	public static boolean equals(Class<?> clazz, String className, boolean ignoreCase) {
 		if (null == clazz || StrUtil.isBlank(className)) {
@@ -167,27 +104,12 @@ public class ClassUtil {
 		}
 	}
 
-	// ----------------------------------------------------------------------------------------- Scan classes
-
-	/**
-	 * 扫描指定包路径下所有包含指定注解的类
-	 *
-	 * @param packageName     包路径
-	 * @param annotationClass 注解类
-	 * @return 类集合
-	 * @see ClassScanner#scanPackageByAnnotation(String, Class)
-	 */
-	public static Set<Class<?>> scanPackageByAnnotation(String packageName, final Class<? extends Annotation> annotationClass) {
-		return ClassScanner.scanPackageByAnnotation(packageName, annotationClass);
-	}
-
 	/**
 	 * 扫描指定包路径下所有指定类或接口的子类或实现类
 	 *
 	 * @param packageName 包路径
 	 * @param superClass  父类或接口
 	 * @return 类集合
-	 * @see ClassScanner#scanPackageBySuper(String, Class)
 	 */
 	public static Set<Class<?>> scanPackageBySuper(String packageName, final Class<?> superClass) {
 		return ClassScanner.scanPackageBySuper(packageName, superClass);
@@ -197,7 +119,6 @@ public class ClassUtil {
 	 * 扫描该包路径下所有class文件
 	 *
 	 * @return 类集合
-	 * @see ClassScanner#scanPackage()
 	 */
 	public static Set<Class<?>> scanPackage() {
 		return ClassScanner.scanPackage();
@@ -208,16 +129,13 @@ public class ClassUtil {
 	 *
 	 * @param packageName 包路径 com | com. | com.abs | com.abs.
 	 * @return 类集合
-	 * @see ClassScanner#scanPackage(String)
 	 */
 	public static Set<Class<?>> scanPackage(String packageName) {
 		return ClassScanner.scanPackage(packageName);
 	}
 
 	/**
-	 * 扫描包路径下满足class过滤器条件的所有class文件，<br>
-	 * 如果包路径为 com.abs + A.class 但是输入 abs会产生classNotFoundException<br>
-	 * 因为className 应该为 com.abs.A 现在却成为abs.A,此工具类对该异常进行忽略处理,有可能是一个不完善的地方，以后需要进行修改<br>
+	 * 扫描包路径下满足class过滤器条件的所有class文件
 	 *
 	 * @param packageName 包路径 com | com. | com.abs | com.abs.
 	 * @param classFilter class过滤器，过滤掉不需要的class
@@ -226,8 +144,6 @@ public class ClassUtil {
 	public static Set<Class<?>> scanPackage(String packageName, Filter<Class<?>> classFilter) {
 		return ClassScanner.scanPackage(packageName, classFilter);
 	}
-
-	// ----------------------------------------------------------------------------------------- Method
 
 	/**
 	 * 获得指定类中的Public方法名<br>
@@ -320,7 +236,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 查找指定类中的所有方法（包括非public方法），也包括父类和Object类的方法 找不到方法会返回{@code null}
+	 * 查找指定类中的所有方法（包括非public方法），也包括父类和Object类的方法 找不到方法会返回
 	 *
 	 * @param clazz          被查找的类
 	 * @param methodName     方法名
@@ -332,10 +248,8 @@ public class ClassUtil {
 		return ReflectUtil.getMethod(clazz, methodName, parameterTypes);
 	}
 
-	// ----------------------------------------------------------------------------------------- Field
-
 	/**
-	 * 查找指定类中的所有字段（包括非public字段）， 字段不存在则返回{@code null}
+	 * 查找指定类中的所有字段（包括非public字段）， 字段不存在则返回
 	 *
 	 * @param clazz     被查找字段的类
 	 * @param fieldName 字段名
@@ -349,7 +263,7 @@ public class ClassUtil {
 		try {
 			return clazz.getDeclaredField(fieldName);
 		} catch (NoSuchFieldException e) {
-			// e.printStackTrace();
+
 		}
 		return null;
 	}
@@ -368,7 +282,6 @@ public class ClassUtil {
 		return clazz.getDeclaredFields();
 	}
 
-	// ----------------------------------------------------------------------------------------- Classpath
 
 	/**
 	 * 获得ClassPath，不解码路径中的特殊字符（例如空格和中文）
@@ -384,7 +297,6 @@ public class ClassUtil {
 	 *
 	 * @param isDecode 是否解码路径中的特殊字符（例如空格和中文）
 	 * @return ClassPath集合
-	 * @since 4.0.11
 	 */
 	public static Set<String> getClassPathResources(boolean isDecode) {
 		return getClassPaths(StrUtil.EMPTY, isDecode);
@@ -406,7 +318,6 @@ public class ClassUtil {
 	 * @param packageName 包名称
 	 * @param isDecode    是否解码路径中的特殊字符（例如空格和中文）
 	 * @return ClassPath路径字符串集合
-	 * @since 4.0.11
 	 */
 	public static Set<String> getClassPaths(String packageName, boolean isDecode) {
 		String packagePath = packageName.replace(StrUtil.DOT, StrUtil.SLASH);
@@ -440,7 +351,6 @@ public class ClassUtil {
 	 *
 	 * @param isEncoded 是否编码路径中的中文
 	 * @return ClassPath
-	 * @since 3.2.1
 	 */
 	public static String getClassPath(boolean isEncoded) {
 		final URL classPathURL = getClassPathURL();
@@ -495,9 +405,8 @@ public class ClassUtil {
 	 * 获得资源相对路径对应的URL
 	 *
 	 * @param resource  资源相对路径
-	 * @param baseClass 基准Class，获得的相对路径相对于此Class所在路径，如果为{@code null}则相对ClassPath
+	 * @param baseClass 基准Class，获得的相对路径相对于此Class所在路径，如果为null则相对ClassPath
 	 * @return {@link URL}
-	 * @see ResourceUtil#getResource(String, Class)
 	 */
 	public static URL getResourceUrl(String resource, Class<?> baseClass) {
 		return ResourceUtil.getResource(resource, baseClass);
@@ -521,14 +430,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 获取{@link ClassLoader}<br>
-	 * 获取顺序如下：<br>
-	 *
-	 * <pre>
-	 * 1、获取当前线程的ContextClassLoader
-	 * 2、获取{@link ClassLoaderUtil}类对应的ClassLoader
-	 * 3、获取系统ClassLoader（{@link ClassLoader#getSystemClassLoader()}）
-	 * </pre>
+	 * 获取{@link ClassLoader}
 	 *
 	 * @return 类加载器
 	 */
@@ -596,16 +498,10 @@ public class ClassUtil {
 		return loadClass(className, true);
 	}
 
-	// ---------------------------------------------------------------------------------------------------- Invoke start
-
 	/**
-	 * 执行方法<br>
-	 * 可执行Private方法，也可执行static方法<br>
-	 * 执行非static方法时，必须满足对象有默认构造方法<br>
-	 * 非单例模式，如果是非静态方法，每次创建一个新对象
-	 *
+	 * 执行方法
 	 * @param <T>                     对象类型
-	 * @param classNameWithMethodName 类名和方法名表达式，类名与方法名用{@code .}或{@code #}连接 例如：com.xiaoleilu.hutool.StrUtil.isEmpty 或 com.xiaoleilu.hutool.StrUtil#isEmpty
+	 * @param classNameWithMethodName 类名和方法名表达式，类名与方法名用连接
 	 * @param args                    参数，必须严格对应指定方法的参数类型和数量
 	 * @return 返回结果
 	 */
@@ -614,12 +510,9 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 执行方法<br>
-	 * 可执行Private方法，也可执行static方法<br>
-	 * 执行非static方法时，必须满足对象有默认构造方法<br>
-	 *
+	 * 执行方法
 	 * @param <T>                     对象类型
-	 * @param classNameWithMethodName 类名和方法名表达式，例如：com.xiaoleilu.hutool.StrUtil#isEmpty或com.xiaoleilu.hutool.StrUtil.isEmpty
+	 * @param classNameWithMethodName 类名和方法名表达式
 	 * @param isSingleton             是否为单例对象，如果此参数为false，每次执行方法时创建一个新对象
 	 * @param args                    参数，必须严格对应指定方法的参数类型和数量
 	 * @return 返回结果
@@ -644,10 +537,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 执行方法<br>
-	 * 可执行Private方法，也可执行static方法<br>
-	 * 执行非static方法时，必须满足对象有默认构造方法<br>
-	 * 非单例模式，如果是非静态方法，每次创建一个新对象
+	 * 执行方法
 	 *
 	 * @param <T>        对象类型
 	 * @param className  类名，完整类路径
@@ -660,9 +550,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 执行方法<br>
-	 * 可执行Private方法，也可执行static方法<br>
-	 * 执行非static方法时，必须满足对象有默认构造方法<br>
+	 * 执行方法
 	 *
 	 * @param <T>         对象类型
 	 * @param className   类名，完整类路径
@@ -687,8 +575,6 @@ public class ClassUtil {
 			throw new UtilException(e);
 		}
 	}
-
-	// ---------------------------------------------------------------------------------------------------- Invoke end
 
 	/**
 	 * 是否为包装类型
@@ -717,8 +603,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 是否简单值类型或简单值类型的数组<br>
-	 * 包括：原始类型,、String、other CharSequence, a Number, a Date, a URI, a URL, a Locale or a Class及其数组
+	 * 是否简单值类型或简单值类型的数组
 	 *
 	 * @param clazz 属性类
 	 * @return 是否简单值类型或简单值类型的数组
@@ -731,18 +616,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 是否为简单值类型<br>
-	 * 包括：
-	 * <pre>
-	 *     原始类型
-	 *     String、other CharSequence
-	 *     Number
-	 *     Date
-	 *     URI
-	 *     URL
-	 *     Locale
-	 *     Class
-	 * </pre>
+	 * 是否为简单值类型
 	 *
 	 * @param clazz 类
 	 * @return 是否为简单值类型
@@ -762,12 +636,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 检查目标类是否可以从原类转化<br>
-	 * 转化包括：<br>
-	 * 1、原类是对象，目标类型是原类型实现的接口<br>
-	 * 2、目标类型是原类型的父类<br>
-	 * 3、两者是原始类型或者包装类型（相互转换）
-	 *
+	 * 检查目标类是否可以从原类转化
 	 * @param targetType 目标类型
 	 * @param sourceType 原类型
 	 * @return 是否可转化
@@ -873,41 +742,19 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 是否为标准的类<br>
-	 * 这个类必须：
-	 *
-	 * <pre>
-	 * 1、非接口
-	 * 2、非抽象类
-	 * 3、非Enum枚举
-	 * 4、非数组
-	 * 5、非注解
-	 * 6、非原始类型（int, long等）
-	 * </pre>
-	 *
+	 * 是否为标准的类
 	 * @param clazz 类
 	 * @return 是否为标准类
 	 */
 	public static boolean isNormalClass(Class<?> clazz) {
-		return null != clazz //
-				&& false == clazz.isInterface() //
-				&& false == isAbstract(clazz) //
-				&& false == clazz.isEnum() //
-				&& false == clazz.isArray() //
-				&& false == clazz.isAnnotation() //
-				&& false == clazz.isSynthetic() //
-				&& false == clazz.isPrimitive();//
-	}
-
-	/**
-	 * 判断类是否为枚举类型
-	 *
-	 * @param clazz 类
-	 * @return 是否为枚举类型
-	 * @since 3.2.0
-	 */
-	public static boolean isEnum(Class<?> clazz) {
-		return null != clazz && clazz.isEnum();
+		return null != clazz
+				&& !clazz.isInterface()
+				&& !isAbstract(clazz)
+				&& !clazz.isEnum()
+				&& !clazz.isArray()
+				&& !clazz.isAnnotation()
+				&& !clazz.isSynthetic()
+				&& !clazz.isPrimitive();
 	}
 
 	/**
@@ -933,9 +780,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 获得给定类所在包的名称<br>
-	 * 例如：<br>
-	 * com.xiaoleilu.hutool.util.ClassUtil =》 com.xiaoleilu.hutool.util
+	 * 获得给定类所在包的名称
 	 *
 	 * @param clazz 类
 	 * @return 包名
@@ -953,9 +798,7 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 获得给定类所在包的路径<br>
-	 * 例如：<br>
-	 * com.xiaoleilu.hutool.util.ClassUtil =》 com/xiaoleilu/hutool/util
+	 * 获得给定类所在包的路径
 	 *
 	 * @param clazz 类
 	 * @return 包名
@@ -965,17 +808,10 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 获取指定类型分的默认值<br>
-	 * 默认值规则为：
-	 *
-	 * <pre>
-	 * 1、如果为原始类型，返回0
-	 * 2、非原始类型返回{@code null}
-	 * </pre>
+	 * 获取指定类型分的默认值
 	 *
 	 * @param clazz 类
 	 * @return 默认值
-	 * @since 3.0.8
 	 */
 	public static Object getDefaultValue(Class<?> clazz) {
 		// 原始类型
@@ -986,17 +822,10 @@ public class ClassUtil {
 	}
 
 	/**
-	 * 获取指定原始类型分的默认值<br>
-	 * 默认值规则为：
-	 *
-	 * <pre>
-	 * 1、如果为原始类型，返回0
-	 * 2、非原始类型返回{@code null}
-	 * </pre>
+	 * 获取指定原始类型分的默认值
 	 *
 	 * @param clazz 类
 	 * @return 默认值
-	 * @since 5.8.0
 	 */
 	public static Object getPrimitiveDefaultValue(Class<?> clazz) {
 		if (long.class == clazz) {
@@ -1024,7 +853,6 @@ public class ClassUtil {
 	 *
 	 * @param classes 值类型
 	 * @return 默认值列表
-	 * @since 3.0.9
 	 */
 	public static Object[] getDefaultValues(Class<?>... classes) {
 		final Object[] values = new Object[classes.length];
@@ -1034,81 +862,5 @@ public class ClassUtil {
 		return values;
 	}
 
-	/**
-	 * 是否为JDK中定义的类或接口，判断依据：
-	 *
-	 * <pre>
-	 * 1、以java.、javax.开头的包名
-	 * 2、ClassLoader为null
-	 * </pre>
-	 *
-	 * @param clazz 被检查的类
-	 * @return 是否为JDK中定义的类或接口
-	 * @since 4.6.5
-	 */
-	public static boolean isJdkClass(Class<?> clazz) {
-		final Package objectPackage = clazz.getPackage();
-		if (null == objectPackage) {
-			return false;
-		}
-		final String objectPackageName = objectPackage.getName();
-		return objectPackageName.startsWith("java.") //
-				|| objectPackageName.startsWith("javax.") //
-				|| clazz.getClassLoader() == null;
-	}
 
-	/**
-	 * 获取class类路径URL, 不管是否在jar包中都会返回文件夹的路径<br>
-	 * class在jar包中返回jar所在文件夹,class不在jar中返回文件夹目录<br>
-	 * jdk中的类不能使用此方法
-	 *
-	 * @param clazz 类
-	 * @return URL
-	 * @since 5.2.4
-	 */
-	public static URL getLocation(Class<?> clazz) {
-		if (null == clazz) {
-			return null;
-		}
-		return clazz.getProtectionDomain().getCodeSource().getLocation();
-	}
-
-	/**
-	 * 获取class类路径, 不管是否在jar包中都会返回文件夹的路径<br>
-	 * class在jar包中返回jar所在文件夹,class不在jar中返回文件夹目录<br>
-	 * jdk中的类不能使用此方法
-	 *
-	 * @param clazz 类
-	 * @return class路径
-	 * @since 5.2.4
-	 */
-	public static String getLocationPath(Class<?> clazz) {
-		final URL location = getLocation(clazz);
-		if (null == location) {
-			return null;
-		}
-		return location.getPath();
-	}
-
-	/**
-	 * 是否为抽象类或接口
-	 *
-	 * @param clazz 类
-	 * @return 是否为抽象类或接口
-	 * @since 5.8.2
-	 */
-	public static boolean isAbstractOrInterface(Class<?> clazz) {
-		return isAbstract(clazz) || isInterface(clazz);
-	}
-
-	/**
-	 * 是否为接口
-	 *
-	 * @param clazz 类
-	 * @return 是否为接口
-	 * @since 5.8.2
-	 */
-	public static boolean isInterface(Class<?> clazz) {
-		return clazz.isInterface();
-	}
 }

@@ -4,8 +4,8 @@ import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.FileUtil;
 import com.spring.cloud.base.utils.URLUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.NoResourceException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.net.URL;
 /**
@@ -19,8 +19,6 @@ public class ClassPathResource extends UrlResource {
 	private final String path;
 	private final ClassLoader classLoader;
 	private final Class<?> clazz;
-
-	// -------------------------------------------------------------------------------------- Constructor start
 
 	/**
 	 * 构造
@@ -70,7 +68,6 @@ public class ClassPathResource extends UrlResource {
 		this.clazz = clazz;
 		initUrl();
 	}
-	// -------------------------------------------------------------------------------------- Constructor end
 
 	/**
 	 * 获得Path

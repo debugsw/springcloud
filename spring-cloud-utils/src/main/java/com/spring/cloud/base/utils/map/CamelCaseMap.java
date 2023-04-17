@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils.map;
 
+import com.spring.cloud.base.utils.str.StrUtil;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +14,6 @@ import java.util.function.Function;
  */
 public class CamelCaseMap<K, V> extends FuncKeyMap<K, V> {
 	private static final long serialVersionUID = 4043263744224569870L;
-
-	// ------------------------------------------------------------------------- Constructor start
 
 	/**
 	 * 构造
@@ -73,9 +73,7 @@ public class CamelCaseMap<K, V> extends FuncKeyMap<K, V> {
 			if (key instanceof CharSequence) {
 				key = StrUtil.toCamelCase(key.toString());
 			}
-			//noinspection unchecked
 			return (K) key;
 		});
 	}
-	// ------------------------------------------------------------------------- Constructor end
 }
