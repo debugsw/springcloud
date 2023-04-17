@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.exception;
 
-import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 /**
  * @Author: ls
  * @Description: 加密异常

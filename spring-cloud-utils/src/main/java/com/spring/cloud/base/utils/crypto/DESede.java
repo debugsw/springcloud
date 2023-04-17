@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
+import com.spring.cloud.base.utils.str.StrUtil;
+
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 

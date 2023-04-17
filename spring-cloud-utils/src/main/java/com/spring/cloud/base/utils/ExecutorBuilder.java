@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.crypto.ObjectUtil;
+
 import java.util.concurrent.*;
 
 /**
@@ -157,11 +159,11 @@ public class ExecutorBuilder implements Builder<ThreadPoolExecutor> {
 	/**
 	 * 设置当线程阻塞（block）时的异常处理器，所谓线程阻塞即线程池和等待队列已满，无法处理线程时采取的策略
 	 * <p>
-	 * 此处可以使用JDK预定义的几种策略，见{@link RejectPolicy}枚举
+	 * 此处可以使用JDK预定义的几种策略，见枚举
 	 *
 	 * @param handler {@link RejectedExecutionHandler}
 	 * @return this
-	 * @see RejectPolicy
+	 * @see
 	 */
 	public ExecutorBuilder setHandler(RejectedExecutionHandler handler) {
 		this.handler = handler;
@@ -197,16 +199,6 @@ public class ExecutorBuilder implements Builder<ThreadPoolExecutor> {
 	}
 
 	/**
-	 * 创建有回收关闭功能的ExecutorService
-	 *
-	 * @return 创建有回收关闭功能的ExecutorService
-	 * @since 5.1.4
-	 */
-	public ExecutorService buildFinalizable() {
-		return new FinalizableDelegatedExecutorService(build());
-	}
-
-	/**
 	 * 构建ThreadPoolExecutor
 	 *
 	 * @param builder this
@@ -226,13 +218,13 @@ public class ExecutorBuilder implements Builder<ThreadPoolExecutor> {
 		final ThreadFactory threadFactory = (null != builder.threadFactory) ? builder.threadFactory : Executors.defaultThreadFactory();
 		RejectedExecutionHandler handler = ObjectUtil.defaultIfNull(builder.handler, RejectPolicy.ABORT.getValue());
 
-		final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(//
-				corePoolSize, //
-				maxPoolSize, //
-				keepAliveTime, TimeUnit.NANOSECONDS, //
-				workQueue, //
-				threadFactory, //
-				handler//
+		final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+				corePoolSize,
+				maxPoolSize,
+				keepAliveTime, TimeUnit.NANOSECONDS,
+				workQueue,
+				threadFactory,
+				handler
 		);
 		if (null != builder.allowCoreThreadTimeOut) {
 			threadPoolExecutor.allowCoreThreadTimeOut(builder.allowCoreThreadTimeOut);

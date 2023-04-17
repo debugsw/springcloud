@@ -1,6 +1,9 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.crypto.*;
+import com.spring.cloud.base.utils.crypto.Func1;
+import com.spring.cloud.base.utils.crypto.IterUtil;
+import com.spring.cloud.base.utils.crypto.Matcher;
+import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.list.CompareUtil;
 import com.spring.cloud.base.utils.list.ListUtil;
@@ -9,6 +12,7 @@ import com.spring.cloud.base.utils.map.Editor;
 import com.spring.cloud.base.utils.map.EnumerationIter;
 import com.spring.cloud.base.utils.map.Filter;
 import com.spring.cloud.base.utils.map.MapUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -1188,6 +1192,20 @@ public class CollUtil {
 		}
 		result.add(subList);
 		return result;
+	}
+
+	/**
+	 * 使用给定的转换函数，转换源集合为新类型的集合
+	 *
+	 * @param <F>        源元素类型
+	 * @param <T>        目标元素类型
+	 * @param collection 集合
+	 * @param function   转换函数
+	 * @return 新类型的集合
+	 * @since 5.4.3
+	 */
+	public static <F, T> Collection<T> trans(Collection<F> collection, Function<? super F, ? extends T> function) {
+		return new TransCollection<>(collection, function);
 	}
 
 	/**

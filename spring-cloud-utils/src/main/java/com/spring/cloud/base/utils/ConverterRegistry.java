@@ -1,22 +1,22 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.date.DateTime;
+import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.exception.ConvertException;
 import com.spring.cloud.base.utils.map.ClassUtil;
+import com.spring.cloud.base.utils.map.MapConverter;
+import com.spring.cloud.base.utils.map.SafeConcurrentHashMap;
+import com.spring.cloud.base.utils.map.TypeReference;
 
 import java.io.Serializable;
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.file.Path;
-import java.time.*;
-import java.time.temporal.TemporalAccessor;
-import java.util.*;
-import java.util.concurrent.atomic.*;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.DoubleAdder;
+import java.util.concurrent.atomic.LongAdder;
 
 /**
  * @Author: ls
@@ -186,7 +186,7 @@ public class ConverterRegistry implements Serializable {
 
 		// 自定义对象转换
 		if(value instanceof TypeConverter){
-			return ObjUtil.defaultIfNull((T) ((TypeConverter) value).convert(type, value), defaultValue);
+			return ObjectUtil.defaultIfNull((T) ((TypeConverter) value).convert(type, value), defaultValue);
 		}
 
 		// 标准转换器
@@ -209,11 +209,6 @@ public class ConverterRegistry implements Serializable {
 		final T result = convertSpecial(type, rowType, value, defaultValue);
 		if (null != result) {
 			return result;
-		}
-
-		// 尝试转Bean
-		if (BeanUtil.isBean(rowType)) {
-			return new BeanConverter<T>(type).convert(value, defaultValue);
 		}
 
 		// 无法转换
@@ -332,73 +327,18 @@ public class ConverterRegistry implements Serializable {
 		// 包装类转换器
 		defaultConverterMap.put(Number.class, new NumberConverter());
 		defaultConverterMap.put(Integer.class, new NumberConverter(Integer.class));
-		defaultConverterMap.put(AtomicInteger.class, new NumberConverter(AtomicInteger.class));// since 3.0.8
+		defaultConverterMap.put(AtomicInteger.class, new NumberConverter(AtomicInteger.class));
 		defaultConverterMap.put(Long.class, new NumberConverter(Long.class));
 		defaultConverterMap.put(LongAdder.class, new NumberConverter(LongAdder.class));
-		defaultConverterMap.put(AtomicLong.class, new NumberConverter(AtomicLong.class));// since 3.0.8
+		defaultConverterMap.put(AtomicLong.class, new NumberConverter(AtomicLong.class));
 		defaultConverterMap.put(Byte.class, new NumberConverter(Byte.class));
 		defaultConverterMap.put(Short.class, new NumberConverter(Short.class));
 		defaultConverterMap.put(Float.class, new NumberConverter(Float.class));
 		defaultConverterMap.put(Double.class, new NumberConverter(Double.class));
 		defaultConverterMap.put(DoubleAdder.class, new NumberConverter(DoubleAdder.class));
-		defaultConverterMap.put(Character.class, new CharacterConverter());
-		defaultConverterMap.put(Boolean.class, new BooleanConverter());
-		defaultConverterMap.put(AtomicBoolean.class, new AtomicBooleanConverter());// since 3.0.8
+
 		defaultConverterMap.put(BigDecimal.class, new NumberConverter(BigDecimal.class));
 		defaultConverterMap.put(BigInteger.class, new NumberConverter(BigInteger.class));
-		defaultConverterMap.put(CharSequence.class, new StringConverter());
-		defaultConverterMap.put(String.class, new StringConverter());
-
-		// URI and URL
-		defaultConverterMap.put(URI.class, new URIConverter());
-		defaultConverterMap.put(URL.class, new URLConverter());
-
-		// 日期时间
-		defaultConverterMap.put(Calendar.class, new CalendarConverter());
-		defaultConverterMap.put(Date.class, new DateConverter(Date.class));
-		defaultConverterMap.put(DateTime.class, new DateConverter(DateTime.class));
-		defaultConverterMap.put(java.sql.Date.class, new DateConverter(java.sql.Date.class));
-		defaultConverterMap.put(java.sql.Time.class, new DateConverter(java.sql.Time.class));
-		defaultConverterMap.put(java.sql.Timestamp.class, new DateConverter(java.sql.Timestamp.class));
-
-		// 日期时间 JDK8+(since 5.0.0)
-		defaultConverterMap.put(TemporalAccessor.class, new TemporalAccessorConverter(Instant.class));
-		defaultConverterMap.put(Instant.class, new TemporalAccessorConverter(Instant.class));
-		defaultConverterMap.put(LocalDateTime.class, new TemporalAccessorConverter(LocalDateTime.class));
-		defaultConverterMap.put(LocalDate.class, new TemporalAccessorConverter(LocalDate.class));
-		defaultConverterMap.put(LocalTime.class, new TemporalAccessorConverter(LocalTime.class));
-		defaultConverterMap.put(ZonedDateTime.class, new TemporalAccessorConverter(ZonedDateTime.class));
-		defaultConverterMap.put(OffsetDateTime.class, new TemporalAccessorConverter(OffsetDateTime.class));
-		defaultConverterMap.put(OffsetTime.class, new TemporalAccessorConverter(OffsetTime.class));
-		defaultConverterMap.put(DayOfWeek.class, new TemporalAccessorConverter(DayOfWeek.class));
-		defaultConverterMap.put(Month.class, new TemporalAccessorConverter(Month.class));
-		defaultConverterMap.put(MonthDay.class, new TemporalAccessorConverter(MonthDay.class));
-		defaultConverterMap.put(Period.class, new PeriodConverter());
-		defaultConverterMap.put(Duration.class, new DurationConverter());
-
-		// Reference
-		defaultConverterMap.put(WeakReference.class, new ReferenceConverter(WeakReference.class));// since 3.0.8
-		defaultConverterMap.put(SoftReference.class, new ReferenceConverter(SoftReference.class));// since 3.0.8
-		defaultConverterMap.put(AtomicReference.class, new AtomicReferenceConverter());// since 3.0.8
-
-		//AtomicXXXArray，since 5.4.5
-		defaultConverterMap.put(AtomicIntegerArray.class, new AtomicIntegerArrayConverter());
-		defaultConverterMap.put(AtomicLongArray.class, new AtomicLongArrayConverter());
-
-		// 其它类型
-		defaultConverterMap.put(Class.class, new ClassConverter());
-		defaultConverterMap.put(TimeZone.class, new TimeZoneConverter());
-		defaultConverterMap.put(Locale.class, new LocaleConverter());
-		defaultConverterMap.put(Charset.class, new CharsetConverter());
-		defaultConverterMap.put(Path.class, new PathConverter());
-		defaultConverterMap.put(Currency.class, new CurrencyConverter());// since 3.0.8
-		defaultConverterMap.put(UUID.class, new UUIDConverter());// since 4.0.10
-		defaultConverterMap.put(StackTraceElement.class, new StackTraceElementConverter());// since 4.5.2
-		defaultConverterMap.put(Optional.class, new OptionalConverter());// since 5.0.0
-		defaultConverterMap.put(Opt.class, new OptConverter());// since 5.7.16
-		defaultConverterMap.put(Pair.class, new PairConverter(Pair.class));// since 5.8.17
-
 		return this;
 	}
-	// ----------------------------------------------------------- Private method end
 }

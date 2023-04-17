@@ -1,6 +1,9 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.exception.ConvertException;
 import com.spring.cloud.base.utils.map.AbstractConverter;
+import com.spring.cloud.base.utils.map.ClassUtil;
+import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.map.WeakConcurrentMap;
 
 import java.lang.reflect.Method;
@@ -53,7 +56,7 @@ public class EnumConverter extends AbstractConverter<Object> {
 	/**
 	 * 尝试转换，转换规则为：
 	 * <ul>
-	 *     <li>如果实现{@link EnumItem}接口，则调用fromInt或fromStr转换</li>
+	 *     <li>如果实现接口，则调用fromInt或fromStr转换</li>
 	 *     <li>找到类似转换的静态方法调用实现转换且优先使用</li>
 	 *     <li>约定枚举类应该提供 valueOf(String) 和 valueOf(Integer)用于转换</li>
 	 *     <li>oriInt /name 转换托底</li>
