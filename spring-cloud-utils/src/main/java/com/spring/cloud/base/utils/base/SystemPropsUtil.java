@@ -15,11 +15,6 @@ import java.util.Properties;
 public class SystemPropsUtil {
 
 	/**
-	 * Hutool自定义系统属性：是否解析日期字符串采用严格模式
-	 */
-	public static String HUTOOL_DATE_LENIENT = "hutool.date.lenient";
-
-	/**
 	 * 取得系统属性，如果因为Java安全的限制而失败，则将错误打在Log中，然后返回 defaultValue
 	 *
 	 * @param name         属性名
@@ -75,7 +70,7 @@ public class SystemPropsUtil {
 	 * @see System#getenv(String)
 	 */
 	public static String get(String key) {
-		return get(key, null);
+		return StrUtil.nullToDefault(get(key, false), null);
 	}
 
 	/**

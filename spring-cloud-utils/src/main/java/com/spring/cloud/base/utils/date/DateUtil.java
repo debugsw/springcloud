@@ -1,7 +1,10 @@
 package com.spring.cloud.base.utils.date;
 
 import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.crypto.StrUtil;
+import com.spring.cloud.base.utils.exception.DateException;
+import com.spring.cloud.base.utils.list.CompareUtil;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -13,9 +16,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * @Author: ls
@@ -160,8 +160,6 @@ public class DateUtil extends CalendarUtil {
 	public static String today() {
 		return formatDate(new DateTime());
 	}
-
-	// -------------------------------------------------------------- Part of Date start
 
 	/**
 	 * 获得年的部分
@@ -439,7 +437,6 @@ public class DateUtil extends CalendarUtil {
 	public static int thisMillisecond() {
 		return millisecond(date());
 	}
-	// -------------------------------------------------------------- Part of Date end
 
 	/**
 	 * 获得指定日期年份和季节<br>
@@ -465,7 +462,6 @@ public class DateUtil extends CalendarUtil {
 		}
 		return yearAndQuarter(startDate.getTime(), endDate.getTime());
 	}
-	// ------------------------------------ Format start ----------------------------------------------
 
 	/**
 	 * 格式化日期时间<br>
@@ -635,9 +631,6 @@ public class DateUtil extends CalendarUtil {
 
 		return CalendarUtil.formatChineseDate(CalendarUtil.calendar(date), withTime);
 	}
-	// ------------------------------------ Format end ----------------------------------------------
-
-	// ------------------------------------ Parse start ----------------------------------------------
 
 	/**
 	 * 构建LocalDateTime对象<br>
@@ -1013,65 +1006,6 @@ public class DateUtil extends CalendarUtil {
 		// 没有更多匹配的时间格式
 		throw new DateException("No format fit for date String [{}] !", dateStr);
 	}
-
-	// ------------------------------------ Parse end ----------------------------------------------
-
-	// ------------------------------------ Offset start ----------------------------------------------
-
-	/**
-	 * 修改日期为某个时间字段起始时间
-	 *
-	 * @param date      {@link Date}
-	 * @param dateField 保留到的时间字段，如定义为 {@link DateField#SECOND}，表示这个字段不变，这个字段以下字段全部归0
-	 * @return {@link DateTime}
-	 * @since 4.5.7
-	 */
-	public static DateTime truncate(Date date, DateField dateField) {
-		return new DateTime(truncate(calendar(date), dateField));
-	}
-
-	/**
-	 * 修改日期为某个时间字段四舍五入时间
-	 *
-	 * @param date      {@link Date}
-	 * @param dateField 时间字段
-	 * @return {@link DateTime}
-	 * @since 4.5.7
-	 */
-	public static DateTime round(Date date, DateField dateField) {
-		return new DateTime(round(calendar(date), dateField));
-	}
-
-	/**
-	 * 修改日期为某个时间字段结束时间
-	 *
-	 * @param date      {@link Date}
-	 * @param dateField 保留到的时间字段，如定义为 {@link DateField#SECOND}，表示这个字段不变，这个字段以下字段全部取最大值
-	 * @return {@link DateTime}
-	 * @since 4.5.7
-	 */
-	public static DateTime ceiling(Date date, DateField dateField) {
-		return new DateTime(ceiling(calendar(date), dateField));
-	}
-
-	/**
-	 * 修改日期为某个时间字段结束时间<br>
-	 * 可选是否归零毫秒。
-	 *
-	 * <p>
-	 * 有时候由于毫秒部分必须为0（如MySQL数据库中），因此在此加上选项。
-	 * </p>
-	 *
-	 * @param date                {@link Date}
-	 * @param dateField           时间字段
-	 * @param truncateMillisecond 是否毫秒归零
-	 * @return {@link DateTime}
-	 * @since 4.5.7
-	 */
-	public static DateTime ceiling(Date date, DateField dateField, boolean truncateMillisecond) {
-		return new DateTime(ceiling(calendar(date), dateField, truncateMillisecond));
-	}
-
 	/**
 	 * 获取秒级别的开始时间，即毫秒部分设置为0
 	 *
@@ -1257,7 +1191,6 @@ public class DateUtil extends CalendarUtil {
 	public static DateTime endOfYear(Date date) {
 		return new DateTime(endOfYear(calendar(date)));
 	}
-	// --------------------------------------------------- Offset for now
 
 	/**
 	 * 昨天
@@ -1404,161 +1337,6 @@ public class DateUtil extends CalendarUtil {
 	public static DateTime offset(Date date, DateField dateField, int offset) {
 		return dateNew(date).offset(dateField, offset);
 	}
-
-	// ------------------------------------ Offset end ----------------------------------------------
-
-	/**
-	 * 判断两个日期相差的时长，只保留绝对值
-	 *
-	 * @param beginDate 起始日期
-	 * @param endDate   结束日期
-	 * @param unit      相差的单位：相差 天{@link DateUnit#DAY}、小时{@link DateUnit#HOUR} 等
-	 * @return 日期差
-	 */
-	public static long between(Date beginDate, Date endDate, DateUnit unit) {
-		return between(beginDate, endDate, unit, true);
-	}
-
-	/**
-	 * 判断两个日期相差的时长
-	 *
-	 * @param beginDate 起始日期
-	 * @param endDate   结束日期
-	 * @param unit      相差的单位：相差 天{@link DateUnit#DAY}、小时{@link DateUnit#HOUR} 等
-	 * @param isAbs     日期间隔是否只保留绝对值正数
-	 * @return 日期差
-	 * @since 3.3.1
-	 */
-	public static long between(Date beginDate, Date endDate, DateUnit unit, boolean isAbs) {
-		return new DateBetween(beginDate, endDate, isAbs).between(unit);
-	}
-
-	/**
-	 * 判断两个日期相差的毫秒数
-	 *
-	 * @param beginDate 起始日期
-	 * @param endDate   结束日期
-	 * @return 日期差
-	 * @since 3.0.1
-	 */
-	public static long betweenMs(Date beginDate, Date endDate) {
-		return new DateBetween(beginDate, endDate).between(DateUnit.MS);
-	}
-
-	/**
-	 * 判断两个日期相差的天数<br>
-	 *
-	 * <pre>
-	 * 有时候我们计算相差天数的时候需要忽略时分秒。
-	 * 比如：2016-02-01 23:59:59和2016-02-02 00:00:00相差一秒
-	 * 如果isReset为{@code false}相差天数为0。
-	 * 如果isReset为{@code true}相差天数将被计算为1
-	 * </pre>
-	 *
-	 * @param beginDate 起始日期
-	 * @param endDate   结束日期
-	 * @param isReset   是否重置时间为起始时间
-	 * @return 日期差
-	 * @since 3.0.1
-	 */
-	public static long betweenDay(Date beginDate, Date endDate, boolean isReset) {
-		if (isReset) {
-			beginDate = beginOfDay(beginDate);
-			endDate = beginOfDay(endDate);
-		}
-		return between(beginDate, endDate, DateUnit.DAY);
-	}
-
-	/**
-	 * 计算指定时间区间内的周数
-	 *
-	 * @param beginDate 开始时间
-	 * @param endDate   结束时间
-	 * @param isReset   是否重置时间为起始时间
-	 * @return 周数
-	 */
-	public static long betweenWeek(Date beginDate, Date endDate, boolean isReset) {
-		if (isReset) {
-			beginDate = beginOfDay(beginDate);
-			endDate = beginOfDay(endDate);
-		}
-		return between(beginDate, endDate, DateUnit.WEEK);
-	}
-
-	/**
-	 * 计算两个日期相差月数<br>
-	 * 在非重置情况下，如果起始日期的天大于结束日期的天，月数要少算1（不足1个月）
-	 *
-	 * @param beginDate 起始日期
-	 * @param endDate   结束日期
-	 * @param isReset   是否重置时间为起始时间（重置天时分秒）
-	 * @return 相差月数
-	 * @since 3.0.8
-	 */
-	public static long betweenMonth(Date beginDate, Date endDate, boolean isReset) {
-		return new DateBetween(beginDate, endDate).betweenMonth(isReset);
-	}
-
-	/**
-	 * 计算两个日期相差年数<br>
-	 * 在非重置情况下，如果起始日期的月大于结束日期的月，年数要少算1（不足1年）
-	 *
-	 * @param beginDate 起始日期
-	 * @param endDate   结束日期
-	 * @param isReset   是否重置时间为起始时间（重置月天时分秒）
-	 * @return 相差年数
-	 * @since 3.0.8
-	 */
-	public static long betweenYear(Date beginDate, Date endDate, boolean isReset) {
-		return new DateBetween(beginDate, endDate).betweenYear(isReset);
-	}
-
-	/**
-	 * 格式化日期间隔输出
-	 *
-	 * @param beginDate 起始日期
-	 * @param endDate   结束日期
-	 * @param level     级别，按照天、小时、分、秒、毫秒分为5个等级
-	 * @return XX天XX小时XX分XX秒
-	 */
-	public static String formatBetween(Date beginDate, Date endDate, BetweenFormatter.Level level) {
-		return formatBetween(between(beginDate, endDate, DateUnit.MS), level);
-	}
-
-	/**
-	 * 格式化日期间隔输出，精确到毫秒
-	 *
-	 * @param beginDate 起始日期
-	 * @param endDate   结束日期
-	 * @return XX天XX小时XX分XX秒
-	 * @since 3.0.1
-	 */
-	public static String formatBetween(Date beginDate, Date endDate) {
-		return formatBetween(between(beginDate, endDate, DateUnit.MS));
-	}
-
-	/**
-	 * 格式化日期间隔输出
-	 *
-	 * @param betweenMs 日期间隔
-	 * @param level     级别，按照天、小时、分、秒、毫秒分为5个等级
-	 * @return XX天XX小时XX分XX秒XX毫秒
-	 */
-	public static String formatBetween(long betweenMs, BetweenFormatter.Level level) {
-		return new BetweenFormatter(betweenMs, level).format();
-	}
-
-	/**
-	 * 格式化日期间隔输出，精确到毫秒
-	 *
-	 * @param betweenMs 日期间隔
-	 * @return XX天XX小时XX分XX秒XX毫秒
-	 * @since 3.0.1
-	 */
-	public static String formatBetween(long betweenMs) {
-		return new BetweenFormatter(betweenMs, BetweenFormatter.Level.MILLISECOND).format();
-	}
-
 	/**
 	 * 当前日期是否在日期指定范围内<br>
 	 * 起始日期和结束日期可以互换
@@ -1669,90 +1447,6 @@ public class DateUtil extends CalendarUtil {
 	}
 
 	/**
-	 * 计时器<br>
-	 * 计算某个过程花费的时间，精确到毫秒
-	 *
-	 * @return Timer
-	 */
-	public static TimeInterval timer() {
-		return new TimeInterval();
-
-	}
-
-	/**
-	 * 计时器<br>
-	 * 计算某个过程花费的时间，精确到毫秒
-	 *
-	 * @param isNano 是否使用纳秒计数，false则使用毫秒
-	 * @return Timer
-	 * @since 5.2.3
-	 */
-	public static TimeInterval timer(boolean isNano) {
-		return new TimeInterval(isNano);
-	}
-
-	/**
-	 * 创建秒表{@link StopWatch}，用于对代码块的执行时间计数
-	 * <p>
-	 * 使用方法如下：
-	 *
-	 * <pre>
-	 * StopWatch stopWatch = DateUtil.createStopWatch();
-	 *
-	 * // 任务1
-	 * stopWatch.start("任务一");
-	 * Thread.sleep(1000);
-	 * stopWatch.stop();
-	 *
-	 * // 任务2
-	 * stopWatch.start("任务二");
-	 * Thread.sleep(2000);
-	 * stopWatch.stop();
-	 *
-	 * // 打印出耗时
-	 * Console.log(stopWatch.prettyPrint());
-	 *
-	 * </pre>
-	 *
-	 * @return {@link StopWatch}
-	 * @since 5.2.3
-	 */
-	public static StopWatch createStopWatch() {
-		return new StopWatch();
-	}
-
-	/**
-	 * 创建秒表{@link StopWatch}，用于对代码块的执行时间计数
-	 * <p>
-	 * 使用方法如下：
-	 *
-	 * <pre>
-	 * StopWatch stopWatch = DateUtil.createStopWatch("任务名称");
-	 *
-	 * // 任务1
-	 * stopWatch.start("任务一");
-	 * Thread.sleep(1000);
-	 * stopWatch.stop();
-	 *
-	 * // 任务2
-	 * stopWatch.start("任务二");
-	 * Thread.sleep(2000);
-	 * stopWatch.stop();
-	 *
-	 * // 打印出耗时
-	 * Console.log(stopWatch.prettyPrint());
-	 *
-	 * </pre>
-	 *
-	 * @param id 用于标识秒表的唯一ID
-	 * @return {@link StopWatch}
-	 * @since 5.2.3
-	 */
-	public static StopWatch createStopWatch(String id) {
-		return new StopWatch(id);
-	}
-
-	/**
 	 * 生日转为年龄，计算法定年龄
 	 *
 	 * @param birthDay 生日，标准日期字符串
@@ -1815,28 +1509,7 @@ public class DateUtil extends CalendarUtil {
 	}
 
 	/**
-	 * 判定在指定检查时间是否过期。
-	 *
-	 * <p>
-	 * 以商品为例，startDate即生产日期，endDate即保质期的截止日期，checkDate表示在何时检查是否过期（一般为当前时间）<br>
-	 * endDate和startDate的差值即为保质期（按照毫秒计），checkDate和startDate的差值即为实际经过的时长，实际时长大于保质期表示超时。
-	 * </p>
-	 *
-	 * @param startDate 开始时间
-	 * @param endDate   被比较的时间，即有效期的截止时间。如果经过时长后的时间晚于被检查的时间，就表示过期
-	 * @param checkDate 检查时间，可以是当前时间，既
-	 * @return 是否过期
-	 * @since 5.1.1
-	 * @deprecated 使用isIn方法
-	 */
-	@Deprecated
-	public static boolean isExpired(Date startDate, Date endDate, Date checkDate) {
-		return betweenMs(startDate, checkDate) > betweenMs(startDate, endDate);
-	}
-
-	/**
 	 * HH:mm:ss 时间格式字符串转为秒数<br>
-	 * 参考：<a href="https://github.com/iceroot">https://github.com/iceroot</a>
 	 *
 	 * @param timeStr 字符串时分秒(HH:mm:ss)格式
 	 * @return 时分秒转换后的秒数
@@ -1890,135 +1563,6 @@ public class DateUtil extends CalendarUtil {
 		}
 		sb.append(second);
 		return sb.toString();
-	}
-
-	/**
-	 * 创建日期范围生成器
-	 *
-	 * @param start 起始日期时间（包括）
-	 * @param end   结束日期时间
-	 * @param unit  步进单位
-	 * @return {@link DateRange}
-	 */
-	public static DateRange range(Date start, Date end, final DateField unit) {
-		return new DateRange(start, end, unit);
-	}
-
-	/**
-	 * 俩个时间区间取交集
-	 *
-	 * @param start 开始区间
-	 * @param end   结束区间
-	 * @return true 包含
-	 * @author handy
-	 * @since 5.7.21
-	 */
-	public static List<DateTime> rangeContains(DateRange start, DateRange end) {
-		List<DateTime> startDateTimes = CollUtil.newArrayList((Iterable<DateTime>) start);
-		List<DateTime> endDateTimes = CollUtil.newArrayList((Iterable<DateTime>) end);
-		return startDateTimes.stream().filter(endDateTimes::contains).collect(Collectors.toList());
-	}
-
-	/**
-	 * 俩个时间区间取差集(end - start)
-	 *
-	 * @param start 开始区间
-	 * @param end   结束区间
-	 * @return true 包含
-	 * @author handy
-	 * @since 5.7.21
-	 */
-	public static List<DateTime> rangeNotContains(DateRange start, DateRange end) {
-		List<DateTime> startDateTimes = CollUtil.newArrayList((Iterable<DateTime>) start);
-		List<DateTime> endDateTimes = CollUtil.newArrayList((Iterable<DateTime>) end);
-		return endDateTimes.stream().filter(item -> !startDateTimes.contains(item)).collect(Collectors.toList());
-	}
-
-	/**
-	 * 按日期范围遍历，执行 function
-	 *
-	 * @param start 起始日期时间（包括）
-	 * @param end   结束日期时间
-	 * @param unit  步进单位
-	 * @param func  每次遍历要执行的 function
-	 * @param <T>   Date经过函数处理结果类型
-	 * @return 结果列表
-	 * @since 5.7.21
-	 */
-	public static <T> List<T> rangeFunc(Date start, Date end, final DateField unit, Function<Date, T> func) {
-		if (start == null || end == null || start.after(end)) {
-			return Collections.emptyList();
-		}
-		ArrayList<T> list = new ArrayList<>();
-		for (DateTime date : range(start, end, unit)) {
-			list.add(func.apply(date));
-		}
-		return list;
-	}
-
-	/**
-	 * 按日期范围遍历，执行 consumer
-	 *
-	 * @param start    起始日期时间（包括）
-	 * @param end      结束日期时间
-	 * @param unit     步进单位
-	 * @param consumer 每次遍历要执行的 consumer
-	 * @since 5.7.21
-	 */
-	public static void rangeConsume(Date start, Date end, final DateField unit, Consumer<Date> consumer) {
-		if (start == null || end == null || start.after(end)) {
-			return;
-		}
-		range(start, end, unit).forEach(consumer);
-	}
-
-	/**
-	 * 根据步进单位获取起始日期时间和结束日期时间的时间区间集合
-	 *
-	 * @param start 起始日期时间
-	 * @param end   结束日期时间
-	 * @param unit  步进单位
-	 * @return {@link DateRange}
-	 */
-	public static List<DateTime> rangeToList(Date start, Date end, DateField unit) {
-		return CollUtil.newArrayList((Iterable<DateTime>) range(start, end, unit));
-	}
-
-	/**
-	 * 根据步进单位和步进获取起始日期时间和结束日期时间的时间区间集合
-	 *
-	 * @param start 起始日期时间
-	 * @param end   结束日期时间
-	 * @param unit  步进单位
-	 * @param step  步进
-	 * @return {@link DateRange}
-	 * @since 5.7.16
-	 */
-	public static List<DateTime> rangeToList(Date start, Date end, final DateField unit, int step) {
-		return CollUtil.newArrayList((Iterable<DateTime>) new DateRange(start, end, unit, step));
-	}
-
-	/**
-	 * 通过生日计算星座
-	 *
-	 * @param month 月，从0开始计数
-	 * @param day   天
-	 * @return 星座名
-	 * @since 4.4.3
-	 */
-	public static String getZodiac(int month, int day) {
-		return Zodiac.getZodiac(month, day);
-	}
-
-	/**
-	 * 计算生肖，只计算1900年后出生的人
-	 *
-	 * @param year 农历年
-	 * @return 生肖名
-	 * @since 4.4.3
-	 */
-	public static String getChineseZodiac(int year) {
-		return Zodiac.getChineseZodiac(year);
 	}
 
 	/**
@@ -2275,8 +1819,6 @@ public class DateUtil extends CalendarUtil {
 		return date(date).getLastDayOfMonth();
 	}
 
-	// ------------------------------------------------------------------------ Private method start
-
 	/**
 	 * 标准化日期，默认处理以空格区分的日期时间格式，空格前为日期，空格后为时间：<br>
 	 * 将以下字符替换为"-"
@@ -2339,7 +1881,6 @@ public class DateUtil extends CalendarUtil {
 
 		return builder.toString();
 	}
-	// ------------------------------------------------------------------------ Private method end
 
 	/**
 	 * 如果日期中的毫秒部分超出3位，会导致秒数增加，因此只保留前三位

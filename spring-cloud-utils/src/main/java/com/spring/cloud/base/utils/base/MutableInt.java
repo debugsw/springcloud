@@ -8,6 +8,7 @@ import com.spring.cloud.base.utils.crypto.NumberUtil;
  * @Date: 2023/4/13 16:11
  */
 public class MutableInt extends Number implements Comparable<MutableInt>, Mutable<Number> {
+
 	private static final long serialVersionUID = 1L;
 
 	private int value;
@@ -65,8 +66,6 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
 		this.value = value.intValue();
 	}
 
-	// -----------------------------------------------------------------------
-
 	/**
 	 * 值+1
 	 *
@@ -86,8 +85,6 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
 		value--;
 		return this;
 	}
-
-	// -----------------------------------------------------------------------
 
 	/**
 	 * 增加值
@@ -134,8 +131,6 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
 		this.value -= operand.intValue();
 		return this;
 	}
-
-	// -----------------------------------------------------------------------
 	@Override
 	public int intValue() {
 		return value;
@@ -155,8 +150,6 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
 	public double doubleValue() {
 		return value;
 	}
-
-	// -----------------------------------------------------------------------
 
 	/**
 	 * 相等需同时满足如下条件：
@@ -182,8 +175,6 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
 		return this.value;
 	}
 
-	// -----------------------------------------------------------------------
-
 	/**
 	 * 比较
 	 *
@@ -195,7 +186,6 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
 		return NumberUtil.compare(this.value, other.value);
 	}
 
-	// -----------------------------------------------------------------------
 	@Override
 	public String toString() {
 		return String.valueOf(value);

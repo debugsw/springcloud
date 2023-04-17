@@ -6,6 +6,7 @@ import com.spring.cloud.base.utils.base.SystemPropsUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.crypto.StrUtil;
 import com.spring.cloud.base.utils.exception.DateException;
+import com.spring.cloud.base.utils.map.BooleanUtil;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -307,7 +308,7 @@ public class DateTime extends Date {
 	 * @see DatePattern
 	 */
 	public DateTime(CharSequence dateStr, DateParser dateParser) {
-		this(dateStr, dateParser, SystemPropsUtil.getBoolean(SystemPropsUtil.HUTOOL_DATE_LENIENT, true));
+		this(dateStr, dateParser, SystemPropsUtil.getBoolean("spring.cloud.date.lenient", true));
 	}
 
 	/**

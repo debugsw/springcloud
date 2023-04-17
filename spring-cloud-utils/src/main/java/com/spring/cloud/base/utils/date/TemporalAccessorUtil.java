@@ -46,10 +46,6 @@ public class TemporalAccessorUtil extends TemporalUtil {
 			return null;
 		}
 
-		if (time instanceof Month) {
-			return time.toString();
-		}
-
 		if (null == formatter) {
 			formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 		}
@@ -85,7 +81,7 @@ public class TemporalAccessorUtil extends TemporalUtil {
 			return null;
 		}
 
-		if (time instanceof DayOfWeek || time instanceof Month || time instanceof Era || time instanceof MonthDay) {
+		if (time instanceof DayOfWeek || time instanceof Era || time instanceof MonthDay) {
 			return time.toString();
 		}
 
@@ -109,9 +105,7 @@ public class TemporalAccessorUtil extends TemporalUtil {
 	 * @since 5.4.1
 	 */
 	public static long toEpochMilli(TemporalAccessor temporalAccessor) {
-		if (temporalAccessor instanceof Month) {
-			return ((Month) temporalAccessor).getValue();
-		} else if (temporalAccessor instanceof DayOfWeek) {
+		if (temporalAccessor instanceof DayOfWeek) {
 			return ((DayOfWeek) temporalAccessor).getValue();
 		} else if (temporalAccessor instanceof Era) {
 			return ((Era) temporalAccessor).getValue();

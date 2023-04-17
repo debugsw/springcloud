@@ -42,7 +42,6 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
 	private final FastDatePrinter printer;
 	private final FastDateParser parser;
 
-	// -----------------------------------------------------------------------
 
 	/**
 	 * 获得 FastDateFormat实例，使用默认格式和地区

@@ -1,9 +1,9 @@
-package com.spring.cloud.base.utils.crypto;
+package com.spring.cloud.base.utils.str;
 
 import com.spring.cloud.base.utils.ArrayUtil;
 import com.spring.cloud.base.utils.CharsetUtil;
 import com.spring.cloud.base.utils.StrFormatter;
-import com.spring.cloud.base.utils.str.StrBuilder;
+import com.spring.cloud.base.utils.crypto.CharSequenceUtil;
 
 import java.io.StringReader;
 import java.io.StringWriter;

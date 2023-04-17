@@ -63,15 +63,12 @@ public interface DatePrinter extends DateBasic {
 	<B extends Appendable> B format(Date date, B buf);
 
 	/**
-	 * <p>
-	 * Formats a {@code Calendar} object into the supplied {@code Appendable}.
-	 * </p>
-	 * The TimeZone set on the Calendar is only used to adjust the time offset. The TimeZone specified during the construction of the Parser will determine the TimeZone used in the formatted string.
+	 * 格式化
 	 *
-	 * @param calendar the calendar to format
-	 * @param buf      the buffer to format into
-	 * @param <B>      the Appendable class type, usually StringBuilder or StringBuffer.
-	 * @return the specified string buffer
+	 * @param calendar
+	 * @param buf
+	 * @param <B>
+	 * @return
 	 */
 	<B extends Appendable> B format(Calendar calendar, B buf);
 }
