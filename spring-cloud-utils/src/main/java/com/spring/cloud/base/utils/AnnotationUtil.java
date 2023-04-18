@@ -4,6 +4,8 @@ import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.Func1;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.interf.AnnotationScanner;
+import com.spring.cloud.base.utils.interf.SynthesizedAggregateAnnotation;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.Opt;
 import com.spring.cloud.base.utils.str.StrUtil;

@@ -3,6 +3,8 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.CharSequenceUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.interf.AnnotationAttributeValueProvider;
+import com.spring.cloud.base.utils.interf.SynthesizedAnnotation;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.Opt;
 

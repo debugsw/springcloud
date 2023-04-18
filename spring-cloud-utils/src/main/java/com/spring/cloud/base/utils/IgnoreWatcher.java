@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.Watcher;
+
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
 

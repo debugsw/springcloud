@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.abstra.AbstractWrappedAnnotationAttribute;
+import com.spring.cloud.base.utils.interf.AnnotationAttribute;
 
 /**
  * @Author: ls

@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.Builder;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.lang.Thread.UncaughtExceptionHandler;

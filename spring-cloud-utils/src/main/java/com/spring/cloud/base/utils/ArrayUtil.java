@@ -5,6 +5,7 @@ import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.crypto.PrimitiveArrayUtil;
 import com.spring.cloud.base.utils.crypto.RandomUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.list.CompareUtil;
 import com.spring.cloud.base.utils.map.Editor;
 import com.spring.cloud.base.utils.map.MapUtil;

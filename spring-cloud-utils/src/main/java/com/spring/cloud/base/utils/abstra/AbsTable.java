@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.abstra;
 
-import com.spring.cloud.base.utils.Table;
+import com.spring.cloud.base.utils.interf.Table;
 import com.spring.cloud.base.utils.TransIter;
 import com.spring.cloud.base.utils.crypto.IterUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;

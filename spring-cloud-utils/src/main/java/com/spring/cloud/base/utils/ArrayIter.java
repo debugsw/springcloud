@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.ResettableIter;
 import com.spring.cloud.base.utils.map.IterableIter;
 
 import java.io.Serializable;

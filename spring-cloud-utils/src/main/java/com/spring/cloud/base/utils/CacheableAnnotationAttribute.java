@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.interf.AnnotationAttribute;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

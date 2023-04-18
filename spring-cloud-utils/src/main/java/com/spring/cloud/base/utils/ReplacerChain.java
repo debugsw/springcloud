@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.Chain;
 import com.spring.cloud.base.utils.str.StrBuilder;
 
 import java.util.Iterator;

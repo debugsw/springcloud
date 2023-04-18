@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.StreamProgress;
+
 /**
  * @Author: ls
  * @Description: IO拷贝抽象，可自定义包括缓存、进度条等信息

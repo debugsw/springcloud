@@ -5,6 +5,7 @@ import com.spring.cloud.base.utils.abstra.AbsTable;
 import com.spring.cloud.base.utils.crypto.IterUtil;
 import com.spring.cloud.base.utils.crypto.TransIter;
 import com.spring.cloud.base.utils.impl.ComputeIter;
+import com.spring.cloud.base.utils.interf.Builder;
 import com.spring.cloud.base.utils.map.MapUtil;
 
 import java.util.*;

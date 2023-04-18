@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.CharPool;
+
 /**
  * @Author: ls
  * @Description: 字符工具类

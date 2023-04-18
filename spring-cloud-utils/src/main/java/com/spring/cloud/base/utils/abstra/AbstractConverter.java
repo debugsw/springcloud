@@ -2,7 +2,7 @@ package com.spring.cloud.base.utils.abstra;
 
 import com.spring.cloud.base.utils.ArrayUtil;
 import com.spring.cloud.base.utils.CharUtil;
-import com.spring.cloud.base.utils.Converter;
+import com.spring.cloud.base.utils.interf.Converter;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 

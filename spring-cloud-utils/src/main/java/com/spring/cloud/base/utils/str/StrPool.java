@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.str;
 
-import com.spring.cloud.base.utils.CharPool;
+import com.spring.cloud.base.utils.interf.CharPool;
 import com.spring.cloud.base.utils.crypto.XmlUtil;
 
 /**

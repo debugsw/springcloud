@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.CharPool;
+import com.spring.cloud.base.utils.interf.CharPool;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.str.StrUtil;
 

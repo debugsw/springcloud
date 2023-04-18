@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils.abstra;
 
-import com.spring.cloud.base.utils.AnnotationAttribute;
+import com.spring.cloud.base.utils.interf.AnnotationAttribute;
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.WrappedAnnotationAttribute;
+import com.spring.cloud.base.utils.interf.WrappedAnnotationAttribute;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 
 import java.util.ArrayList;

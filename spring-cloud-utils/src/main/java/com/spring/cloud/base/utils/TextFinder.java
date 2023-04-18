@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.Finder;
+
 import java.io.Serializable;
 
 /**

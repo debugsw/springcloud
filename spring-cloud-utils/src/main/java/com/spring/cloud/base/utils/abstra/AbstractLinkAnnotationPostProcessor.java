@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils.abstra;
 
 import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.interf.*;
 import com.spring.cloud.base.utils.map.Opt;
 
 import java.lang.annotation.Annotation;

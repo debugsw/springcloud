@@ -3,6 +3,9 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.abstra.AbstractLinkAnnotationPostProcessor;
 import com.spring.cloud.base.utils.abstra.AbstractWrappedAnnotationAttribute;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.interf.AnnotationAttribute;
+import com.spring.cloud.base.utils.interf.AnnotationSynthesizer;
+import com.spring.cloud.base.utils.interf.SynthesizedAnnotation;
 import com.spring.cloud.base.utils.map.Opt;
 
 import java.util.function.BinaryOperator;

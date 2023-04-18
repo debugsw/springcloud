@@ -3,6 +3,8 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.ConvertException;
+import com.spring.cloud.base.utils.interf.Converter;
+import com.spring.cloud.base.utils.interf.TypeConverter;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.MapConverter;
 import com.spring.cloud.base.utils.map.SafeConcurrentHashMap;

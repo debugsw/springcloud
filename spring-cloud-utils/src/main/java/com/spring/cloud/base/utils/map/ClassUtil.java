@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.IOException;

@@ -3,6 +3,9 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.abstra.AbstractLinkAnnotationPostProcessor;
 import com.spring.cloud.base.utils.crypto.CharSequenceUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.interf.AnnotationAttribute;
+import com.spring.cloud.base.utils.interf.AnnotationSynthesizer;
+import com.spring.cloud.base.utils.interf.SynthesizedAnnotation;
 
 /**
  * @Author: ls
@@ -41,9 +44,9 @@ public class MirrorLinkAnnotationPostProcessor extends AbstractLinkAnnotationPos
 	 */
 	@Override
 	protected void processLinkedAttribute(
-		AnnotationSynthesizer synthesizer, Link annotation,
-		SynthesizedAnnotation originalAnnotation, AnnotationAttribute originalAttribute,
-		SynthesizedAnnotation linkedAnnotation, AnnotationAttribute linkedAttribute) {
+			AnnotationSynthesizer synthesizer, Link annotation,
+			SynthesizedAnnotation originalAnnotation, AnnotationAttribute originalAttribute,
+			SynthesizedAnnotation linkedAnnotation, AnnotationAttribute linkedAttribute) {
 
 		// 镜像属性必然成对出现，因此此处必定存在三种情况：
 		// 1.两属性都不为镜像属性，此时继续进行后续处理；

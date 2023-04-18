@@ -6,6 +6,7 @@ import com.spring.cloud.base.utils.crypto.IterUtil;
 import com.spring.cloud.base.utils.crypto.Matcher;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.list.CompareUtil;
 import com.spring.cloud.base.utils.list.ListUtil;
 import com.spring.cloud.base.utils.list.PinyinComparator;

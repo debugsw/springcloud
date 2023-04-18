@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.Replacer;
 import com.spring.cloud.base.utils.str.StrBuilder;
 
 import java.io.Serializable;

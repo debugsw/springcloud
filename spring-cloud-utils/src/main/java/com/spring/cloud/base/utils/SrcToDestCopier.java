@@ -1,5 +1,8 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.Copier;
+import com.spring.cloud.base.utils.interf.Filter;
+
 import java.io.Serializable;
 
 /**

@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.abstra.AbstractTypeAnnotationScanner;
+import com.spring.cloud.base.utils.interf.AnnotationScanner;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 

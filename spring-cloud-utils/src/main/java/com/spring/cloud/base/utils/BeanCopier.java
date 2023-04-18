@@ -1,5 +1,8 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.Copier;
+import com.spring.cloud.base.utils.interf.ValueProvider;
+
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.Map;

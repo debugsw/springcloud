@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.interf.RegexPool;
 import com.spring.cloud.base.utils.map.WeakConcurrentMap;
 
 import java.util.regex.Pattern;

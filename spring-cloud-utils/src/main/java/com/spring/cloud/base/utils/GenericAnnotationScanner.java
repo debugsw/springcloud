@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.interf.AnnotationScanner;
 import com.spring.cloud.base.utils.list.ListValueMap;
 
 import java.lang.annotation.Annotation;
