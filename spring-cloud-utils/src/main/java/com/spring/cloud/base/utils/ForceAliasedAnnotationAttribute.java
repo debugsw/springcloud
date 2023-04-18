@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.abstra.AbstractWrappedAnnotationAttribute;
+
 /**
  * @Author: ls
  * @Description: 表示一个被指定了强制别名的注解属性

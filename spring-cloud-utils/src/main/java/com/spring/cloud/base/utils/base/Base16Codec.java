@@ -1,6 +1,5 @@
 package com.spring.cloud.base.utils.base;
 
-
 import com.spring.cloud.base.utils.Decoder;
 import com.spring.cloud.base.utils.Encoder;
 import com.spring.cloud.base.utils.str.StrUtil;

@@ -14,6 +14,7 @@ import java.nio.charset.Charset;
 public class Base64Decoder {
 
 	private static final Charset DEFAULT_CHARSET = CharsetUtil.CHARSET_UTF_8;
+
 	private static final byte PADDING = -2;
 
 	/**

@@ -1,5 +1,6 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.abstra;
 
+import com.spring.cloud.base.utils.FastDatePrinter;
 import com.spring.cloud.base.utils.date.DateBasic;
 
 import java.io.Serializable;

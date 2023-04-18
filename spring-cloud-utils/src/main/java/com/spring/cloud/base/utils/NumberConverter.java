@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.abstra.AbstractConverter;
 import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.date.DateUtil;
 import com.spring.cloud.base.utils.map.BooleanUtil;

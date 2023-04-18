@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.abstra.AbstractLinkAnnotationPostProcessor;
 import com.spring.cloud.base.utils.crypto.CharSequenceUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 

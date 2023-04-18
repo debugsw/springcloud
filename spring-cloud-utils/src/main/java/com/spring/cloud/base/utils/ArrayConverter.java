@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.abstra.AbstractConverter;
 import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.crypto.IterUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;

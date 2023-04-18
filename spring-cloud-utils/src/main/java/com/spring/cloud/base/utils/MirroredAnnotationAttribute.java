@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.abstra.AbstractWrappedAnnotationAttribute;
+
 /**
  * @Author: ls
  * @Description: 表示存在对应镜像属性的注解属性
