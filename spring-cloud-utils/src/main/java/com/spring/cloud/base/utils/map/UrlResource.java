@@ -62,7 +62,7 @@ public class UrlResource implements Resource, Serializable {
 	 * 构造
 	 *
 	 * @param file 文件路径
-	 * @deprecated Please use {@link FileResource}
+	 * @deprecated Please use
 	 */
 	@Deprecated
 	public UrlResource(File file) {

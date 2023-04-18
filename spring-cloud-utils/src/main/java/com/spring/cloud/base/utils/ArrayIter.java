@@ -95,7 +95,7 @@ public class ArrayIter<E> implements IterableIter<E>, ResettableIter<E>, Seriali
 	@Override
 	@SuppressWarnings("unchecked")
 	public E next() {
-		if (hasNext() == false) {
+		if (!hasNext()) {
 			throw new NoSuchElementException();
 		}
 		return (E) Array.get(array, index++);

@@ -270,7 +270,7 @@ public class ArrayUtil extends PrimitiveArrayUtil {
 		if (null == arrayObj) {
 			throw new NullPointerException("Argument [arrayObj] is null !");
 		}
-		if (false == arrayObj.getClass().isArray()) {
+		if (!arrayObj.getClass().isArray()) {
 			throw new IllegalArgumentException("Argument [arrayObj] is not array !");
 		}
 		if (null == type) {
@@ -912,7 +912,7 @@ public class ArrayUtil extends PrimitiveArrayUtil {
 	@SuppressWarnings("unchecked")
 	public static <T> boolean containsAll(T[] array, T... values) {
 		for (T value : values) {
-			if (false == contains(array, value)) {
+			if (!contains(array, value)) {
 				return false;
 			}
 		}
