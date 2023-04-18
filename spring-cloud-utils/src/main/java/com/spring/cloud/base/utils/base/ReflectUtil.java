@@ -1,12 +1,12 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.base;
 
-import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.exception.InvocationTargetRuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.map.ClassUtil;
-import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.map.NullWrapperBean;
 import com.spring.cloud.base.utils.map.WeakConcurrentMap;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.lang.reflect.*;
 import java.util.*;
@@ -30,8 +30,6 @@ public class ReflectUtil {
 	 * 方法缓存
 	 */
 	private static final WeakConcurrentMap<Class<?>, Method[]> METHODS_CACHE = new WeakConcurrentMap<>();
-
-	// --------------------------------------------------------------------------------------------------------- Constructor
 
 	/**
 	 * 查找类中的指定参数的构造方法，如果找到构造方法，会自动设置可访问为true
@@ -85,21 +83,6 @@ public class ReflectUtil {
 		return beanClass.getDeclaredConstructors();
 	}
 
-	// --------------------------------------------------------------------------------------------------------- Field
-
-	/**
-	 * 查找指定类中是否包含指定名称对应的字段，包括所有字段（包括非public字段），也包括父类和Object类的字段
-	 *
-	 * @param beanClass 被查找字段的类,不能为null
-	 * @param name      字段名
-	 * @return 是否包含字段
-	 * @throws SecurityException 安全异常
-	 * @since 4.1.21
-	 */
-	public static boolean hasField(Class<?> beanClass, String name) throws SecurityException {
-		return null != getField(beanClass, name);
-	}
-
 	/**
 	 * 获取字段名
 	 *
@@ -131,23 +114,6 @@ public class ReflectUtil {
 	public static Field getField(Class<?> beanClass, String name) throws SecurityException {
 		final Field[] fields = getFields(beanClass);
 		return ArrayUtil.firstMatch((field) -> name.equals(getFieldName(field)), fields);
-	}
-
-	/**
-	 * 获取指定类中字段名和字段对应的有序Map，包括其父类中的字段<br>
-	 * 如果子类与父类中存在同名字段，则这两个字段同时存在，子类字段在前，父类字段在后。
-	 *
-	 * @param beanClass 类
-	 * @return 字段名和字段对应的Map，有序
-	 * @since 5.0.7
-	 */
-	public static Map<String, Field> getFieldMap(Class<?> beanClass) {
-		final Field[] fields = getFields(beanClass);
-		final HashMap<String, Field> map = MapUtil.newHashMap(fields.length, true);
-		for (Field field : fields) {
-			map.put(field.getName(), field);
-		}
-		return map;
 	}
 
 	/**
@@ -207,18 +173,6 @@ public class ReflectUtil {
 	}
 
 	/**
-	 * 获取静态字段值
-	 *
-	 * @param field 字段
-	 * @return 字段值
-	 * @throws UtilException 包装IllegalAccessException异常
-	 * @since 5.1.0
-	 */
-	public static Object getStaticFieldValue(Field field) throws UtilException {
-		return getFieldValue(null, field);
-	}
-
-	/**
 	 * 获取字段值
 	 *
 	 * @param obj   对象，static字段则此字段为null
@@ -243,27 +197,6 @@ public class ReflectUtil {
 			throw new UtilException(e, "IllegalAccess for {}.{}", field.getDeclaringClass(), field.getName());
 		}
 		return result;
-	}
-
-	/**
-	 * 获取所有字段的值
-	 *
-	 * @param obj bean对象，如果是static字段，此处为类class
-	 * @return 字段值数组
-	 * @since 4.1.17
-	 */
-	public static Object[] getFieldsValue(Object obj) {
-		if (null != obj) {
-			final Field[] fields = getFields(obj instanceof Class ? (Class<?>) obj : obj.getClass());
-			if (null != fields) {
-				final Object[] values = new Object[fields.length];
-				for (int i = 0; i < fields.length; i++) {
-					values[i] = getFieldValue(obj, fields[i]);
-				}
-				return values;
-			}
-		}
-		return null;
 	}
 
 	/**
@@ -302,7 +235,7 @@ public class ReflectUtil {
 
 		final Class<?> fieldType = field.getType();
 		if (null != value) {
-			if (false == fieldType.isAssignableFrom(value.getClass())) {
+			if (!fieldType.isAssignableFrom(value.getClass())) {
 				//对于类型不同的字段，尝试转换，转换失败则使用原对象类型
 				final Object targetValue = Convert.convert(fieldType, value);
 				if (null != targetValue) {
@@ -511,7 +444,6 @@ public class ReflectUtil {
 			for (Method method : methods) {
 				if (StrUtil.equals(methodName, method.getName(), ignoreCase)
 						&& ClassUtil.isAllAssignableFrom(method.getParameterTypes(), paramTypes)
-						//排除协变桥接方法，pr#1965@Github
 						&& (res == null
 						|| res.getReturnType().isAssignableFrom(method.getReturnType()))) {
 					res = method;
@@ -604,6 +536,21 @@ public class ReflectUtil {
 			methodSet.add(method.getName());
 		}
 		return methodSet;
+	}
+
+	/**
+	 * 获得指定类过滤后的方法列表
+	 *
+	 * @param clazz  查找方法的类
+	 * @param filter 过滤器
+	 * @return 过滤后的方法列表
+	 * @throws SecurityException 安全异常
+	 */
+	public static Method[] getMethods(Class<?> clazz, Filter<Method> filter) throws SecurityException {
+		if (null == clazz) {
+			return null;
+		}
+		return ArrayUtil.filter(getMethods(clazz), filter);
 	}
 
 	/**
@@ -736,7 +683,6 @@ public class ReflectUtil {
 	 * @param method     方法
 	 * @param ignoreCase 是否忽略方法名的大小写
 	 * @return 是否为Getter或者Setter方法
-	 * @since 5.7.20
 	 */
 	public static boolean isGetterOrSetter(Method method, boolean ignoreCase) {
 		if (null == method) {
@@ -766,8 +712,6 @@ public class ReflectUtil {
 				return false;
 		}
 	}
-	// --------------------------------------------------------------------------------------------------------- newInstance
-
 	/**
 	 * 实例化对象
 	 *
@@ -886,8 +830,6 @@ public class ReflectUtil {
 		return null;
 	}
 
-	// --------------------------------------------------------------------------------------------------------- invoke
-
 	/**
 	 * 执行静态方法
 	 *
@@ -902,13 +844,7 @@ public class ReflectUtil {
 	}
 
 	/**
-	 * 执行方法<br>
-	 * 执行前要检查给定参数：
-	 *
-	 * <pre>
-	 * 1. 参数个数是否与方法参数个数一致
-	 * 2. 如果某个参数为null但是方法这个位置的参数为原始类型，则赋予原始类型默认值
-	 * </pre>
+	 * 执行方法
 	 *
 	 * @param <T>    返回对象类型
 	 * @param obj    对象，如果执行静态方法，此值为{@code null}
@@ -937,15 +873,6 @@ public class ReflectUtil {
 	/**
 	 * 执行方法
 	 *
-	 * <p>
-	 * 对于用户传入参数会做必要检查，包括：
-	 *
-	 * <pre>
-	 *     1、忽略多余的参数
-	 *     2、参数不够补齐默认值
-	 *     3、传入参数为null，但是目标参数类型为原始类型，做转换
-	 * </pre>
-	 *
 	 * @param <T>    返回对象类型
 	 * @param obj    对象，如果执行静态方法，此值为{@code null}
 	 * @param method 方法（对象方法或static方法都可）
@@ -967,15 +894,6 @@ public class ReflectUtil {
 	/**
 	 * 执行方法
 	 *
-	 * <p>
-	 * 对于用户传入参数会做必要检查，包括：
-	 *
-	 * <pre>
-	 *     1、忽略多余的参数
-	 *     2、参数不够补齐默认值
-	 *     3、传入参数为null，但是目标参数类型为原始类型，做转换
-	 * </pre>
-	 *
 	 * @param <T>    返回对象类型
 	 * @param obj    对象，如果执行静态方法，此值为{@code null}
 	 * @param method 方法（对象方法或static方法都可）
@@ -983,18 +901,10 @@ public class ReflectUtil {
 	 * @return 结果
 	 * @throws InvocationTargetException 目标方法执行异常
 	 * @throws IllegalAccessException    访问异常
-	 * @since 5.8.1
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T invokeRaw(Object obj, Method method, Object... args) throws InvocationTargetException, IllegalAccessException {
 		setAccessible(method);
-
-		// 检查用户传入参数：
-		// 1、忽略多余的参数
-		// 2、参数不够补齐默认值
-		// 3、通过NullWrapperBean传递的参数,会直接赋值null
-		// 4、传入参数为null，但是目标参数类型为原始类型，做转换
-		// 5、传入参数类型不对应，尝试转换类型
 		final Class<?>[] parameterTypes = method.getParameterTypes();
 		final Object[] actualArgs = new Object[parameterTypes.length];
 		if (null != args) {
@@ -1038,8 +948,6 @@ public class ReflectUtil {
 	 * @param args       参数列表
 	 * @return 执行结果
 	 * @throws UtilException IllegalAccessException等异常包装
-	 * @see NullWrapperBean
-	 * @since 3.1.2
 	 */
 	public static <T> T invoke(Object obj, String methodName, Object... args) throws UtilException {
 		Assert.notNull(obj, "Object to get method must be not null!");
@@ -1058,7 +966,6 @@ public class ReflectUtil {
 	 * @param <T>              AccessibleObject的子类，比如Class、Method、Field等
 	 * @param accessibleObject 可设置访问权限的对象，比如Class、Method、Field等
 	 * @return 被设置可访问的对象
-	 * @since 4.6.8
 	 */
 	public static <T extends AccessibleObject> T setAccessible(T accessibleObject) {
 		if (null != accessibleObject && false == accessibleObject.isAccessible()) {
@@ -1069,32 +976,9 @@ public class ReflectUtil {
 
 	/**
 	 * 设置final的field字段可以被修改
-	 * 只要不会被编译器内联优化的 final 属性就可以通过反射有效的进行修改 --  修改后代码中可使用到新的值;
-	 * <p>以下属性，编译器会内联优化，无法通过反射修改：</p>
-	 * <ul>
-	 *     <li> 基本类型 byte, char, short, int, long, float, double, boolean</li>
-	 *     <li> Literal String 类型(直接双引号字符串)</li>
-	 * </ul>
-	 * <h3>以下属性，可以通过反射修改：</h3>
-	 * <ul>
-	 *     <li>基本类型的包装类 Byte、Character、Short、Long、Float、Double、Boolean</li>
-	 *     <li>字符串，通过 new String("")实例化</li>
-	 *     <li>自定义java类</li>
-	 * </ul>
-	 * <pre class="code">
-	 * {@code
-	 *      //示例，移除final修饰符
-	 *      class JdbcDialects {private static final List<Number> dialects = new ArrayList<>();}
-	 *      Field field = ReflectUtil.getField(JdbcDialects.class, fieldName);
-	 * 		ReflectUtil.removeFinalModify(field);
-	 * 		ReflectUtil.setFieldValue(JdbcDialects.class, fieldName, dialects);
-	 *    }
-	 * </pre>
 	 *
 	 * @param field 被修改的field，不可以为空
 	 * @throws UtilException IllegalAccessException等异常包装
-	 * @author dazer
-	 * @since 5.8.8
 	 */
 	public static void removeFinalModify(Field field) {
 		ModifierUtil.removeFinalModify(field);

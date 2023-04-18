@@ -26,7 +26,6 @@ public interface Converter<T> {
 	 * @param defaultValue 默认值
 	 * @param quietly 是否静默转换，true不抛异常
 	 * @return 转换后的值
-	 * @since 5.8.0
 	 * @see #convert(Object, Object)
 	 */
 	default T convertWithCheck(Object value, T defaultValue, boolean quietly) {

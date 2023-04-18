@@ -1,10 +1,12 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.crypto.*;
+import com.spring.cloud.base.utils.crypto.Matcher;
+import com.spring.cloud.base.utils.crypto.ObjectUtil;
+import com.spring.cloud.base.utils.crypto.PrimitiveArrayUtil;
+import com.spring.cloud.base.utils.crypto.RandomUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.list.CompareUtil;
 import com.spring.cloud.base.utils.map.Editor;
-import com.spring.cloud.base.utils.map.Filter;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrJoiner;
 import com.spring.cloud.base.utils.str.StrUtil;
@@ -683,6 +685,7 @@ public class ArrayUtil extends PrimitiveArrayUtil {
 		}
 		return edit(array, t -> filter.accept(t) ? t : null);
 	}
+
 
 	/**
 	 * 去除{@code null} 元素

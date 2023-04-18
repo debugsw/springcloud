@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.map;
 
-import com.mybatisflex.core.util.CollectionUtil;
+import com.spring.cloud.base.utils.CollUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.util.Collection;
@@ -80,7 +80,7 @@ public class Opt<T> {
 	 * @since 5.7.17
 	 */
 	public static <T, R extends Collection<T>> Opt<R> ofEmptyAble(R value) {
-		return CollectionUtil.isEmpty(value) ? empty() : new Opt<>(value);
+		return CollUtil.isEmpty(value) ? empty() : new Opt<>(value);
 	}
 
 	/**

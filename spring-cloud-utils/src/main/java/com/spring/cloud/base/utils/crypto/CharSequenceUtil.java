@@ -1,7 +1,6 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.*;
-import com.spring.cloud.base.utils.map.Filter;
 import com.spring.cloud.base.utils.str.StrPool;
 import com.spring.cloud.base.utils.str.StrUtil;
 
@@ -85,6 +84,25 @@ public class CharSequenceUtil {
 
 		return true;
 	}
+
+	/**
+	 * 将驼峰式命名的字符串转换为下划线方式。如果转换前的驼峰式命名的字符串为空，则返回空字符串。<br>
+	 * 例如：
+	 *
+	 * <pre>
+	 * HelloWorld=》hello_world
+	 * Hello_World=》hello_world
+	 * HelloWorld_test=》hello_world_test
+	 * </pre>
+	 *
+	 * @param str 转换前的驼峰式命名的字符串，也可以为下划线形式
+	 * @return 转换后下划线方式命名的字符串
+	 * @see NamingCase#toUnderlineCase(CharSequence)
+	 */
+	public static String toUnderlineCase(CharSequence str) {
+		return NamingCase.toUnderlineCase(str);
+	}
+
 
 	/**
 	 * <p>字符串是否为非空白，非空白的定义如下： </p>

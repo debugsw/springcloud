@@ -17,7 +17,7 @@ import java.util.function.Supplier;
  * @Description: Map包装类
  * @Date: 2023/4/13 16:11
  */
-public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, Serializable, Cloneable {
+public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, Serializable, java.lang.Cloneable {
 	private static final long serialVersionUID = -7524578042008586382L;
 
 	/**
@@ -27,7 +27,7 @@ public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, S
 	/**
 	 * 默认初始大小
 	 */
-	protected static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
+	protected static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16
 
 	private Map<K, V> raw;
 
@@ -206,7 +206,7 @@ public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, S
 	}
 
 	@Override
-	public MapWrapper<K, V> clone() {
+	public MapWrapper<K, V> clone() throws CloneNotSupportedException {
 		@SuppressWarnings("unchecked") final MapWrapper<K, V> clone = (MapWrapper<K, V>) super.clone();
 		clone.raw = ObjectUtil.clone(raw);
 		return clone;

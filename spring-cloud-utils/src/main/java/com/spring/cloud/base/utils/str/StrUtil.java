@@ -18,31 +18,12 @@ import java.util.Map;
  */
 public class StrUtil extends CharSequenceUtil implements StrPool {
 
-	// ------------------------------------------------------------------------ Blank
-
 	/**
-	 * <p>如果对象是字符串是否为空白，空白的定义如下：</p>
-	 * <ol>
-	 *     <li>{@code null}</li>
-	 *     <li>空字符串：{@code ""}</li>
-	 *     <li>空格、全角空格、制表符、换行符，等不可见字符</li>
-	 * </ol>
-	 *
-	 * <p>例：</p>
-	 * <ul>
-	 *     <li>{@code StrUtil.isBlankIfStr(null)     // true}</li>
-	 *     <li>{@code StrUtil.isBlankIfStr("")       // true}</li>
-	 *     <li>{@code StrUtil.isBlankIfStr(" \t\n")  // true}</li>
-	 *     <li>{@code StrUtil.isBlankIfStr("abc")    // false}</li>
-	 * </ul>
-	 *
-	 * <p>注意：该方法与 {@link #isEmptyIfStr(Object)} 的区别是：
-	 * 该方法会校验空白字符，且性能相对于 {@link #isEmptyIfStr(Object)} 略慢。</p>
+	 * 该方法会校验空白字符
 	 *
 	 * @param obj 对象
 	 * @return 如果为字符串是否为空串
 	 * @see StrUtil#isBlank(CharSequence)
-	 * @since 3.3.0
 	 */
 	public static boolean isBlankIfStr(Object obj) {
 		if (null == obj) {
@@ -52,28 +33,12 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 		}
 		return false;
 	}
-	// ------------------------------------------------------------------------ Empty
 
 	/**
-	 * <p>如果对象是字符串是否为空串，空的定义如下：</p><br>
-	 * <ol>
-	 *     <li>{@code null}</li>
-	 *     <li>空字符串：{@code ""}</li>
-	 * </ol>
-	 *
-	 * <p>例：</p>
-	 * <ul>
-	 *     <li>{@code StrUtil.isEmptyIfStr(null)     // true}</li>
-	 *     <li>{@code StrUtil.isEmptyIfStr("")       // true}</li>
-	 *     <li>{@code StrUtil.isEmptyIfStr(" \t\n")  // false}</li>
-	 *     <li>{@code StrUtil.isEmptyIfStr("abc")    // false}</li>
-	 * </ul>
-	 *
-	 * <p>注意：该方法与 {@link #isBlankIfStr(Object)} 的区别是：该方法不校验空白字符。</p>
+	 *该方法不校验空白字符
 	 *
 	 * @param obj 对象
 	 * @return 如果为字符串是否为空串
-	 * @since 3.3.0
 	 */
 	public static boolean isEmptyIfStr(Object obj) {
 		if (null == obj) {
@@ -83,8 +48,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 		}
 		return false;
 	}
-
-	// ------------------------------------------------------------------------ Trim
 
 	/**
 	 * 给定字符串数组全部做去首尾空格
@@ -105,12 +68,7 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 	}
 
 	/**
-	 * 将对象转为字符串<br>
-	 *
-	 * <pre>
-	 * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组
-	 * 2、对象数组会调用Arrays.toString方法
-	 * </pre>
+	 * 将对象转为字符串
 	 *
 	 * @param obj 对象
 	 * @return 字符串
@@ -121,11 +79,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 
 	/**
 	 * 将对象转为字符串
-	 *
-	 * <pre>
-	 * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组
-	 * 2、对象数组会调用Arrays.toString方法
-	 * </pre>
 	 *
 	 * @param obj         对象
 	 * @param charsetName 字符集
@@ -139,10 +92,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 
 	/**
 	 * 将对象转为字符串
-	 * <pre>
-	 * 	 1、Byte数组和ByteBuffer会被转换为对应字符串的数组
-	 * 	 2、对象数组会调用Arrays.toString方法
-	 * </pre>
 	 *
 	 * @param obj     对象
 	 * @param charset 字符集
@@ -152,7 +101,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 		if (null == obj) {
 			return null;
 		}
-
 		if (obj instanceof String) {
 			return (String) obj;
 		} else if (obj instanceof byte[]) {
@@ -164,7 +112,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 		} else if (ArrayUtil.isArray(obj)) {
 			return ArrayUtil.toString(obj);
 		}
-
 		return obj.toString();
 	}
 
@@ -190,7 +137,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 		if (data == null) {
 			return null;
 		}
-
 		if (null == charset) {
 			return new String(data);
 		}
@@ -265,7 +211,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 	 * @param obj 对象
 	 * @return 字符串
 	 * @see String#valueOf(Object)
-	 * @since 4.1.3
 	 */
 	public static String toString(Object obj) {
 		return String.valueOf(obj);
@@ -276,7 +221,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 	 *
 	 * @param obj 对象
 	 * @return 字符串 or {@code null}
-	 * @since 5.7.17
 	 */
 	public static String toStringOrNull(Object obj) {
 		return null == obj ? null : obj.toString();
@@ -295,7 +239,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 	 * 创建StrBuilder对象
 	 *
 	 * @return StrBuilder对象
-	 * @since 4.0.1
 	 */
 	public static StrBuilder strBuilder() {
 		return StrBuilder.create();
@@ -316,7 +259,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 	 *
 	 * @param capacity 初始大小
 	 * @return StrBuilder对象
-	 * @since 4.0.1
 	 */
 	public static StrBuilder strBuilder(int capacity) {
 		return StrBuilder.create(capacity);
@@ -345,42 +287,37 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 	}
 
 	/**
-	 * 反转字符串<br>
+	 * 反转字符串
 	 * 例如：abcd =》dcba
 	 *
 	 * @param str 被反转的字符串
 	 * @return 反转后的字符串
-	 * @since 3.0.9
 	 */
 	public static String reverse(String str) {
 		return new String(ArrayUtil.reverse(str.toCharArray()));
 	}
 
-	// ------------------------------------------------------------------------ fill
-
 	/**
-	 * 将已有字符串填充为规定长度，如果已有字符串超过这个长度则返回这个字符串<br>
+	 * 将已有字符串填充为规定长度，如果已有字符串超过这个长度则返回这个字符串
 	 * 字符填充于字符串前
 	 *
 	 * @param str        被填充的字符串
 	 * @param filledChar 填充的字符
 	 * @param len        填充长度
 	 * @return 填充后的字符串
-	 * @since 3.1.2
 	 */
 	public static String fillBefore(String str, char filledChar, int len) {
 		return fill(str, filledChar, len, true);
 	}
 
 	/**
-	 * 将已有字符串填充为规定长度，如果已有字符串超过这个长度则返回这个字符串<br>
+	 * 将已有字符串填充为规定长度，如果已有字符串超过这个长度则返回这个字符串
 	 * 字符填充于字符串后
 	 *
 	 * @param str        被填充的字符串
 	 * @param filledChar 填充的字符
 	 * @param len        填充长度
 	 * @return 填充后的字符串
-	 * @since 3.1.2
 	 */
 	public static String fillAfter(String str, char filledChar, int len) {
 		return fill(str, filledChar, len, false);
@@ -394,7 +331,6 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 	 * @param len        填充长度
 	 * @param isPre      是否填充在前
 	 * @return 填充后的字符串
-	 * @since 3.1.2
 	 */
 	public static String fill(String str, char filledChar, int len, boolean isPre) {
 		final int strLen = str.length();
@@ -408,8 +344,7 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 
 
 	/**
-	 * 格式化文本，使用 {varName} 占位<br>
-	 * map = {a: "aValue", b: "bValue"} format("{a} and {b}", map) ---=》 aValue and bValue
+	 * 格式化文本
 	 *
 	 * @param template 文本模板，被替换的部分用 {key} 表示
 	 * @param map      参数值对
@@ -420,14 +355,12 @@ public class StrUtil extends CharSequenceUtil implements StrPool {
 	}
 
 	/**
-	 * 格式化文本，使用 {varName} 占位<br>
-	 * map = {a: "aValue", b: "bValue"} format("{a} and {b}", map) ---=》 aValue and bValue
+	 * 格式化文本，使用 {varName} 占位
 	 *
 	 * @param template   文本模板，被替换的部分用 {key} 表示
 	 * @param map        参数值对
 	 * @param ignoreNull 是否忽略 {@code null} 值，忽略则 {@code null} 值对应的变量不被替换，否则替换为""
 	 * @return 格式化后的文本
-	 * @since 5.4.3
 	 */
 	public static String format(CharSequence template, Map<?, ?> map, boolean ignoreNull) {
 		return StrFormatter.format(template, map, ignoreNull);

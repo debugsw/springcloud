@@ -1,11 +1,11 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.ConvertException;
 import com.spring.cloud.base.utils.map.BasicType;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.MapConverter;
 import com.spring.cloud.base.utils.map.TypeReference;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
@@ -24,9 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class Convert {
 
 	/**
-	 * 转换为字符串<br>
-	 * 如果给定的值为null，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
+	 * 转换为字符串
 	 *
 	 * @param value        被转换的值
 	 * @param defaultValue 转换错误时的默认值
@@ -37,9 +35,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为字符串<br>
-	 * 如果给定的值为{@code null}，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
+	 * 转换为字符串
 	 *
 	 * @param value 被转换的值
 	 * @return 结果
@@ -53,7 +49,6 @@ public class Convert {
 	 *
 	 * @param value 被转换的值
 	 * @return String数组
-	 * @since 3.2.0
 	 */
 	public static String[] toStrArray(Object value) {
 		return convert(String[].class, value);
@@ -89,7 +84,6 @@ public class Convert {
 	 *
 	 * @param value 被转换的值
 	 * @return Character数组
-	 * @since 3.2.0
 	 */
 	public static Character[] toCharArray(Object value) {
 		return convert(Character[].class, value);
@@ -125,7 +119,6 @@ public class Convert {
 	 *
 	 * @param value 被转换的值
 	 * @return Byte数组
-	 * @since 3.2.0
 	 */
 	public static Byte[] toByteArray(Object value) {
 		return convert(Byte[].class, value);
@@ -136,7 +129,6 @@ public class Convert {
 	 *
 	 * @param value 被转换的值
 	 * @return Byte数组
-	 * @since 5.1.1
 	 */
 	public static byte[] toPrimitiveByteArray(Object value) {
 		return convert(byte[].class, value);
@@ -172,7 +164,6 @@ public class Convert {
 	 *
 	 * @param value 被转换的值
 	 * @return Short数组
-	 * @since 3.2.0
 	 */
 	public static Short[] toShortArray(Object value) {
 		return convert(Short[].class, value);
@@ -208,7 +199,6 @@ public class Convert {
 	 *
 	 * @param value 被转换的值
 	 * @return Number数组
-	 * @since 3.2.0
 	 */
 	public static Number[] toNumberArray(Object value) {
 		return convert(Number[].class, value);
@@ -345,7 +335,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为Float数组<br>
+	 * 转换为Float数组
 	 *
 	 * @param value 被转换的值
 	 * @return 结果
@@ -355,9 +345,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为boolean<br>
-	 * String支持的值为：true、false、yes、ok、no，1,0 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
+	 * 转换为boolean
 	 *
 	 * @param value        被转换的值
 	 * @param defaultValue 转换错误时的默认值
@@ -368,9 +356,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为boolean<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
+	 * 转换为boolean
 	 *
 	 * @param value 被转换的值
 	 * @return 结果
@@ -380,7 +366,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为Boolean数组<br>
+	 * 转换为Boolean数组
 	 *
 	 * @param value 被转换的值
 	 * @return 结果
@@ -390,9 +376,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为BigInteger<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
+	 * 转换为BigInteger
 	 *
 	 * @param value        被转换的值
 	 * @param defaultValue 转换错误时的默认值
@@ -403,9 +387,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为BigInteger<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
+	 * 转换为BigInteger
 	 *
 	 * @param value 被转换的值
 	 * @return 结果
@@ -415,9 +397,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为BigDecimal<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
+	 * 转换为BigDecimal
 	 *
 	 * @param value        被转换的值
 	 * @param defaultValue 转换错误时的默认值
@@ -428,9 +408,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为BigDecimal<br>
-	 * 如果给定的值为空，或者转换失败，返回null<br>
-	 * 转换失败不会报错
+	 * 转换为BigDecimal
 	 *
 	 * @param value 被转换的值
 	 * @return 结果
@@ -440,37 +418,29 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为Date<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
+	 * 转换为Date
 	 *
 	 * @param value        被转换的值
 	 * @param defaultValue 转换错误时的默认值
 	 * @return 结果
-	 * @since 4.1.6
 	 */
 	public static Date toDate(Object value, Date defaultValue) {
 		return convertQuietly(Date.class, value, defaultValue);
 	}
 
 	/**
-	 * LocalDateTime<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
+	 * LocalDateTime
 	 *
 	 * @param value        被转换的值
 	 * @param defaultValue 转换错误时的默认值
 	 * @return 结果
-	 * @since 5.0.7
 	 */
 	public static LocalDateTime toLocalDateTime(Object value, LocalDateTime defaultValue) {
 		return convertQuietly(LocalDateTime.class, value, defaultValue);
 	}
 
 	/**
-	 * 转换为LocalDateTime<br>
-	 * 如果给定的值为空，或者转换失败，返回{@code null}<br>
-	 * 转换失败不会报错
+	 * 转换为LocalDateTime
 	 *
 	 * @param value 被转换的值
 	 * @return 结果
@@ -480,35 +450,28 @@ public class Convert {
 	}
 
 	/**
-	 * Instant<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
+	 * Instant
 	 *
 	 * @param value        被转换的值
 	 * @param defaultValue 转换错误时的默认值
 	 * @return 结果
-	 * @since 5.0.7
 	 */
 	public static Date toInstant(Object value, Date defaultValue) {
 		return convertQuietly(Instant.class, value, defaultValue);
 	}
 
 	/**
-	 * 转换为Date<br>
-	 * 如果给定的值为空，或者转换失败，返回{@code null}<br>
-	 * 转换失败不会报错
+	 * 转换为Date
 	 *
 	 * @param value 被转换的值
 	 * @return 结果
-	 * @since 4.1.6
 	 */
 	public static Date toDate(Object value) {
 		return toDate(value, null);
 	}
 
 	/**
-	 * 转换为Enum对象<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
+	 * 转换为Enum对象
 	 *
 	 * @param <E>          枚举类型
 	 * @param clazz        Enum的Class
@@ -522,8 +485,7 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为Enum对象<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值{@code null}<br>
+	 * 转换为Enum对象
 	 *
 	 * @param <E>   枚举类型
 	 * @param clazz Enum的Class
@@ -541,7 +503,6 @@ public class Convert {
 	 * @param elementType    集合中元素类型
 	 * @param value          被转换的值
 	 * @return {@link Collection}
-	 * @since 3.0.8
 	 */
 	public static Collection<?> toCollection(Class<?> collectionType, Class<?> elementType, Object value) {
 		return new CollectionConverter(collectionType, elementType).convert(value, null);
@@ -552,7 +513,6 @@ public class Convert {
 	 *
 	 * @param value 被转换的值
 	 * @return {@link List}
-	 * @since 4.1.11
 	 */
 	public static List<?> toList(Object value) {
 		return convert(List.class, value);
@@ -565,7 +525,6 @@ public class Convert {
 	 * @param elementType 集合中元素类型
 	 * @param value       被转换的值
 	 * @return {@link ArrayList}
-	 * @since 4.1.20
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> List<T> toList(Class<T> elementType, Object value) {
@@ -579,7 +538,6 @@ public class Convert {
 	 * @param elementType 集合中元素类型
 	 * @param value       被转换的值
 	 * @return {@link HashSet}
-	 * @since 5.7.3
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> Set<T> toSet(Class<T> elementType, Object value) {
@@ -595,7 +553,6 @@ public class Convert {
 	 * @param valueType 值类型
 	 * @param value     被转换的值
 	 * @return {@link Map}
-	 * @since 4.6.8
 	 */
 	@SuppressWarnings("unchecked")
 	public static <K, V> Map<K, V> toMap(Class<K> keyType, Class<V> valueType, Object value) {
@@ -630,7 +587,6 @@ public class Convert {
 	 * @param value     值
 	 * @return 转换后的值
 	 * @throws ConvertException 转换器不存在
-	 * @since 4.0.7
 	 */
 	public static <T> T convertByClassName(String className, Object value) throws ConvertException {
 		return convert(ClassUtil.loadClass(className), value);
@@ -644,7 +600,6 @@ public class Convert {
 	 * @param value 值
 	 * @return 转换后的值
 	 * @throws ConvertException 转换器不存在
-	 * @since 4.0.0
 	 */
 	public static <T> T convert(Class<T> type, Object value) throws ConvertException {
 		return convert((Type) type, value);
@@ -685,7 +640,6 @@ public class Convert {
 	 * @param defaultValue 默认值
 	 * @return 转换后的值
 	 * @throws ConvertException 转换器不存在
-	 * @since 4.0.0
 	 */
 	public static <T> T convert(Class<T> type, Object value, T defaultValue) throws ConvertException {
 		return convert((Type) type, value, defaultValue);
@@ -713,7 +667,6 @@ public class Convert {
 	 * @param type  目标类型
 	 * @param value 值
 	 * @return 转换后的值，转换失败返回null
-	 * @since 4.5.10
 	 */
 	public static <T> T convertQuietly(Type type, Object value) {
 		return convertQuietly(type, value, null);
@@ -728,7 +681,6 @@ public class Convert {
 	 * @param value        值
 	 * @param defaultValue 默认值
 	 * @return 转换后的值
-	 * @since 4.5.10
 	 */
 	public static <T> T convertQuietly(Type type, Object value, T defaultValue) {
 		return convertWithCheck(type, value, defaultValue, true);
@@ -744,7 +696,6 @@ public class Convert {
 	 * @param defaultValue 默认值
 	 * @param quietly      是否静默转换，true不抛异常
 	 * @return 转换后的值
-	 * @since 5.3.2
 	 */
 	public static <T> T convertWithCheck(Type type, Object value, T defaultValue, boolean quietly) {
 		final ConverterRegistry registry = ConverterRegistry.getInstance();
@@ -877,7 +828,6 @@ public class Convert {
 	 * @param charset 编码 {@link Charset}
 	 * @return 对应的字符串
 	 * @see HexUtil#decodeHexStr(String, Charset)
-	 * @since 4.1.11
 	 */
 	public static String hexToStr(String hexStr, Charset charset) {
 		return HexUtil.decodeHexStr(hexStr, charset);
@@ -963,29 +913,21 @@ public class Convert {
 		return BasicType.unWrap(clazz);
 	}
 
-	// -------------------------------------------------------------------------- 数字和英文转换
-
 	/**
 	 * 将阿拉伯数字转为英文表达方式
 	 *
 	 * @param number {@link Number}对象
 	 * @return 英文表达式
-	 * @since 3.0.9
 	 */
 	public static String numberToWord(Number number) {
 		return NumberWordFormatter.format(number);
 	}
 
 	/**
-	 * 将阿拉伯数字转为精简表示形式，例如:
-	 *
-	 * <pre>
-	 *     1200 -》 1.2k
-	 * </pre>
+	 * 将阿拉伯数字转为精简表示形式
 	 *
 	 * @param number {@link Number}对象
 	 * @return 英文表达式
-	 * @since 5.5.9
 	 */
 	public static String numberToSimple(Number number) {
 		return NumberWordFormatter.formatSimple(number.longValue());
@@ -997,7 +939,6 @@ public class Convert {
 	 * @param number           数字
 	 * @param isUseTraditional 是否使用繁体字（金额形式）
 	 * @return 中文
-	 * @since 3.2.3
 	 */
 	public static String numberToChinese(double number, boolean isUseTraditional) {
 		return NumberChineseFormatter.format(number, isUseTraditional);
@@ -1005,14 +946,9 @@ public class Convert {
 
 	/**
 	 * 数字中文表示形式转数字
-	 * <ul>
-	 *     <li>一百一十二 -》 112</li>
-	 *     <li>一千零一十二 -》 1012</li>
-	 * </ul>
 	 *
 	 * @param number 数字中文表示
 	 * @return 数字
-	 * @since 5.6.0
 	 */
 	public static int chineseToNumber(String number) {
 		return NumberChineseFormatter.chineseToNumber(number);
@@ -1023,7 +959,6 @@ public class Convert {
 	 *
 	 * @param n 数字
 	 * @return 中文大写数字
-	 * @since 3.2.3
 	 */
 	public static String digitToChinese(Number n) {
 		if (null == n) {
@@ -1033,27 +968,20 @@ public class Convert {
 	}
 
 	/**
-	 * 中文大写数字金额转换为数字，返回结果以元为单位的BigDecimal类型数字<br>
-	 * 如：
-	 * “陆万柒仟伍佰伍拾陆元叁角贰分”返回“67556.32”
-	 * “叁角贰分”返回“0.32”
+	 * 中文大写数字金额转换为数字，返回结果以元为单位的BigDecimal类型数字
 	 *
 	 * @param chineseMoneyAmount 中文大写数字金额
 	 * @return 返回结果以元为单位的BigDecimal类型数字
-	 * @since 5.8.5
 	 */
 	public static BigDecimal chineseMoneyToNumber(String chineseMoneyAmount) {
 		return NumberChineseFormatter.chineseMoneyToNumber(chineseMoneyAmount);
 	}
-
-	// -------------------------------------------------------------------------- 数字转换
 
 	/**
 	 * int转byte
 	 *
 	 * @param intValue int值
 	 * @return byte值
-	 * @since 3.2.0
 	 */
 	public static byte intToByte(int intValue) {
 		return (byte) intValue;
@@ -1064,7 +992,6 @@ public class Convert {
 	 *
 	 * @param byteValue byte值
 	 * @return 无符号int值
-	 * @since 3.2.0
 	 */
 	public static int byteToUnsignedInt(byte byteValue) {
 		// Java 总是把 byte 当做有符处理；我们可以通过将其和 0xFF 进行二进制与得到它的无符值
@@ -1077,7 +1004,6 @@ public class Convert {
 	 *
 	 * @param bytes byte数组
 	 * @return short值
-	 * @since 5.6.3
 	 */
 	public static short bytesToShort(byte[] bytes) {
 		return ByteUtil.bytesToShort(bytes);
@@ -1089,7 +1015,6 @@ public class Convert {
 	 *
 	 * @param shortValue short值
 	 * @return byte数组
-	 * @since 5.6.3
 	 */
 	public static byte[] shortToBytes(short shortValue) {
 		return ByteUtil.shortToBytes(shortValue);
@@ -1101,7 +1026,6 @@ public class Convert {
 	 *
 	 * @param bytes byte数组
 	 * @return int值
-	 * @since 5.6.3
 	 */
 	public static int bytesToInt(byte[] bytes) {
 		return ByteUtil.bytesToInt(bytes);
@@ -1113,33 +1037,26 @@ public class Convert {
 	 *
 	 * @param intValue int值
 	 * @return byte数组
-	 * @since 5.6.3
 	 */
 	public static byte[] intToBytes(int intValue) {
 		return ByteUtil.intToBytes(intValue);
 	}
 
 	/**
-	 * long转byte数组<br>
-	 * 默认以小端序转换<br>
-	 * from: <a href="https://stackoverflow.com/questions/4485128/how-do-i-convert-long-to-byte-and-back-in-java">https://stackoverflow.com/questions/4485128/how-do-i-convert-long-to-byte-and-back-in-java</a>
+	 * long转byte数组
 	 *
 	 * @param longValue long值
 	 * @return byte数组
-	 * @since 5.6.3
 	 */
 	public static byte[] longToBytes(long longValue) {
 		return ByteUtil.longToBytes(longValue);
 	}
 
 	/**
-	 * byte数组转long<br>
-	 * 默认以小端序转换<br>
-	 * from: <a href="https://stackoverflow.com/questions/4485128/how-do-i-convert-long-to-byte-and-back-in-java">https://stackoverflow.com/questions/4485128/how-do-i-convert-long-to-byte-and-back-in-java</a>
+	 * byte数组转long
 	 *
 	 * @param bytes byte数组
 	 * @return long值
-	 * @since 5.6.3
 	 */
 	public static long bytesToLong(byte[] bytes) {
 		return ByteUtil.bytesToLong(bytes);

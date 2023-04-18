@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.ArrayUtil;
-import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.HexUtil;
+import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.exception.CryptoException;
 import com.spring.cloud.base.utils.str.StrUtil;
 
@@ -703,7 +703,6 @@ public class SecureUtil {
      * @param privateKey 私钥
      * @param publicKey  公钥
      * @return {@link RSA}
-     * @since 3.0.5
      */
     public static RSA rsa(byte[] privateKey, byte[] publicKey) {
         return new RSA(privateKey, publicKey);

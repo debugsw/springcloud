@@ -15,8 +15,6 @@ public class PrimitiveArrayUtil {
 	 */
 	public static final int INDEX_NOT_FOUND = -1;
 
-	// ---------------------------------------------------------------------- isEmpty
-
 	/**
 	 * 数组是否为空
 	 *

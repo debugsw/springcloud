@@ -2,7 +2,7 @@ package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.ArrayUtil;
 import com.spring.cloud.base.utils.Convert;
-import com.spring.cloud.base.utils.ReflectUtil;
+import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.list.CompareUtil;
 import com.spring.cloud.base.utils.map.ClassUtil;

@@ -1,6 +1,8 @@
 package com.spring.cloud.base.utils.map;
 
-import com.spring.cloud.base.utils.ReflectUtil;
+import com.spring.cloud.base.utils.FileUtil;
+import com.spring.cloud.base.utils.base.ReflectUtil;
+import com.spring.cloud.base.utils.URLUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
 
 import java.io.File;
@@ -25,8 +27,8 @@ public class JarClassLoader extends URLClassLoader {
 	 */
 	public static JarClassLoader load(File dir) {
 		final JarClassLoader loader = new JarClassLoader();
-		loader.addJar(dir);//查找加载所有jar
-		loader.addURL(dir);//查找加载所有class
+		loader.addJar(dir);
+		loader.addURL(dir);
 		return loader;
 	}
 
@@ -76,8 +78,6 @@ public class JarClassLoader extends URLClassLoader {
 		return urlClassLoader;
 	}
 
-	// ------------------------------------------------------------------- Constructor start
-
 	/**
 	 * 构造
 	 */
@@ -103,7 +103,6 @@ public class JarClassLoader extends URLClassLoader {
 	public JarClassLoader(URL[] urls, ClassLoader classLoader) {
 		super(urls, classLoader);
 	}
-	// ------------------------------------------------------------------- Constructor end
 
 	/**
 	 * 加载Jar文件，或者加载目录
@@ -140,8 +139,6 @@ public class JarClassLoader extends URLClassLoader {
 		return this;
 	}
 
-	// ------------------------------------------------------------------- Private method start
-
 	/**
 	 * 递归获得Jar文件
 	 *
@@ -165,5 +162,4 @@ public class JarClassLoader extends URLClassLoader {
 		}
 		return file.getPath().toLowerCase().endsWith(".jar");
 	}
-	// ------------------------------------------------------------------- Private method end
 }
