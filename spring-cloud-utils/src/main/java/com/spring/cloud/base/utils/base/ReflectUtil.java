@@ -89,7 +89,6 @@ public class ReflectUtil {
 	 *
 	 * @param field 字段
 	 * @return 字段名
-	 * @since 5.1.6
 	 */
 	public static String getFieldName(Field field) {
 		if (null == field) {
@@ -262,13 +261,10 @@ public class ReflectUtil {
 	 *
 	 * @param field 字段
 	 * @return 是否为父类引用字段
-	 * @since 5.7.20
 	 */
 	public static boolean isOuterClassField(Field field) {
 		return "this$0".equals(field.getName());
 	}
-
-	// --------------------------------------------------------------------------------------------------------- method
 
 	/**
 	 * 获得指定类本类及其父类中的Public方法名<br>
@@ -334,7 +330,7 @@ public class ReflectUtil {
 	 */
 	public static List<Method> getPublicMethods(Class<?> clazz, Method... excludeMethods) {
 		final HashSet<Method> excludeMethodSet = CollUtil.newHashSet(excludeMethods);
-		return getPublicMethods(clazz, method -> false == excludeMethodSet.contains(method));
+		return getPublicMethods(clazz, method -> !excludeMethodSet.contains(method));
 	}
 
 	/**
@@ -346,7 +342,7 @@ public class ReflectUtil {
 	 */
 	public static List<Method> getPublicMethods(Class<?> clazz, String... excludeMethodNames) {
 		final HashSet<String> excludeMethodNameSet = CollUtil.newHashSet(excludeMethodNames);
-		return getPublicMethods(clazz, method -> false == excludeMethodNameSet.contains(method.getName()));
+		return getPublicMethods(clazz, method -> !excludeMethodNameSet.contains(method.getName()));
 	}
 
 	/**
@@ -387,18 +383,13 @@ public class ReflectUtil {
 	}
 
 	/**
-	 * 忽略大小写查找指定方法，如果找不到对应的方法则返回{@code null}
-	 *
-	 * <p>
-	 * 此方法为精准获取方法名，即方法名和参数数量和类型必须一致，否则返回{@code null}。
-	 * </p>
+	 * 忽略大小写查找指定方法，如果找不到对应的方法则返回
 	 *
 	 * @param clazz      类，如果为{@code null}返回{@code null}
 	 * @param methodName 方法名，如果为空字符串返回{@code null}
 	 * @param paramTypes 参数类型，指定参数类型如果是方法的子类也算
 	 * @return 方法
 	 * @throws SecurityException 无权访问抛出异常
-	 * @since 3.2.0
 	 */
 	public static Method getMethodIgnoreCase(Class<?> clazz, String methodName, Class<?>... paramTypes) throws SecurityException {
 		return getMethod(clazz, true, methodName, paramTypes);
@@ -406,10 +397,6 @@ public class ReflectUtil {
 
 	/**
 	 * 查找指定方法 如果找不到对应的方法则返回{@code null}
-	 *
-	 * <p>
-	 * 此方法为精准获取方法名，即方法名和参数数量和类型必须一致，否则返回{@code null}。
-	 * </p>
 	 *
 	 * @param clazz      类，如果为{@code null}返回{@code null}
 	 * @param methodName 方法名，如果为空字符串返回{@code null}
@@ -423,7 +410,7 @@ public class ReflectUtil {
 
 	/**
 	 * 查找指定方法 如果找不到对应的方法则返回{@code null}<br>
-	 * 此方法为精准获取方法名，即方法名和参数数量和类型必须一致，否则返回{@code null}。<br>
+	 * 此方法为精准获取方法名，即方法名和参数数量和类型必须一致，否则返回{@code null}
 	 * 如果查找的方法有多个同参数类型重载，查找第一个找到的方法
 	 *
 	 * @param clazz      类，如果为{@code null}返回{@code null}
@@ -432,7 +419,6 @@ public class ReflectUtil {
 	 * @param paramTypes 参数类型，指定参数类型如果是方法的子类也算
 	 * @return 方法
 	 * @throws SecurityException 无权访问抛出异常
-	 * @since 3.2.0
 	 */
 	public static Method getMethod(Class<?> clazz, boolean ignoreCase, String methodName, Class<?>... paramTypes) throws SecurityException {
 		if (null == clazz || StrUtil.isBlank(methodName)) {
@@ -465,7 +451,6 @@ public class ReflectUtil {
 	 * @param methodName 方法名，如果为空字符串返回{@code null}
 	 * @return 方法
 	 * @throws SecurityException 无权访问抛出异常
-	 * @since 4.3.2
 	 */
 	public static Method getMethodByName(Class<?> clazz, String methodName) throws SecurityException {
 		return getMethodByName(clazz, false, methodName);
@@ -482,7 +467,6 @@ public class ReflectUtil {
 	 * @param methodName 方法名，如果为空字符串返回{@code null}
 	 * @return 方法
 	 * @throws SecurityException 无权访问抛出异常
-	 * @since 4.3.2
 	 */
 	public static Method getMethodByNameIgnoreCase(Class<?> clazz, String methodName) throws SecurityException {
 		return getMethodByName(clazz, true, methodName);
@@ -500,7 +484,6 @@ public class ReflectUtil {
 	 * @param methodName 方法名，如果为空字符串返回{@code null}
 	 * @return 方法
 	 * @throws SecurityException 无权访问抛出异常
-	 * @since 4.3.2
 	 */
 	public static Method getMethodByName(Class<?> clazz, boolean ignoreCase, String methodName) throws SecurityException {
 		if (null == clazz || StrUtil.isBlank(methodName)) {
@@ -593,14 +576,14 @@ public class ReflectUtil {
 		final UniqueKeySet<String, Method> result = new UniqueKeySet<>(true, ReflectUtil::getUniqueKey);
 		Class<?> searchType = beanClass;
 		while (searchType != null) {
-			if (false == withMethodFromObject && Object.class == searchType) {
+			if (!withMethodFromObject && Object.class == searchType) {
 				break;
 			}
 			result.addAllIfAbsent(Arrays.asList(searchType.getDeclaredMethods()));
 			result.addAllIfAbsent(getDefaultMethodsFromInterface(searchType));
 
 
-			searchType = (withSupers && false == searchType.isInterface()) ? searchType.getSuperclass() : null;
+			searchType = (withSupers && !searchType.isInterface()) ? searchType.getSuperclass() : null;
 		}
 
 		return result.toArray(new Method[0]);
@@ -615,7 +598,7 @@ public class ReflectUtil {
 	public static boolean isEqualsMethod(Method method) {
 		if (method == null ||
 				1 != method.getParameterCount() ||
-				false == "equals".equals(method.getName())) {
+				!"equals".equals(method.getName())) {
 			return false;
 		}
 		return (method.getParameterTypes()[0] == Object.class);
@@ -650,23 +633,16 @@ public class ReflectUtil {
 	 *
 	 * @param method 方法
 	 * @return 是否为无参数方法
-	 * @since 5.1.1
 	 */
 	public static boolean isEmptyParam(Method method) {
 		return method.getParameterCount() == 0;
 	}
 
 	/**
-	 * 检查给定方法是否为Getter或者Setter方法，规则为：<br>
-	 * <ul>
-	 *     <li>方法参数必须为0个或1个</li>
-	 *     <li>如果是无参方法，则判断是否以“get”或“is”开头</li>
-	 *     <li>如果方法参数1个，则判断是否以“set”开头</li>
-	 * </ul>
+	 * 检查给定方法是否为Getter或者Setter方法
 	 *
 	 * @param method 方法
 	 * @return 是否为Getter或者Setter方法
-	 * @since 5.7.20
 	 */
 	public static boolean isGetterOrSetterIgnoreCase(Method method) {
 		return isGetterOrSetter(method, true);
@@ -766,14 +742,6 @@ public class ReflectUtil {
 
 	/**
 	 * 尝试遍历并调用此类的所有构造方法，直到构造成功并返回
-	 * <p>
-	 * 对于某些特殊的接口，按照其默认实现实例化，例如：
-	 * <pre>
-	 *     Map       -》 HashMap
-	 *     Collction -》 ArrayList
-	 *     List      -》 ArrayList
-	 *     Set       -》 HashSet
-	 * </pre>
 	 *
 	 * @param <T>  对象类型
 	 * @param type 被构造的类
@@ -916,7 +884,7 @@ public class ReflectUtil {
 				} else if (args[i] instanceof NullWrapperBean) {
 					//如果是通过NullWrapperBean传递的null参数,直接赋值null
 					actualArgs[i] = null;
-				} else if (false == parameterTypes[i].isAssignableFrom(args[i].getClass())) {
+				} else if (!parameterTypes[i].isAssignableFrom(args[i].getClass())) {
 					//对于类型不同的字段，尝试转换，转换失败则使用原对象类型
 					final Object targetValue = Convert.convertWithCheck(parameterTypes[i], args[i], null, true);
 					if (null != targetValue) {
@@ -931,8 +899,6 @@ public class ReflectUtil {
 		}
 
 		if (method.isDefault()) {
-			// 当方法是default方法时，尤其对象是代理对象，需使用句柄方式执行
-			// 代理对象情况下调用method.invoke会导致循环引用执行，最终栈溢出
 			return MethodHandleUtil.invokeSpecial(obj, method, args);
 		}
 
@@ -969,7 +935,7 @@ public class ReflectUtil {
 	 * @return 被设置可访问的对象
 	 */
 	public static <T extends AccessibleObject> T setAccessible(T accessibleObject) {
-		if (null != accessibleObject && false == accessibleObject.isAccessible()) {
+		if (null != accessibleObject && !accessibleObject.isAccessible()) {
 			accessibleObject.setAccessible(true);
 		}
 		return accessibleObject;
@@ -1020,7 +986,7 @@ public class ReflectUtil {
 		List<Method> result = new ArrayList<>();
 		for (Class<?> ifc : clazz.getInterfaces()) {
 			for (Method m : ifc.getMethods()) {
-				if (false == ModifierUtil.isAbstract(m)) {
+				if (!ModifierUtil.isAbstract(m)) {
 					result.add(m);
 				}
 			}

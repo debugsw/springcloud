@@ -172,11 +172,6 @@ public class Opt<T> {
 	/**
 	 * 如果包裹里的值存在，就执行传入的操作({@link Consumer#accept})
 	 *
-	 * <p> 例如如果值存在就打印结果
-	 * <pre>{@code
-	 * Opt.ofNullable("Hello Hutool!").ifPresent(Console::log);
-	 * }</pre>
-	 *
 	 * @param action 你想要执行的操作
 	 * @return this
 	 * @throws NullPointerException 如果包裹里的值存在，但你传入的操作为{@code null}时抛出
@@ -191,13 +186,6 @@ public class Opt<T> {
 	/**
 	 * 如果包裹里的值存在，就执行传入的值存在时的操作({@link Consumer#accept})
 	 * 否则执行传入的值不存在时的操作({@link VoidFunc0}中的{@link VoidFunc0#call()})
-	 *
-	 * <p>
-	 * 例如值存在就打印对应的值，不存在则用{@code Console.error}打印另一句字符串
-	 * <pre>{@code
-	 * Opt.ofNullable("Hello Hutool!").ifPresentOrElse(Console::log, () -> Console.error("Ops!Something is wrong!"));
-	 * }</pre>
-	 *
 	 * @param action      包裹里的值存在时的操作
 	 * @param emptyAction 包裹里的值不存在时的操作
 	 * @return this;
@@ -216,12 +204,6 @@ public class Opt<T> {
 	/**
 	 * 如果包裹里的值存在，就执行传入的值存在时的操作({@link Function#apply(Object)})支持链式调用、转换为其他类型
 	 * 否则执行传入的值不存在时的操作({@link VoidFunc0}中的{@link VoidFunc0#call()})
-	 *
-	 * <p>
-	 * 如果值存在就转换为大写，否则用{@code Console.error}打印另一句字符串
-	 * <pre>{@code
-	 * String hutool = Opt.ofBlankAble("hutool").mapOrElse(String::toUpperCase, () -> Console.log("yes")).mapOrElse(String::intern, () -> Console.log("Value is not present~")).get();
-	 * }</pre>
 	 *
 	 * @param <U>         map后新的类型
 	 * @param mapper      包裹里的值存在时的操作

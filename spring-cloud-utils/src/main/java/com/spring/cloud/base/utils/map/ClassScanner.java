@@ -416,7 +416,6 @@ public class ClassScanner implements Serializable {
 				addIfAccept(loadClass(className));
 			}
 		} else if (classLen > packageLen) {
-			//检查类名是否以指定包名为前缀，包名后加.（避免类似于cn.hutool.A和cn.hutool.ATest这类类名引起的歧义）
 			if (".".equals(this.packageNameWithDot) || className.startsWith(this.packageNameWithDot)) {
 				addIfAccept(loadClass(className));
 			}

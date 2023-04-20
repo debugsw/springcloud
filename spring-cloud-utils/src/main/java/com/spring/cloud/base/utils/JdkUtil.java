@@ -1,15 +1,3 @@
-/*
- * Copyright (c) 2023 looly(loolly@aliyun.com)
- * Hutool is licensed under Mulan PSL v2.
- * You can use this software according to the terms and conditions of the Mulan PSL v2.
- * You may obtain a copy of Mulan PSL v2 at:
- *          http://license.coscl.org.cn/MulanPSL2
- * THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND,
- * EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
- * MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
- * See the Mulan PSL v2 for more details.
- */
-
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.str.StrUtil;
@@ -25,8 +13,7 @@ public class JdkUtil {
 	 */
 	public static final int JVM_VERSION;
 	/**
-	 * 是否JDK8<br>
-	 * 由于Hutool基于JDK8编译，当使用JDK版本低于8时，不支持。
+	 * 是否JDK8
 	 */
 	public static final boolean IS_JDK8;
 	/**

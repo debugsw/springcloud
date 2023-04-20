@@ -43,7 +43,6 @@ public interface AsymmetricDecryptor {
 	 * @param data    Hex（16进制）或Base64字符串
 	 * @param keyType 私钥或公钥 {@link KeyType}
 	 * @return 解密后的bytes
-	 * @since 4.5.2
 	 */
 	default byte[] decrypt(String data, KeyType keyType) {
 		return decrypt(SecureUtil.decode(data), keyType);
@@ -56,7 +55,6 @@ public interface AsymmetricDecryptor {
 	 * @param keyType 密钥类型
 	 * @param charset 加密前编码
 	 * @return 解密后的密文
-	 * @since 4.5.2
 	 */
 	default String decryptStr(String data, KeyType keyType, Charset charset) {
 		return StrUtil.str(decrypt(data, keyType), charset);
@@ -68,7 +66,6 @@ public interface AsymmetricDecryptor {
 	 * @param data    数据，Hex（16进制）或Base64字符串
 	 * @param keyType 密钥类型
 	 * @return 解密后的密文
-	 * @since 4.5.2
 	 */
 	default String decryptStr(String data, KeyType keyType) {
 		return decryptStr(data, keyType, CharsetUtil.CHARSET_UTF_8);
@@ -80,7 +77,6 @@ public interface AsymmetricDecryptor {
 	 * @param data    数据
 	 * @param keyType 密钥类型
 	 * @return 解密后的密文
-	 * @since 4.1.0
 	 */
 	default byte[] decryptFromBcd(String data, KeyType keyType) {
 		return decryptFromBcd(data, keyType, CharsetUtil.CHARSET_UTF_8);
@@ -93,8 +89,6 @@ public interface AsymmetricDecryptor {
 	 * @param keyType 密钥类型
 	 * @param charset 加密前编码
 	 * @return 解密后的密文
-	 * @since 4.1.0
-	 * @deprecated 由于对于ASCII的编码解码有缺陷，且这种BCD实现并不规范，因此会在6.0.0中移除
 	 */
 	@Deprecated
 	default byte[] decryptFromBcd(String data, KeyType keyType, Charset charset) {
@@ -110,8 +104,6 @@ public interface AsymmetricDecryptor {
 	 * @param keyType 密钥类型
 	 * @param charset 加密前编码
 	 * @return 解密后的密文
-	 * @since 4.5.2
-	 * @deprecated 由于对于ASCII的编码解码有缺陷，且这种BCD实现并不规范，因此会在6.0.0中移除
 	 */
 	@Deprecated
 	default String decryptStrFromBcd(String data, KeyType keyType, Charset charset) {
@@ -124,8 +116,6 @@ public interface AsymmetricDecryptor {
 	 * @param data    数据，BCD格式
 	 * @param keyType 密钥类型
 	 * @return 解密后的密文
-	 * @since 4.5.2
-	 * @deprecated 由于对于ASCII的编码解码有缺陷，且这种BCD实现并不规范，因此会在6.0.0中移除
 	 */
 	@Deprecated
 	default String decryptStrFromBcd(String data, KeyType keyType) {

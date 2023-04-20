@@ -18,7 +18,6 @@ public class BCMacEngine implements MacEngine {
 	 *
 	 * @param mac    {@link Mac}
 	 * @param params 参数，例如密钥可以用{@link KeyParameter}
-	 * @since 5.8.0
 	 */
 	public BCMacEngine(Mac mac, CipherParameters params) {
 		init(mac, params);
@@ -30,7 +29,6 @@ public class BCMacEngine implements MacEngine {
 	 * @param mac    摘要算法
 	 * @param params 参数，例如密钥可以用{@link KeyParameter}
 	 * @return this
-	 * @since 5.8.0
 	 */
 	public BCMacEngine init(Mac mac, CipherParameters params) {
 		mac.init(params);

@@ -4,8 +4,8 @@ import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.CalendarUtil;
 import com.spring.cloud.base.utils.base.SystemPropsUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.DateException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -847,9 +847,7 @@ public class DateTime extends Date {
 	}
 
 	/**
-	 * 设置一周的第一天<br>
-	 * JDK的Calendar中默认一周的第一天是周日，Hutool中将此默认值设置为周一<br>
-	 * 设置一周的第一天主要影响{@link #weekOfMonth()}和{@link #weekOfYear()} 两个方法
+	 * 设置一周的第一天
 	 *
 	 * @param firstDayOfWeek 一周的第一天
 	 * @return this

@@ -58,7 +58,7 @@ public class ThreadFactoryBuilder implements Builder<ThreadFactory> {
 	}
 
 	/**
-	 * 设置线程名前缀，例如设置前缀为hutool-thread-，则线程名为hutool-thread-1之类。
+	 * 设置线程名前缀
 	 *
 	 * @param namePrefix 线程名前缀
 	 * @return this

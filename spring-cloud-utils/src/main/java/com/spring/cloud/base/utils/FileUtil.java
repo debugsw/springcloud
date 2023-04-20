@@ -1,10 +1,10 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.interf.LineHandler;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
+import com.spring.cloud.base.utils.interf.LineHandler;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.ResourceUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.*;
 import java.net.URI;
@@ -250,7 +250,6 @@ public class FileUtil extends PathUtil {
 		JarFile jarFile = null;
 		try {
 			jarFile = new JarFile(path.substring(0, index));
-			// 防止出现jar!/cn/hutool/这类路径导致文件找不到
 			return ZipUtil.listFileNames(jarFile, StrUtil.removePrefix(path.substring(index + 1), "/"));
 		} catch (IOException e) {
 			throw new IORuntimeException(StrUtil.format("Can not read file path of [{}]", path), e);
@@ -875,50 +874,6 @@ public class FileUtil extends PathUtil {
 	}
 
 	/**
-	 * 创建临时文件<br>
-	 * 创建后的文件名为 prefix[Randon].tmp
-	 *
-	 * @param dir 临时文件创建的所在目录
-	 * @return 临时文件
-	 * @throws IORuntimeException IO异常
-	 */
-	public static File createTempFile(File dir) throws IORuntimeException {
-		return createTempFile("hutool", null, dir, true);
-	}
-
-	/**
-	 * 在默认临时文件目录下创建临时文件，创建后的文件名为 prefix[Randon].tmp。
-	 * 默认临时文件目录由系统属性 {@code java.io.tmpdir} 指定。
-	 * 在 UNIX 系统上，此属性的默认值通常是 {@code "tmp"} 或 {@code "vartmp"}；
-	 * 在 Microsoft Windows 系统上，它通常是 {@code "C:\\WINNT\\TEMP"}。
-	 * 调用 Java 虚拟机时，可以为该系统属性赋予不同的值，但不保证对该属性的编程更改对该方法使用的临时目录有任何影响。
-	 *
-	 * @return 临时文件
-	 * @throws IORuntimeException IO异常
-	 * @since 5.7.22
-	 */
-	public static File createTempFile() throws IORuntimeException {
-		return createTempFile("hutool", null, null, true);
-	}
-
-	/**
-	 * 在默认临时文件目录下创建临时文件，创建后的文件名为 prefix[Randon].suffix。
-	 * 默认临时文件目录由系统属性 {@code java.io.tmpdir} 指定。
-	 * 在 UNIX 系统上，此属性的默认值通常是 {@code "tmp"} 或 {@code "vartmp"}；
-	 * 在 Microsoft Windows 系统上，它通常是 {@code "C:\\WINNT\\TEMP"}。
-	 * 调用 Java 虚拟机时，可以为该系统属性赋予不同的值，但不保证对该属性的编程更改对该方法使用的临时目录有任何影响。
-	 *
-	 * @param suffix    后缀，如果null则使用默认.tmp
-	 * @param isReCreat 是否重新创建文件（删掉原来的，创建新的）
-	 * @return 临时文件
-	 * @throws IORuntimeException IO异常
-	 * @since 5.7.22
-	 */
-	public static File createTempFile(String suffix, boolean isReCreat) throws IORuntimeException {
-		return createTempFile("hutool", suffix, null, isReCreat);
-	}
-
-	/**
 	 * 在默认临时文件目录下创建临时文件，创建后的文件名为 prefix[Randon].suffix。
 	 * 默认临时文件目录由系统属性 {@code java.io.tmpdir} 指定。
 	 * 在 UNIX 系统上，此属性的默认值通常是 {@code "tmp"} 或 {@code "vartmp"}；
@@ -930,23 +885,9 @@ public class FileUtil extends PathUtil {
 	 * @param isReCreat 是否重新创建文件（删掉原来的，创建新的）
 	 * @return 临时文件
 	 * @throws IORuntimeException IO异常
-	 * @since 5.7.22
 	 */
 	public static File createTempFile(String prefix, String suffix, boolean isReCreat) throws IORuntimeException {
 		return createTempFile(prefix, suffix, null, isReCreat);
-	}
-
-	/**
-	 * 创建临时文件<br>
-	 * 创建后的文件名为 prefix[Randon].tmp
-	 *
-	 * @param dir       临时文件创建的所在目录
-	 * @param isReCreat 是否重新创建文件（删掉原来的，创建新的）
-	 * @return 临时文件
-	 * @throws IORuntimeException IO异常
-	 */
-	public static File createTempFile(File dir, boolean isReCreat) throws IORuntimeException {
-		return createTempFile("hutool", null, dir, isReCreat);
 	}
 
 	/**
@@ -1032,14 +973,7 @@ public class FileUtil extends PathUtil {
 	}
 
 	/**
-	 * 复制文件或目录<br>
-	 * 情况如下：
-	 *
-	 * <pre>
-	 * 1、src和dest都为目录，则将src目录及其目录下所有文件目录拷贝到dest下
-	 * 2、src和dest都为文件，直接复制，名字为dest
-	 * 3、src为文件，dest为目录，将src拷贝到dest目录下
-	 * </pre>
+	 * 复制文件或目录
 	 *
 	 * @param src        源文件
 	 * @param dest       目标文件或目录，目标不存在会自动创建（目录、文件都创建）
@@ -1052,14 +986,7 @@ public class FileUtil extends PathUtil {
 	}
 
 	/**
-	 * 复制文件或目录<br>
-	 * 情况如下：
-	 *
-	 * <pre>
-	 * 1、src和dest都为目录，则将src下所有文件目录拷贝到dest下
-	 * 2、src和dest都为文件，直接复制，名字为dest
-	 * 3、src为文件，dest为目录，将src拷贝到dest目录下
-	 * </pre>
+	 * 复制文件或目录
 	 *
 	 * @param src        源文件
 	 * @param dest       目标文件或目录，目标不存在会自动创建（目录、文件都创建）
@@ -1072,14 +999,7 @@ public class FileUtil extends PathUtil {
 	}
 
 	/**
-	 * 复制文件或目录<br>
-	 * 情况如下：
-	 *
-	 * <pre>
-	 * 1、src和dest都为目录，则将src下所有文件（包括子目录）拷贝到dest下
-	 * 2、src和dest都为文件，直接复制，名字为dest
-	 * 3、src为文件，dest为目录，将src拷贝到dest目录下
-	 * </pre>
+	 * 复制文件或目录
 	 *
 	 * @param src        源文件
 	 * @param dest       目标文件或目录，目标不存在会自动创建（目录、文件都创建）
@@ -1124,11 +1044,7 @@ public class FileUtil extends PathUtil {
 	}
 
 	/**
-	 * 修改文件或目录的文件名，不变更路径，只是简单修改文件名，不保留扩展名。<br>
-	 *
-	 * <pre>
-	 * FileUtil.rename(file, "aaa.png", true) xx/xx.png =》xx/aaa.png
-	 * </pre>
+	 * 修改文件或目录的文件名，不变更路径，只是简单修改文件名，不保留扩展名。
 	 *
 	 * @param file       被修改的文件
 	 * @param newName    新的文件名，如需扩展名，需自行在此参数加上，原文件名的扩展名不会被保留
@@ -1141,20 +1057,7 @@ public class FileUtil extends PathUtil {
 	}
 
 	/**
-	 * 修改文件或目录的文件名，不变更路径，只是简单修改文件名<br>
-	 * 重命名有两种模式：<br>
-	 * 1、isRetainExt为true时，保留原扩展名：
-	 *
-	 * <pre>
-	 * FileUtil.rename(file, "aaa", true) xx/xx.png =》xx/aaa.png
-	 * </pre>
-	 *
-	 * <p>
-	 * 2、isRetainExt为false时，不保留原扩展名，需要在newName中
-	 *
-	 * <pre>
-	 * FileUtil.rename(file, "aaa.jpg", false) xx/xx.png =》xx/aaa.jpg
-	 * </pre>
+	 * 修改文件或目录的文件名，不变更路径，只是简单修改文件名
 	 *
 	 * @param file        被修改的文件
 	 * @param newName     新的文件名，可选是否包括扩展名
@@ -1263,13 +1166,7 @@ public class FileUtil extends PathUtil {
 
 	/**
 	 * 给定路径已经是绝对路径<br>
-	 * 此方法并没有针对路径做标准化，建议先执行{@link #normalize(String)}方法标准化路径后判断<br>
-	 * 绝对路径判断条件是：
-	 * <ul>
-	 *     <li>以/开头的路径</li>
-	 *     <li>满足类似于 c:/xxxxx，其中祖母随意，不区分大小写</li>
-	 *     <li>满足类似于 d:\xxxxx，其中祖母随意，不区分大小写</li>
-	 * </ul>
+	 * 此方法并没有针对路径做标准化，建议先执行{@link #normalize(String)}方法标准化路径后判断
 	 *
 	 * @param path 需要检查的Path
 	 * @return 是否已经是绝对路径
@@ -1345,9 +1242,7 @@ public class FileUtil extends PathUtil {
 	}
 
 	/**
-	 * 比较两个文件内容是否相同<br>
-	 * 首先比较长度，长度一致再比较内容<br>
-	 * 此方法来自Apache Commons io
+	 * 比较两个文件内容是否相同
 	 *
 	 * @param file1 文件1
 	 * @param file2 文件2
@@ -1361,7 +1256,7 @@ public class FileUtil extends PathUtil {
 			return false;
 		}
 
-		if (false == file1Exists) {
+		if (!file1Exists) {
 			// 两个文件都不存在，返回true
 			return true;
 		}
@@ -1394,19 +1289,14 @@ public class FileUtil extends PathUtil {
 		}
 	}
 
-	// -----------------------------------------------------------------------
-
 	/**
-	 * 比较两个文件内容是否相同<br>
-	 * 首先比较长度，长度一致再比较内容，比较内容采用按行读取，每行比较<br>
-	 * 此方法来自Apache Commons io
+	 * 比较两个文件内容是否相同
 	 *
 	 * @param file1   文件1
 	 * @param file2   文件2
 	 * @param charset 编码，null表示使用平台默认编码 两个文件内容一致返回true，否则false
 	 * @return 是否相同
 	 * @throws IORuntimeException IO异常
-	 * @since 4.0.6
 	 */
 	public static boolean contentEqualsIgnoreEOL(File file1, File file2, Charset charset) throws IORuntimeException {
 		boolean file1Exists = file1.exists();
@@ -1448,7 +1338,6 @@ public class FileUtil extends PathUtil {
 	 * @param file1 文件1
 	 * @param file2 文件2
 	 * @return 文件路径是否相同
-	 * @since 3.0.9
 	 */
 	public static boolean pathEquals(File file1, File file2) {
 		if (isWindows()) {
@@ -1689,16 +1578,13 @@ public class FileUtil extends PathUtil {
 		}
 		return filePath;
 	}
-
-	// -------------------------------------------------------------------------------------------- name start
-
+	
 	/**
 	 * 返回文件名
 	 *
 	 * @param file 文件
 	 * @return 文件名
 	 * @see FileNameUtil#getName(File)
-	 * @since 4.1.13
 	 */
 	public static String getName(File file) {
 		return FileNameUtil.getName(file);
@@ -1714,7 +1600,6 @@ public class FileUtil extends PathUtil {
 	 * @param filePath 文件
 	 * @return 文件名
 	 * @see FileNameUtil#getName(String)
-	 * @since 4.1.13
 	 */
 	public static String getName(String filePath) {
 		return FileNameUtil.getName(filePath);
@@ -1726,7 +1611,6 @@ public class FileUtil extends PathUtil {
 	 * @param file 文件
 	 * @return 扩展名
 	 * @see FileNameUtil#getSuffix(File)
-	 * @since 5.3.8
 	 */
 	public static String getSuffix(File file) {
 		return FileNameUtil.getSuffix(file);
@@ -1738,7 +1622,6 @@ public class FileUtil extends PathUtil {
 	 * @param fileName 文件名
 	 * @return 扩展名
 	 * @see FileNameUtil#getSuffix(String)
-	 * @since 5.3.8
 	 */
 	public static String getSuffix(String fileName) {
 		return FileNameUtil.getSuffix(fileName);
@@ -1750,7 +1633,6 @@ public class FileUtil extends PathUtil {
 	 * @param file 文件
 	 * @return 主文件名
 	 * @see FileNameUtil#getPrefix(File)
-	 * @since 5.3.8
 	 */
 	public static String getPrefix(File file) {
 		return FileNameUtil.getPrefix(file);
@@ -1762,7 +1644,6 @@ public class FileUtil extends PathUtil {
 	 * @param fileName 完整文件名
 	 * @return 主文件名
 	 * @see FileNameUtil#getPrefix(String)
-	 * @since 5.3.8
 	 */
 	public static String getPrefix(String fileName) {
 		return FileNameUtil.getPrefix(fileName);
@@ -1811,7 +1692,6 @@ public class FileUtil extends PathUtil {
 	public static String extName(String fileName) {
 		return FileNameUtil.extName(fileName);
 	}
-	// -------------------------------------------------------------------------------------------- name end
 
 	/**
 	 * 判断文件路径是否有指定后缀，忽略大小写<br>
@@ -1827,12 +1707,7 @@ public class FileUtil extends PathUtil {
 
 	/**
 	 * 根据文件流的头部信息获得文件类型
-	 *
-	 * <pre>
-	 *      1、无法识别类型默认按照扩展名识别
-	 *      2、xls、doc、msi头信息无法区分，按照扩展名区分
-	 *      3、zip可能为docx、xlsx、pptx、jar、war头信息无法区分，按照扩展名区分
-	 * </pre>
+
 	 *
 	 * @param file 文件 {@link File}
 	 * @return 类型，文件的扩展名，未找到为{@code null}
@@ -1842,8 +1717,6 @@ public class FileUtil extends PathUtil {
 	public static String getType(File file) throws IORuntimeException {
 		return FileTypeUtil.getType(file);
 	}
-
-	// -------------------------------------------------------------------------------------------- in start
 
 	/**
 	 * 获得输入流
@@ -1887,7 +1760,6 @@ public class FileUtil extends PathUtil {
 	 *
 	 * @param file 文件
 	 * @return BufferedReader对象
-	 * @since 5.5.8
 	 */
 	public static BufferedReader getBOMReader(File file) {
 		return IoUtil.getReader(getBOMInputStream(file));
@@ -1967,11 +1839,8 @@ public class FileUtil extends PathUtil {
 		return getReader(file(path), charset);
 	}
 
-	// -------------------------------------------------------------------------------------------- in end
-
 	/**
-	 * 读取文件所有数据<br>
-	 * 文件的长度不能超过Integer.MAX_VALUE
+	 * 读取文件所有数据
 	 *
 	 * @param file 文件
 	 * @return 字节码
@@ -1982,8 +1851,7 @@ public class FileUtil extends PathUtil {
 	}
 
 	/**
-	 * 读取文件所有数据<br>
-	 * 文件的长度不能超过Integer.MAX_VALUE
+	 * 读取文件所有数据
 	 *
 	 * @param filePath 文件路径
 	 * @return 字节码
@@ -2157,7 +2025,6 @@ public class FileUtil extends PathUtil {
 	 * @param collection 集合
 	 * @return 文件中的每行内容的集合
 	 * @throws IORuntimeException IO异常
-	 * @since 3.1.1
 	 */
 	public static <T extends Collection<String>> T readUtf8Lines(File file, T collection) throws IORuntimeException {
 		return readLines(file, CharsetUtil.CHARSET_UTF_8, collection);
@@ -2286,7 +2153,6 @@ public class FileUtil extends PathUtil {
 	 * @param path 文件路径
 	 * @return 文件中的每行内容的集合List
 	 * @throws IORuntimeException IO异常
-	 * @since 3.1.1
 	 */
 	public static List<String> readUtf8Lines(String path) throws IORuntimeException {
 		return readLines(path, CharsetUtil.CHARSET_UTF_8);
@@ -2311,7 +2177,6 @@ public class FileUtil extends PathUtil {
 	 * @param charset 字符集
 	 * @return 文件中的每行内容的集合List
 	 * @throws IORuntimeException IO异常
-	 * @since 3.1.1
 	 */
 	public static List<String> readLines(String path, Charset charset) throws IORuntimeException {
 		return readLines(path, charset, new ArrayList<>());

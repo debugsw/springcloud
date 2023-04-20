@@ -1,8 +1,6 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.Func1;
-import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.TypeConverter;
 import com.spring.cloud.base.utils.map.Editor;
 
@@ -74,17 +72,8 @@ public class CopyOptions implements Serializable {
 		if (null == value) {
 			return null;
 		}
-
-		final String name = value.getClass().getName();
-		if (ArrayUtil.contains(new String[]{"cn.hutool.json.JSONObject", "cn.hutool.json.JSONArray"}, name)) {
-			// 由于设计缺陷导致JSON转Bean时无法使用自定义的反序列化器，此处采用反射方式修复bug，此类问题会在6.x解决
-			return ReflectUtil.invoke(value, "toBean", ObjectUtil.defaultIfNull(type, Object.class));
-		}
-
 		return Convert.convertWithCheck(type, value, null, ignoreError);
 	};
-
-	//region create
 
 	/**
 	 * 创建拷贝选项
@@ -106,7 +95,6 @@ public class CopyOptions implements Serializable {
 	public static CopyOptions create(Class<?> editable, boolean ignoreNullValue, String... ignoreProperties) {
 		return new CopyOptions(editable, ignoreNullValue, ignoreProperties);
 	}
-	//endregion
 
 	/**
 	 * 构造拷贝选项
@@ -370,6 +358,6 @@ public class CopyOptions implements Serializable {
 	 * @return 是否保留
 	 */
 	protected boolean testKeyFilter(Object key) {
-		return CollUtil.isEmpty(this.ignoreKeySet) || false == this.ignoreKeySet.contains(key);
+		return CollUtil.isEmpty(this.ignoreKeySet) || !this.ignoreKeySet.contains(key);
 	}
 }

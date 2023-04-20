@@ -32,7 +32,6 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	 * 解密的块大小
 	 */
 	protected int decryptBlockSize = -1;
-	// ------------------------------------------------------------------ Constructor start
 
 	/**
 	 * 构造，创建新的私钥公钥对
@@ -114,9 +113,7 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	 * @param publicKey  公钥
 	 */
 	public AsymmetricCrypto(String algorithm, byte[] privateKey, byte[] publicKey) {
-		this(algorithm, //
-				KeyUtil.generatePrivateKey(algorithm, privateKey), //
-				KeyUtil.generatePublicKey(algorithm, publicKey)//
+		this(algorithm, KeyUtil.generatePrivateKey(algorithm, privateKey), KeyUtil.generatePublicKey(algorithm, publicKey)
 		);
 	}
 
@@ -134,7 +131,6 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	public AsymmetricCrypto(String algorithm, PrivateKey privateKey, PublicKey publicKey) {
 		super(algorithm, privateKey, publicKey);
 	}
-	// ------------------------------------------------------------------ Constructor end
 
 	/**
 	 * 获取加密块大小
@@ -213,8 +209,6 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 		return this;
 	}
 
-	// --------------------------------------------------------------------------------- Encrypt
-
 	@Override
 	public byte[] encrypt(byte[] data, KeyType keyType) {
 		final Key key = getKeyByType(keyType);
@@ -238,8 +232,6 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 		}
 	}
 
-	// --------------------------------------------------------------------------------- Decrypt
-
 	@Override
 	public byte[] decrypt(byte[] data, KeyType keyType) {
 		final Key key = getKeyByType(keyType);
@@ -262,8 +254,6 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 			lock.unlock();
 		}
 	}
-
-	// --------------------------------------------------------------------------------- Getters and Setters
 
 	/**
 	 * 获得加密或解密器

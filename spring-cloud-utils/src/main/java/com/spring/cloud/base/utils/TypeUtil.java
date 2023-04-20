@@ -303,11 +303,6 @@ public class TypeUtil {
 	/**
 	 * 获取泛型变量和泛型实际类型的对应关系Map，例如：
 	 *
-	 * <pre>
-	 *     T    cn.hutool.test.User
-	 *     E    java.lang.Integer
-	 * </pre>
-	 *
 	 * @param clazz 被解析的包含泛型参数的类
 	 * @return 泛型对应关系Map
 	 */

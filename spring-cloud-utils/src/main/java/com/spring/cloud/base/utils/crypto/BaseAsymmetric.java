@@ -18,6 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Date: 2023/4/13 16:11
  */
 public class BaseAsymmetric<T extends BaseAsymmetric<T>> implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -46,7 +47,6 @@ public class BaseAsymmetric<T extends BaseAsymmetric<T>> implements Serializable
 	 * @param algorithm  算法
 	 * @param privateKey 私钥
 	 * @param publicKey  公钥
-	 * @since 3.1.1
 	 */
 	public BaseAsymmetric(String algorithm, PrivateKey privateKey, PublicKey publicKey) {
 		init(algorithm, privateKey, publicKey);
@@ -159,7 +159,6 @@ public class BaseAsymmetric<T extends BaseAsymmetric<T>> implements Serializable
 	 *
 	 * @param key 密钥，可以是公钥{@link PublicKey}或者私钥{@link PrivateKey}
 	 * @return this
-	 * @since 5.2.0
 	 */
 	public T setKey(Key key) {
 		Assert.notNull(key, "key must be not null !");
