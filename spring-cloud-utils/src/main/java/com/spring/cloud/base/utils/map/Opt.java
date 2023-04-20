@@ -77,7 +77,6 @@ public class Opt<T> {
 	 * @param <R>   集合值类型
 	 * @param value 传入需要包裹的元素
 	 * @return 一个包裹里元素可能为空的 {@code Opt}
-	 * @since 5.7.17
 	 */
 	public static <T, R extends Collection<T>> Opt<R> ofEmptyAble(R value) {
 		return CollUtil.isEmpty(value) ? empty() : new Opt<>(value);
@@ -132,7 +131,7 @@ public class Opt<T> {
 	 * 判断包裹里元素的值是否不存在，不存在为 {@code true}，否则为{@code false}
 	 *
 	 * @return 包裹里元素的值不存在 则为 {@code true}，否则为{@code false}
-	 * @since 11 这是jdk11{@link Optional}中的新函数
+	 * 
 	 */
 	public boolean isEmpty() {
 		return value == null;
@@ -143,7 +142,7 @@ public class Opt<T> {
 	 * 当调用 {@link #ofTry(Func0)}时，异常信息不会抛出，而是保存，调用此方法获取抛出的异常
 	 *
 	 * @return 异常
-	 * @since 5.7.17
+	 * 
 	 */
 	public Exception getException() {
 		return this.exception;
@@ -154,7 +153,7 @@ public class Opt<T> {
 	 * 当调用 {@link #ofTry(Func0)}时，抛出异常则表示失败
 	 *
 	 * @return 是否失败
-	 * @since 5.7.17
+	 * 
 	 */
 	public boolean isFail() {
 		return null != this.exception;
@@ -289,7 +288,7 @@ public class Opt<T> {
 	 * 如果不存在，返回一个空的{@code Opt}
 	 * @throws NullPointerException 如果给定的操作为 {@code null}或者给定的操作执行结果为 {@code null}，抛出 {@code NPE}
 	 * @see Optional#flatMap(Function)
-	 * @since 5.7.16
+	 * 
 	 */
 	public <U> Opt<U> flattedMap(Function<? super T, ? extends Optional<? extends U>> mapper) {
 		Objects.requireNonNull(mapper);
@@ -391,7 +390,7 @@ public class Opt<T> {
 	 *
 	 * @param other 可选值
 	 * @return 如果未发生异常，则返回该值，否则返回传入的{@code other}
-	 * @since 5.7.17
+	 * 
 	 */
 	public T exceptionOrElse(T other) {
 		return isFail() ? other : value;
@@ -464,7 +463,7 @@ public class Opt<T> {
 	 * 转换为 {@link Optional}对象
 	 *
 	 * @return {@link Optional}对象
-	 * @since 5.7.16
+	 * 
 	 */
 	public Optional<T> toOptional() {
 		return Optional.ofNullable(this.value);

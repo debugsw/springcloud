@@ -22,7 +22,6 @@ public class CalendarUtil {
 	 * 创建Calendar对象，时间为默认时区的当前时间
 	 *
 	 * @return Calendar对象
-	 * @since 4.6.6
 	 */
 	public static Calendar calendar() {
 		return Calendar.getInstance();
@@ -58,7 +57,6 @@ public class CalendarUtil {
 	 * @param millis   时间戳
 	 * @param timeZone 时区
 	 * @return Calendar对象
-	 * @since 5.7.22
 	 */
 	public static Calendar calendar(long millis, TimeZone timeZone) {
 		final Calendar cal = Calendar.getInstance(timeZone);
@@ -141,7 +139,6 @@ public class CalendarUtil {
 	 *
 	 * @param calendar 日期 {@link Calendar}
 	 * @return {@link Calendar}
-	 * @since 4.6.2
 	 */
 	public static Calendar beginOfSecond(Calendar calendar) {
 		return truncate(calendar, DateField.SECOND);
@@ -152,7 +149,6 @@ public class CalendarUtil {
 	 *
 	 * @param calendar 日期 {@link Calendar}
 	 * @return {@link Calendar}
-	 * @since 4.6.2
 	 */
 	public static Calendar endOfSecond(Calendar calendar) {
 		return ceiling(calendar, DateField.SECOND);
@@ -234,7 +230,6 @@ public class CalendarUtil {
 	 * @param calendar           日期 {@link Calendar}
 	 * @param isMondayAsFirstDay 是否周一做为一周的第一天（false表示周日做为第一天）
 	 * @return {@link Calendar}
-	 * @since 3.1.2
 	 */
 	public static Calendar beginOfWeek(Calendar calendar, boolean isMondayAsFirstDay) {
 		calendar.setFirstDayOfWeek(isMondayAsFirstDay ? Calendar.MONDAY : Calendar.SUNDAY);
@@ -290,7 +285,6 @@ public class CalendarUtil {
 	 *
 	 * @param calendar 日期 {@link Calendar}
 	 * @return {@link Calendar}
-	 * @since 4.1.0
 	 */
 	public static Calendar beginOfQuarter(Calendar calendar) {
 		//noinspection MagicConstant
@@ -304,7 +298,6 @@ public class CalendarUtil {
 	 *
 	 * @param calendar 日期 {@link Calendar}
 	 * @return {@link Calendar}
-	 * @since 4.1.0
 	 */
 	@SuppressWarnings({"MagicConstant", "ConstantConditions"})
 	public static Calendar endOfQuarter(Calendar calendar) {
@@ -360,7 +353,6 @@ public class CalendarUtil {
 	 * @param cal2  日期2
 	 * @param isMon 是否为周一。国内第一天为星期一，国外第一天为星期日
 	 * @return 是否为同一周
-	 * @since 5.7.21
 	 */
 	public static boolean isSameWeek(Calendar cal1, Calendar cal2, boolean isMon) {
 		if (cal1 == null || cal2 == null) {
@@ -394,7 +386,6 @@ public class CalendarUtil {
 	 * @param cal1 日期1
 	 * @param cal2 日期2
 	 * @return 是否为同一月
-	 * @since 5.4.1
 	 */
 	public static boolean isSameMonth(Calendar cal1, Calendar cal2) {
 		if (cal1 == null || cal2 == null) {
@@ -414,7 +405,6 @@ public class CalendarUtil {
 	 * @param date1 时间1
 	 * @param date2 时间2
 	 * @return 两个Calendar时间戳是否相同。如果两个时间都为{@code null}返回true，否则有{@code null}返回false
-	 * @since 5.3.11
 	 */
 	public static boolean isSameInstant(Calendar date1, Calendar date2) {
 		if (null == date1) {
@@ -433,7 +423,6 @@ public class CalendarUtil {
 	 * @param startDate 起始日期（包含）
 	 * @param endDate   结束日期（包含）
 	 * @return 季度列表 ，元素类似于 20132
-	 * @since 4.1.15
 	 */
 	public static LinkedHashSet<String> yearAndQuarter(long startDate, long endDate) {
 		LinkedHashSet<String> quarters = new LinkedHashSet<>();
@@ -467,7 +456,7 @@ public class CalendarUtil {
 	 * @param dateField {@link DateField}
 	 * @return 字段最小值
 	 * @see Calendar#getActualMinimum(int)
-	 * @since 5.4.2
+	 * 
 	 */
 	public static int getBeginValue(Calendar calendar, DateField dateField) {
 		return getBeginValue(calendar, dateField.getValue());
@@ -480,7 +469,7 @@ public class CalendarUtil {
 	 * @param dateField {@link DateField}
 	 * @return 字段最小值
 	 * @see Calendar#getActualMinimum(int)
-	 * @since 4.5.7
+	 * 
 	 */
 	public static int getBeginValue(Calendar calendar, int dateField) {
 		if (Calendar.DAY_OF_WEEK == dateField) {
@@ -496,7 +485,6 @@ public class CalendarUtil {
 	 * @param dateField {@link DateField}
 	 * @return 字段最大值
 	 * @see Calendar#getActualMaximum(int)
-	 * @since 5.4.2
 	 */
 	public static int getEndValue(Calendar calendar, DateField dateField) {
 		return getEndValue(calendar, dateField.getValue());
@@ -509,7 +497,7 @@ public class CalendarUtil {
 	 * @param dateField {@link DateField}
 	 * @return 字段最大值
 	 * @see Calendar#getActualMaximum(int)
-	 * @since 4.5.7
+	 * 
 	 */
 	public static int getEndValue(Calendar calendar, int dateField) {
 		if (Calendar.DAY_OF_WEEK == dateField) {
@@ -523,7 +511,7 @@ public class CalendarUtil {
 	 *
 	 * @param calendar Date对象
 	 * @return {@link Instant}对象
-	 * @since 5.0.5
+	 * 
 	 */
 	public static Instant toInstant(Calendar calendar) {
 		return null == calendar ? null : calendar.toInstant();
@@ -534,7 +522,7 @@ public class CalendarUtil {
 	 *
 	 * @param calendar {@link Calendar}
 	 * @return {@link LocalDateTime}
-	 * @since 5.0.5
+	 * 
 	 */
 	public static LocalDateTime toLocalDateTime(Calendar calendar) {
 		return LocalDateTime.ofInstant(calendar.toInstant(), calendar.getTimeZone().toZoneId());
@@ -546,7 +534,7 @@ public class CalendarUtil {
 	 * @param calendar1 日期1
 	 * @param calendar2 日期2
 	 * @return 比较结果，如果calendar1 &lt; calendar2，返回数小于0，calendar1==calendar2返回0，calendar1 &gt; calendar2 大于0
-	 * @since 4.6.2
+	 * 
 	 */
 	public static int compare(Calendar calendar1, Calendar calendar2) {
 		return CompareUtil.compare(calendar1, calendar2);
@@ -574,7 +562,7 @@ public class CalendarUtil {
 	 * @param calendar {@link Calendar}
 	 * @param withTime 是否包含时间部分
 	 * @return 格式化后的字符串
-	 * @since 5.3.9
+	 * 
 	 */
 	public static String formatChineseDate(Calendar calendar, boolean withTime) {
 		final StringBuilder result = StrUtil.builder();
@@ -675,7 +663,7 @@ public class CalendarUtil {
 	 * @return 解析后的Calendar
 	 * @throws IllegalArgumentException if the date string or pattern array is null
 	 * @throws DateException            if none of the date patterns were suitable
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Calendar parseByPatterns(String str, String... parsePatterns) throws DateException {
 		return parseByPatterns(str, null, parsePatterns);
@@ -692,7 +680,7 @@ public class CalendarUtil {
 	 * @return 解析后的Calendar
 	 * @throws IllegalArgumentException if the date string or pattern array is null
 	 * @throws DateException            if none of the date patterns were suitable
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Calendar parseByPatterns(String str, Locale locale, String... parsePatterns) throws DateException {
 		return parseByPatterns(str, locale, true, parsePatterns);
@@ -711,7 +699,7 @@ public class CalendarUtil {
 	 * @throws IllegalArgumentException if the date string or pattern array is null
 	 * @throws DateException            if none of the date patterns were suitable
 	 * @see Calendar#isLenient()
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Calendar parseByPatterns(String str, Locale locale, boolean lenient, String... parsePatterns) throws DateException {
 		if (str == null || parsePatterns == null) {
@@ -756,7 +744,7 @@ public class CalendarUtil {
 	 * @param lenient 是否宽容模式
 	 * @param parser  {@link DateParser}
 	 * @return 解析后的 {@link Calendar}，解析失败返回{@code null}
-	 * @since 5.7.14
+	 * 
 	 */
 	public static Calendar parse(CharSequence str, boolean lenient, DateParser parser) {
 		final Calendar calendar = Calendar.getInstance(parser.getTimeZone(), parser.getLocale());

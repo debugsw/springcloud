@@ -7,40 +7,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
 
-
 /**
- * <p>
- * 货币类中封装了货币金额和币种。目前金额在内部是long类型表示，
- * 单位是所属币种的最小货币单位（如对人民币是分）。
- *
- * <p>
- * 目前，货币实现了以下主要功能：<br>
- * <ul>
- *   <li>支持货币对象与double(float)/long(int)/String/BigDecimal之间相互转换。
- *   <li>货币类在运算中提供与JDK中的BigDecimal类似的运算接口，
- *       BigDecimal的运算接口支持任意指定精度的运算功能，能够支持各种
- *       可能的财务规则。
- *   <li>货币类在运算中也提供一组简单运算接口，使用这组运算接口，则在
- *       精度处理上使用缺省的处理规则。
- *   <li>推荐使用Money，不建议直接使用BigDecimal的原因之一在于，
- *       使用BigDecimal，同样金额和币种的货币使用BigDecimal存在多种可能
- *       的表示，例如：new BigDecimal("10.5")与new BigDecimal("10.50")
- *       不相等，因为scale不等。使得Money类，同样金额和币种的货币只有
- *       一种表示方式，new Money("10.5")和new Money("10.50")应该是相等的。
- *   <li>不推荐直接使用BigDecimal的另一原因在于， BigDecimal是Immutable，
- *       一旦创建就不可更改，对BigDecimal进行任意运算都会生成一个新的
- *       BigDecimal对象，因此对于大批量统计的性能不够满意。Money类是
- *       mutable的，对大批量统计提供较好的支持。
- *   <li>提供基本的格式化功能。
- *   <li>Money类中不包含与业务相关的统计功能和格式化功能。业务相关的功能
- *       建议使用utility类来实现。
- *   <li>Money类实现了Serializable接口，支持作为远程调用的参数和返回值。
- *   <li>Money类实现了equals和hashCode方法。
- * </ul>
- *
  * @author ls
- * @author lijian 处理了运算中的溢出情形
- * @since 2022/02/13
+ *
  */
 public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrencyMoney>, Cloneable {
 

@@ -52,7 +52,6 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 	 *
 	 * @param strs 初始字符串
 	 * @return this
-	 * @since 4.0.1
 	 */
 	public static StrBuilder create(CharSequence... strs) {
 		return new StrBuilder(strs);
@@ -80,7 +79,6 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 	 * 构造
 	 *
 	 * @param strs 初始字符串
-	 * @since 4.0.1
 	 */
 	public StrBuilder(CharSequence... strs) {
 		this(ArrayUtil.isEmpty(strs) ? DEFAULT_CAPACITY : (totalLength(strs) + DEFAULT_CAPACITY));
@@ -566,7 +564,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable {
 	 *
 	 * @param strs 字符串数组
 	 * @return 总长度
-	 * @since 4.0.1
+	 * 
 	 */
 	private static int totalLength(CharSequence... strs) {
 		int totalLength = 0;

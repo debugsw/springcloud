@@ -52,7 +52,6 @@ public class FileNameUtil {
 	 *
 	 * @param file 文件
 	 * @return 文件名
-	 * @since 4.1.13
 	 */
 	public static String getName(File file) {
 		return (null != file) ? file.getName() : null;
@@ -67,7 +66,6 @@ public class FileNameUtil {
 	 *
 	 * @param filePath 文件
 	 * @return 文件名
-	 * @since 4.1.13
 	 */
 	public static String getName(String filePath) {
 		if (null == filePath) {
@@ -102,7 +100,6 @@ public class FileNameUtil {
 	 * @param file 文件
 	 * @return 扩展名
 	 * @see #extName(File)
-	 * @since 5.3.8
 	 */
 	public static String getSuffix(File file) {
 		return extName(file);
@@ -114,7 +111,6 @@ public class FileNameUtil {
 	 * @param fileName 文件名
 	 * @return 扩展名
 	 * @see #extName(String)
-	 * @since 5.3.8
 	 */
 	public static String getSuffix(String fileName) {
 		return extName(fileName);
@@ -126,7 +122,7 @@ public class FileNameUtil {
 	 * @param file 文件
 	 * @return 主文件名
 	 * @see #mainName(File)
-	 * @since 5.3.8
+	 * 
 	 */
 	public static String getPrefix(File file) {
 		return mainName(file);
@@ -138,7 +134,7 @@ public class FileNameUtil {
 	 * @param fileName 完整文件名
 	 * @return 主文件名
 	 * @see #mainName(String)
-	 * @since 5.3.8
+	 * 
 	 */
 	public static String getPrefix(String fileName) {
 		return mainName(fileName);
@@ -250,7 +246,7 @@ public class FileNameUtil {
 	 *
 	 * @param fileName 文件名（必须不包括路径，否则路径符将被替换）
 	 * @return 清理后的文件名
-	 * @since 3.3.1
+	 * 
 	 */
 	public static String cleanInvalid(String fileName) {
 		return StrUtil.isBlank(fileName) ? fileName : ReUtil.delAll(FILE_NAME_INVALID_PATTERN_WIN, fileName);
@@ -261,7 +257,7 @@ public class FileNameUtil {
 	 *
 	 * @param fileName 文件名（必须不包括路径，否则路径符将被替换）
 	 * @return 是否包含非法字符
-	 * @since 3.3.1
+	 * 
 	 */
 	public static boolean containsInvalid(String fileName) {
 		return (false == StrUtil.isBlank(fileName)) && ReUtil.contains(FILE_NAME_INVALID_PATTERN_WIN, fileName);
@@ -273,7 +269,7 @@ public class FileNameUtil {
 	 * @param fileName 文件名
 	 * @param extNames 被检查的扩展名数组，同一文件类型可能有多种扩展名，扩展名不带“.”
 	 * @return 是否是指定扩展名的类型
-	 * @since 5.5.2
+	 * 
 	 */
 	public static boolean isType(String fileName, String... extNames) {
 		return StrUtil.equalsAnyIgnoreCase(extName(fileName), extNames);

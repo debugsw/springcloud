@@ -26,7 +26,7 @@ public class SerializeUtil {
      * @throws UtilException IO异常和ClassNotFoundException封装
      */
     public static <T> T clone(T obj) {
-        if (false == (obj instanceof Serializable)) {
+        if (!(obj instanceof Serializable)) {
             return null;
         }
         return deserialize(serialize(obj));

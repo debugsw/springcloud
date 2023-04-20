@@ -1,10 +1,13 @@
 package com.spring.cloud.base.utils.map;
 
-import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.Convert;
+import com.spring.cloud.base.utils.JdkUtil;
 import com.spring.cloud.base.utils.base.ReflectUtil;
+import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.str.StrUtil;
-import com.spring.cloud.base.utils.exception.UtilException;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -56,7 +59,6 @@ public class MapUtil {
 	 * @param <V> 值类型
 	 * @param set 提供的集合，可能为null
 	 * @return 原集合，若为null返回空集合
-	 * @since 4.6.3
 	 */
 	public static <K, V> Map<K, V> emptyIfNull(Map<K, V> set) {
 		return (null == set) ? Collections.emptyMap() : set;
@@ -71,7 +73,6 @@ public class MapUtil {
 	 * @param map        Map
 	 * @param defaultMap 默认Map
 	 * @return 非空（empty）的原Map或默认Map
-	 * @since 4.6.9
 	 */
 	public static <T extends Map<K, V>, K, V> T defaultIfEmpty(T map, T defaultMap) {
 		return isEmpty(map) ? defaultMap : map;
@@ -98,7 +99,7 @@ public class MapUtil {
 	 * @param size     初始大小，由于默认负载因子0.75，传入的size会实际初始大小为size / 0.75 + 1
 	 * @param isLinked Map的Key是否有序，有序返回 {@link LinkedHashMap}，否则返回 {@link HashMap}
 	 * @return HashMap对象
-	 * @since 3.0.4
+	 * 
 	 */
 	public static <K, V> HashMap<K, V> newHashMap(int size, boolean isLinked) {
 		final int initialCapacity = (int) (size / DEFAULT_LOAD_FACTOR) + 1;
@@ -136,7 +137,7 @@ public class MapUtil {
 	 * @param <V>        value的类型
 	 * @param comparator Key比较器
 	 * @return TreeMap
-	 * @since 3.2.3
+	 * 
 	 */
 	public static <K, V> TreeMap<K, V> newTreeMap(Comparator<? super K> comparator) {
 		return new TreeMap<>(comparator);
@@ -150,7 +151,7 @@ public class MapUtil {
 	 * @param map        Map
 	 * @param comparator Key比较器
 	 * @return TreeMap
-	 * @since 3.2.3
+	 * 
 	 */
 	public static <K, V> TreeMap<K, V> newTreeMap(Map<K, V> map, Comparator<? super K> comparator) {
 		final TreeMap<K, V> treeMap = new TreeMap<>(comparator);
@@ -167,7 +168,7 @@ public class MapUtil {
 	 * @param <V>  value的类型
 	 * @param size 初始容量
 	 * @return {@link IdentityHashMap}
-	 * @since 4.5.7
+	 * 
 	 */
 	public static <K, V> Map<K, V> newIdentityMap(int size) {
 		return new IdentityHashMap<>(size);
@@ -273,7 +274,7 @@ public class MapUtil {
 	 * @param <V>   值类型
 	 * @param pairs 键值对
 	 * @return Map
-	 * @since 5.4.1
+	 *
 	 * @deprecated 方法容易歧义，请使用 {@code #ofEntries(Entry[])}
 	 */
 	@SafeVarargs
@@ -294,7 +295,7 @@ public class MapUtil {
 	 * @param entries 键值对
 	 * @return Map
 	 * @see #entry(Object, Object)
-	 * @since 5.8.0
+	 * 
 	 */
 	@SafeVarargs
 	public static <K, V> Map<K, V> ofEntries(Entry<K, V>... entries) {
@@ -327,7 +328,7 @@ public class MapUtil {
 	 *
 	 * @param array 数组。元素类型为Map.Entry、数组、Iterable、Iterator
 	 * @return {@link HashMap}
-	 * @since 3.0.8
+	 * 
 	 */
 	@SuppressWarnings("rawtypes")
 	public static HashMap<Object, Object> of(Object[] array) {
@@ -517,7 +518,7 @@ public class MapUtil {
 	 * @param <V> value的类型
 	 * @param map 原Map
 	 * @return 驼峰风格Map
-	 * @since 3.3.1
+	 * 
 	 */
 	public static <K, V> Map<K, V> toCamelCaseMap(Map<K, V> map) {
 		return (map instanceof LinkedHashMap) ? new CamelCaseLinkedMap<>(map) : new CamelCaseMap<>(map);
@@ -528,7 +529,7 @@ public class MapUtil {
 	 *
 	 * @param map map
 	 * @return 数组
-	 * @since 4.1.9
+	 * 
 	 */
 	public static Object[][] toObjectArray(Map<?, ?> map) {
 		if (map == null) {
@@ -559,7 +560,7 @@ public class MapUtil {
 	 * @param keyValueSeparator kv之间的连接符
 	 * @param otherParams       其它附加参数字符串（例如密钥）
 	 * @return 连接字符串
-	 * @since 3.1.1
+	 * 
 	 */
 	public static <K, V> String join(Map<K, V> map, String separator, String keyValueSeparator, String... otherParams) {
 		return join(map, separator, keyValueSeparator, false, otherParams);
@@ -574,7 +575,7 @@ public class MapUtil {
 	 * @param isIgnoreNull      是否忽略null的键和值
 	 * @param otherParams       其它附加参数字符串（例如密钥）
 	 * @return 签名字符串
-	 * @since 5.0.4
+	 * 
 	 */
 	public static String sortJoin(Map<?, ?> params, String separator, String keyValueSeparator, boolean isIgnoreNull,
 								  String... otherParams) {
@@ -591,7 +592,7 @@ public class MapUtil {
 	 * @param keyValueSeparator kv之间的连接符
 	 * @param otherParams       其它附加参数字符串（例如密钥）
 	 * @return 连接后的字符串
-	 * @since 3.1.1
+	 * 
 	 */
 	public static <K, V> String joinIgnoreNull(Map<K, V> map, String separator, String keyValueSeparator, String... otherParams) {
 		return join(map, separator, keyValueSeparator, true, otherParams);
@@ -608,7 +609,7 @@ public class MapUtil {
 	 * @param isIgnoreNull      是否忽略null的键和值
 	 * @param otherParams       其它附加参数字符串（例如密钥）
 	 * @return 连接后的字符串，map和otherParams为空返回""
-	 * @since 3.1.1
+	 * 
 	 */
 	public static <K, V> String join(Map<K, V> map, String separator, String keyValueSeparator, boolean isIgnoreNull, String... otherParams) {
 		final StringBuilder strBuilder = StrUtil.builder();
@@ -688,7 +689,7 @@ public class MapUtil {
 	 * @param map    Map
 	 * @param filter 过滤器接口，{@code null}返回原Map
 	 * @return 过滤后的Map
-	 * @since 3.1.0
+	 * 
 	 */
 	public static <K, V> Map<K, V> filter(Map<K, V> map, Filter<Entry<K, V>> filter) {
 		if (null == map || null == filter) {
@@ -708,7 +709,7 @@ public class MapUtil {
 	 * @param <V>        {@code value}的类型
 	 * @param <R>        新的，修改后的{@code value}的类型
 	 * @return 值可以为不同类型的 {@link Map}
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <K, V, R> Map<K, R> map(Map<K, V> map, BiFunction<K, V, R> biFunction) {
 		if (null == map || null == biFunction) {
@@ -725,7 +726,7 @@ public class MapUtil {
 	 * @param map  原始Map
 	 * @param keys 键列表，{@code null}返回原Map
 	 * @return Map 结果，结果的Map类型与原Map保持一致
-	 * @since 4.0.10
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <K, V> Map<K, V> filter(Map<K, V> map, K... keys) {
@@ -758,7 +759,7 @@ public class MapUtil {
 	 * @param map Map对象，键值类型必须一致
 	 * @return 互换后的Map
 	 * @see #inverse(Map)
-	 * @since 3.2.2
+	 * 
 	 */
 	public static <T> Map<T, T> reverse(Map<T, T> map) {
 		return edit(map, t -> new Entry<T, T>() {
@@ -789,7 +790,7 @@ public class MapUtil {
 	 * @param <V> 键和值类型
 	 * @param map Map对象，键值类型必须一致
 	 * @return 互换后的Map
-	 * @since 5.2.6
+	 * 
 	 */
 	public static <K, V> Map<V, K> inverse(Map<K, V> map) {
 		final Map<V, K> result = createMap(map.getClass());
@@ -805,7 +806,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @return TreeMap
 	 * @see #newTreeMap(Map, Comparator)
-	 * @since 4.0.1
+	 * 
 	 */
 	public static <K, V> TreeMap<K, V> sort(Map<K, V> map) {
 		return sort(map, null);
@@ -820,7 +821,7 @@ public class MapUtil {
 	 * @param comparator Key比较器
 	 * @return TreeMap，map为null返回null
 	 * @see #newTreeMap(Map, Comparator)
-	 * @since 4.0.1
+	 * 
 	 */
 	public static <K, V> TreeMap<K, V> sort(Map<K, V> map, Comparator<? super K> comparator) {
 		if (null == map) {
@@ -846,7 +847,7 @@ public class MapUtil {
 	 * @param <V>    值类型
 	 * @param isDesc 是否倒序
 	 * @return 排序后新的Map
-	 * @since 5.5.8
+	 * 
 	 */
 	public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map, boolean isDesc) {
 		Map<K, V> result = new LinkedHashMap<>();
@@ -864,7 +865,7 @@ public class MapUtil {
 	 *
 	 * @param map 被代理的Map
 	 * @return {@link MapProxy}
-	 * @since 3.2.0
+	 * 
 	 */
 	public static MapProxy createProxy(Map<?, ?> map) {
 		return MapProxy.create(map);
@@ -878,7 +879,7 @@ public class MapUtil {
 	 * @param <V> value的类型
 	 * @param map 被代理的Map
 	 * @return {@link MapWrapper}
-	 * @since 4.5.4
+	 * 
 	 */
 	public static <K, V> MapWrapper<K, V> wrap(Map<K, V> map) {
 		return new MapWrapper<>(map);
@@ -891,7 +892,7 @@ public class MapUtil {
 	 * @param <K> 键类型
 	 * @param <V> 值类型
 	 * @return 不修改Map
-	 * @since 5.2.6
+	 * 
 	 */
 	public static <K, V> Map<K, V> unmodifiable(Map<K, V> map) {
 		return Collections.unmodifiableMap(map);
@@ -943,7 +944,7 @@ public class MapUtil {
 	 * @param map  Map
 	 * @param keys 键列表
 	 * @return 新Map，只包含指定的key
-	 * @since 4.0.6
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <K, V> Map<K, V> getAny(Map<K, V> map, final K... keys) {
@@ -958,7 +959,7 @@ public class MapUtil {
 	 * @param map  Map
 	 * @param keys 键列表
 	 * @return 修改后的key
-	 * @since 5.0.5
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <K, V> Map<K, V> removeAny(Map<K, V> map, final K... keys) {
@@ -974,7 +975,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static String getStr(Map<?, ?> map, Object key) {
 		return get(map, key, String.class);
@@ -987,7 +988,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static String getStr(Map<?, ?> map, Object key, String defaultValue) {
 		return get(map, key, String.class, defaultValue);
@@ -999,7 +1000,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static Integer getInt(Map<?, ?> map, Object key) {
 		return get(map, key, Integer.class);
@@ -1012,7 +1013,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Integer getInt(Map<?, ?> map, Object key, Integer defaultValue) {
 		return get(map, key, Integer.class, defaultValue);
@@ -1024,7 +1025,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static Double getDouble(Map<?, ?> map, Object key) {
 		return get(map, key, Double.class);
@@ -1037,7 +1038,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Double getDouble(Map<?, ?> map, Object key, Double defaultValue) {
 		return get(map, key, Double.class, defaultValue);
@@ -1049,7 +1050,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static Float getFloat(Map<?, ?> map, Object key) {
 		return get(map, key, Float.class);
@@ -1062,7 +1063,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Float getFloat(Map<?, ?> map, Object key, Float defaultValue) {
 		return get(map, key, Float.class, defaultValue);
@@ -1074,7 +1075,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static Short getShort(Map<?, ?> map, Object key) {
 		return get(map, key, Short.class);
@@ -1087,7 +1088,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Short getShort(Map<?, ?> map, Object key, Short defaultValue) {
 		return get(map, key, Short.class, defaultValue);
@@ -1099,7 +1100,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static Boolean getBool(Map<?, ?> map, Object key) {
 		return get(map, key, Boolean.class);
@@ -1112,7 +1113,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Boolean getBool(Map<?, ?> map, Object key, Boolean defaultValue) {
 		return get(map, key, Boolean.class, defaultValue);
@@ -1124,7 +1125,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static Character getChar(Map<?, ?> map, Object key) {
 		return get(map, key, Character.class);
@@ -1137,7 +1138,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Character getChar(Map<?, ?> map, Object key, Character defaultValue) {
 		return get(map, key, Character.class, defaultValue);
@@ -1149,7 +1150,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static Long getLong(Map<?, ?> map, Object key) {
 		return get(map, key, Long.class);
@@ -1162,7 +1163,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static Long getLong(Map<?, ?> map, Object key, Long defaultValue) {
 		return get(map, key, Long.class, defaultValue);
@@ -1174,7 +1175,7 @@ public class MapUtil {
 	 * @param map Map
 	 * @param key 键
 	 * @return 值
-	 * @since 4.1.2
+	 * 
 	 */
 	public static Date getDate(Map<?, ?> map, Object key) {
 		return get(map, key, Date.class);
@@ -1187,7 +1188,7 @@ public class MapUtil {
 	 * @param key          键
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 4.1.2
+	 * 
 	 */
 	public static Date getDate(Map<?, ?> map, Object key, Date defaultValue) {
 		return get(map, key, Date.class, defaultValue);
@@ -1201,7 +1202,7 @@ public class MapUtil {
 	 * @param key  键
 	 * @param type 值类型
 	 * @return 值
-	 * @since 4.0.6
+	 * 
 	 */
 	public static <T> T get(Map<?, ?> map, Object key, Class<T> type) {
 		return get(map, key, type, null);
@@ -1216,7 +1217,7 @@ public class MapUtil {
 	 * @param type         值类型
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static <T> T get(Map<?, ?> map, Object key, Class<T> type, T defaultValue) {
 		return null == map ? defaultValue : Convert.convert(type, map.get(key), defaultValue);
@@ -1231,7 +1232,7 @@ public class MapUtil {
 	 * @param type         值类型
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.5.3
+	 * 
 	 */
 	public static <T> T getQuietly(Map<?, ?> map, Object key, Class<T> type, T defaultValue) {
 		return null == map ? defaultValue : Convert.convertQuietly(type, map.get(key), defaultValue);
@@ -1245,7 +1246,7 @@ public class MapUtil {
 	 * @param key  键
 	 * @param type 值类型
 	 * @return 值
-	 * @since 4.5.12
+	 * 
 	 */
 	public static <T> T get(Map<?, ?> map, Object key, TypeReference<T> type) {
 		return get(map, key, type, null);
@@ -1260,7 +1261,7 @@ public class MapUtil {
 	 * @param type         值类型
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.3.11
+	 * 
 	 */
 	public static <T> T get(Map<?, ?> map, Object key, TypeReference<T> type, T defaultValue) {
 		return null == map ? defaultValue : Convert.convert(type, map.get(key), defaultValue);
@@ -1275,7 +1276,7 @@ public class MapUtil {
 	 * @param type         值类型
 	 * @param defaultValue 默认值
 	 * @return 值
-	 * @since 5.5.3
+	 * 
 	 */
 	public static <T> T getQuietly(Map<?, ?> map, Object key, TypeReference<T> type, T defaultValue) {
 		return null == map ? defaultValue : Convert.convertQuietly(type, map.get(key), defaultValue);
@@ -1293,7 +1294,7 @@ public class MapUtil {
 	 * @param newKey 新键
 	 * @return map
 	 * @throws IllegalArgumentException 新key存在抛出此异常
-	 * @since 4.5.16
+	 * 
 	 */
 	public static <K, V> Map<K, V> renameKey(Map<K, V> map, K oldKey, K newKey) {
 		if (isNotEmpty(map) && map.containsKey(oldKey)) {
@@ -1313,7 +1314,7 @@ public class MapUtil {
 	 * @param <V> value的类型
 	 * @param map Map
 	 * @return map
-	 * @since 4.6.5
+	 * 
 	 */
 	public static <K, V> Map<K, V> removeNullValue(Map<K, V> map) {
 		if (isEmpty(map)) {
@@ -1339,7 +1340,7 @@ public class MapUtil {
 	 * @param <V> 值类型
 	 * @return 空Map
 	 * @see Collections#emptyMap()
-	 * @since 5.3.1
+	 * 
 	 */
 	public static <K, V> Map<K, V> empty() {
 		return Collections.emptyMap();
@@ -1359,7 +1360,7 @@ public class MapUtil {
 	 * @param <T>      Map类型
 	 * @param mapClass Map类型，null返回默认的Map
 	 * @return 空Map
-	 * @since 5.3.1
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <K, V, T extends Map<K, V>> T empty(Class<?> mapClass) {
@@ -1400,7 +1401,7 @@ public class MapUtil {
 	 * @param map  {@link Map}
 	 * @param keys 键列表
 	 * @return 值列表
-	 * @since 5.7.20
+	 * 
 	 */
 	public static <K, V> ArrayList<V> valuesOfKeys(Map<K, V> map, Iterator<K> keys) {
 		final ArrayList<V> values = new ArrayList<>();
@@ -1419,7 +1420,7 @@ public class MapUtil {
 	 * @param <K>   键类型
 	 * @param <V>   值类型
 	 * @return {@link AbstractMap.SimpleImmutableEntry}
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <K, V> Entry<K, V> entry(K key, V value) {
 		return entry(key, value, true);
@@ -1434,7 +1435,7 @@ public class MapUtil {
 	 * @param <V>         值类型
 	 * @param isImmutable 是否不可变Entry
 	 * @return {@link AbstractMap.SimpleEntry} 或者 {@link AbstractMap.SimpleImmutableEntry}
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <K, V> Entry<K, V> entry(K key, V value, boolean isImmutable) {
 		return isImmutable ?

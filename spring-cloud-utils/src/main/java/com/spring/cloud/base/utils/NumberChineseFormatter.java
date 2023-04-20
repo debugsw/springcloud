@@ -63,7 +63,7 @@ public class NumberChineseFormatter {
 	 * @param unitName         单位名称 如：元、圆
 	 * @return java.lang.String
 	 * @author machuanpeng
-	 * @since 5.7.23
+	 *
 	 */
 	public static String format(double amount, boolean isUseTraditional, boolean isMoneyMode, String negativeName, String unitName) {
 		if (0 == amount) {
@@ -150,7 +150,6 @@ public class NumberChineseFormatter {
 	 * @param amount           数字
 	 * @param isUseTraditional 是否使用繁体
 	 * @return 中文
-	 * @since 5.7.17
 	 */
 	public static String format(long amount, boolean isUseTraditional) {
 		if (0 == amount) {
@@ -199,7 +198,7 @@ public class NumberChineseFormatter {
 	 * @param amount           数字
 	 * @param isUseTraditional 是否使用繁体
 	 * @return 中文
-	 * @since 5.7.17
+	 * 
 	 */
 	public static String formatThousand(int amount, boolean isUseTraditional) {
 		Assert.checkBetween(amount, -999, 999, "Number support only: (-999 ~ 999)！");
@@ -218,7 +217,7 @@ public class NumberChineseFormatter {
 	 * @param c                数字字符
 	 * @param isUseTraditional 是否繁体
 	 * @return 中文字符
-	 * @since 5.3.9
+	 * 
 	 */
 	public static String numberCharToChinese(char c, boolean isUseTraditional) {
 		if (c < '0' || c > '9') {
@@ -438,7 +437,7 @@ public class NumberChineseFormatter {
 	 *
 	 * @param chinese 中文字符
 	 * @return 数字
-	 * @since 5.6.0
+	 * 
 	 */
 	public static int chineseToNumber(String chinese) {
 		final int length = chinese.length();
@@ -520,7 +519,7 @@ public class NumberChineseFormatter {
 	 *
 	 * @param chinese 汉字数字，支持简体和繁体
 	 * @return 数字，-1表示未找到
-	 * @since 5.6.4
+	 * 
 	 */
 	private static int chineseToNumber(char chinese) {
 		if ('两' == chinese) {
@@ -566,7 +565,7 @@ public class NumberChineseFormatter {
 	 * 权位
 	 *
 	 * @author totalo
-	 * @since 5.6.0
+	 * 
 	 */
 	private static class ChineseUnit {
 		/**

@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.map.MapUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -79,7 +79,7 @@ public class Assert {
 	 * @param expression    布尔值
 	 * @param errorSupplier 指定断言不通过时抛出的异常
 	 * @throws X if expression is {@code false}
-	 * @since 5.4.5
+	 *
 	 */
 	public static <X extends Throwable> void isFalse(boolean expression, Supplier<X> errorSupplier) throws X {
 		if (expression) {
@@ -131,7 +131,7 @@ public class Assert {
 	 * @param object        被检查的对象
 	 * @param errorSupplier 错误抛出异常附带的消息生产接口
 	 * @throws X if the object is not {@code null}
-	 * @since 5.4.5
+	 *
 	 */
 	public static <X extends Throwable> void isNull(Object object, Supplier<X> errorSupplier) throws X {
 		if (null != object) {
@@ -187,7 +187,7 @@ public class Assert {
 	 * @param errorSupplier 错误抛出异常附带的消息生产接口
 	 * @return 被检查后的对象
 	 * @throws X if the object is {@code null}
-	 * @since 5.4.5
+	 *
 	 */
 	public static <T, X extends Throwable> T notNull(T object, Supplier<X> errorSupplier) throws X {
 		if (null == object) {
@@ -248,7 +248,7 @@ public class Assert {
 	 * @return 非空字符串
 	 * @throws X 被检查字符串为空抛出此异常
 	 * @see StrUtil#isNotEmpty(CharSequence)
-	 * @since 5.4.5
+	 *
 	 */
 	public static <T extends CharSequence, X extends Throwable> T notEmpty(T text, Supplier<X> errorSupplier) throws X {
 		if (StrUtil.isEmpty(text)) {
@@ -372,7 +372,7 @@ public class Assert {
 	 * @return 被检查的子串
 	 * @throws X 非子串抛出异常
 	 * @see StrUtil#contains(CharSequence, CharSequence)
-	 * @since 5.4.5
+	 *
 	 */
 	public static <T extends CharSequence, X extends Throwable> T notContain(CharSequence textToSearch, T substring, Supplier<X> errorSupplier) throws X {
 		if (StrUtil.contains(textToSearch, substring)) {
@@ -433,7 +433,7 @@ public class Assert {
 	 * @return 被检查的数组
 	 * @throws X if the object array is {@code null} or has no elements
 	 * @see ArrayUtil#isNotEmpty(Object[])
-	 * @since 5.4.5
+	 *
 	 */
 	public static <T, X extends Throwable> T[] notEmpty(T[] array, Supplier<X> errorSupplier) throws X {
 		if (ArrayUtil.isEmpty(array)) {
@@ -493,7 +493,7 @@ public class Assert {
 	 * @return 被检查的数组
 	 * @throws X if the object array contains a {@code null} element
 	 * @see ArrayUtil#hasNull(Object[])
-	 * @since 5.4.5
+	 *
 	 */
 	public static <T, X extends Throwable> T[] noNullElements(T[] array, Supplier<X> errorSupplier) throws X {
 		if (ArrayUtil.hasNull(array)) {
@@ -554,7 +554,7 @@ public class Assert {
 	 * @return 非空集合
 	 * @throws X if the collection is {@code null} or has no elements
 	 * @see CollUtil#isNotEmpty(Iterable)
-	 * @since 5.4.5
+	 *
 	 */
 	public static <E, T extends Iterable<E>, X extends Throwable> T notEmpty(T collection, Supplier<X> errorSupplier) throws X {
 		if (CollUtil.isEmpty(collection)) {
@@ -618,7 +618,7 @@ public class Assert {
 	 * @return 被检查的Map
 	 * @throws X if the map is {@code null} or has no entries
 	 * @see MapUtil#isNotEmpty(Map)
-	 * @since 5.4.5
+	 *
 	 */
 	public static <K, V, T extends Map<K, V>, X extends Throwable> T notEmpty(T map, Supplier<X> errorSupplier) throws X {
 		if (MapUtil.isEmpty(map)) {
@@ -806,7 +806,7 @@ public class Assert {
 	 * @return 检查后的下标
 	 * @throws IllegalArgumentException  如果size &lt; 0 抛出此异常
 	 * @throws IndexOutOfBoundsException 如果index &lt; 0或者 index &ge; size 抛出此异常
-	 * @since 4.1.9
+	 *
 	 */
 	public static int checkIndex(int index, int size) throws IllegalArgumentException, IndexOutOfBoundsException {
 		return checkIndex(index, size, "[Assertion failed]");
@@ -826,7 +826,7 @@ public class Assert {
 	 * @return 检查后的下标
 	 * @throws IllegalArgumentException  如果size &lt; 0 抛出此异常
 	 * @throws IndexOutOfBoundsException 如果index &lt; 0或者 index &ge; size 抛出此异常
-	 * @since 4.1.9
+	 *
 	 */
 	public static int checkIndex(int index, int size, String errorMsgTemplate, Object... params) throws IllegalArgumentException, IndexOutOfBoundsException {
 		if (index < 0 || index >= size) {
@@ -845,7 +845,6 @@ public class Assert {
 	 * @param errorSupplier 错误抛出异常附带的消息生产接口
 	 * @return 经过检查后的值
 	 * @throws X if value is out of bound
-	 * @since 5.7.15
 	 */
 	public static <X extends Throwable> int checkBetween(int value, int min, int max, Supplier<? extends X> errorSupplier) throws X {
 		if (value < min || value > max) {
@@ -864,7 +863,6 @@ public class Assert {
 	 * @param errorMsgTemplate 异常信息模板，类似于"aa{}bb{}cc"
 	 * @param params           异常信息参数，用于替换"{}"占位符
 	 * @return 经过检查后的值
-	 * @since 5.7.15
 	 */
 	public static int checkBetween(int value, int min, int max, String errorMsgTemplate, Object... params) {
 		return checkBetween(value, min, max, () -> new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params)));
@@ -877,7 +875,6 @@ public class Assert {
 	 * @param min   最小值（包含）
 	 * @param max   最大值（包含）
 	 * @return 检查后的长度值
-	 * @since 4.1.10
 	 */
 	public static int checkBetween(int value, int min, int max) {
 		return checkBetween(value, min, max, TEMPLATE_VALUE_MUST_BE_BETWEEN_AND, min, max);
@@ -893,7 +890,6 @@ public class Assert {
 	 * @param errorSupplier 错误抛出异常附带的消息生产接口
 	 * @return 经过检查后的值
 	 * @throws X if value is out of bound
-	 * @since 5.7.15
 	 */
 	public static <X extends Throwable> long checkBetween(long value, long min, long max, Supplier<? extends X> errorSupplier) throws X {
 		if (value < min || value > max) {
@@ -912,7 +908,6 @@ public class Assert {
 	 * @param errorMsgTemplate 异常信息模板，类似于"aa{}bb{}cc"
 	 * @param params           异常信息参数，用于替换"{}"占位符
 	 * @return 经过检查后的值
-	 * @since 5.7.15
 	 */
 	public static long checkBetween(long value, long min, long max, String errorMsgTemplate, Object... params) {
 		return checkBetween(value, min, max, () -> new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params)));
@@ -925,7 +920,6 @@ public class Assert {
 	 * @param min   最小值（包含）
 	 * @param max   最大值（包含）
 	 * @return 检查后的长度值
-	 * @since 4.1.10
 	 */
 	public static long checkBetween(long value, long min, long max) {
 		return checkBetween(value, min, max, TEMPLATE_VALUE_MUST_BE_BETWEEN_AND, min, max);
@@ -941,7 +935,6 @@ public class Assert {
 	 * @param errorSupplier 错误抛出异常附带的消息生产接口
 	 * @return 经过检查后的值
 	 * @throws X if value is out of bound
-	 * @since 5.7.15
 	 */
 	public static <X extends Throwable> double checkBetween(double value, double min, double max, Supplier<? extends X> errorSupplier) throws X {
 		if (value < min || value > max) {
@@ -960,7 +953,6 @@ public class Assert {
 	 * @param errorMsgTemplate 异常信息模板，类似于"aa{}bb{}cc"
 	 * @param params           异常信息参数，用于替换"{}"占位符
 	 * @return 经过检查后的值
-	 * @since 5.7.15
 	 */
 	public static double checkBetween(double value, double min, double max, String errorMsgTemplate, Object... params) {
 		return checkBetween(value, min, max, () -> new IllegalArgumentException(StrUtil.format(errorMsgTemplate, params)));
@@ -973,7 +965,6 @@ public class Assert {
 	 * @param min   最小值（包含）
 	 * @param max   最大值（包含）
 	 * @return 检查后的长度值
-	 * @since 4.1.10
 	 */
 	public static double checkBetween(double value, double min, double max) {
 		return checkBetween(value, min, max, TEMPLATE_VALUE_MUST_BE_BETWEEN_AND, min, max);
@@ -986,7 +977,6 @@ public class Assert {
 	 * @param min   最小值（包含）
 	 * @param max   最大值（包含）
 	 * @return 检查后的长度值
-	 * @since 4.1.10
 	 */
 	public static Number checkBetween(Number value, Number min, Number max) {
 		notNull(value);

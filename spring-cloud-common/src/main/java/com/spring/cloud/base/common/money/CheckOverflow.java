@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * 检查数学运算中的溢出
  *
- * @author lijian  from google guava-libraries
+ * @author ls
  * @version 2022/02/13
  */
 

@@ -76,7 +76,6 @@ public enum Week {
 	 * 获取ISO8601规范的int值，from 1 (Monday) to 7 (Sunday).
 	 *
 	 * @return ISO8601规范的int值
-	 * @since 5.8.0
 	 */
 	public int getIso8601Value() {
 		int iso8601IntValue = getValue() - 1;
@@ -90,7 +89,6 @@ public enum Week {
 	 * 转换为中文名
 	 *
 	 * @return 星期的中文名
-	 * @since 3.3.0
 	 */
 	public String toChinese() {
 		return toChinese("星期");
@@ -101,7 +99,7 @@ public enum Week {
 	 *
 	 * @param weekNamePre 表示星期的前缀，例如前缀为“星期”，则返回结果为“星期一”；前缀为”周“，结果为“周一”
 	 * @return 星期的中文名
-	 * @since 4.0.11
+	 * 
 	 */
 	public String toChinese(String weekNamePre) {
 		switch (this) {
@@ -128,7 +126,7 @@ public enum Week {
 	 * 转换为{@link DayOfWeek}
 	 *
 	 * @return {@link DayOfWeek}
-	 * @since 5.8.0
+	 * 
 	 */
 	public DayOfWeek toJdkDayOfWeek() {
 		return DayOfWeek.of(getIso8601Value());
@@ -160,7 +158,7 @@ public enum Week {
 	 * @param name 别名值
 	 * @return 周枚举Week，非空
 	 * @throws IllegalArgumentException 如果别名无对应的枚举，抛出此异常
-	 * @since 5.8.0
+	 * 
 	 */
 	public static Week of(String name) throws IllegalArgumentException {
 		Assert.notBlank(name);
@@ -183,7 +181,7 @@ public enum Week {
 	 * @see #THURSDAY
 	 * @see #FRIDAY
 	 * @see #SATURDAY
-	 * @since 5.7.14
+	 * 
 	 */
 	public static Week of(DayOfWeek dayOfWeek) {
 		Assert.notNull(dayOfWeek);

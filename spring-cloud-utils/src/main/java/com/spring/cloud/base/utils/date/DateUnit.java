@@ -50,7 +50,6 @@ public enum DateUnit {
 	 * 单位兼容转换，将DateUnit转换为对应的{@link ChronoUnit}
 	 *
 	 * @return {@link ChronoUnit}
-	 * @since 5.4.5
 	 */
 	public ChronoUnit toChronoUnit() {
 		return DateUnit.toChronoUnit(this);
@@ -61,7 +60,6 @@ public enum DateUnit {
 	 *
 	 * @param unit {@link ChronoUnit}
 	 * @return DateUnit，null表示不支持此单位
-	 * @since 5.4.5
 	 */
 	public static DateUnit of(ChronoUnit unit) {
 		switch (unit) {
@@ -86,7 +84,7 @@ public enum DateUnit {
 	 *
 	 * @param unit DateUnit
 	 * @return {@link ChronoUnit}
-	 * @since 5.4.5
+	 * 
 	 */
 	public static ChronoUnit toChronoUnit(DateUnit unit) {
 		switch (unit) {

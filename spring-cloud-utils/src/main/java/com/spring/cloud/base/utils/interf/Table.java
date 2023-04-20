@@ -100,7 +100,6 @@ public interface Table<R, C, V> extends Iterable<Table.Cell<R, C, V>> {
 	 * 返回所有列的key，列的key如果实现Map是可重复key，则返回对应不去重的List。
 	 *
 	 * @return 列set
-	 * @since 5.8.0
 	 */
 	default List<C> columnKeys() {
 		final Map<C, Map<R, V>> columnMap = columnMap();

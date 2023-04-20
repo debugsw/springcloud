@@ -5,7 +5,10 @@ import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.interf.LineHandler;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.util.Stack;
 import java.util.concurrent.*;
@@ -211,7 +214,6 @@ public class Tailer implements Serializable {
 	 * 命令行打印的行处理器
 	 *
 	 * @author looly
-	 * @since 4.5.2
 	 */
 	public static class ConsoleLineHandler implements LineHandler {
 		@Override

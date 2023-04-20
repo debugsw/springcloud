@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.IdcardUtil;
+import com.spring.cloud.base.utils.IdCardUtil;
 import com.spring.cloud.base.utils.PatternPool;
 import com.spring.cloud.base.utils.ReUtil;
 import com.spring.cloud.base.utils.date.DateUtil;
@@ -103,7 +103,6 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否为<code>true</code>
-	 * @since 4.4.5
 	 */
 	public static boolean isTrue(boolean value) {
 		return value;
@@ -114,7 +113,6 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否不为<code>false</code>
-	 * @since 4.4.5
 	 */
 	public static boolean isFalse(boolean value) {
 		return false == value;
@@ -149,7 +147,6 @@ public class Validator {
 	 * @param params           模板中变量替换后的值
 	 * @return 检查过后的值
 	 * @throws ValidateException 检查不满足条件抛出的异常
-	 * @since 4.4.5
 	 */
 	public static <T> T validateNull(T value, String errorMsgTemplate, Object... params) throws ValidateException {
 		if (isNotNull(value)) {
@@ -436,7 +433,7 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否全部为字母组成，包括大写和小写字母和汉字
-	 * @since 3.3.0
+	 * 
 	 */
 	public static boolean isLetter(CharSequence value) {
 		return StrUtil.isAllCharMatch(value, Character::isLetter);
@@ -450,7 +447,7 @@ public class Validator {
 	 * @param errorMsg 验证错误的信息
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
-	 * @since 3.3.0
+	 * 
 	 */
 	public static <T extends CharSequence> T validateLetter(T value, String errorMsg) throws ValidateException {
 		if (false == isLetter(value)) {
@@ -464,7 +461,7 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否全部为大写字母
-	 * @since 3.3.0
+	 * 
 	 */
 	public static boolean isUpperCase(CharSequence value) {
 		return StrUtil.isAllCharMatch(value, Character::isUpperCase);
@@ -478,7 +475,7 @@ public class Validator {
 	 * @param errorMsg 验证错误的信息
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
-	 * @since 3.3.0
+	 * 
 	 */
 	public static <T extends CharSequence> T validateUpperCase(T value, String errorMsg) throws ValidateException {
 		if (false == isUpperCase(value)) {
@@ -492,7 +489,7 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否全部为小写字母
-	 * @since 3.3.0
+	 * 
 	 */
 	public static boolean isLowerCase(CharSequence value) {
 		return StrUtil.isAllCharMatch(value, Character::isLowerCase);
@@ -506,7 +503,7 @@ public class Validator {
 	 * @param errorMsg 验证错误的信息
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
-	 * @since 3.3.0
+	 * 
 	 */
 	public static <T extends CharSequence> T validateLowerCase(T value, String errorMsg) throws ValidateException {
 		if (false == isLowerCase(value)) {
@@ -530,7 +527,7 @@ public class Validator {
 	 *
 	 * @param value 当前字符串
 	 * @return boolean 是否存在数字
-	 * @since 5.6.5
+	 * 
 	 */
 	public static boolean hasNumber(CharSequence value) {
 		return ReUtil.contains(PatternPool.NUMBERS, value);
@@ -556,7 +553,7 @@ public class Validator {
 	 *
 	 * @param value 字符串内容
 	 * @return 是否是字母（包括大写和小写字母）
-	 * @since 4.1.8
+	 * 
 	 */
 	public static boolean isWord(CharSequence value) {
 		return isMatchRegex(PatternPool.WORD, value);
@@ -570,7 +567,7 @@ public class Validator {
 	 * @param errorMsg 验证错误的信息
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
-	 * @since 4.1.8
+	 * 
 	 */
 	public static <T extends CharSequence> T validateWord(T value, String errorMsg) throws ValidateException {
 		if (false == isWord(value)) {
@@ -691,7 +688,7 @@ public class Validator {
 	 * @return 是否为有效身份证号码
 	 */
 	public static boolean isCitizenId(CharSequence value) {
-		return IdcardUtil.isValidCard(String.valueOf(value));
+		return IdCardUtil.isValidCard(String.valueOf(value));
 	}
 
 	/**
@@ -843,7 +840,7 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否为MAC地址
-	 * @since 4.1.3
+	 * 
 	 */
 	public static boolean isMac(CharSequence value) {
 		return isMatchRegex(PatternPool.MAC_ADDRESS, value);
@@ -857,7 +854,7 @@ public class Validator {
 	 * @param errorMsg 验证错误的信息
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
-	 * @since 4.1.3
+	 * 
 	 */
 	public static <T extends CharSequence> T validateMac(T value, String errorMsg) throws ValidateException {
 		if (false == isMac(value)) {
@@ -871,7 +868,7 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否为中国车牌号
-	 * @since 3.0.6
+	 * 
 	 */
 	public static boolean isPlateNumber(CharSequence value) {
 		return isMatchRegex(PLATE_NUMBER, value);
@@ -885,7 +882,7 @@ public class Validator {
 	 * @param errorMsg 验证错误的信息
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
-	 * @since 3.0.6
+	 * 
 	 */
 	public static <T extends CharSequence> T validatePlateNumber(T value, String errorMsg) throws ValidateException {
 		if (false == isPlateNumber(value)) {
@@ -943,7 +940,7 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否包含汉字
-	 * @since 5.2.1
+	 * 
 	 */
 	public static boolean hasChinese(CharSequence value) {
 		return ReUtil.contains(ReUtil.RE_CHINESES, value);
@@ -1024,7 +1021,7 @@ public class Validator {
 	 *
 	 * @param value 值
 	 * @return 是否为Hex（16进制）字符串
-	 * @since 4.3.3
+	 * 
 	 */
 	public static boolean isHex(CharSequence value) {
 		return isMatchRegex(PatternPool.HEX, value);
@@ -1038,7 +1035,7 @@ public class Validator {
 	 * @param errorMsg 验证错误的信息
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
-	 * @since 4.3.3
+	 * 
 	 */
 	public static <T extends CharSequence> T validateHex(T value, String errorMsg) throws ValidateException {
 		if (false == isHex(value)) {
@@ -1054,7 +1051,7 @@ public class Validator {
 	 * @param min   最小值（包含）
 	 * @param max   最大值（包含）
 	 * @return 是否满足
-	 * @since 4.1.10
+	 * 
 	 */
 	public static boolean isBetween(Number value, Number min, Number max) {
 		Assert.notNull(value);
@@ -1072,7 +1069,7 @@ public class Validator {
 	 * @param max      最大值（包含）
 	 * @param errorMsg 验证错误的信息
 	 * @throws ValidateException 验证异常
-	 * @since 4.1.10
+	 * 
 	 */
 	public static void validateBetween(Number value, Number min, Number max, String errorMsg) throws ValidateException {
 		if (false == isBetween(value, min, max)) {
@@ -1086,7 +1083,7 @@ public class Validator {
 	 * @param value 值，17位车架号；形如：LSJA24U62JG269225、LDC613P23A1305189
 	 * @return 是否为车架号
 	 * @author dazer and ourslook
-	 * @since 5.6.3
+	 * 
 	 */
 	public static boolean isCarVin(CharSequence value) {
 		return isMatchRegex(CAR_VIN, value);
@@ -1101,7 +1098,7 @@ public class Validator {
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
 	 * @author dazer and ourslook
-	 * @since 5.6.3
+	 * 
 	 */
 	public static <T extends CharSequence> T validateCarVin(T value, String errorMsg) throws ValidateException {
 		if (false == isCarVin(value)) {
@@ -1117,7 +1114,7 @@ public class Validator {
 	 * @param value 值，12位数字字符串,eg:430101758218
 	 * @return 是否为档案编号
 	 * @author dazer and ourslook
-	 * @since 5.6.3
+	 * 
 	 */
 	public static boolean isCarDrivingLicence(CharSequence value) {
 		return isMatchRegex(CAR_DRIVING_LICENCE, value);
@@ -1152,7 +1149,7 @@ public class Validator {
 	 * @param value 中文姓名
 	 * @return 是否是正确的中文姓名
 	 * @author dazer
-	 * @since 5.8.0.M3
+	 * 
 	 */
 	public static boolean isChineseName(CharSequence value) {
 		return isMatchRegex(PatternPool.CHINESE_NAME, value);
@@ -1168,7 +1165,7 @@ public class Validator {
 	 * @return 验证后的值
 	 * @throws ValidateException 验证异常
 	 * @author dazer and ourslook
-	 * @since 5.6.3
+	 * 
 	 */
 	public static <T extends CharSequence> T validateCarDrivingLicence(T value, String errorMsg) throws ValidateException {
 		if (false == isCarDrivingLicence(value)) {

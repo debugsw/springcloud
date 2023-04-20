@@ -42,7 +42,7 @@ public interface AsymmetricEncryptor {
 	 * @param data    被加密的bytes
 	 * @param keyType 私钥或公钥 {@link KeyType}
 	 * @return Base64字符串
-	 * @since 4.0.1
+	 * 
 	 */
 	default String encryptBase64(byte[] data, KeyType keyType) {
 		return Base64.encode(encrypt(data, keyType));
@@ -89,7 +89,7 @@ public interface AsymmetricEncryptor {
 	 * @param data    被加密的字符串
 	 * @param keyType 私钥或公钥 {@link KeyType}
 	 * @return Hex字符串
-	 * @since 4.0.1
+	 * 
 	 */
 	default String encryptHex(String data, KeyType keyType) {
 		return HexUtil.encodeHexStr(encrypt(data, keyType));
@@ -102,7 +102,7 @@ public interface AsymmetricEncryptor {
 	 * @param charset 编码
 	 * @param keyType 私钥或公钥 {@link KeyType}
 	 * @return Hex字符串
-	 * @since 4.0.1
+	 * 
 	 */
 	default String encryptHex(String data, Charset charset, KeyType keyType) {
 		return HexUtil.encodeHexStr(encrypt(data, charset, keyType));
@@ -114,7 +114,7 @@ public interface AsymmetricEncryptor {
 	 * @param data    被加密的字符串
 	 * @param keyType 私钥或公钥 {@link KeyType}
 	 * @return Base64字符串
-	 * @since 4.0.1
+	 * 
 	 */
 	default String encryptBase64(String data, KeyType keyType) {
 		return Base64.encode(encrypt(data, keyType));
@@ -127,7 +127,7 @@ public interface AsymmetricEncryptor {
 	 * @param charset 编码
 	 * @param keyType 私钥或公钥 {@link KeyType}
 	 * @return Base64字符串
-	 * @since 4.0.1
+	 * 
 	 */
 	default String encryptBase64(String data, Charset charset, KeyType keyType) {
 		return Base64.encode(encrypt(data, charset, keyType));
@@ -151,7 +151,7 @@ public interface AsymmetricEncryptor {
 	 * @param data    被加密的数据流
 	 * @param keyType 私钥或公钥 {@link KeyType}
 	 * @return Hex字符串
-	 * @since 4.0.1
+	 * 
 	 */
 	default String encryptHex(InputStream data, KeyType keyType) {
 		return HexUtil.encodeHexStr(encrypt(data, keyType));
@@ -163,7 +163,7 @@ public interface AsymmetricEncryptor {
 	 * @param data    被加密的数据流
 	 * @param keyType 私钥或公钥 {@link KeyType}
 	 * @return Base64字符串
-	 * @since 4.0.1
+	 * 
 	 */
 	default String encryptBase64(InputStream data, KeyType keyType) {
 		return Base64.encode(encrypt(data, keyType));

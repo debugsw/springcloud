@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.base.Base16Codec;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.awt.*;
 import java.math.BigInteger;
@@ -41,8 +41,6 @@ public class HexUtil {
 		}
 		return true;
 	}
-
-	// ---------------------------------------------------------------------------------------------------- encode
 
 	/**
 	 * 将字节数组转换为十六进制字符数组
@@ -118,8 +116,6 @@ public class HexUtil {
 		return new String(encodeHex(data, toLowerCase));
 	}
 
-	// ---------------------------------------------------------------------------------------------------- decode
-
 	/**
 	 * 将十六进制字符数组转换为字符串，默认编码UTF-8
 	 *
@@ -182,20 +178,16 @@ public class HexUtil {
 	 * @param hexData 十六进制字符串
 	 * @return byte[]
 	 * @throws UtilException 如果源十六进制字符数组是一个奇怪的长度，将抛出运行时异常
-	 * @since 5.6.6
 	 */
 	public static byte[] decodeHex(CharSequence hexData) {
 		return Base16Codec.CODEC_LOWER.decode(hexData);
 	}
-
-	// ---------------------------------------------------------------------------------------- Color
 
 	/**
 	 * 将{@link Color}编码为Hex形式
 	 *
 	 * @param color {@link Color}
 	 * @return Hex字符串
-	 * @since 3.0.8
 	 */
 	public static String encodeColor(Color color) {
 		return encodeColor(color, "#");
@@ -207,7 +199,6 @@ public class HexUtil {
 	 * @param color  {@link Color}
 	 * @param prefix 前缀字符串，可以是#、0x等
 	 * @return Hex字符串
-	 * @since 3.0.8
 	 */
 	public static String encodeColor(Color color, String prefix) {
 		final StringBuilder builder = new StringBuilder(prefix);
@@ -235,7 +226,6 @@ public class HexUtil {
 	 *
 	 * @param hexColor 16进制颜色值，可以以#开头，也可以用0x开头
 	 * @return {@link Color}
-	 * @since 3.0.8
 	 */
 	public static Color decodeColor(String hexColor) {
 		return Color.decode(hexColor);
@@ -267,16 +257,10 @@ public class HexUtil {
 	}
 
 	/**
-	 * 将指定char值转换为Unicode字符串形式，常用于特殊字符（例如汉字）转Unicode形式<br>
-	 * 转换的字符串如果u后不足4位，则前面用0填充，例如：
-	 *
-	 * <pre>
-	 * '你' =》'\u4f60'
-	 * </pre>
+	 * 将指定char值转换为Unicode字符串形式，常用于特殊字符（例如汉字）转Unicode形式
 	 *
 	 * @param ch char值
 	 * @return Unicode表现形式
-	 * @since 4.0.1
 	 */
 	public static String toUnicodeHex(char ch) {
 		return Base16Codec.CODEC_LOWER.toUnicodeHex(ch);
@@ -287,7 +271,7 @@ public class HexUtil {
 	 *
 	 * @param value int值
 	 * @return 16进制字符串
-	 * @since 4.4.1
+	 * 
 	 */
 	public static String toHex(int value) {
 		return Integer.toHexString(value);
@@ -298,7 +282,7 @@ public class HexUtil {
 	 *
 	 * @param value 16进制字符串
 	 * @return 16进制字符串int值
-	 * @since 5.7.4
+	 * 
 	 */
 	public static int hexToInt(String value) {
 		return Integer.parseInt(value, 16);
@@ -309,7 +293,7 @@ public class HexUtil {
 	 *
 	 * @param value int值
 	 * @return 16进制字符串
-	 * @since 4.4.1
+	 * 
 	 */
 	public static String toHex(long value) {
 		return Long.toHexString(value);
@@ -320,7 +304,7 @@ public class HexUtil {
 	 *
 	 * @param value 16进制字符串
 	 * @return long值
-	 * @since 5.7.4
+	 * 
 	 */
 	public static long hexToLong(String value) {
 		return Long.parseLong(value, 16);
@@ -332,7 +316,7 @@ public class HexUtil {
 	 * @param builder     {@link StringBuilder}
 	 * @param b           byte
 	 * @param toLowerCase 是否使用小写
-	 * @since 4.4.1
+	 * 
 	 */
 	public static void appendHex(StringBuilder builder, byte b, boolean toLowerCase) {
 		(toLowerCase ? Base16Codec.CODEC_LOWER : Base16Codec.CODEC_UPPER).appendHex(builder, b);
@@ -343,7 +327,7 @@ public class HexUtil {
 	 *
 	 * @param hexStr Hex(16进制字符串)
 	 * @return {@link BigInteger}
-	 * @since 5.2.0
+	 * 
 	 */
 	public static BigInteger toBigInteger(String hexStr) {
 		if (null == hexStr) {
@@ -353,10 +337,7 @@ public class HexUtil {
 	}
 
 	/**
-	 * 格式化Hex字符串，结果为每2位加一个空格，类似于：
-	 * <pre>
-	 *     e8 8c 67 03 80 cb 22 00 95 26 8f
-	 * </pre>
+	 * 格式化Hex字符串，结果为每2位加一个空格
 	 *
 	 * @param hexStr Hex字符串
 	 * @return 格式化后的字符串

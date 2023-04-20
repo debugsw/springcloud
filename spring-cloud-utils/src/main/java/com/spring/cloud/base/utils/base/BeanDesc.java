@@ -152,7 +152,7 @@ public class BeanDesc implements Serializable {
 	 * @param field   字段
 	 * @param methods 类中所有的方法
 	 * @return {@link PropDesc}
-	 * @since 4.0.2
+	 *
 	 */
 	private PropDesc createProp(Field field, Method[] methods) {
 		final PropDesc prop = findProp(field, methods, false);

@@ -84,7 +84,6 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	 * @param algorithm  {@link SymmetricAlgorithm}
 	 * @param privateKey 私钥
 	 * @param publicKey  公钥
-	 * @since 3.1.1
 	 */
 	public AsymmetricCrypto(AsymmetricAlgorithm algorithm, PrivateKey privateKey, PublicKey publicKey) {
 		this(algorithm.getValue(), privateKey, publicKey);
@@ -126,7 +125,6 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	 * @param algorithm  算法
 	 * @param privateKey 私钥
 	 * @param publicKey  公钥
-	 * @since 3.1.1
 	 */
 	public AsymmetricCrypto(String algorithm, PrivateKey privateKey, PublicKey publicKey) {
 		super(algorithm, privateKey, publicKey);
@@ -173,7 +171,6 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	 * 在某些算法中，需要特别的参数，例如在ECIES中，此处为IESParameterSpec
 	 *
 	 * @return {@link AlgorithmParameterSpec}
-	 * @since 5.4.3
 	 */
 	public AlgorithmParameterSpec getAlgorithmParameterSpec() {
 		return this.cipherWrapper.getParams();
@@ -184,7 +181,7 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	 * 在某些算法中，需要特别的参数，例如在ECIES中，此处为IESParameterSpec
 	 *
 	 * @param algorithmParameterSpec {@link AlgorithmParameterSpec}
-	 * @since 5.4.3
+	 * 
 	 */
 	public void setAlgorithmParameterSpec(AlgorithmParameterSpec algorithmParameterSpec) {
 		this.cipherWrapper.setParams(algorithmParameterSpec);
@@ -195,7 +192,7 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	 *
 	 * @param random 随机数生成器，可自定义随机数种子
 	 * @return this
-	 * @since 5.7.17
+	 * 
 	 */
 	public AsymmetricCrypto setRandom(SecureRandom random) {
 		this.cipherWrapper.setRandom(random);
@@ -259,7 +256,7 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	 * 获得加密或解密器
 	 *
 	 * @return 加密或解密
-	 * @since 5.4.3
+	 * 
 	 */
 	public Cipher getCipher() {
 		return this.cipherWrapper.getCipher();
@@ -268,7 +265,7 @@ public class AsymmetricCrypto extends AbstractAsymmetricCrypto<AsymmetricCrypto>
 	/**
 	 * 初始化{@link Cipher}，默认尝试加载BC库
 	 *
-	 * @since 4.5.2
+	 * 
 	 */
 	protected void initCipher() {
 		this.cipherWrapper = new CipherWrapper(this.algorithm);

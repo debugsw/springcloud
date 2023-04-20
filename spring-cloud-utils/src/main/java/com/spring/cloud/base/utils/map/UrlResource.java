@@ -23,13 +23,11 @@ public class UrlResource implements Resource, Serializable {
 	private long lastModified = 0;
 	protected String name;
 
-	//-------------------------------------------------------------------------------------- Constructor start
 
 	/**
 	 * 构造
 	 *
 	 * @param uri URI
-	 * @since 5.7.21
 	 */
 	public UrlResource(URI uri) {
 		this(URLUtil.url(uri), null);
@@ -68,7 +66,6 @@ public class UrlResource implements Resource, Serializable {
 	public UrlResource(File file) {
 		this.url = URLUtil.getURL(file);
 	}
-	//-------------------------------------------------------------------------------------- Constructor end
 
 	@Override
 	public String getName() {

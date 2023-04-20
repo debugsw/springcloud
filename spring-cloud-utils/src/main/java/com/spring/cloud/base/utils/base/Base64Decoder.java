@@ -128,7 +128,6 @@ public class Base64Decoder {
 	 *
 	 * @param octet 被检查的字符
 	 * @return 是否为Base64字符
-	 * @since 5.7.5
 	 */
 	public static boolean isBase64Code(byte octet) {
 		return octet == '=' || (octet >= 0 && octet < DECODE_TABLE.length && DECODE_TABLE[octet] != -1);

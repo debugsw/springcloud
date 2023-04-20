@@ -2,8 +2,8 @@ package com.spring.cloud.base.utils.exception;
 
 import com.spring.cloud.base.utils.ArrayUtil;
 import com.spring.cloud.base.utils.FastByteArrayOutputStream;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.map.MapUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
@@ -63,7 +63,6 @@ public class ExceptionUtil {
 	 *
 	 * @param message 异常消息
 	 * @return 运行时异常
-	 * @since 5.5.2
 	 */
 	public static RuntimeException wrapRuntime(String message) {
 		return new RuntimeException(message);
@@ -89,7 +88,6 @@ public class ExceptionUtil {
 	 * 将消息包装为运行时异常并抛出
 	 *
 	 * @param message 异常消息
-	 * @since 5.5.2
 	 */
 	public static void wrapRuntimeAndThrow(String message) {
 		throw new RuntimeException(message);
@@ -129,7 +127,6 @@ public class ExceptionUtil {
 	 *
 	 * @param i 层数
 	 * @return 指定层的堆栈信息
-	 * @since 4.1.4
 	 */
 	public static StackTraceElement getStackElement(int i) {
 		return Thread.currentThread().getStackTrace()[i];
@@ -139,7 +136,6 @@ public class ExceptionUtil {
 	 * 获取入口堆栈信息
 	 *
 	 * @return 入口堆栈信息
-	 * @since 4.1.4
 	 */
 	public static StackTraceElement getRootStackElement() {
 		final StackTraceElement[] stackElements = Thread.currentThread().getStackTrace();
@@ -239,7 +235,6 @@ public class ExceptionUtil {
 	 * @param throwable    异常
 	 * @param causeClasses 定义的引起异常的类
 	 * @return 是否由指定异常类引起
-	 * @since 4.1.13
 	 */
 	@SuppressWarnings("unchecked")
 	public static boolean isCausedBy(Throwable throwable, Class<? extends Exception>... causeClasses) {
@@ -252,7 +247,6 @@ public class ExceptionUtil {
 	 * @param throwable    异常
 	 * @param causeClasses 定义的引起异常的类
 	 * @return 是否由指定异常类引起
-	 * @since 4.1.13
 	 */
 	@SuppressWarnings("unchecked")
 	public static Throwable getCausedBy(Throwable throwable, Class<? extends Exception>... causeClasses) {
@@ -274,7 +268,6 @@ public class ExceptionUtil {
 	 * @param throwable      异常
 	 * @param exceptionClass 定义的引起异常的类
 	 * @return true 来自或者包含
-	 * @since 4.3.2
 	 */
 	public static boolean isFromOrSuppressedThrowable(Throwable throwable, Class<? extends Throwable> exceptionClass) {
 		return convertFromOrSuppressedThrowable(throwable, exceptionClass, true) != null;
@@ -287,7 +280,6 @@ public class ExceptionUtil {
 	 * @param exceptionClass 定义的引起异常的类
 	 * @param checkCause     判断cause
 	 * @return true 来自或者包含
-	 * @since 4.4.1
 	 */
 	public static boolean isFromOrSuppressedThrowable(Throwable throwable, Class<? extends Throwable> exceptionClass, boolean checkCause) {
 		return convertFromOrSuppressedThrowable(throwable, exceptionClass, checkCause) != null;
@@ -300,7 +292,6 @@ public class ExceptionUtil {
 	 * @param throwable      异常
 	 * @param exceptionClass 定义的引起异常的类
 	 * @return 结果为null 不是来自或者包含
-	 * @since 4.3.2
 	 */
 	public static <T extends Throwable> T convertFromOrSuppressedThrowable(Throwable throwable, Class<T> exceptionClass) {
 		return convertFromOrSuppressedThrowable(throwable, exceptionClass, true);
@@ -314,7 +305,7 @@ public class ExceptionUtil {
 	 * @param exceptionClass 定义的引起异常的类
 	 * @param checkCause     判断cause
 	 * @return 结果为null 不是来自或者包含
-	 * @since 4.4.1
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T extends Throwable> T convertFromOrSuppressedThrowable(Throwable throwable, Class<T> exceptionClass, boolean checkCause) {
@@ -351,7 +342,7 @@ public class ExceptionUtil {
 	 *
 	 * @param throwable 异常对象，可以为null
 	 * @return 异常链中所有异常集合
-	 * @since 4.6.2
+	 * 
 	 */
 	public static List<Throwable> getThrowableList(Throwable throwable) {
 		final List<Throwable> list = new ArrayList<>();
@@ -384,7 +375,7 @@ public class ExceptionUtil {
 	 *
 	 * @param th 异常
 	 * @return 消息
-	 * @since 4.6.2
+	 * 
 	 */
 	public static String getRootCauseMessage(final Throwable th) {
 		return getMessage(getRootCause(th));

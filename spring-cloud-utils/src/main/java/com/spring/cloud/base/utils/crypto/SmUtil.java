@@ -85,7 +85,6 @@ public class SmUtil {
      * @param privateKey 私钥
      * @param publicKey  公钥
      * @return {@link SM2}
-     * @since 5.5.9
      */
     public static SM2 sm2(PrivateKey privateKey, PublicKey publicKey) {
         return new SM2(privateKey, publicKey);
@@ -99,7 +98,7 @@ public class SmUtil {
      * @param privateKeyParams 私钥参数
      * @param publicKeyParams  公钥参数
      * @return {@link SM2}
-     * @since 5.5.9
+     *
      */
     public static SM2 sm2(ECPrivateKeyParameters privateKeyParams, ECPublicKeyParameters publicKeyParams) {
         return new SM2(privateKeyParams, publicKeyParams);
@@ -122,7 +121,7 @@ public class SmUtil {
      *
      * @param salt 加密盐
      * @return {@link SM3}
-     * @since 5.7.16
+     *
      */
     public static SM3 sm3WithSalt(byte[] salt) {
         return new SM3(salt);
@@ -230,7 +229,7 @@ public class SmUtil {
      *
      * @param rsDer rs in asn1 format
      * @return sign result in plain byte array
-     * @since 4.5.0
+     *
      */
     public static byte[] rsAsn1ToPlain(byte[] rsDer) {
         final BigInteger[] decode;
@@ -251,7 +250,7 @@ public class SmUtil {
      *
      * @param key 密钥
      * @return {@link MacEngine}
-     * @since 4.5.13
+     *
      */
     public static MacEngine createHmacSm3Engine(byte[] key) {
         return new BCHMacEngine(new SM3Digest(), key);
@@ -262,7 +261,7 @@ public class SmUtil {
      *
      * @param key 密钥
      * @return {@link HMac} 对象，调用digestXXX即可
-     * @since 4.5.13
+     *
      */
     public static HMac hmacSm3(byte[] key) {
         return new HMac(HmacAlgorithm.HmacSM3, key);
@@ -273,7 +272,7 @@ public class SmUtil {
      *
      * @param rOrS {@link BigInteger}
      * @return 固定长度bytes
-     * @since 4.5.0
+     *
      */
     private static byte[] bigIntToFixedLengthBytes(BigInteger rOrS) {
         byte[] rs = rOrS.toByteArray();

@@ -32,7 +32,6 @@ public class ValidateObjectInputStream extends ObjectInputStream {
 	 * 禁止反序列化的类，用于反序列化验证
 	 *
 	 * @param refuseClasses 禁止反序列化的类
-	 * @since 5.3.5
 	 */
 	public void refuse(Class<?>... refuseClasses) {
 		if (null == this.blackClassSet) {

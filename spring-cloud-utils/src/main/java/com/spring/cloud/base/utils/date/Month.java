@@ -102,7 +102,6 @@ public enum Month {
 	 * 此值从1开始，即1表示一月
 	 *
 	 * @return 月份值，对应{@link java.time.Month}，从1开始计数
-	 * @since 5.7.21
 	 */
 	public int getValueBaseOne() {
 		Assert.isFalse(this == UNDECIMBER, "Unsupported UNDECIMBER Field");
@@ -162,7 +161,6 @@ public enum Month {
 	 * @param name 别名值
 	 * @return 月份枚举Month，非空
 	 * @throws IllegalArgumentException 如果别名无对应的枚举，抛出此异常
-	 * @since 5.8.0
 	 */
 	public static Month of(String name) throws IllegalArgumentException {
 		Assert.notBlank(name);
@@ -178,7 +176,7 @@ public enum Month {
 	 *
 	 * @param month {@link java.time.Month}
 	 * @return Month
-	 * @since 5.8.0
+	 * 
 	 */
 	public static Month of(java.time.Month month) {
 		return of(month.ordinal());
@@ -190,7 +188,7 @@ public enum Month {
 	 * @param month      月份，从0开始
 	 * @param isLeapYear 是否为闰年，闰年只对二月有影响
 	 * @return 最后一天，可能为28,29,30,31
-	 * @since 5.4.7
+	 * 
 	 */
 	public static int getLastDay(int month, boolean isLeapYear) {
 		final Month of = of(month);
@@ -202,7 +200,7 @@ public enum Month {
 	 * 转换为{@link java.time.Month}
 	 *
 	 * @return {@link java.time.Month}
-	 * @since 5.7.21
+	 * 
 	 */
 	public java.time.Month toJdkMonth() {
 		return java.time.Month.of(getValueBaseOne());
@@ -213,7 +211,7 @@ public enum Month {
 	 *
 	 * @param style 名称风格
 	 * @return 显示名称
-	 * @since 5.8.0
+	 * 
 	 */
 	public String getDisplayName(TextStyle style) {
 		return getDisplayName(style, Locale.getDefault());
@@ -225,7 +223,7 @@ public enum Month {
 	 * @param style  名称风格
 	 * @param locale {@link Locale}
 	 * @return 显示名称
-	 * @since 5.8.0
+	 * 
 	 */
 	public String getDisplayName(TextStyle style, Locale locale) {
 		return toJdkMonth().getDisplayName(style, locale);

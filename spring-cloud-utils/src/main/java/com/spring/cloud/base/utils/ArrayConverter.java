@@ -80,7 +80,7 @@ public class ArrayConverter extends AbstractConverter<Object> {
 	 * 设置是否忽略元素转换错误
 	 *
 	 * @param ignoreElementError 是否忽略元素转换错误
-	 * @since 5.4.3
+	 * 
 	 */
 	public void setIgnoreElementError(boolean ignoreElementError) {
 		this.ignoreElementError = ignoreElementError;
@@ -198,7 +198,7 @@ public class ArrayConverter extends AbstractConverter<Object> {
 	 *
 	 * @param value 值
 	 * @return 转换后的值，转换失败若{@link #ignoreElementError}为true，返回null，否则抛出异常
-	 * @since 5.4.3
+	 * 
 	 */
 	private Object convertComponentType(Object value) {
 		return Convert.convertWithCheck(this.targetComponentType, value, null, this.ignoreElementError);

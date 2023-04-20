@@ -47,7 +47,6 @@ public class TemporalUtil {
 	 *
 	 * @param unit 被转换的{@link TimeUnit}单位，如果为{@code null}返回{@code null}
 	 * @return {@link ChronoUnit}
-	 * @since 5.7.16
 	 */
 	public static ChronoUnit toChronoUnit(TimeUnit unit) throws IllegalArgumentException {
 		if (null == unit) {
@@ -79,7 +78,6 @@ public class TemporalUtil {
 	 * @param unit {@link ChronoUnit}，如果为{@code null}返回{@code null}
 	 * @return {@link TimeUnit}
 	 * @throws IllegalArgumentException 如果{@link TimeUnit}没有对应单位抛出
-	 * @since 5.7.16
 	 */
 	public static TimeUnit toTimeUnit(ChronoUnit unit) throws IllegalArgumentException {
 		if (null == unit) {
@@ -131,7 +129,6 @@ public class TemporalUtil {
 	 * @param <T>        日期类型，如LocalDate或LocalDateTime
 	 * @param isPrevious 是否向前偏移，{@code true}向前偏移，{@code false}向后偏移。
 	 * @return 偏移后的日期
-	 * @since 5.8.0
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends Temporal> T offset(T temporal, DayOfWeek dayOfWeek, boolean isPrevious) {

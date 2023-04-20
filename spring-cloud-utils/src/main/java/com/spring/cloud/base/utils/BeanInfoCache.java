@@ -36,7 +36,6 @@ public enum BeanInfoCache {
 	 * @param ignoreCase 是否忽略大小写
 	 * @param supplier   缓存对象产生函数
 	 * @return 属性名和{@link PropertyDescriptor}Map映射
-	 * @since 5.4.1
 	 */
 	public Map<String, PropertyDescriptor> getPropertyDescriptorMap(
 			Class<?> beanClass,
@@ -59,7 +58,7 @@ public enum BeanInfoCache {
 	/**
 	 * 清空缓存
 	 *
-	 * @since 5.7.21
+	 * 
 	 */
 	public void clear() {
 		this.pdCache.clear();
@@ -71,7 +70,7 @@ public enum BeanInfoCache {
 	 *
 	 * @param ignoreCase 是否忽略大小写
 	 * @return {@link ReferenceConcurrentMap}
-	 * @since 5.4.1
+	 * 
 	 */
 	private ReferenceConcurrentMap<Class<?>, Map<String, PropertyDescriptor>> getCache(boolean ignoreCase) {
 		return ignoreCase ? ignoreCasePdCache : pdCache;

@@ -1,6 +1,9 @@
 package com.spring.cloud.base.utils.crypto;
 
-import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.CharsetUtil;
+import com.spring.cloud.base.utils.FileUtil;
+import com.spring.cloud.base.utils.HexUtil;
+import com.spring.cloud.base.utils.IoUtil;
 import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.exception.CryptoException;
 import com.spring.cloud.base.utils.str.StrUtil;
@@ -30,7 +33,6 @@ public class Mac implements Serializable {
 	public Mac(MacEngine engine) {
 		this.engine = engine;
 	}
-	// ------------------------------------------------------------------------------------------- Constructor end
 
 	/**
 	 * 获得MAC算法引擎
@@ -40,8 +42,6 @@ public class Mac implements Serializable {
 	public MacEngine getEngine() {
 		return this.engine;
 	}
-
-	// ------------------------------------------------------------------------------------------- Digest
 
 	/**
 	 * 生成文件摘要
@@ -210,7 +210,6 @@ public class Mac implements Serializable {
 	 * @param digestToCompare 需要比较的摘要
 	 * @return 是否一致
 	 * @see MessageDigest#isEqual(byte[], byte[])
-	 * @since 5.6.8
 	 */
 	public boolean verify(byte[] digest, byte[] digestToCompare) {
 		return MessageDigest.isEqual(digest, digestToCompare);
@@ -220,7 +219,7 @@ public class Mac implements Serializable {
 	 * 获取MAC算法块长度
 	 *
 	 * @return MAC算法块长度
-	 * @since 5.3.3
+	 * 
 	 */
 	public int getMacLength() {
 		return this.engine.getMacLength();
@@ -230,7 +229,7 @@ public class Mac implements Serializable {
 	 * 获取算法
 	 *
 	 * @return 算法
-	 * @since 5.3.3
+	 * 
 	 */
 	public String getAlgorithm() {
 		return this.engine.getAlgorithm();

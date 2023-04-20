@@ -50,7 +50,6 @@ public class SecureUtil {
      * @param algorithm 算法，支持PBE算法
      * @param keySize   密钥长度
      * @return {@link SecretKey}
-     * @since 3.1.2
      */
     public static SecretKey generateKey(String algorithm, int keySize) {
         return KeyUtil.generateKey(algorithm, keySize);
@@ -119,7 +118,7 @@ public class SecureUtil {
      * @param algorithm 算法
      * @param keySpec   {@link KeySpec}
      * @return 私钥 {@link PrivateKey}
-     * @since 3.1.1
+     *
      */
     public static PrivateKey generatePrivateKey(String algorithm, KeySpec keySpec) {
         return KeyUtil.generatePrivateKey(algorithm, keySpec);
@@ -156,7 +155,7 @@ public class SecureUtil {
      * @param algorithm 算法
      * @param keySpec   {@link KeySpec}
      * @return 公钥 {@link PublicKey}
-     * @since 3.1.1
+     *
      */
     public static PublicKey generatePublicKey(String algorithm, KeySpec keySpec) {
         return KeyUtil.generatePublicKey(algorithm, keySpec);
@@ -205,7 +204,7 @@ public class SecureUtil {
      * @param algorithm 非对称加密算法
      * @param params    {@link AlgorithmParameterSpec}
      * @return {@link KeyPair}
-     * @since 4.3.3
+     *
      */
     public static KeyPair generateKeyPair(String algorithm, AlgorithmParameterSpec params) {
         return KeyUtil.generateKeyPair(algorithm, params);
@@ -219,7 +218,7 @@ public class SecureUtil {
      * @param seed      种子
      * @param params    {@link AlgorithmParameterSpec}
      * @return {@link KeyPair}
-     * @since 4.3.3
+     *
      */
     public static KeyPair generateKeyPair(String algorithm, byte[] seed, AlgorithmParameterSpec params) {
         return KeyUtil.generateKeyPair(algorithm, seed, params);
@@ -242,7 +241,7 @@ public class SecureUtil {
      * @param asymmetricAlgorithm 非对称算法
      * @param digestAlgorithm     摘要算法
      * @return 算法
-     * @since 4.4.1
+     *
      */
     public static String generateAlgorithm(AsymmetricAlgorithm asymmetricAlgorithm, DigestAlgorithm digestAlgorithm) {
         final String digestPart = (null == digestAlgorithm) ? "NONE" : digestAlgorithm.name();
@@ -339,7 +338,7 @@ public class SecureUtil {
      * </pre>
      *
      * @return {@link DESede}
-     * @since 3.3.0
+     *
      */
     public static DESede desede() {
         return new DESede();
@@ -357,7 +356,7 @@ public class SecureUtil {
      *
      * @param key 密钥
      * @return {@link DESede}
-     * @since 3.3.0
+     *
      */
     public static DESede desede(byte[] key) {
         return new DESede(key);
@@ -459,7 +458,7 @@ public class SecureUtil {
      * SHA256加密并转为16进制字符串：sha256().digestHex(data)<br>
      *
      * @return {@link Digester}
-     * @since 4.3.2
+     *
      */
     public static Digester sha256() {
         return new Digester(DigestAlgorithm.SHA256);
@@ -470,7 +469,7 @@ public class SecureUtil {
      *
      * @param data 数据
      * @return SHA256字符串
-     * @since 4.3.2
+     *
      */
     public static String sha256(String data) {
         return new Digester(DigestAlgorithm.SHA256).digestHex(data);
@@ -481,7 +480,7 @@ public class SecureUtil {
      *
      * @param data 数据
      * @return SHA1字符串
-     * @since 4.3.2
+     *
      */
     public static String sha256(InputStream data) {
         return new Digester(DigestAlgorithm.SHA256).digestHex(data);
@@ -492,7 +491,7 @@ public class SecureUtil {
      *
      * @param dataFile 被加密文件
      * @return SHA256字符串
-     * @since 4.3.2
+     *
      */
     public static String sha256(File dataFile) {
         return new Digester(DigestAlgorithm.SHA256).digestHex(dataFile);
@@ -504,7 +503,7 @@ public class SecureUtil {
      * @param algorithm {@link HmacAlgorithm}
      * @param key       密钥，如果为{@code null}生成随机密钥
      * @return {@link HMac}
-     * @since 3.3.0
+     *
      */
     public static HMac hmac(HmacAlgorithm algorithm, String key) {
         return hmac(algorithm, StrUtil.isNotEmpty(key)? StrUtil.utf8Bytes(key): null);
@@ -516,7 +515,7 @@ public class SecureUtil {
      * @param algorithm {@link HmacAlgorithm}
      * @param key       密钥，如果为{@code null}生成随机密钥
      * @return {@link HMac}
-     * @since 3.0.3
+     *
      */
     public static HMac hmac(HmacAlgorithm algorithm, byte[] key) {
         if (ArrayUtil.isEmpty(key)) {
@@ -531,7 +530,7 @@ public class SecureUtil {
      * @param algorithm {@link HmacAlgorithm}
      * @param key       密钥{@link SecretKey}，如果为{@code null}生成随机密钥
      * @return {@link HMac}
-     * @since 3.0.3
+     *
      */
     public static HMac hmac(HmacAlgorithm algorithm, SecretKey key) {
         if (ObjectUtil.isNull(key)) {
@@ -548,7 +547,7 @@ public class SecureUtil {
      *
      * @param key 加密密钥，如果为{@code null}生成随机密钥
      * @return {@link HMac}
-     * @since 3.3.0
+     *
      */
     public static HMac hmacMd5(String key) {
         return hmacMd5(StrUtil.isNotEmpty(key)? StrUtil.utf8Bytes(key): null);
@@ -590,7 +589,7 @@ public class SecureUtil {
      *
      * @param key 加密密钥，如果为{@code null}生成随机密钥
      * @return {@link HMac}
-     * @since 3.3.0
+     *
      */
     public static HMac hmacSha1(String key) {
         return hmacSha1(StrUtil.isNotEmpty(key)? StrUtil.utf8Bytes(key): null);
@@ -632,7 +631,7 @@ public class SecureUtil {
      *
      * @param key 加密密钥，如果为{@code null}生成随机密钥
      * @return {@link HMac}
-     * @since 5.6.0
+     *
      */
     public static HMac hmacSha256(String key) {
         return hmacSha256(StrUtil.isNotEmpty(key)? StrUtil.utf8Bytes(key): null);
@@ -646,7 +645,7 @@ public class SecureUtil {
      *
      * @param key 加密密钥，如果为{@code null}生成随机密钥
      * @return {@link HMac}
-     * @since 5.6.0
+     *
      */
     public static HMac hmacSha256(byte[] key) {
         if (ArrayUtil.isEmpty(key)) {
@@ -662,7 +661,7 @@ public class SecureUtil {
      * HmacSHA256加密并转为16进制字符串：hmacSha256().digestHex(data)<br>
      *
      * @return {@link HMac}
-     * @since 5.6.0
+     *
      */
     public static HMac hmacSha256() {
         return new HMac(HmacAlgorithm.HmacSHA256);
@@ -675,7 +674,7 @@ public class SecureUtil {
      * 生成新的私钥公钥对
      *
      * @return {@link RSA}
-     * @since 3.0.5
+     *
      */
     public static RSA rsa() {
         return new RSA();
@@ -689,7 +688,7 @@ public class SecureUtil {
      * @param privateKeyBase64 私钥Base64
      * @param publicKeyBase64  公钥Base64
      * @return {@link RSA}
-     * @since 3.0.5
+     *
      */
     public static RSA rsa(String privateKeyBase64, String publicKeyBase64) {
         return new RSA(privateKeyBase64, publicKeyBase64);
@@ -714,7 +713,7 @@ public class SecureUtil {
      *
      * @param algorithm 签名算法
      * @return {@link Sign}
-     * @since 3.3.0
+     *
      */
     public static Sign sign(SignAlgorithm algorithm) {
         return SignUtil.sign(algorithm);
@@ -729,7 +728,7 @@ public class SecureUtil {
      * @param privateKeyBase64 私钥Base64
      * @param publicKeyBase64  公钥Base64
      * @return {@link Sign}
-     * @since 3.3.0
+     *
      */
     public static Sign sign(SignAlgorithm algorithm, String privateKeyBase64, String publicKeyBase64) {
         return SignUtil.sign(algorithm, privateKeyBase64, publicKeyBase64);
@@ -744,7 +743,7 @@ public class SecureUtil {
      * @param privateKey 私钥
      * @param publicKey  公钥
      * @return {@link Sign}
-     * @since 3.3.0
+     *
      */
     public static Sign sign(SignAlgorithm algorithm, byte[] privateKey, byte[] publicKey) {
         return SignUtil.sign(algorithm, privateKey, publicKey);
@@ -759,7 +758,7 @@ public class SecureUtil {
      * @param params      参数
      * @param otherParams 其它附加参数字符串（例如密钥）
      * @return 签名
-     * @since 4.0.1
+     *
      */
     public static String signParams(SymmetricCrypto crypto, Map<?, ?> params, String... otherParams) {
         return SignUtil.signParams(crypto, params, otherParams);
@@ -776,7 +775,7 @@ public class SecureUtil {
      * @param isIgnoreNull      是否忽略null的键和值
      * @param otherParams       其它附加参数字符串（例如密钥）
      * @return 签名
-     * @since 4.0.1
+     *
      */
     public static String signParams(SymmetricCrypto crypto, Map<?, ?> params, String separator,
                                     String keyValueSeparator, boolean isIgnoreNull, String... otherParams) {
@@ -791,7 +790,7 @@ public class SecureUtil {
      * @param params      参数
      * @param otherParams 其它附加参数字符串（例如密钥）
      * @return 签名
-     * @since 4.0.1
+     *
      */
     public static String signParamsMd5(Map<?, ?> params, String... otherParams) {
         return SignUtil.signParamsMd5(params, otherParams);
@@ -805,7 +804,7 @@ public class SecureUtil {
      * @param params      参数
      * @param otherParams 其它附加参数字符串（例如密钥）
      * @return 签名
-     * @since 4.0.8
+     *
      */
     public static String signParamsSha1(Map<?, ?> params, String... otherParams) {
         return SignUtil.signParamsSha1(params, otherParams);
@@ -819,7 +818,7 @@ public class SecureUtil {
      * @param params      参数
      * @param otherParams 其它附加参数字符串（例如密钥）
      * @return 签名
-     * @since 4.0.1
+     *
      */
     public static String signParamsSha256(Map<?, ?> params, String... otherParams) {
         return SignUtil.signParamsSha256(params, otherParams);
@@ -834,7 +833,7 @@ public class SecureUtil {
      * @param params          参数
      * @param otherParams     其它附加参数字符串（例如密钥）
      * @return 签名
-     * @since 4.0.1
+     *
      */
     public static String signParams(DigestAlgorithm digestAlgorithm, Map<?, ?> params, String... otherParams) {
         return SignUtil.signParams(digestAlgorithm, params, otherParams);
@@ -851,7 +850,7 @@ public class SecureUtil {
      * @param isIgnoreNull      是否忽略null的键和值
      * @param otherParams       其它附加参数字符串（例如密钥）
      * @return 签名
-     * @since 4.0.1
+     *
      */
     public static String signParams(DigestAlgorithm digestAlgorithm, Map<?, ?> params, String separator,
                                     String keyValueSeparator, boolean isIgnoreNull, String... otherParams) {
@@ -866,7 +865,7 @@ public class SecureUtil {
      * </pre>
      *
      * @param provider 算法提供者
-     * @since 4.1.22
+     *
      */
     public static void addProvider(Provider provider) {
         Security.insertProviderAt(provider, 0);
@@ -882,7 +881,7 @@ public class SecureUtil {
      *
      * @param key 被解码的密钥字符串
      * @return 密钥
-     * @since 4.3.3
+     *
      */
     public static byte[] decode(String key) {
         return Validator.isHex(key) ? HexUtil.decodeHex(key) : Base64.decode(key);
@@ -893,7 +892,7 @@ public class SecureUtil {
      *
      * @param algorithm 算法
      * @return {@link Cipher}
-     * @since 4.5.2
+     *
      */
     public static Cipher createCipher(String algorithm) {
         final Provider provider = GlobalBouncyCastleProvider.INSTANCE.getProvider();
@@ -913,7 +912,7 @@ public class SecureUtil {
      *
      * @param algorithm 算法
      * @return {@link MessageDigest}
-     * @since 4.5.2
+     *
      */
     public static MessageDigest createMessageDigest(String algorithm) {
         final Provider provider = GlobalBouncyCastleProvider.INSTANCE.getProvider();
@@ -933,7 +932,7 @@ public class SecureUtil {
      *
      * @param algorithm 算法
      * @return {@link Mac}
-     * @since 4.5.13
+     *
      */
     public static Mac createMac(String algorithm) {
         final Provider provider = GlobalBouncyCastleProvider.INSTANCE.getProvider();
@@ -953,7 +952,7 @@ public class SecureUtil {
      *
      * @param algorithm 算法
      * @return {@link Signature}
-     * @since 5.7.0
+     *
      */
     public static Signature createSignature(String algorithm) {
         final Provider provider = GlobalBouncyCastleProvider.INSTANCE.getProvider();

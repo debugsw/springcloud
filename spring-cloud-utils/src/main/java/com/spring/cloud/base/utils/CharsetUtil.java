@@ -68,7 +68,6 @@ public class CharsetUtil {
 	 *
 	 * @param charsetName 字符集，为空则返回默认字符集
 	 * @return Charset
-	 * @since 5.2.6
 	 */
 	public static Charset parse(String charsetName) {
 		return parse(charsetName, Charset.defaultCharset());
@@ -80,7 +79,7 @@ public class CharsetUtil {
 	 * @param charsetName    字符集，为空则返回默认字符集
 	 * @param defaultCharset 解析失败使用的默认编码
 	 * @return Charset
-	 * @since 5.2.6
+	 * 
 	 */
 	public static Charset parse(String charsetName, Charset defaultCharset) {
 		if (StrUtil.isBlank(charsetName)) {
@@ -147,7 +146,7 @@ public class CharsetUtil {
 	 * @param srcCharset  原文件的编码，必须与文件内容的编码保持一致
 	 * @param destCharset 转码后的编码
 	 * @return 被转换编码的文件
-	 * @since 3.1.0
+	 * 
 	 */
 	public static File convert(File file, Charset srcCharset, Charset destCharset) {
 		final String str = FileUtil.readString(file, srcCharset);
@@ -159,7 +158,7 @@ public class CharsetUtil {
 	 *
 	 * @return 系统字符集编码
 	 * @see CharsetUtil#defaultCharsetName()
-	 * @since 3.1.2
+	 * 
 	 */
 	public static String systemCharsetName() {
 		return systemCharset().name();
@@ -170,7 +169,7 @@ public class CharsetUtil {
 	 *
 	 * @return 系统字符集编码
 	 * @see CharsetUtil#defaultCharsetName()
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Charset systemCharset() {
 		return FileUtil.isWindows() ? CHARSET_GBK : defaultCharset();
@@ -202,7 +201,7 @@ public class CharsetUtil {
 	 * @param charsets 需要测试用的编码，null或空使用默认的编码数组
 	 * @return 编码
 	 * @see CharsetDetector#detect(InputStream, Charset...)
-	 * @since 5.7.10
+	 * 
 	 */
 	public static Charset defaultCharset(InputStream in, Charset... charsets) {
 		return CharsetDetector.detect(in, charsets);
@@ -217,7 +216,7 @@ public class CharsetUtil {
 	 * @param charsets   需要测试用的编码，null或空使用默认的编码数组
 	 * @return 编码
 	 * @see CharsetDetector#detect(int, InputStream, Charset...)
-	 * @since 5.7.10
+	 * 
 	 */
 	public static Charset defaultCharset(int bufferSize, InputStream in, Charset... charsets) {
 		return CharsetDetector.detect(bufferSize, in, charsets);

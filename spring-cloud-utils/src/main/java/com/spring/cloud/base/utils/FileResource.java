@@ -37,7 +37,6 @@ public class FileResource implements Resource, Serializable {
 	 * 构造，文件名使用文件本身的名字，带扩展名
 	 *
 	 * @param path 文件
-	 * @since 4.4.1
 	 */
 	public FileResource(Path path) {
 		this(path.toFile());

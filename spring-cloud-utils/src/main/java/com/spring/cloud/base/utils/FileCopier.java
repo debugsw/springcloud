@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -140,7 +140,6 @@ public class FileCopier extends SrcToDestCopier<File, FileCopier> {
 	 * 当拷贝来源是目录时是否只拷贝文件而忽略子目录
 	 *
 	 * @return 当拷贝来源是目录时是否只拷贝文件而忽略子目录
-	 * @since 4.1.5
 	 */
 	public boolean isOnlyCopyFile() {
 		return isOnlyCopyFile;
@@ -151,7 +150,6 @@ public class FileCopier extends SrcToDestCopier<File, FileCopier> {
 	 *
 	 * @param isOnlyCopyFile 当拷贝来源是目录时是否只拷贝文件而忽略子目录
 	 * @return this
-	 * @since 4.1.5
 	 */
 	public FileCopier setOnlyCopyFile(boolean isOnlyCopyFile) {
 		this.isOnlyCopyFile = isOnlyCopyFile;

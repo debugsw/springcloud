@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.interf.StreamProgress;
 import com.spring.cloud.base.utils.str.StrUtil;
-import com.spring.cloud.base.utils.exception.IORuntimeException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -65,7 +65,7 @@ public class NioUtil {
 	 * @param streamProgress 进度条
 	 * @return 传输的byte数
 	 * @throws IORuntimeException IO异常
-	 * @since 5.7.8
+	 *
 	 */
 	public static long copyByNIO(InputStream in, OutputStream out, int bufferSize, long count, StreamProgress streamProgress) throws IORuntimeException {
 		final long copySize = copy(Channels.newChannel(in), Channels.newChannel(out), bufferSize, count, streamProgress);
@@ -80,7 +80,6 @@ public class NioUtil {
 	 * @param outChannel {@link FileChannel}
 	 * @return 拷贝的字节数
 	 * @throws IORuntimeException IO异常
-	 * @since 5.5.3
 	 */
 	public static long copy(FileChannel inChannel, FileChannel outChannel) throws IORuntimeException {
 		Assert.notNull(inChannel, "In channel is null!");
@@ -118,7 +117,7 @@ public class NioUtil {
 	 * @link http://androidxref.com/7.0.0_r1/xref/libcore/ojluni/src/main/java/sun/nio/ch/FileChannelImpl.java
 	 * @link http://androidxref.com/7.0.0_r1/xref/libcore/ojluni/src/main/native/FileChannelImpl.c
 	 * @author z8g
-	 * @since 5.7.21
+	 * 
 	 */
 	private static long copySafely(FileChannel inChannel, FileChannel outChannel) throws IOException {
 		final long totalBytes = inChannel.size();
@@ -137,7 +136,7 @@ public class NioUtil {
 	 * @param out {@link WritableByteChannel}
 	 * @return 拷贝的字节数
 	 * @throws IORuntimeException IO异常
-	 * @since 4.5.0
+	 * 
 	 */
 	public static long copy(ReadableByteChannel in, WritableByteChannel out) throws IORuntimeException {
 		return copy(in, out, DEFAULT_BUFFER_SIZE);
@@ -151,7 +150,7 @@ public class NioUtil {
 	 * @param bufferSize 缓冲大小，如果小于等于0，使用默认
 	 * @return 拷贝的字节数
 	 * @throws IORuntimeException IO异常
-	 * @since 4.5.0
+	 * 
 	 */
 	public static long copy(ReadableByteChannel in, WritableByteChannel out, int bufferSize) throws IORuntimeException {
 		return copy(in, out, bufferSize, null);
@@ -181,7 +180,7 @@ public class NioUtil {
 	 * @param streamProgress {@link StreamProgress}进度处理器
 	 * @return 拷贝的字节数
 	 * @throws IORuntimeException IO异常
-	 * @since 5.7.8
+	 * 
 	 */
 	public static long copy(ReadableByteChannel in, WritableByteChannel out, int bufferSize, long count, StreamProgress streamProgress) throws IORuntimeException {
 		return new ChannelCopier(bufferSize, count, streamProgress).copy(in, out);
@@ -194,7 +193,7 @@ public class NioUtil {
 	 * @param charset 字符集
 	 * @return 内容
 	 * @throws IORuntimeException IO异常
-	 * @since 4.5.0
+	 * 
 	 */
 	public static String read(ReadableByteChannel channel, Charset charset) throws IORuntimeException {
 		FastByteArrayOutputStream out = read(channel);

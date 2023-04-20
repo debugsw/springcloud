@@ -39,7 +39,6 @@ public class RuntimeUtil {
 	 * @param cmds    命令列表，每个元素代表一条命令
 	 * @return 执行结果
 	 * @throws IORuntimeException IO异常
-	 * @since 3.1.2
 	 */
 	public static String execForStr(Charset charset, String... cmds) throws IORuntimeException {
 		return getResult(exec(cmds), charset);
@@ -63,7 +62,7 @@ public class RuntimeUtil {
 	 * @param cmds    命令列表，每个元素代表一条命令
 	 * @return 执行结果，按行区分
 	 * @throws IORuntimeException IO异常
-	 * @since 3.1.2
+	 * 
 	 */
 	public static List<String> execForLines(Charset charset, String... cmds) throws IORuntimeException {
 		return getResultLines(exec(cmds), charset);
@@ -93,7 +92,7 @@ public class RuntimeUtil {
 	 * @param envp 环境变量参数，传入形式为key=value，null表示继承系统环境变量
 	 * @param cmds 命令
 	 * @return {@link Process}
-	 * @since 4.1.6
+	 * 
 	 */
 	public static Process exec(String[] envp, String... cmds) {
 		return exec(envp, null, cmds);
@@ -107,7 +106,7 @@ public class RuntimeUtil {
 	 * @param dir  执行命令所在目录（用于相对路径命令执行），null表示使用当前进程执行的目录
 	 * @param cmds 命令
 	 * @return {@link Process}
-	 * @since 4.1.6
+	 * 
 	 */
 	public static Process exec(String[] envp, File dir, String... cmds) {
 		try {
@@ -135,7 +134,7 @@ public class RuntimeUtil {
 	 * @param process {@link Process} 进程
 	 * @param charset 编码
 	 * @return 命令执行结果列表
-	 * @since 3.1.2
+	 * 
 	 */
 	public static List<String> getResultLines(Process process, Charset charset) {
 		InputStream in = null;
@@ -153,7 +152,7 @@ public class RuntimeUtil {
 	 *
 	 * @param process {@link Process} 进程
 	 * @return 命令执行结果列表
-	 * @since 3.1.2
+	 * 
 	 */
 	public static String getResult(Process process) {
 		return getResult(process, CharsetUtil.systemCharset());
@@ -165,7 +164,7 @@ public class RuntimeUtil {
 	 * @param process {@link Process} 进程
 	 * @param charset 编码
 	 * @return 命令执行结果列表
-	 * @since 3.1.2
+	 * 
 	 */
 	public static String getResult(Process process, Charset charset) {
 		InputStream in = null;
@@ -183,7 +182,7 @@ public class RuntimeUtil {
 	 *
 	 * @param process {@link Process} 进程
 	 * @return 命令执行结果列表
-	 * @since 4.1.21
+	 * 
 	 */
 	public static String getErrorResult(Process process) {
 		return getErrorResult(process, CharsetUtil.systemCharset());
@@ -195,7 +194,7 @@ public class RuntimeUtil {
 	 * @param process {@link Process} 进程
 	 * @param charset 编码
 	 * @return 命令执行结果列表
-	 * @since 4.1.21
+	 * 
 	 */
 	public static String getErrorResult(Process process, Charset charset) {
 		InputStream in = null;
@@ -212,7 +211,7 @@ public class RuntimeUtil {
 	 * 销毁进程
 	 *
 	 * @param process 进程
-	 * @since 3.1.2
+	 * 
 	 */
 	public static void destroy(Process process) {
 		if (null != process) {
@@ -224,7 +223,7 @@ public class RuntimeUtil {
 	 * 增加一个JVM关闭后的钩子，用于在JVM关闭时执行某些操作
 	 *
 	 * @param hook 钩子
-	 * @since 4.0.5
+	 * 
 	 */
 	public static void addShutdownHook(Runnable hook) {
 		Runtime.getRuntime().addShutdownHook((hook instanceof Thread) ? (Thread) hook : new Thread(hook));
@@ -240,7 +239,7 @@ public class RuntimeUtil {
 	 * </p>
 	 *
 	 * @return 可用的处理器数量
-	 * @since 5.3.0
+	 * 
 	 */
 	public static int getProcessorCount() {
 		int cpu = Runtime.getRuntime().availableProcessors();
@@ -254,7 +253,7 @@ public class RuntimeUtil {
 	 * 获得JVM中剩余的内存数，单位byte
 	 *
 	 * @return JVM中剩余的内存数，单位byte
-	 * @since 5.3.0
+	 * 
 	 */
 	public static long getFreeMemory() {
 		return Runtime.getRuntime().freeMemory();
@@ -264,7 +263,7 @@ public class RuntimeUtil {
 	 * 获得JVM已经从系统中获取到的总共的内存数，单位byte
 	 *
 	 * @return JVM中剩余的内存数，单位byte
-	 * @since 5.3.0
+	 * 
 	 */
 	public static long getTotalMemory() {
 		return Runtime.getRuntime().totalMemory();
@@ -274,7 +273,7 @@ public class RuntimeUtil {
 	 * 获得JVM中可以从系统中获取的最大的内存数，单位byte，以-Xmx参数为准
 	 *
 	 * @return JVM中剩余的内存数，单位byte
-	 * @since 5.3.0
+	 * 
 	 */
 	public static long getMaxMemory() {
 		return Runtime.getRuntime().maxMemory();
@@ -295,7 +294,7 @@ public class RuntimeUtil {
 	 *
 	 * @return 进程ID
 	 * @throws UtilException 进程名称为空
-	 * @since 5.7.3
+	 * 
 	 */
 	public static int getPid() throws UtilException {
 		return Pid.INSTANCE.get();

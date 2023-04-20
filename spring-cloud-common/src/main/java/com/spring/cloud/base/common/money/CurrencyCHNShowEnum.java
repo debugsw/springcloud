@@ -3,8 +3,7 @@ package com.spring.cloud.base.common.money;
 /**
  * 专为多币种提供的中文展示描述枚举。
  *
- * @author lijian
- * @since 2022/02/13
+ * @author ls
  */
 public enum CurrencyCHNShowEnum {
 

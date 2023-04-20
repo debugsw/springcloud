@@ -18,7 +18,6 @@ public class SignUtil {
 	 *
 	 * @param algorithm 签名算法
 	 * @return {@link Sign}
-	 * @since 3.3.0
 	 */
 	public static Sign sign(SignAlgorithm algorithm) {
 		return new Sign(algorithm);
@@ -33,7 +32,6 @@ public class SignUtil {
 	 * @param privateKeyBase64 私钥Base64
 	 * @param publicKeyBase64  公钥Base64
 	 * @return {@link Sign}
-	 * @since 3.3.0
 	 */
 	public static Sign sign(SignAlgorithm algorithm, String privateKeyBase64, String publicKeyBase64) {
 		return new Sign(algorithm, privateKeyBase64, publicKeyBase64);
@@ -48,7 +46,7 @@ public class SignUtil {
 	 * @param privateKey 私钥
 	 * @param publicKey  公钥
 	 * @return {@link Sign}
-	 * @since 3.3.0
+	 * 
 	 */
 	public static Sign sign(SignAlgorithm algorithm, byte[] privateKey, byte[] publicKey) {
 		return new Sign(algorithm, privateKey, publicKey);
@@ -63,7 +61,7 @@ public class SignUtil {
 	 * @param params      参数
 	 * @param otherParams 其它附加参数字符串（例如密钥）
 	 * @return 签名
-	 * @since 4.0.1
+	 * 
 	 */
 	public static String signParams(SymmetricCrypto crypto, Map<?, ?> params, String... otherParams) {
 		return signParams(crypto, params, StrUtil.EMPTY, StrUtil.EMPTY, true, otherParams);
@@ -80,7 +78,7 @@ public class SignUtil {
 	 * @param isIgnoreNull      是否忽略null的键和值
 	 * @param otherParams       其它附加参数字符串（例如密钥）
 	 * @return 签名
-	 * @since 4.0.1
+	 * 
 	 */
 	public static String signParams(SymmetricCrypto crypto, Map<?, ?> params, String separator,
 									String keyValueSeparator, boolean isIgnoreNull, String... otherParams) {
@@ -95,7 +93,7 @@ public class SignUtil {
 	 * @param params      参数
 	 * @param otherParams 其它附加参数字符串（例如密钥）
 	 * @return 签名
-	 * @since 4.0.1
+	 * 
 	 */
 	public static String signParamsMd5(Map<?, ?> params, String... otherParams) {
 		return signParams(DigestAlgorithm.MD5, params, otherParams);
@@ -109,7 +107,7 @@ public class SignUtil {
 	 * @param params      参数
 	 * @param otherParams 其它附加参数字符串（例如密钥）
 	 * @return 签名
-	 * @since 4.0.8
+	 * 
 	 */
 	public static String signParamsSha1(Map<?, ?> params, String... otherParams) {
 		return signParams(DigestAlgorithm.SHA1, params, otherParams);
@@ -123,7 +121,7 @@ public class SignUtil {
 	 * @param params      参数
 	 * @param otherParams 其它附加参数字符串（例如密钥）
 	 * @return 签名
-	 * @since 4.0.1
+	 * 
 	 */
 	public static String signParamsSha256(Map<?, ?> params, String... otherParams) {
 		return signParams(DigestAlgorithm.SHA256, params, otherParams);
@@ -138,7 +136,7 @@ public class SignUtil {
 	 * @param params          参数
 	 * @param otherParams     其它附加参数字符串（例如密钥）
 	 * @return 签名
-	 * @since 4.0.1
+	 * 
 	 */
 	public static String signParams(DigestAlgorithm digestAlgorithm, Map<?, ?> params, String... otherParams) {
 		return signParams(digestAlgorithm, params, StrUtil.EMPTY, StrUtil.EMPTY, true, otherParams);
@@ -155,7 +153,7 @@ public class SignUtil {
 	 * @param isIgnoreNull      是否忽略null的键和值
 	 * @param otherParams       其它附加参数字符串（例如密钥）
 	 * @return 签名
-	 * @since 4.0.1
+	 * 
 	 */
 	public static String signParams(DigestAlgorithm digestAlgorithm, Map<?, ?> params, String separator,
 									String keyValueSeparator, boolean isIgnoreNull, String... otherParams) {

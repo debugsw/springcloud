@@ -36,7 +36,6 @@ public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, S
 	 * 通过传入一个Map从而确定Map的类型，子类需创建一个空的Map，而非传入一个已有Map，否则值可能会被修改
 	 *
 	 * @param mapFactory 空Map创建工厂
-	 * @since 5.8.0
 	 */
 	public MapWrapper(Supplier<Map<K, V>> mapFactory) {
 		this(mapFactory.get());
@@ -183,8 +182,6 @@ public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, S
 		return raw.computeIfAbsent(key, mappingFunction);
 	}
 
-	// 重写默认方法的意义在于，如果被包装的Map自定义了这些默认方法，包装类就可以保持这些行为的一致性
-	//---------------------------------------------------------------------------- Override default methods start
 	@Override
 	public V getOrDefault(Object key, V defaultValue) {
 		return raw.getOrDefault(key, defaultValue);
@@ -212,8 +209,6 @@ public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, S
 		return clone;
 	}
 
-	//---------------------------------------------------------------------------- Override default methods end
-
 	// region 序列化与反序列化重写
 	private void writeObject(final ObjectOutputStream out) throws IOException {
 		out.defaultWriteObject();
@@ -225,5 +220,4 @@ public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, S
 		in.defaultReadObject();
 		raw = (Map<K, V>) in.readObject();
 	}
-	// endregion
 }

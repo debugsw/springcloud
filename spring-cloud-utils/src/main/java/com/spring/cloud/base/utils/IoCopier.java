@@ -62,7 +62,6 @@ public abstract class IoCopier<S, T> {
 	 *
 	 * @param flushEveryBuffer 是否每次写出一个buffer内容就执行flush
 	 * @return this
-	 * @since 5.7.18
 	 */
 	public IoCopier<S, T> setFlushEveryBuffer(boolean flushEveryBuffer) {
 		this.flushEveryBuffer = flushEveryBuffer;

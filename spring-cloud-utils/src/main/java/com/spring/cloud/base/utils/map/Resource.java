@@ -22,7 +22,6 @@ public interface Resource {
 	 * 获取资源名，例如文件资源的资源名为文件名
 	 *
 	 * @return 资源名
-	 * @since 4.0.13
 	 */
 	String getName();
 
@@ -45,7 +44,7 @@ public interface Resource {
 	 * 一般用于文件类资源，检查文件是否被修改过。
 	 *
 	 * @return 是否变更
-	 * @since 5.7.21
+	 * 
 	 */
 	default boolean isModified(){
 		return false;
@@ -56,7 +55,7 @@ public interface Resource {
 	 *
 	 * @param out 输出流
 	 * @throws IORuntimeException IO异常
-	 * @since 5.3.5
+	 * 
 	 */
 	default void writeTo(OutputStream out) throws IORuntimeException {
 		try (InputStream in = getStream()) {

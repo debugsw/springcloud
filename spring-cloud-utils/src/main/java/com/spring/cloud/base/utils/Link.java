@@ -2,6 +2,9 @@ package com.spring.cloud.base.utils;
 
 import java.lang.annotation.*;
 
+/**
+ * @author ls
+ */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})

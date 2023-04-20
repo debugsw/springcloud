@@ -43,7 +43,6 @@ public class CharsetDetector {
 	 * @param file     文件
 	 * @param charsets 需要测试用的编码，null或空使用默认的编码数组
 	 * @return 编码
-	 * @since 5.6.7
 	 */
 	public static Charset detect(File file, Charset... charsets) {
 		return detect(FileUtil.getInputStream(file), charsets);
@@ -69,7 +68,6 @@ public class CharsetDetector {
 	 * @param in         流，使用后关闭此流
 	 * @param charsets   需要测试用的编码，null或空使用默认的编码数组
 	 * @return 编码
-	 * @since 5.7.10
 	 */
 	public static Charset detect(int bufferSize, InputStream in, Charset... charsets) {
 		if (ArrayUtil.isEmpty(charsets)) {

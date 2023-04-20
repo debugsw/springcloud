@@ -79,7 +79,6 @@ public class ServiceLoaderUtil {
 	 * @param <T>   接口类型
 	 * @param clazz 服务接口
 	 * @return 服务接口实现列表
-	 * @since 5.4.2
 	 */
 	public static <T> List<T> loadList(Class<T> clazz) {
 		return loadList(clazz, null);
@@ -92,7 +91,6 @@ public class ServiceLoaderUtil {
 	 * @param clazz  服务接口
 	 * @param loader {@link ClassLoader}
 	 * @return 服务接口实现列表
-	 * @since 5.4.2
 	 */
 	public static <T> List<T> loadList(Class<T> clazz, ClassLoader loader) {
 		return ListUtil.list(false, load(clazz, loader));

@@ -13,8 +13,6 @@ public class FuncKeyMap<K, V> extends CustomKeyMap<K, V> {
 
 	private final Function<Object, K> keyFunc;
 
-	// ------------------------------------------------------------------------- Constructor start
-
 	/**
 	 * 构造<br>
 	 * 注意提供的Map中不能有键值对，否则可能导致自定义key失效
@@ -26,7 +24,6 @@ public class FuncKeyMap<K, V> extends CustomKeyMap<K, V> {
 		super(emptyMap);
 		this.keyFunc = keyFunc;
 	}
-	// ------------------------------------------------------------------------- Constructor end
 
 	/**
 	 * 根据函数自定义键

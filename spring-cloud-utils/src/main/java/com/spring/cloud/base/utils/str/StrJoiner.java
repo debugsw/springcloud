@@ -38,7 +38,6 @@ public class StrJoiner implements Appendable, Serializable {
 	 *
 	 * @param joiner 已有StrJoiner
 	 * @return 新的StrJoiner，配置相同
-	 * @since 5.7.12
 	 */
 	public static StrJoiner of(StrJoiner joiner) {
 		StrJoiner joinerNew = new StrJoiner(joiner.delimiter, joiner.prefix, joiner.suffix);
@@ -325,7 +324,7 @@ public class StrJoiner implements Appendable, Serializable {
 	 *
 	 * @param strJoiner 其他的StrJoiner
 	 * @return this
-	 * @since 5.7.22
+	 * 
 	 */
 	public StrJoiner merge(StrJoiner strJoiner) {
 		if (null != strJoiner && null != strJoiner.appendable) {
@@ -345,7 +344,7 @@ public class StrJoiner implements Appendable, Serializable {
 	 * 此方法结果与toString().length()一致。
 	 *
 	 * @return 长度，如果结果为{@code null}，返回-1
-	 * @since 5.7.22
+	 * 
 	 */
 	public int length() {
 		return (this.appendable != null ? this.appendable.toString().length() + suffix.length() :

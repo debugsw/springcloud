@@ -1,11 +1,11 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.interf.LineHandler;
-import com.spring.cloud.base.utils.interf.StreamProgress;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.crypto.ValidateObjectInputStream;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.interf.LineHandler;
+import com.spring.cloud.base.utils.interf.StreamProgress;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.*;
 import java.nio.CharBuffer;
@@ -127,7 +127,6 @@ public class IoUtil extends NioUtil {
 	 * @param streamProgress 进度条
 	 * @return 传输的byte数
 	 * @throws IORuntimeException IO异常
-	 * @since 5.7.8
 	 */
 	public static long copy(InputStream in, OutputStream out, int bufferSize, long count, StreamProgress streamProgress) throws IORuntimeException {
 		return new StreamCopier(bufferSize, count, streamProgress).copy(in, out);
@@ -166,7 +165,6 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param in 输入流
 	 * @return BufferedReader对象
-	 * @since 5.1.6
 	 */
 	public static BufferedReader getUtf8Reader(InputStream in) {
 		return getReader(in, CharsetUtil.CHARSET_UTF_8);
@@ -190,7 +188,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param in {@link BOMInputStream}
 	 * @return {@link BufferedReader}
-	 * @since 5.5.8
+	 * 
 	 */
 	public static BufferedReader getReader(BOMInputStream in) {
 		return getReader(in, in.getCharset());
@@ -224,7 +222,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param reader 普通Reader，如果为null返回null
 	 * @return {@link BufferedReader} or null
-	 * @since 3.0.9
+	 * 
 	 */
 	public static BufferedReader getReader(Reader reader) {
 		if (null == reader) {
@@ -241,7 +239,7 @@ public class IoUtil extends NioUtil {
 	 * @param reader       普通Reader
 	 * @param pushBackSize 推后的byte数
 	 * @return {@link PushbackReader}
-	 * @since 3.1.0
+	 * 
 	 */
 	public static PushbackReader getPushBackReader(Reader reader, int pushBackSize) {
 		return (reader instanceof PushbackReader) ? (PushbackReader) reader : new PushbackReader(reader, pushBackSize);
@@ -252,7 +250,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param out 输入流
 	 * @return OutputStreamWriter对象
-	 * @since 5.1.6
+	 * 
 	 */
 	public static OutputStreamWriter getUtf8Writer(OutputStream out) {
 		return getWriter(out, CharsetUtil.CHARSET_UTF_8);
@@ -299,7 +297,7 @@ public class IoUtil extends NioUtil {
 	 * @param in 输入流
 	 * @return 内容
 	 * @throws IORuntimeException IO异常
-	 * @since 5.4.4
+	 * 
 	 */
 	public static String readUtf8(InputStream in) throws IORuntimeException {
 		return read(in, CharsetUtil.CHARSET_UTF_8);
@@ -350,7 +348,7 @@ public class IoUtil extends NioUtil {
 	 * @param isClose 读取完毕后是否关闭流
 	 * @return 输出流
 	 * @throws IORuntimeException IO异常
-	 * @since 5.5.3
+	 * 
 	 */
 	public static FastByteArrayOutputStream read(InputStream in, boolean isClose) throws IORuntimeException {
 		final FastByteArrayOutputStream out;
@@ -428,7 +426,7 @@ public class IoUtil extends NioUtil {
 	 * @param isClose 是否关闭输入流
 	 * @return bytes
 	 * @throws IORuntimeException IO异常
-	 * @since 5.0.4
+	 * 
 	 */
 	public static byte[] readBytes(InputStream in, boolean isClose) throws IORuntimeException {
 		return read(in, isClose).toByteArray();
@@ -643,7 +641,7 @@ public class IoUtil extends NioUtil {
 	 * @param in          {@link InputStream}
 	 * @param lineHandler 行处理接口，实现handle方法用于编辑一行的数据后入到指定地方
 	 * @throws IORuntimeException IO异常
-	 * @since 3.1.1
+	 * 
 	 */
 	public static void readUtf8Lines(InputStream in, LineHandler lineHandler) throws IORuntimeException {
 		readLines(in, CharsetUtil.CHARSET_UTF_8, lineHandler);
@@ -656,7 +654,7 @@ public class IoUtil extends NioUtil {
 	 * @param charset     {@link Charset}编码
 	 * @param lineHandler 行处理接口，实现handle方法用于编辑一行的数据后入到指定地方
 	 * @throws IORuntimeException IO异常
-	 * @since 3.0.9
+	 * 
 	 */
 	public static void readLines(InputStream in, Charset charset, LineHandler lineHandler) throws IORuntimeException {
 		readLines(getReader(in, charset), lineHandler);
@@ -716,7 +714,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param content 内容
 	 * @return 字节流
-	 * @since 4.5.1
+	 * 
 	 */
 	public static ByteArrayInputStream toUtf8Stream(String content) {
 		return toStream(content, CharsetUtil.CHARSET_UTF_8);
@@ -741,7 +739,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param content 内容bytes
 	 * @return 字节流
-	 * @since 4.1.8
+	 * 
 	 */
 	public static ByteArrayInputStream toStream(byte[] content) {
 		if (content == null) {
@@ -755,7 +753,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param out {@link ByteArrayOutputStream}
 	 * @return 字节流
-	 * @since 5.3.6
+	 * 
 	 */
 	public static ByteArrayInputStream toStream(ByteArrayOutputStream out) {
 		if (out == null) {
@@ -769,7 +767,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param in {@link InputStream}
 	 * @return {@link BufferedInputStream}
-	 * @since 4.0.10
+	 * 
 	 */
 	public static BufferedInputStream toBuffered(InputStream in) {
 		Assert.notNull(in, "InputStream must be not null!");
@@ -782,7 +780,7 @@ public class IoUtil extends NioUtil {
 	 * @param in         {@link InputStream}
 	 * @param bufferSize buffer size
 	 * @return {@link BufferedInputStream}
-	 * @since 5.6.1
+	 * 
 	 */
 	public static BufferedInputStream toBuffered(InputStream in, int bufferSize) {
 		Assert.notNull(in, "InputStream must be not null!");
@@ -794,7 +792,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param out {@link OutputStream}
 	 * @return {@link BufferedOutputStream}
-	 * @since 4.0.10
+	 * 
 	 */
 	public static BufferedOutputStream toBuffered(OutputStream out) {
 		Assert.notNull(out, "OutputStream must be not null!");
@@ -807,7 +805,7 @@ public class IoUtil extends NioUtil {
 	 * @param out        {@link OutputStream}
 	 * @param bufferSize buffer size
 	 * @return {@link BufferedOutputStream}
-	 * @since 5.6.1
+	 * 
 	 */
 	public static BufferedOutputStream toBuffered(OutputStream out, int bufferSize) {
 		Assert.notNull(out, "OutputStream must be not null!");
@@ -819,7 +817,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param reader {@link Reader}
 	 * @return {@link BufferedReader}
-	 * @since 5.6.1
+	 * 
 	 */
 	public static BufferedReader toBuffered(Reader reader) {
 		Assert.notNull(reader, "Reader must be not null!");
@@ -832,7 +830,7 @@ public class IoUtil extends NioUtil {
 	 * @param reader     {@link Reader}
 	 * @param bufferSize buffer size
 	 * @return {@link BufferedReader}
-	 * @since 5.6.1
+	 * 
 	 */
 	public static BufferedReader toBuffered(Reader reader, int bufferSize) {
 		Assert.notNull(reader, "Reader must be not null!");
@@ -844,7 +842,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param writer {@link Writer}
 	 * @return {@link BufferedWriter}
-	 * @since 5.6.1
+	 * 
 	 */
 	public static BufferedWriter toBuffered(Writer writer) {
 		Assert.notNull(writer, "Writer must be not null!");
@@ -857,7 +855,7 @@ public class IoUtil extends NioUtil {
 	 * @param writer     {@link Writer}
 	 * @param bufferSize buffer size
 	 * @return {@link BufferedWriter}
-	 * @since 5.6.1
+	 * 
 	 */
 	public static BufferedWriter toBuffered(Writer writer, int bufferSize) {
 		Assert.notNull(writer, "Writer must be not null!");
@@ -870,7 +868,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param in 流
 	 * @return {@link InputStream}
-	 * @since 4.0.9
+	 * 
 	 */
 	public static InputStream toMarkSupportStream(InputStream in) {
 		if (null == in) {
@@ -889,7 +887,7 @@ public class IoUtil extends NioUtil {
 	 * @param in           {@link InputStream}
 	 * @param pushBackSize 推后的byte数
 	 * @return {@link PushbackInputStream}
-	 * @since 3.1.0
+	 * 
 	 */
 	public static PushbackInputStream toPushbackStream(InputStream in, int pushBackSize) {
 		return (in instanceof PushbackInputStream) ? (PushbackInputStream) in : new PushbackInputStream(in, pushBackSize);
@@ -909,7 +907,7 @@ public class IoUtil extends NioUtil {
 	 *
 	 * @param in 被转换的流
 	 * @return 转换后的流，可能为{@link PushbackInputStream}
-	 * @since 5.5.3
+	 * 
 	 */
 	public static InputStream toAvailableStream(InputStream in) {
 		if (in instanceof FileInputStream) {
@@ -959,7 +957,7 @@ public class IoUtil extends NioUtil {
 	 * @param isCloseOut 写入完毕是否关闭输出流
 	 * @param contents   写入的内容，调用toString()方法，不包括不会自动换行
 	 * @throws IORuntimeException IO异常
-	 * @since 3.1.1
+	 * 
 	 */
 	public static void writeUtf8(OutputStream out, boolean isCloseOut, Object... contents) throws IORuntimeException {
 		write(out, CharsetUtil.CHARSET_UTF_8, isCloseOut, contents);
@@ -988,7 +986,7 @@ public class IoUtil extends NioUtil {
 	 * @param isCloseOut 写入完毕是否关闭输出流
 	 * @param contents   写入的内容，调用toString()方法，不包括不会自动换行
 	 * @throws IORuntimeException IO异常
-	 * @since 3.0.9
+	 * 
 	 */
 	public static void write(OutputStream out, Charset charset, boolean isCloseOut, Object... contents) throws IORuntimeException {
 		OutputStreamWriter osw = null;
@@ -1016,7 +1014,7 @@ public class IoUtil extends NioUtil {
 	 * @param isCloseOut 写入完毕是否关闭输出流
 	 * @param obj        写入的对象内容
 	 * @throws IORuntimeException IO异常
-	 * @since 5.3.3
+	 * 
 	 */
 	public static void writeObj(OutputStream out, boolean isCloseOut, Serializable obj) throws IORuntimeException {
 		writeObjects(out, isCloseOut, obj);
@@ -1053,7 +1051,7 @@ public class IoUtil extends NioUtil {
 	 * 从缓存中刷出数据
 	 *
 	 * @param flushable {@link Flushable}
-	 * @since 4.2.2
+	 * 
 	 */
 	public static void flush(Flushable flushable) {
 		if (null != flushable) {
@@ -1086,7 +1084,7 @@ public class IoUtil extends NioUtil {
 	 * 判断对象如果实现了{@link AutoCloseable}，则调用之
 	 *
 	 * @param obj 可关闭对象
-	 * @since 4.3.2
+	 * 
 	 */
 	public static void closeIfPosible(Object obj) {
 		if (obj instanceof AutoCloseable) {
@@ -1102,7 +1100,7 @@ public class IoUtil extends NioUtil {
 	 * @param input2 第二个流
 	 * @return 两个流的内容一致返回true，否则false
 	 * @throws IORuntimeException IO异常
-	 * @since 4.0.6
+	 * 
 	 */
 	public static boolean contentEquals(InputStream input1, InputStream input2) throws IORuntimeException {
 		if (false == (input1 instanceof BufferedInputStream)) {
@@ -1137,7 +1135,7 @@ public class IoUtil extends NioUtil {
 	 * @param input2 第二个reader
 	 * @return 两个流的内容一致返回true，否则false
 	 * @throws IORuntimeException IO异常
-	 * @since 4.0.6
+	 * 
 	 */
 	public static boolean contentEquals(Reader input1, Reader input2) throws IORuntimeException {
 		input1 = getReader(input1);
@@ -1168,7 +1166,7 @@ public class IoUtil extends NioUtil {
 	 * @param input2 第二个流
 	 * @return 两个流的内容一致返回true，否则false
 	 * @throws IORuntimeException IO异常
-	 * @since 4.0.6
+	 * 
 	 */
 	public static boolean contentEqualsIgnoreEOL(Reader input1, Reader input2) throws IORuntimeException {
 		final BufferedReader br1 = getReader(input1);
@@ -1193,7 +1191,7 @@ public class IoUtil extends NioUtil {
 	 * @param in 文件，不能为目录
 	 * @return CRC32值
 	 * @throws IORuntimeException IO异常
-	 * @since 4.0.6
+	 * 
 	 */
 	public static long checksumCRC32(InputStream in) throws IORuntimeException {
 		return checksum(in, new CRC32()).getValue();
@@ -1206,7 +1204,7 @@ public class IoUtil extends NioUtil {
 	 * @param checksum {@link Checksum}
 	 * @return Checksum
 	 * @throws IORuntimeException IO异常
-	 * @since 4.0.10
+	 * 
 	 */
 	public static Checksum checksum(InputStream in, Checksum checksum) throws IORuntimeException {
 		Assert.notNull(in, "InputStream is null !");
@@ -1229,7 +1227,7 @@ public class IoUtil extends NioUtil {
 	 * @param checksum {@link Checksum}
 	 * @return Checksum
 	 * @throws IORuntimeException IO异常
-	 * @since 5.4.0
+	 * 
 	 */
 	public static long checksumValue(InputStream in, Checksum checksum) {
 		return checksum(in, checksum).getValue();
@@ -1240,7 +1238,7 @@ public class IoUtil extends NioUtil {
 	 * @param out {@link ByteArrayOutputStream}
 	 * @param charset 编码
 	 * @return 字符串
-	 * @since 5.7.17
+	 * 
 	 */
 	public static String toStr(ByteArrayOutputStream out, Charset charset){
 		try {

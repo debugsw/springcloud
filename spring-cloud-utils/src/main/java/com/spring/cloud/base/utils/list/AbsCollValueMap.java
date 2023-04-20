@@ -13,10 +13,9 @@ import java.util.Map;
  * @param <K> 键类型
  * @param <V> 值类型
  * @param <C> 集合类型
- * @author looly
- * @since 5.7.4
  */
 public abstract class AbsCollValueMap<K, V, C extends Collection<V>> extends MapWrapper<K, C> {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -69,13 +68,12 @@ public abstract class AbsCollValueMap<K, V, C extends Collection<V>> extends Map
 	public AbsCollValueMap(int initialCapacity, float loadFactor) {
 		super(new HashMap<>(initialCapacity, loadFactor));
 	}
-	// ------------------------------------------------------------------------- Constructor end
 
 	/**
 	 * 放入所有value
 	 *
 	 * @param m valueMap
-	 * @since 5.7.4
+	 *
 	 */
 	public void putAllValues(Map<? extends K, ? extends Collection<V>> m) {
 		if (null != m) {

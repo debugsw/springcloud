@@ -17,7 +17,6 @@ public interface MacEngine {
 	 * 加入需要被摘要的内容
 	 *
 	 * @param in 内容
-	 * @since 5.7.0
 	 */
 	default void update(byte[] in) {
 		update(in, 0, in.length);
@@ -29,7 +28,7 @@ public interface MacEngine {
 	 * @param in    内容
 	 * @param inOff 内容起始位置
 	 * @param len   内容长度
-	 * @since 5.7.0
+	 * 
 	 */
 	void update(byte[] in, int inOff, int len);
 
@@ -37,14 +36,14 @@ public interface MacEngine {
 	 * 结束并生成摘要
 	 *
 	 * @return 摘要内容
-	 * @since 5.7.0
+	 * 
 	 */
 	byte[] doFinal();
 
 	/**
 	 * 重置
 	 *
-	 * @since 5.7.0
+	 * 
 	 */
 	void reset();
 

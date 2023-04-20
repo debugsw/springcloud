@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.interf.LineHandler;
 import com.spring.cloud.base.utils.str.StrUtil;
-import com.spring.cloud.base.utils.exception.IORuntimeException;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -168,7 +168,6 @@ public class FileReader extends FileWrapper {
 	 *
 	 * @param lineHandler 行处理器
 	 * @throws IORuntimeException IO异常
-	 * @since 3.0.9
 	 */
 	public void readLines(LineHandler lineHandler) throws IORuntimeException{
 		BufferedReader reader = null;
@@ -250,11 +249,10 @@ public class FileReader extends FileWrapper {
 	/**
 	 * 将文件写入流中
 	 *
-	 * @param out 流
+	 * @param out        流
 	 * @param isCloseOut 是否关闭输出流
 	 * @return 写出的流byte数
 	 * @throws IORuntimeException IO异常
-	 * @since 5.5.2
 	 */
 	public long writeToStream(OutputStream out, boolean isCloseOut) throws IORuntimeException {
 		try (FileInputStream in = new FileInputStream(this.file)){
@@ -267,8 +265,6 @@ public class FileReader extends FileWrapper {
 			}
 		}
 	}
-
-	// -------------------------------------------------------------------------- Interface start
 	/**
 	 * Reader处理接口
 	 *

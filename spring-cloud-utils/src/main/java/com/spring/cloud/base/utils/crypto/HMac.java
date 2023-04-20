@@ -46,7 +46,6 @@ public class HMac extends Mac {
 	 *
 	 * @param algorithm 算法
 	 * @param key       密钥
-	 * @since 4.5.13
 	 */
 	public HMac(String algorithm, byte[] key) {
 		this(algorithm, new SecretKeySpec(key, algorithm));
@@ -57,7 +56,7 @@ public class HMac extends Mac {
 	 *
 	 * @param algorithm 算法
 	 * @param key       密钥
-	 * @since 4.5.13
+	 * 
 	 */
 	public HMac(String algorithm, Key key) {
 		this(algorithm, key, null);
@@ -69,7 +68,7 @@ public class HMac extends Mac {
 	 * @param algorithm 算法
 	 * @param key       密钥
 	 * @param spec      {@link AlgorithmParameterSpec}
-	 * @since 5.6.12
+	 * 
 	 */
 	public HMac(String algorithm, Key key, AlgorithmParameterSpec spec) {
 		this(MacEngineFactory.createEngine(algorithm, key, spec));
@@ -79,7 +78,7 @@ public class HMac extends Mac {
 	 * 构造
 	 *
 	 * @param engine MAC算法实现引擎
-	 * @since 4.5.13
+	 * 
 	 */
 	public HMac(MacEngine engine) {
 		super(engine);

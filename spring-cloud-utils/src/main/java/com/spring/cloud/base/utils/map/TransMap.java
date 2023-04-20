@@ -18,7 +18,6 @@ public abstract class TransMap<K, V> extends MapWrapper<K, V> {
 	 * 通过传入一个Map从而确定Map的类型，子类需创建一个空的Map，而非传入一个已有Map，否则值可能会被修改
 	 *
 	 * @param mapFactory 空Map创建工厂
-	 * @since 5.8.0
 	 */
 	public TransMap(Supplier<Map<K, V>> mapFactory) {
 		super(mapFactory);
@@ -29,7 +28,7 @@ public abstract class TransMap<K, V> extends MapWrapper<K, V> {
 	 * 通过传入一个Map从而确定Map的类型，子类需创建一个空的Map，而非传入一个已有Map，否则值可能会被修改
 	 *
 	 * @param emptyMap Map 被包装的Map，必须为空Map，否则自定义key会无效
-	 * @since 3.1.2
+	 * 
 	 */
 	public TransMap(Map<K, V> emptyMap) {
 		super(emptyMap);

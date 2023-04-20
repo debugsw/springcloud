@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.Resource;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -108,7 +108,6 @@ public class ZipWriter implements Closeable {
 	 * @param files      要压缩的源文件或目录。如果压缩一个文件，则为该文件的全路径；如果压缩一个目录，则为该目录的顶层目录路径
 	 * @return this
 	 * @throws IORuntimeException IO异常
-	 * @since 5.1.1
 	 */
 	public ZipWriter add(boolean withSrcDir, FileFilter filter, File... files) throws IORuntimeException {
 		for (File file : files) {
@@ -175,7 +174,6 @@ public class ZipWriter implements Closeable {
 	 * @param ins   要压缩的源，添加完成后自动关闭流
 	 * @return 压缩文件
 	 * @throws IORuntimeException IO异常
-	 * @since 5.8.0
 	 */
 	public ZipWriter add(String[] paths, InputStream[] ins) throws IORuntimeException {
 		if (ArrayUtil.isEmpty(paths) || ArrayUtil.isEmpty(ins)) {

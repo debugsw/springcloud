@@ -63,7 +63,6 @@ public class NamingCase {
 	 * @param str    转换前的驼峰式命名的字符串，也可以为符号连接形式
 	 * @param symbol 连接符
 	 * @return 转换后符号连接方式命名的字符串
-	 * @since 4.0.10
 	 */
 	public static String toSymbolCase(CharSequence str, char symbol) {
 		if (str == null) {
@@ -159,7 +158,6 @@ public class NamingCase {
 	 * @param name   转换前的自定义方式命名的字符串
 	 * @param symbol 原字符串中的连接符连接符
 	 * @return 转换后的驼峰式命名的字符串
-	 * @since 5.7.17
 	 */
 	public static String toCamelCase(CharSequence name, char symbol) {
 		return toCamelCase(name, symbol, true);

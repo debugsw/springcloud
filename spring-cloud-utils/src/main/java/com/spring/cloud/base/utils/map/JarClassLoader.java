@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.FileUtil;
-import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.URLUtil;
+import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
 
 import java.io.File;
@@ -132,7 +132,6 @@ public class JarClassLoader extends URLClassLoader {
 	 *
 	 * @param dir 目录
 	 * @return this
-	 * @since 4.4.2
 	 */
 	public JarClassLoader addURL(File dir) {
 		super.addURL(URLUtil.getURL(dir));
@@ -154,7 +153,7 @@ public class JarClassLoader extends URLClassLoader {
 	 *
 	 * @param file 文件
 	 * @return 是否为jar文件
-	 * @since 4.4.2
+	 * 
 	 */
 	private static boolean isJarFile(File file) {
 		if (false == FileUtil.isFile(file)) {

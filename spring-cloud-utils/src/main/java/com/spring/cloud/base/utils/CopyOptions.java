@@ -142,7 +142,6 @@ public class CopyOptions implements Serializable {
 	 * 设置忽略空值，当源对象的值为null时，忽略而不注入此值
 	 *
 	 * @return CopyOptions
-	 * @since 4.5.7
 	 */
 	public CopyOptions ignoreNullValue() {
 		return setIgnoreNullValue(true);
@@ -178,7 +177,7 @@ public class CopyOptions implements Serializable {
 	 * @param <R>   返回值类型
 	 * @param funcs 忽略的目标对象中属性列表，设置一个属性列表，不拷贝这些属性值
 	 * @return CopyOptions
-	 * @since 5.8.0
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public <P, R> CopyOptions setIgnoreProperties(Func1<P, R>... funcs) {
@@ -201,7 +200,7 @@ public class CopyOptions implements Serializable {
 	 * 设置忽略字段的注入错误
 	 *
 	 * @return CopyOptions
-	 * @since 4.5.7
+	 * 
 	 */
 	public CopyOptions ignoreError() {
 		return setIgnoreError(true);
@@ -222,7 +221,7 @@ public class CopyOptions implements Serializable {
 	 * 设置忽略字段的大小写
 	 *
 	 * @return CopyOptions
-	 * @since 4.5.7
+	 * 
 	 */
 	public CopyOptions ignoreCase() {
 		return setIgnoreCase(true);
@@ -247,7 +246,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param fieldNameEditor 字段属性编辑器，用于自定义属性转换规则，例如驼峰转下划线等
 	 * @return CopyOptions
-	 * @since 5.4.2
+	 * 
 	 */
 	public CopyOptions setFieldNameEditor(Editor<String> fieldNameEditor) {
 		this.fieldNameEditor = fieldNameEditor;
@@ -259,7 +258,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param fieldValueEditor 字段属性值编辑器，用于自定义属性值转换规则，例如null转""等
 	 * @return CopyOptions
-	 * @since 5.7.15
+	 * 
 	 */
 	public CopyOptions setFieldValueEditor(BiFunction<String, Object, Object> fieldValueEditor) {
 		this.fieldValueEditor = fieldValueEditor;
@@ -272,7 +271,7 @@ public class CopyOptions implements Serializable {
 	 * @param fieldName  字段名
 	 * @param fieldValue 字段值
 	 * @return 编辑后的字段值
-	 * @since 5.7.15
+	 * 
 	 */
 	protected Object editFieldValue(String fieldName, Object fieldValue) {
 		return (null != this.fieldValueEditor) ?
@@ -284,7 +283,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param transientSupport 是否支持
 	 * @return this
-	 * @since 5.4.2
+	 * 
 	 */
 	public CopyOptions setTransientSupport(boolean transientSupport) {
 		this.transientSupport = transientSupport;
@@ -296,7 +295,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param override 是否覆盖目标值
 	 * @return this
-	 * @since 5.7.17
+	 * 
 	 */
 	public CopyOptions setOverride(boolean override) {
 		this.override = override;
@@ -308,7 +307,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param converter 转换器
 	 * @return this
-	 * @since 5.8.0
+	 * 
 	 */
 	public CopyOptions setConverter(TypeConverter converter) {
 		this.converter = converter;
@@ -322,7 +321,7 @@ public class CopyOptions implements Serializable {
 	 * @param targetType 目标类型
 	 * @param fieldValue 字段值
 	 * @return 编辑后的字段值
-	 * @since 5.8.0
+	 * 
 	 */
 	protected Object convertField(Type targetType, Object fieldValue) {
 		return (null != this.converter) ?
@@ -334,7 +333,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param fieldName 字段名
 	 * @return 编辑后的字段名
-	 * @since 5.4.2
+	 * 
 	 */
 	protected String editFieldName(String fieldName) {
 		return (null != this.fieldNameEditor) ? this.fieldNameEditor.edit(fieldName) : fieldName;

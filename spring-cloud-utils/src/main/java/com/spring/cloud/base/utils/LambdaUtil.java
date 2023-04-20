@@ -52,7 +52,7 @@ public class LambdaUtil {
 	 * @return lambda实现类
 	 * @throws IllegalArgumentException 如果是不支持的方法引用，抛出该异常，见{@link LambdaUtil#checkLambdaTypeCanGetClass}
 	 * @author VampireAchao
-	 * @since 5.8.0
+	 *
 	 */
 	public static <R> Class<R> getRealClass(Func0<?> func) {
 		final SerializedLambda lambda = resolve(func);
@@ -79,7 +79,6 @@ public class LambdaUtil {
 	 * @param <R>  Lambda返回类型
 	 * @param func 需要解析的 lambda 对象（无参方法）
 	 * @return 返回解析后的结果
-	 * @since 5.7.23
 	 */
 	public static <R> SerializedLambda resolve(Func0<R> func) {
 		return _resolve(func);
@@ -102,7 +101,6 @@ public class LambdaUtil {
 	 * @param <R>  Lambda返回类型
 	 * @param func 函数（无参方法）
 	 * @return 函数名称
-	 * @since 5.7.23
 	 */
 	public static <R> String getMethodName(Func0<R> func) {
 		return resolve(func).getImplMethodName();
@@ -128,7 +126,7 @@ public class LambdaUtil {
 	 * @return lambda实现类
 	 * @throws IllegalArgumentException 如果是不支持的方法引用，抛出该异常，见{@link LambdaUtil#checkLambdaTypeCanGetClass}
 	 * @author VampireAchao
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <P, R> Class<P> getRealClass(Func1<P, R> func) {
 		final SerializedLambda lambda = resolve(func);
@@ -150,7 +148,7 @@ public class LambdaUtil {
 	 * @param func 函数（无参方法）
 	 * @return 方法名称
 	 * @throws IllegalArgumentException 非Getter或Setter方法
-	 * @since 5.7.10
+	 * 
 	 */
 	public static <T> String getFieldName(Func1<T, ?> func) throws IllegalArgumentException {
 		return BeanUtil.getFieldName(getMethodName(func));
@@ -169,13 +167,11 @@ public class LambdaUtil {
 	 * @param func 函数（无参方法）
 	 * @return 方法名称
 	 * @throws IllegalArgumentException 非Getter或Setter方法
-	 * @since 5.7.23
+	 * 
 	 */
 	public static <T> String getFieldName(Func0<T> func) throws IllegalArgumentException {
 		return BeanUtil.getFieldName(getMethodName(func));
 	}
-
-	//region Private methods
 
 	/**
 	 * 检查是否为支持的类型
@@ -205,5 +201,4 @@ public class LambdaUtil {
 	private static SerializedLambda _resolve(Serializable func) {
 		return cache.computeIfAbsent(func.getClass().getName(), (key) -> ReflectUtil.invoke(func, "writeReplace"));
 	}
-	//endregion
 }

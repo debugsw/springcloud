@@ -116,7 +116,6 @@ public class ExecutorBuilder implements Builder<ThreadPoolExecutor> {
 	 *
 	 * @param capacity 队列容量
 	 * @return this
-	 * @since 5.1.4
 	 */
 	public ExecutorBuilder useArrayBlockingQueue(int capacity) {
 		return setWorkQueue(new ArrayBlockingQueue<>(capacity));
@@ -127,7 +126,7 @@ public class ExecutorBuilder implements Builder<ThreadPoolExecutor> {
 	 * 它将任务直接提交给线程而不保持它们。当运行线程小于maxPoolSize时会创建新线程，否则触发异常策略
 	 *
 	 * @return this
-	 * @since 4.1.11
+	 * 
 	 */
 	public ExecutorBuilder useSynchronousQueue() {
 		return useSynchronousQueue(false);
@@ -139,7 +138,7 @@ public class ExecutorBuilder implements Builder<ThreadPoolExecutor> {
 	 *
 	 * @param fair 是否使用公平访问策略
 	 * @return this
-	 * @since 4.5.0
+	 * 
 	 */
 	public ExecutorBuilder useSynchronousQueue(boolean fair) {
 		return setWorkQueue(new SynchronousQueue<>(fair));

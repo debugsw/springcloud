@@ -187,7 +187,6 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param temporalAccessor {@link TemporalAccessor}
 	 * @return {@link LocalDate}
-	 * @since 5.3.10
 	 */
 	public static LocalDate ofDate(TemporalAccessor temporalAccessor) {
 		if (null == temporalAccessor) {
@@ -282,7 +281,6 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param text 日期时间字符串
 	 * @return {@link LocalDate}
-	 * @since 5.3.10
 	 */
 	public static LocalDate parseDate(CharSequence text) {
 		return parseDate(text, (DateTimeFormatter) null);
@@ -294,7 +292,6 @@ public class LocalDateTimeUtil {
 	 * @param text      日期时间字符串
 	 * @param formatter 日期格式化器，预定义的格式见：{@link DateTimeFormatter}
 	 * @return {@link LocalDate}
-	 * @since 5.3.10
 	 */
 	public static LocalDate parseDate(CharSequence text, DateTimeFormatter formatter) {
 		if (null == text) {
@@ -326,7 +323,6 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param time {@link LocalDateTime}
 	 * @return 格式化后的字符串
-	 * @since 5.3.11
 	 */
 	public static String formatNormal(LocalDateTime time) {
 		return format(time, DatePattern.NORM_DATETIME_FORMATTER);
@@ -359,7 +355,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param date {@link LocalDate}
 	 * @return 格式化后的字符串
-	 * @since 5.3.11
+	 * 
 	 */
 	public static String formatNormal(LocalDate date) {
 		return format(date, DatePattern.NORM_DATE_FORMATTER);
@@ -371,7 +367,7 @@ public class LocalDateTimeUtil {
 	 * @param date      {@link LocalDate}
 	 * @param formatter 日期格式化器，预定义的格式见：{@link DateTimeFormatter}; 常量如： {@link DatePattern#NORM_DATE_FORMATTER}, {@link DatePattern#NORM_DATETIME_FORMATTER}
 	 * @return 格式化后的字符串
-	 * @since 5.3.10
+	 * 
 	 */
 	public static String format(LocalDate date, DateTimeFormatter formatter) {
 		return TemporalAccessorUtil.format(date, formatter);
@@ -383,7 +379,7 @@ public class LocalDateTimeUtil {
 	 * @param date   {@link LocalDate}
 	 * @param format 日期格式，类似于yyyy-MM-dd, 常量如 {@link DatePattern#NORM_DATE_PATTERN}, {@link DatePattern#NORM_DATETIME_PATTERN}
 	 * @return 格式化后的字符串
-	 * @since 5.3.10
+	 * 
 	 */
 	public static String format(LocalDate date, String format) {
 		if (null == date) {
@@ -427,7 +423,7 @@ public class LocalDateTimeUtil {
 	 * @param endTimeExclude   结束时间（不包括）
 	 * @param unit             时间差单位
 	 * @return 时间差
-	 * @since 5.4.5
+	 * 
 	 */
 	public static long between(LocalDateTime startTimeInclude, LocalDateTime endTimeExclude, ChronoUnit unit) {
 		return TemporalUtil.between(startTimeInclude, endTimeExclude, unit);
@@ -441,7 +437,7 @@ public class LocalDateTimeUtil {
 	 * @param startTimeInclude 开始时间（包括）
 	 * @param endTimeExclude   结束时间（不包括）
 	 * @return 时间差
-	 * @since 5.4.5
+	 * 
 	 */
 	public static Period betweenPeriod(LocalDate startTimeInclude, LocalDate endTimeExclude) {
 		return Period.between(startTimeInclude, endTimeExclude);
@@ -477,7 +473,7 @@ public class LocalDateTimeUtil {
 	 * @param time                日期时间
 	 * @param truncateMillisecond 是否毫秒归零
 	 * @return 一天的结束时间
-	 * @since 5.7.18
+	 * 
 	 */
 	public static LocalDateTime endOfDay(LocalDateTime time, boolean truncateMillisecond) {
 		if (truncateMillisecond) {
@@ -492,7 +488,7 @@ public class LocalDateTimeUtil {
 	 * @param temporalAccessor Date对象
 	 * @return {@link Instant}对象
 	 * @see TemporalAccessorUtil#toEpochMilli(TemporalAccessor)
-	 * @since 5.4.1
+	 * 
 	 */
 	public static long toEpochMilli(TemporalAccessor temporalAccessor) {
 		return TemporalAccessorUtil.toEpochMilli(temporalAccessor);
@@ -503,7 +499,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param localDateTime 判定的日期{@link LocalDateTime}
 	 * @return 是否为周末（周六或周日）
-	 * @since 5.7.6
+	 * 
 	 */
 	public static boolean isWeekend(LocalDateTime localDateTime) {
 		return isWeekend(localDateTime.toLocalDate());
@@ -514,7 +510,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param localDate 判定的日期{@link LocalDate}
 	 * @return 是否为周末（周六或周日）
-	 * @since 5.7.6
+	 * 
 	 */
 	public static boolean isWeekend(LocalDate localDate) {
 		final DayOfWeek dayOfWeek = localDate.getDayOfWeek();
@@ -536,7 +532,7 @@ public class LocalDateTimeUtil {
 	 * @param startTime     第二个时间段的开始时间
 	 * @param endTime       第二个时间段的结束时间
 	 * @return true 表示时间有重合或包含或相等
-	 * @since 5.7.20
+	 * 
 	 */
 	public static boolean isOverlap(ChronoLocalDateTime<?> realStartTime, ChronoLocalDateTime<?> realEndTime,
 									ChronoLocalDateTime<?> startTime, ChronoLocalDateTime<?> endTime) {
@@ -558,7 +554,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param date 日期（{@link LocalDate} 或者 {@link LocalDateTime}等）
 	 * @return 所在年的第几周
-	 * @since 5.7.21
+	 * 
 	 */
 	public static int weekOfYear(TemporalAccessor date) {
 		return TemporalAccessorUtil.get(date, WeekFields.ISO.weekOfYear());
@@ -570,7 +566,7 @@ public class LocalDateTimeUtil {
 	 * @param date1 日期1
 	 * @param date2 日期2
 	 * @return 是否为同一天
-	 * @since 5.8.5
+	 * 
 	 */
 	public static boolean isSameDay(final LocalDateTime date1, final LocalDateTime date2) {
 		return date1 != null && date2 != null && isSameDay(date1.toLocalDate(), date2.toLocalDate());
@@ -582,7 +578,7 @@ public class LocalDateTimeUtil {
 	 * @param date1 日期1
 	 * @param date2 日期2
 	 * @return 是否为同一天
-	 * @since 5.8.5
+	 * 
 	 */
 	public static boolean isSameDay(final LocalDate date1, final LocalDate date2) {
 		return date1 != null && date2 != null && date1.isEqual(date2);
@@ -596,7 +592,7 @@ public class LocalDateTimeUtil {
 	 * @param beginDate 起始日期（包含）
 	 * @param endDate   结束日期（包含）
 	 * @return 是否在范围内
-	 * @since 5.8.5
+	 * 
 	 */
 	public static boolean isIn(ChronoLocalDateTime<?> date, ChronoLocalDateTime<?> beginDate, ChronoLocalDateTime<?> endDate) {
 		return TemporalAccessorUtil.isIn(date, beginDate, endDate);
@@ -615,7 +611,7 @@ public class LocalDateTimeUtil {
 	 * @param includeEnd   时间范围是否包含结束时间
 	 * @return 是否在范围内
 	 * @author FengBaoheng
-	 * @since 5.8.6
+	 * 
 	 */
 	public static boolean isIn(ChronoLocalDateTime<?> date, ChronoLocalDateTime<?> beginDate,
 							   ChronoLocalDateTime<?> endDate, boolean includeBegin, boolean includeEnd) {

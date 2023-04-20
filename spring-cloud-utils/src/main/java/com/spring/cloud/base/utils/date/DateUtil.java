@@ -2,9 +2,9 @@ package com.spring.cloud.base.utils.date;
 
 import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.crypto.NumberUtil;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.DateException;
 import com.spring.cloud.base.utils.list.CompareUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -46,7 +46,6 @@ public class DateUtil extends CalendarUtil {
 	 * 当前时间，转换为{@link DateTime}对象，忽略毫秒部分
 	 *
 	 * @return 当前时间
-	 * @since 4.6.2
 	 */
 	public static DateTime dateSecond() {
 		return beginOfSecond(date());
@@ -58,7 +57,6 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date Long类型Date（Unix时间戳），如果传入{@code null}，返回{@code null}
 	 * @return 时间对象
-	 * @since 3.0.7
 	 */
 	public static DateTime date(Date date) {
 		if (date == null) {
@@ -75,7 +73,6 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date Date对象，如果传入{@code null}，返回{@code null}
 	 * @return {@link DateTime}对象
-	 * @since 4.3.1
 	 */
 	public static DateTime dateNew(Date date) {
 		if (date == null) {
@@ -115,7 +112,6 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param temporalAccessor {@link TemporalAccessor},常用子类： {@link LocalDateTime}、 LocalDate，如果传入{@code null}，返回{@code null}
 	 * @return 时间对象
-	 * @since 5.0.0
 	 */
 	public static DateTime date(TemporalAccessor temporalAccessor) {
 		if (temporalAccessor == null) {
@@ -137,7 +133,6 @@ public class DateUtil extends CalendarUtil {
 	 * 当前时间的时间戳（秒）
 	 *
 	 * @return 当前时间秒数
-	 * @since 4.0.0
 	 */
 	public static long currentSeconds() {
 		return System.currentTimeMillis() / 1000;
@@ -176,7 +171,6 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date 日期
 	 * @return 第几个季度
-	 * @since 4.1.0
 	 */
 	public static int quarter(Date date) {
 		return DateTime.of(date).quarter();
@@ -187,7 +181,6 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date 日期
 	 * @return 第几个季度枚举
-	 * @since 4.1.0
 	 */
 	public static Quarter quarterEnum(Date date) {
 		return DateTime.of(date).quarterEnum();
@@ -253,7 +246,6 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date 日期
 	 * @return 天
-	 * @since 5.3.6
 	 */
 	public static int dayOfYear(Date date) {
 		return DateTime.of(date).dayOfYear();
@@ -284,7 +276,6 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date 判定的日期{@link Date}
 	 * @return 是否为周末（周六或周日）
-	 * @since 5.7.6
 	 */
 	public static boolean isWeekend(Date date) {
 		final Week week = dayOfWeekEnum(date);
@@ -543,7 +534,6 @@ public class DateUtil extends CalendarUtil {
 	 * @param date   被格式化的日期
 	 * @param format {@link SimpleDateFormat} {@link DatePattern#NORM_DATETIME_FORMATTER}
 	 * @return 格式化后的字符串
-	 * @since 5.0.0
 	 */
 	public static String format(Date date, DateTimeFormatter format) {
 		if (null == format || null == date) {
@@ -588,7 +578,6 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date 被格式化的日期
 	 * @return 格式化后的字符串
-	 * @since 3.0.1
 	 */
 	public static String formatTime(Date date) {
 		if (null == date) {
@@ -618,7 +607,6 @@ public class DateUtil extends CalendarUtil {
 	 * @param isUppercase 是否采用大写形式
 	 * @param withTime    是否包含时间部分
 	 * @return 中文日期字符串
-	 * @since 5.3.9
 	 */
 	public static String formatChineseDate(Date date, boolean isUppercase, boolean withTime) {
 		if (null == date) {
@@ -683,7 +671,6 @@ public class DateUtil extends CalendarUtil {
 	 * @param parser  格式化器,{@link FastDateFormat}
 	 * @param lenient 是否宽容模式
 	 * @return DateTime对象
-	 * @since 5.7.14
 	 */
 	public static DateTime parse(CharSequence dateStr, DateParser parser, boolean lenient) {
 		return new DateTime(dateStr, parser, lenient);
@@ -695,7 +682,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param dateStr   Date字符串
 	 * @param formatter 格式化器,{@link DateTimeFormatter}
 	 * @return DateTime对象
-	 * @since 5.0.0
+	 * 
 	 */
 	public static DateTime parse(CharSequence dateStr, DateTimeFormatter formatter) {
 		return new DateTime(dateStr, formatter);
@@ -719,7 +706,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param format  格式，例如yyyy-MM-dd
 	 * @param locale  区域信息
 	 * @return 日期对象
-	 * @since 4.5.18
+	 * 
 	 */
 	public static DateTime parse(CharSequence dateStr, String format, Locale locale) {
 		if (GlobalCustomFormat.isCustomFormat(format)) {
@@ -738,7 +725,7 @@ public class DateUtil extends CalendarUtil {
 	 * @return 解析后的Date
 	 * @throws IllegalArgumentException if the date string or pattern array is null
 	 * @throws DateException            if none of the date patterns were suitable
-	 * @since 5.3.11
+	 * 
 	 */
 	public static DateTime parse(String str, String... parsePatterns) throws DateException {
 		return new DateTime(CalendarUtil.parseByPatterns(str, parsePatterns));
@@ -795,7 +782,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param timeString 标准形式的日期字符串
 	 * @return 日期对象
-	 * @since 3.1.1
+	 * 
 	 */
 	public static DateTime parseTimeToday(CharSequence timeString) {
 		timeString = StrUtil.format("{} {}", today(), timeString);
@@ -821,7 +808,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param utcString UTC时间
 	 * @return 日期对象
-	 * @since 4.1.14
+	 * 
 	 */
 	public static DateTime parseUTC(String utcString) {
 		if (utcString == null) {
@@ -903,7 +890,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param cstString UTC时间
 	 * @return 日期对象
-	 * @since 4.6.9
+	 * 
 	 */
 	public static DateTime parseCST(CharSequence cstString) {
 		if (cstString == null) {
@@ -1006,12 +993,13 @@ public class DateUtil extends CalendarUtil {
 		// 没有更多匹配的时间格式
 		throw new DateException("No format fit for date String [{}] !", dateStr);
 	}
+
 	/**
 	 * 获取秒级别的开始时间，即毫秒部分设置为0
 	 *
 	 * @param date 日期
 	 * @return {@link DateTime}
-	 * @since 4.6.2
+	 * 
 	 */
 	public static DateTime beginOfSecond(Date date) {
 		return new DateTime(beginOfSecond(calendar(date)));
@@ -1022,7 +1010,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date 日期
 	 * @return {@link DateTime}
-	 * @since 4.6.2
+	 * 
 	 */
 	public static DateTime endOfSecond(Date date) {
 		return new DateTime(endOfSecond(calendar(date)));
@@ -1104,7 +1092,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date               日期
 	 * @param isMondayAsFirstDay 是否周一做为一周的第一天（false表示周日做为第一天）
 	 * @return {@link DateTime}
-	 * @since 5.4.0
+	 * 
 	 */
 	public static DateTime beginOfWeek(Date date, boolean isMondayAsFirstDay) {
 		return new DateTime(beginOfWeek(calendar(date), isMondayAsFirstDay));
@@ -1126,7 +1114,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date              日期
 	 * @param isSundayAsLastDay 是否周日做为一周的最后一天（false表示周六做为最后一天）
 	 * @return {@link DateTime}
-	 * @since 5.4.0
+	 * 
 	 */
 	public static DateTime endOfWeek(Date date, boolean isSundayAsLastDay) {
 		return new DateTime(endOfWeek(calendar(date), isSundayAsLastDay));
@@ -1205,7 +1193,7 @@ public class DateUtil extends CalendarUtil {
 	 * 明天
 	 *
 	 * @return 明天
-	 * @since 3.0.1
+	 * 
 	 */
 	public static DateTime tomorrow() {
 		return offsetDay(new DateTime(), 1);
@@ -1224,7 +1212,7 @@ public class DateUtil extends CalendarUtil {
 	 * 下周
 	 *
 	 * @return 下周
-	 * @since 3.0.1
+	 * 
 	 */
 	public static DateTime nextWeek() {
 		return offsetWeek(new DateTime(), 1);
@@ -1243,7 +1231,7 @@ public class DateUtil extends CalendarUtil {
 	 * 下个月
 	 *
 	 * @return 下个月
-	 * @since 3.0.1
+	 * 
 	 */
 	public static DateTime nextMonth() {
 		return offsetMonth(new DateTime(), 1);
@@ -1337,6 +1325,7 @@ public class DateUtil extends CalendarUtil {
 	public static DateTime offset(Date date, DateField dateField, int offset) {
 		return dateNew(date).offset(dateField, offset);
 	}
+
 	/**
 	 * 当前日期是否在日期指定范围内<br>
 	 * 起始日期和结束日期可以互换
@@ -1345,7 +1334,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param beginDate 起始日期（包含）
 	 * @param endDate   结束日期（包含）
 	 * @return 是否在范围内
-	 * @since 3.0.8
+	 * 
 	 */
 	public static boolean isIn(Date date, Date beginDate, Date endDate) {
 		if (date instanceof DateTime) {
@@ -1362,7 +1351,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date1 日期1
 	 * @param date2 日期2
 	 * @return 是否为相同时间
-	 * @since 4.1.13
+	 * 
 	 */
 	public static boolean isSameTime(Date date1, Date date2) {
 		return date1.compareTo(date2) == 0;
@@ -1374,7 +1363,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date1 日期1
 	 * @param date2 日期2
 	 * @return 是否为同一天
-	 * @since 4.1.13
+	 * 
 	 */
 	public static boolean isSameDay(final Date date1, final Date date2) {
 		if (date1 == null || date2 == null) {
@@ -1404,7 +1393,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date1 日期1
 	 * @param date2 日期2
 	 * @return 是否为同一月
-	 * @since 5.4.1
+	 * 
 	 */
 	public static boolean isSameMonth(final Date date1, final Date date2) {
 		if (date1 == null || date2 == null) {
@@ -1499,7 +1488,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param timeLength 实际经过时长
 	 * @param endDate    被比较的时间，即有效期的截止时间。如果经过时长后的时间晚于截止时间，就表示过期
 	 * @return 是否过期
-	 * @since 3.1.1
+	 *
 	 * @deprecated 此方法存在一定的歧义，容易产生误导，废弃。
 	 */
 	@Deprecated
@@ -1513,7 +1502,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param timeStr 字符串时分秒(HH:mm:ss)格式
 	 * @return 时分秒转换后的秒数
-	 * @since 3.1.2
+	 * 
 	 */
 	public static int timeToSecond(String timeStr) {
 		if (StrUtil.isEmpty(timeStr)) {
@@ -1536,7 +1525,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param seconds 需要转换的秒数
 	 * @return 转换后的字符串
-	 * @since 3.1.2
+	 * 
 	 */
 	public static String secondToTime(int seconds) {
 		if (seconds < 0) {
@@ -1571,7 +1560,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date1 日期1
 	 * @param date2 日期2
 	 * @return 比较结果，如果date1 &lt; date2，返回数小于0，date1==date2返回0，date1 &gt; date2 大于0
-	 * @since 4.6.2
+	 * 
 	 */
 	public static int compare(Date date1, Date date2) {
 		return CompareUtil.compare(date1, date2);
@@ -1585,7 +1574,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param format 日期格式，常用格式见： {@link DatePattern}; 允许为空； date1 date2; eg: yyyy-MM-dd
 	 * @return 比较结果，如果date1 &lt; date2，返回数小于0，date1==date2返回0，date1 &gt; date2 大于0
 	 * @author dazer
-	 * @since 5.6.4
+	 * 
 	 */
 	public static int compare(Date date1, Date date2, String format) {
 		if (format != null) {
@@ -1604,7 +1593,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param duration 时长
 	 * @return 时长毫秒
-	 * @since 4.6.6
+	 * 
 	 */
 	public static long nanosToMillis(long duration) {
 		return TimeUnit.NANOSECONDS.toMillis(duration);
@@ -1615,7 +1604,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param duration 时长
 	 * @return 秒
-	 * @since 4.6.6
+	 * 
 	 */
 	public static double nanosToSeconds(long duration) {
 		return duration / 1_000_000_000.0;
@@ -1626,7 +1615,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param date Date对象
 	 * @return {@link Instant}对象
-	 * @since 5.0.2
+	 * 
 	 */
 	public static Instant toInstant(Date date) {
 		return null == date ? null : date.toInstant();
@@ -1637,7 +1626,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param temporalAccessor Date对象
 	 * @return {@link Instant}对象
-	 * @since 5.0.2
+	 * 
 	 */
 	public static Instant toInstant(TemporalAccessor temporalAccessor) {
 		return TemporalAccessorUtil.toInstant(temporalAccessor);
@@ -1649,7 +1638,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param instant {@link Instant}
 	 * @return {@link LocalDateTime}
 	 * @see LocalDateTimeUtil#of(Instant)
-	 * @since 5.0.5
+	 * 
 	 */
 	public static LocalDateTime toLocalDateTime(Instant instant) {
 		return LocalDateTimeUtil.of(instant);
@@ -1661,7 +1650,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date {@link Date}
 	 * @return {@link LocalDateTime}
 	 * @see LocalDateTimeUtil#of(Date)
-	 * @since 5.0.5
+	 * 
 	 */
 	public static LocalDateTime toLocalDateTime(Date date) {
 		return LocalDateTimeUtil.of(date);
@@ -1673,7 +1662,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date         {@link Date}
 	 * @param zoneId       {@link ZoneId}
 	 * @return {@link DateTime}
-	 * @since 5.8.3
+	 * 
 	 */
 	public static DateTime convertTimeZone(Date date, ZoneId zoneId) {
 		return new DateTime(date, ZoneUtil.toTimeZone(zoneId));
@@ -1685,7 +1674,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param date           {@link Date}
 	 * @param timeZone       {@link TimeZone}
 	 * @return {@link DateTime}
-	 * @since 5.8.3
+	 * 
 	 */
 	public static DateTime convertTimeZone(Date date, TimeZone timeZone) {
 		return new DateTime(date, timeZone);
@@ -1696,7 +1685,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param year 年份
 	 * @return 天
-	 * @since 5.3.6
+	 * 
 	 */
 	public static int lengthOfYear(int year) {
 		return Year.of(year).length();
@@ -1708,7 +1697,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param month      月份
 	 * @param isLeapYear 是否闰年
 	 * @return 天
-	 * @since 5.4.2
+	 * 
 	 */
 	public static int lengthOfMonth(int month, boolean isLeapYear) {
 		return java.time.Month.of(month).length(isLeapYear);
@@ -1720,7 +1709,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param pattern 表达式
 	 * @return {@link SimpleDateFormat}
-	 * @since 5.5.5
+	 * 
 	 */
 	public static SimpleDateFormat newSimpleFormat(String pattern) {
 		return newSimpleFormat(pattern, null, null);
@@ -1734,7 +1723,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param locale   {@link Locale}，{@code null}表示默认
 	 * @param timeZone {@link TimeZone}，{@code null}表示默认
 	 * @return {@link SimpleDateFormat}
-	 * @since 5.5.5
+	 * 
 	 */
 	public static SimpleDateFormat newSimpleFormat(String pattern, Locale locale, TimeZone timeZone) {
 		if (null == locale) {
@@ -1753,7 +1742,7 @@ public class DateUtil extends CalendarUtil {
 	 *
 	 * @param unit 单位
 	 * @return 单位简写名称
-	 * @since 5.7.16
+	 * 
 	 */
 	public static String getShotName(TimeUnit unit) {
 		switch (unit) {
@@ -1788,7 +1777,7 @@ public class DateUtil extends CalendarUtil {
 	 * @param startTime     第二个时间段的开始时间
 	 * @param endTime       第二个时间段的结束时间
 	 * @return true 表示时间有重合或包含或相等
-	 * @since 5.7.22
+	 * 
 	 */
 	public static boolean isOverlap(Date realStartTime, Date realEndTime,
 									Date startTime, Date endTime) {
@@ -1803,7 +1792,7 @@ public class DateUtil extends CalendarUtil {
 	 * 是否为本月最后一天
 	 * @param date {@link Date}
 	 * @return 是否为本月最后一天
-	 * @since 5.8.9
+	 *
 	 */
 	public static boolean isLastDayOfMonth(Date date){
 		return date(date).isLastDayOfMonth();
@@ -1813,7 +1802,7 @@ public class DateUtil extends CalendarUtil {
 	 * 获得本月的最后一天
 	 * @param date {@link Date}
 	 * @return 天
-	 * @since 5.8.9
+	 *
 	 */
 	public static int getLastDayOfMonth(Date date){
 		return date(date).getLastDayOfMonth();

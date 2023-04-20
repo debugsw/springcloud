@@ -22,7 +22,6 @@ public class Pair<K, V> extends CloneSupport<Pair<K, V>> implements Serializable
 	 * @param key   键
 	 * @param value 值
 	 * @return {@code Pair}
-	 * @since 5.4.3
 	 */
 	public static <K, V> Pair<K, V> of(K key, V value) {
 		return new Pair<>(key, value);

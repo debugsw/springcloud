@@ -2,11 +2,7 @@ package com.spring.cloud.base.common.money;
 
 /**
  * 站内系统支持的统一的币种定义枚举。
- * <li>http://en.wikipedia.org/wiki/ISO_4217
- * <li>币种符号权威参考：http://www.xe.com/symbols.php
- *
  * @author ls
- * @since 2022/02/13
  */
 public enum CurrencyEnum {
 

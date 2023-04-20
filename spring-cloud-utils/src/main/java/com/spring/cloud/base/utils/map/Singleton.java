@@ -44,7 +44,6 @@ public final class Singleton {
 	 * @param key      自定义键
 	 * @param supplier 单例对象的创建函数
 	 * @return 单例对象
-	 * @since 5.3.3
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T get(String key, Func0<T> supplier) {
@@ -70,7 +69,6 @@ public final class Singleton {
 	 * 将已有对象放入单例中，其Class做为键
 	 *
 	 * @param obj 对象
-	 * @since 4.0.7
 	 */
 	public static void put(Object obj) {
 		Assert.notNull(obj, "Bean object must be not null !");
@@ -82,7 +80,7 @@ public final class Singleton {
 	 *
 	 * @param key 键
 	 * @param obj 对象
-	 * @since 5.3.3
+	 * 
 	 */
 	public static void put(String key, Object obj) {
 		POOL.put(key, obj);

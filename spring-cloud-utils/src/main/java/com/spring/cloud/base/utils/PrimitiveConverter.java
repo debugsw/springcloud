@@ -25,7 +25,7 @@ public class PrimitiveConverter extends AbstractConverter<Object> {
 	public PrimitiveConverter(Class<?> clazz) {
 		if (null == clazz) {
 			throw new NullPointerException("PrimitiveConverter not allow null target type!");
-		} else if (false == clazz.isPrimitive()) {
+		} else if (!clazz.isPrimitive()) {
 			throw new IllegalArgumentException("[" + clazz + "] is not a primitive class!");
 		}
 		this.targetType = clazz;
@@ -49,11 +49,11 @@ public class PrimitiveConverter extends AbstractConverter<Object> {
 
 	/**
 	 * 将指定值转换为原始类型的值
-	 * @param value 值
+	 *
+	 * @param value          值
 	 * @param primitiveClass 原始类型
-	 * @param toStringFunc 当无法直接转换时，转为字符串后再转换的函数
+	 * @param toStringFunc   当无法直接转换时，转为字符串后再转换的函数
 	 * @return 转换结果
-	 * @since 5.5.0
 	 */
 	protected static Object convert(Object value, Class<?> primitiveClass, Function<Object, String> toStringFunc) {
 		if (byte.class == primitiveClass) {

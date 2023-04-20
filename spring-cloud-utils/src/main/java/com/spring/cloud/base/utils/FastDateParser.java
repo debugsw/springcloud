@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
  * Thanks to Apache Commons Lang 3.5
  *
  * @see FastDatePrinter
- * @since 2.16.2
  */
 public class FastDateParser extends AbstractDateBasic implements DateParser {
 	private static final long serialVersionUID = -3199383897950947498L;
@@ -36,9 +35,6 @@ public class FastDateParser extends AbstractDateBasic implements DateParser {
 	// derived fields
 	private transient List<StrategyAndWidth> patterns;
 
-	// comparator used to sort regex alternatives
-	// alternatives should be ordered longer first, and shorter last. ('february' before 'feb')
-	// all entries must be lowercase by locale.
 	private static final Comparator<String> LONGER_FIRST_LOWERCASE = Comparator.reverseOrder();
 
 	/**

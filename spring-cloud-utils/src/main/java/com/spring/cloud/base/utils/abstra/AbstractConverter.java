@@ -25,7 +25,6 @@ public abstract class AbstractConverter<T> implements Converter<T>, Serializable
 	 * @param value        被转换的值
 	 * @param defaultValue 默认值
 	 * @return 转换后的值
-	 * @since 4.5.7
 	 */
 	public T convertQuietly(Object value, T defaultValue) {
 		try {

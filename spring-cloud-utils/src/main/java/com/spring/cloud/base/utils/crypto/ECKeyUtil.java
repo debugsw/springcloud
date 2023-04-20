@@ -54,7 +54,6 @@ public class ECKeyUtil {
 	 *
 	 * @param privateKeyParameters 私钥参数
 	 * @return 公钥参数
-	 * @since 5.5.9
 	 */
 	public static ECPublicKeyParameters getPublicParams(ECPrivateKeyParameters privateKeyParameters) {
 		final ECDomainParameters domainParameters = privateKeyParameters.getParameters();
@@ -155,7 +154,6 @@ public class ECKeyUtil {
 	 * @param pointEncoded     被编码的曲线坐标点
 	 * @param domainParameters ECDomainParameters
 	 * @return ECPublicKeyParameters
-	 * @since 5.4.3
 	 */
 	public static ECPublicKeyParameters toPublicParams(String pointEncoded, ECDomainParameters domainParameters) {
 		final ECCurve curve = domainParameters.getCurve();
@@ -168,7 +166,7 @@ public class ECKeyUtil {
 	 * @param pointEncoded     被编码的曲线坐标点
 	 * @param domainParameters ECDomainParameters
 	 * @return ECPublicKeyParameters
-	 * @since 5.4.3
+	 * 
 	 */
 	public static ECPublicKeyParameters toPublicParams(byte[] pointEncoded, ECDomainParameters domainParameters) {
 		final ECCurve curve = domainParameters.getCurve();
@@ -181,7 +179,7 @@ public class ECKeyUtil {
 	 * @param point            曲线坐标点
 	 * @param domainParameters ECDomainParameters
 	 * @return ECPublicKeyParameters
-	 * @since 5.4.3
+	 * 
 	 */
 	public static ECPublicKeyParameters toPublicParams(ECPoint point, ECDomainParameters domainParameters) {
 		return new ECPublicKeyParameters(point, domainParameters);
@@ -313,7 +311,7 @@ public class ECKeyUtil {
 	 *
 	 * @param key 私钥，需为PKCS#1格式
 	 * @return {@link OpenSSHPrivateKeySpec}
-	 * @since 5.5.9
+	 * 
 	 */
 	public static KeySpec createOpenSSHPrivateKeySpec(byte[] key) {
 		return new OpenSSHPrivateKeySpec(key);
@@ -324,7 +322,7 @@ public class ECKeyUtil {
 	 *
 	 * @param key 公钥，需为PKCS#1格式
 	 * @return {@link OpenSSHPublicKeySpec}
-	 * @since 5.5.9
+	 * 
 	 */
 	public static KeySpec createOpenSSHPublicKeySpec(byte[] key) {
 		return new OpenSSHPublicKeySpec(key);
@@ -341,7 +339,7 @@ public class ECKeyUtil {
 	 *
 	 * @param privateKeyBytes 私钥
 	 * @return {@link ECPrivateKeyParameters}
-	 * @since 5.5.9
+	 * 
 	 */
 	public static ECPrivateKeyParameters decodePrivateKeyParams(byte[] privateKeyBytes) {
 		try {
@@ -374,7 +372,7 @@ public class ECKeyUtil {
 	 *
 	 * @param publicKeyBytes 公钥
 	 * @return {@link ECPublicKeyParameters}
-	 * @since 5.5.9
+	 * 
 	 */
 	public static ECPublicKeyParameters decodePublicKeyParams(byte[] publicKeyBytes) {
 		try {

@@ -32,7 +32,6 @@ public class ActualTypeMapperPool {
 	 *
 	 * @param type 被解析的包含泛型参数的类
 	 * @return 泛型对应关系Map
-	 * @since 5.7.16
 	 */
 	public static Map<String, Type> getStrKeyMap(Type type) {
 		return Convert.toMap(String.class, Type.class, get(type));

@@ -14,17 +14,15 @@ import java.util.regex.Pattern;
 public class DatePattern {
 
 	/**
-	 * 标准日期时间正则，每个字段支持单个数字或2个数字，包括：
-	 * <pre>
-	 *     yyyy-MM-dd HH:mm:ss.SSSSSS
-	 *     yyyy-MM-dd HH:mm:ss.SSS
-	 *     yyyy-MM-dd HH:mm:ss
-	 *     yyyy-MM-dd HH:mm
-	 *     yyyy-MM-dd
-	 * </pre>
-	 *
-	 * @since 5.3.6
-	 */
+     * 标准日期时间正则，每个字段支持单个数字或2个数字，包括：
+     * <pre>
+     *     yyyy-MM-dd HH:mm:ss.SSSSSS
+     *     yyyy-MM-dd HH:mm:ss.SSS
+     *     yyyy-MM-dd HH:mm:ss
+     *     yyyy-MM-dd HH:mm
+     *     yyyy-MM-dd
+     * </pre>
+     */
 	public static final Pattern REGEX_NORM = Pattern.compile("\\d{4}-\\d{1,2}-\\d{1,2}(\\s\\d{1,2}:\\d{1,2}(:\\d{1,2})?)?(.\\d{1,6})?");
 	/**
 	 * 年格式：yyyy
@@ -304,12 +302,12 @@ public class DatePattern {
 	 */
 	public static final FastDateFormat UTC_MS_WITH_XXX_OFFSET_FORMAT = FastDateFormat.getInstance(UTC_MS_WITH_XXX_OFFSET_PATTERN);
 
-	/**
-	 * 创建并为 {@link DateTimeFormatter} 赋予默认时区和位置信息，默认值为系统默认值。
-	 *
-	 * @param pattern 日期格式
-	 * @return {@link DateTimeFormatter}
-	 * @since 5.7.5
+    /**
+     * 创建并为 {@link DateTimeFormatter} 赋予默认时区和位置信息，默认值为系统默认值。
+     *
+     * @param pattern 日期格式
+     * @return {@link DateTimeFormatter}
+	 * 
 	 */
 	public static DateTimeFormatter createFormatter(String pattern) {
 		return DateTimeFormatter.ofPattern(pattern, Locale.getDefault())

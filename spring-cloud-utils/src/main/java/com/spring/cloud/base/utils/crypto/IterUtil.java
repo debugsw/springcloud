@@ -2,9 +2,9 @@ package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.CollUtil;
-import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.list.FilterIter;
 import com.spring.cloud.base.utils.list.ListUtil;
 import com.spring.cloud.base.utils.map.Editor;
@@ -30,7 +30,6 @@ public class IterUtil {
 	 * @param iterable {@link Iterable}
 	 * @param <T>      元素类型
 	 * @return 当iterable为null返回{@code null}，否则返回对应的{@link Iterator}
-	 * @since 5.7.2
 	 */
 	public static <T> Iterator<T> getIter(Iterable<T> iterable) {
 		return null == iterable ? null : iterable.iterator();
@@ -110,7 +109,6 @@ public class IterUtil {
 	 *
 	 * @param iter iter 被检查的{@link Iterable}对象，如果为{@code null} 返回true
 	 * @return 是否全部元素为null
-	 * @since 3.3.0
 	 */
 	public static boolean isAllNull(Iterable<?> iter) {
 		return isAllNull(null == iter ? null : iter.iterator());
@@ -121,7 +119,7 @@ public class IterUtil {
 	 *
 	 * @param iter iter 被检查的{@link Iterator}对象，如果为{@code null} 返回true
 	 * @return 是否全部元素为null
-	 * @since 3.3.0
+	 * 
 	 */
 	public static boolean isAllNull(Iterator<?> iter) {
 		return null == getFirstNoneNull(iter);
@@ -160,7 +158,7 @@ public class IterUtil {
 	 * @param iter      对象列表
 	 * @param fieldName 字段名（会通过反射获取其值）
 	 * @return 某个字段值与对象对应Map
-	 * @since 4.0.4
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <K, V> Map<K, V> fieldValueMap(Iterator<V> iter, String fieldName) {
@@ -176,7 +174,7 @@ public class IterUtil {
 	 * @param fieldNameForKey   做为键的字段名（会通过反射获取其值）
 	 * @param fieldNameForValue 做为值的字段名（会通过反射获取其值）
 	 * @return 某个字段值与对象对应Map
-	 * @since 4.0.10
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <K, V> Map<K, V> fieldValueAsMap(Iterator<?> iter, String fieldNameForKey, String fieldNameForValue) {
@@ -193,7 +191,7 @@ public class IterUtil {
 	 * @param iterable  对象列表
 	 * @param fieldName 字段名（会通过反射获取其值）
 	 * @return 某个字段值与对象对应Map
-	 * @since 4.6.2
+	 * 
 	 */
 	public static <V> List<Object> fieldValueList(Iterable<V> iterable, String fieldName) {
 		return fieldValueList(getIter(iterable), fieldName);
@@ -206,7 +204,7 @@ public class IterUtil {
 	 * @param iter      对象列表
 	 * @param fieldName 字段名（会通过反射获取其值）
 	 * @return 某个字段值与对象对应Map
-	 * @since 4.0.10
+	 * 
 	 */
 	public static <V> List<Object> fieldValueList(Iterator<V> iter, String fieldName) {
 		final List<Object> result = new ArrayList<>();
@@ -243,7 +241,7 @@ public class IterUtil {
 	 * @param prefix      每个元素添加的前缀，null表示不添加
 	 * @param suffix      每个元素添加的后缀，null表示不添加
 	 * @return 连接后的字符串
-	 * @since 4.0.10
+	 * 
 	 */
 	public static <T> String join(Iterator<T> iterator, CharSequence conjunction, String prefix, String suffix) {
 		return StrJoiner.of(conjunction, prefix, suffix)
@@ -262,7 +260,7 @@ public class IterUtil {
 	 * @param conjunction 分隔符
 	 * @param func        集合元素转换器，将元素转换为字符串
 	 * @return 连接后的字符串
-	 * @since 5.6.7
+	 * 
 	 */
 	public static <T> String join(Iterator<T> iterator, CharSequence conjunction, Function<T, ? extends CharSequence> func) {
 		if (null == iterator) {
@@ -300,7 +298,7 @@ public class IterUtil {
 	 * @param keys   键列表
 	 * @param values 值列表
 	 * @return 标题内容Map
-	 * @since 3.1.0
+	 * 
 	 */
 	public static <K, V> Map<K, V> toMap(Iterable<K> keys, Iterable<V> values) {
 		return toMap(keys, values, false);
@@ -317,7 +315,7 @@ public class IterUtil {
 	 * @param values  值列表
 	 * @param isOrder 是否有序
 	 * @return 标题内容Map
-	 * @since 4.1.12
+	 * 
 	 */
 	public static <K, V> Map<K, V> toMap(Iterable<K> keys, Iterable<V> values, boolean isOrder) {
 		return toMap(null == keys ? null : keys.iterator(), null == values ? null : values.iterator(), isOrder);
@@ -333,7 +331,7 @@ public class IterUtil {
 	 * @param keys   键列表
 	 * @param values 值列表
 	 * @return 标题内容Map
-	 * @since 3.1.0
+	 * 
 	 */
 	public static <K, V> Map<K, V> toMap(Iterator<K> keys, Iterator<V> values) {
 		return toMap(keys, values, false);
@@ -350,7 +348,7 @@ public class IterUtil {
 	 * @param values  值列表
 	 * @param isOrder 是否有序
 	 * @return 标题内容Map
-	 * @since 4.1.12
+	 * 
 	 */
 	public static <K, V> Map<K, V> toMap(Iterator<K> keys, Iterator<V> values, boolean isOrder) {
 		final Map<K, V> resultMap = MapUtil.newHashMap(isOrder);
@@ -370,7 +368,7 @@ public class IterUtil {
 	 * @param <K>       键类型
 	 * @param <V>       值类型
 	 * @return HashMap
-	 * @since 5.3.6
+	 * 
 	 */
 	public static <K, V> Map<K, List<V>> toListMap(Iterable<V> iterable, Function<V, K> keyMapper) {
 		return toListMap(iterable, keyMapper, v -> v);
@@ -386,7 +384,7 @@ public class IterUtil {
 	 * @param <K>         键类型
 	 * @param <V>         值类型
 	 * @return HashMap
-	 * @since 5.3.6
+	 * 
 	 */
 	public static <T, K, V> Map<K, List<V>> toListMap(Iterable<T> iterable, Function<T, K> keyMapper, Function<T, V> valueMapper) {
 		return toListMap(MapUtil.newHashMap(), iterable, keyMapper, valueMapper);
@@ -403,7 +401,7 @@ public class IterUtil {
 	 * @param <K>         键类型
 	 * @param <V>         值类型
 	 * @return HashMap
-	 * @since 5.3.6
+	 * 
 	 */
 	public static <T, K, V> Map<K, List<V>> toListMap(Map<K, List<V>> resultMap, Iterable<T> iterable, Function<T, K> keyMapper, Function<T, V> valueMapper) {
 		if (null == resultMap) {
@@ -428,7 +426,7 @@ public class IterUtil {
 	 * @param <K>       键类型
 	 * @param <V>       值类型
 	 * @return HashMap
-	 * @since 5.3.6
+	 * 
 	 */
 	public static <K, V> Map<K, V> toMap(Iterable<V> iterable, Function<V, K> keyMapper) {
 		return toMap(iterable, keyMapper, v -> v);
@@ -444,7 +442,7 @@ public class IterUtil {
 	 * @param <K>         键类型
 	 * @param <V>         值类型
 	 * @return HashMap
-	 * @since 5.3.6
+	 * 
 	 */
 	public static <T, K, V> Map<K, V> toMap(Iterable<T> iterable, Function<T, K> keyMapper, Function<T, V> valueMapper) {
 		return toMap(MapUtil.newHashMap(), iterable, keyMapper, valueMapper);
@@ -461,7 +459,7 @@ public class IterUtil {
 	 * @param <K>         键类型
 	 * @param <V>         值类型
 	 * @return HashMap
-	 * @since 5.3.6
+	 * 
 	 */
 	public static <T, K, V> Map<K, V> toMap(Map<K, V> resultMap, Iterable<T> iterable, Function<T, K> keyMapper, Function<T, V> valueMapper) {
 		if (null == resultMap) {
@@ -485,7 +483,7 @@ public class IterUtil {
 	 * @param <E>  元素类型
 	 * @param iter {@link Iterator}
 	 * @return List
-	 * @since 4.0.6
+	 * 
 	 */
 	public static <E> List<E> toList(Iterable<E> iter) {
 		if (null == iter) {
@@ -501,7 +499,7 @@ public class IterUtil {
 	 * @param <E>  元素类型
 	 * @param iter {@link Iterator}
 	 * @return List
-	 * @since 4.0.6
+	 * 
 	 */
 	public static <E> List<E> toList(Iterator<E> iter) {
 		return ListUtil.toList(iter);
@@ -538,7 +536,7 @@ public class IterUtil {
 	 * @param index    位置
 	 * @param <E>      元素类型
 	 * @return 元素，找不到元素返回{@code null}
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <E> E get(final Iterator<E> iterator, int index) throws IndexOutOfBoundsException {
 		if (null == iterator) {
@@ -577,7 +575,7 @@ public class IterUtil {
 	 * @param <T>      集合元素类型
 	 * @param iterable {@link Iterable}
 	 * @return 第一个元素
-	 * @since 5.7.2
+	 * 
 	 */
 	public static <T> T getFirstNoneNull(Iterable<T> iterable) {
 		if (null == iterable) {
@@ -603,7 +601,7 @@ public class IterUtil {
 	 * @param <T>      集合元素类型
 	 * @param iterator {@link Iterator}
 	 * @return 第一个非空元素，null表示未找到
-	 * @since 5.7.2
+	 * 
 	 */
 	public static <T> T getFirstNoneNull(Iterator<T> iterator) {
 		return firstMatch(iterator, Objects::nonNull);
@@ -616,7 +614,7 @@ public class IterUtil {
 	 * @param iterator {@link Iterator}
 	 * @param matcher  匹配接口，实现此接口自定义匹配规则
 	 * @return 匹配元素，如果不存在匹配元素或{@link Iterator}为空，返回 {@code null}
-	 * @since 5.7.5
+	 * 
 	 */
 	public static <T> T firstMatch(Iterator<T> iterator, Matcher<T> matcher) {
 		Assert.notNull(matcher, "Matcher must be not null !");
@@ -670,7 +668,7 @@ public class IterUtil {
 	 * @param iter   集合
 	 * @param editor 编辑器接口, {@code null}表示不编辑
 	 * @return 过滤后的集合
-	 * @since 5.7.1
+	 * 
 	 */
 	public static <T> List<T> edit(Iterable<T> iter, Editor<T> editor) {
 		final List<T> result = new ArrayList<>();
@@ -701,7 +699,7 @@ public class IterUtil {
 	 * @param iter   集合
 	 * @param filter 过滤器接口
 	 * @return 编辑后的集合
-	 * @since 4.6.5
+	 * 
 	 */
 	public static <T extends Iterable<E>, E> T filter(T iter, Filter<E> filter) {
 		if (null == iter) {
@@ -725,7 +723,7 @@ public class IterUtil {
 	 * @param iter   集合
 	 * @param filter 过滤器接口，删除{@link Filter#accept(Object)}为{@code false}的元素
 	 * @return 编辑后的集合
-	 * @since 4.6.5
+	 * 
 	 */
 	public static <E> Iterator<E> filter(Iterator<E> iter, Filter<E> filter) {
 		if (null == iter || null == filter) {
@@ -747,7 +745,7 @@ public class IterUtil {
 	 * @param iter   {@link Iterator}
 	 * @param filter 过滤器，保留{@link Filter#accept(Object)}为{@code true}的元素
 	 * @return ArrayList
-	 * @since 5.7.22
+	 * 
 	 */
 	public static <E> List<E> filterToList(Iterator<E> iter, Filter<E> filter) {
 		return toList(filtered(iter, filter));
@@ -760,7 +758,7 @@ public class IterUtil {
 	 * @param filter   过滤断言，当{@link Filter#accept(Object)}为{@code true}时保留元素，{@code false}抛弃元素
 	 * @param <E>      元素类型
 	 * @return {@link FilterIter}
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <E> FilterIter<E> filtered(final Iterator<? extends E> iterator, final Filter<? super E> filter) {
 		return new FilterIter<>(iterator, filter);
@@ -776,7 +774,7 @@ public class IterUtil {
 	 * @param map      Map对象，转换后的键值对加入此Map，通过传入此对象自定义Map类型
 	 * @param keyFunc  生成key的函数
 	 * @return 生成的map
-	 * @since 5.2.6
+	 * 
 	 */
 	public static <K, V> Map<K, V> toMap(Iterator<V> iterator, Map<K, V> map, Func1<V, K> keyFunc) {
 		return toMap(iterator, map, keyFunc, (value) -> value);
@@ -794,7 +792,7 @@ public class IterUtil {
 	 * @param keyFunc   生成key的函数
 	 * @param valueFunc 生成值的策略函数
 	 * @return 生成的map
-	 * @since 5.2.6
+	 * 
 	 */
 	public static <K, V, E> Map<K, V> toMap(Iterator<E> iterator, Map<K, V> map, Func1<E, K> keyFunc, Func1<E, V> valueFunc) {
 		if (null == iterator) {
@@ -823,7 +821,7 @@ public class IterUtil {
 	 * @param <T> 元素类型
 	 * @return 空Iterator
 	 * @see Collections#emptyIterator()
-	 * @since 5.3.1
+	 * 
 	 */
 	public static <T> Iterator<T> empty() {
 		return Collections.emptyIterator();
@@ -837,7 +835,7 @@ public class IterUtil {
 	 * @param iterator 源{@link Iterator}
 	 * @param function 转换函数
 	 * @return 转换后的{@link Iterator}
-	 * @since 5.4.3
+	 * 
 	 */
 	public static <F, T> Iterator<T> trans(Iterator<F> iterator, Function<? super F, ? extends T> function) {
 		return new TransIter<>(iterator, function);
@@ -848,7 +846,7 @@ public class IterUtil {
 	 *
 	 * @param iterable Iterable对象
 	 * @return Iterable对象的元素数量
-	 * @since 5.5.0
+	 * 
 	 */
 	public static int size(Iterable<?> iterable) {
 		if (null == iterable) {
@@ -867,7 +865,7 @@ public class IterUtil {
 	 *
 	 * @param iterator Iterator对象
 	 * @return Iterator对象的元素数量
-	 * @since 5.5.0
+	 * 
 	 */
 	public static int size(Iterator<?> iterator) {
 		int size = 0;
@@ -891,7 +889,7 @@ public class IterUtil {
 	 * @param list1 列表1
 	 * @param list2 列表2
 	 * @return 是否相同
-	 * @since 5.6.0
+	 * 
 	 */
 	public static boolean isEqualList(Iterable<?> list1, Iterable<?> list2) {
 		if (list1 == list2) {
@@ -919,7 +917,7 @@ public class IterUtil {
 	 * 清空指定{@link Iterator}，此方法遍历后调用{@link Iterator#remove()}移除每个元素
 	 *
 	 * @param iterator {@link Iterator}
-	 * @since 5.7.23
+	 * 
 	 */
 	public static void clear(Iterator<?> iterator) {
 		if (null != iterator) {
@@ -937,7 +935,7 @@ public class IterUtil {
 	 * @param iterator {@link Iterator}
 	 * @param consumer 节点消费，{@code null}表示不处理
 	 * @param <E>      元素类型
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <E> void forEach(final Iterator<E> iterator, final Consumer<? super E> consumer) {
 		if (iterator != null) {
@@ -956,7 +954,7 @@ public class IterUtil {
 	 * @param iterator {@link Iterator}
 	 * @param <E>      元素类型
 	 * @return 字符串
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <E> String toStr(final Iterator<E> iterator) {
 		return toStr(iterator, ObjectUtil::toString);
@@ -969,7 +967,7 @@ public class IterUtil {
 	 * @param transFunc 元素转字符串函数
 	 * @param <E>       元素类型
 	 * @return 字符串
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <E> String toStr(final Iterator<E> iterator, final Function<? super E, String> transFunc) {
 		return toStr(iterator, transFunc, ", ", "[", "]");
@@ -985,7 +983,7 @@ public class IterUtil {
 	 * @param suffix    后缀
 	 * @param <E>       元素类型
 	 * @return 字符串
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <E> String toStr(final Iterator<E> iterator,
 								   final Function<? super E, String> transFunc,

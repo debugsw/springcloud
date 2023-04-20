@@ -58,7 +58,6 @@ public class UnicodeUtil {
 	 * @param c 被编码的字符
 	 * @return Unicode字符串
 	 * @see HexUtil#toUnicodeHex(char)
-	 * @since 5.6.2
 	 */
 	public static String toUnicode(char c) {
 		return HexUtil.toUnicodeHex(c);
@@ -70,7 +69,7 @@ public class UnicodeUtil {
 	 * @param c 被编码的字符
 	 * @return Unicode字符串
 	 * @see HexUtil#toUnicodeHex(int)
-	 * @since 5.6.2
+	 * 
 	 */
 	public static String toUnicode(int c) {
 		return HexUtil.toUnicodeHex(c);

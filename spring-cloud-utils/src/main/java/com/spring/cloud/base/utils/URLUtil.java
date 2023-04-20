@@ -1,10 +1,10 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.map.ClassLoaderUtil;
 import com.spring.cloud.base.utils.map.ResourceUtil;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -81,7 +81,6 @@ public class URLUtil extends URLEncodeUtil {
 	 * @return URL对象
 	 * @throws UtilException {@link MalformedURLException}包装，URI格式有问题时抛出
 	 * @see URI#toURL()
-	 * @since 5.7.21
 	 */
 	public static URL url(URI uri) throws UtilException {
 		if (null == uri) {
@@ -110,7 +109,6 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param url     URL
 	 * @param handler {@link URLStreamHandler}
 	 * @return URL对象
-	 * @since 4.1.1
 	 */
 	public static URL url(String url, URLStreamHandler handler) {
 		if (null == url) {
@@ -140,7 +138,6 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param content 正文
 	 * @return URL
-	 * @since 5.5.2
 	 */
 	public static URI getStringURI(CharSequence content) {
 		if (null == content) {
@@ -155,7 +152,7 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param urlStr URL字符串
 	 * @return URL
-	 * @since 4.1.9
+	 * 
 	 */
 	public static URL toUrlForHttp(String urlStr) {
 		return toUrlForHttp(urlStr, null);
@@ -167,7 +164,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param urlStr  URL字符串
 	 * @param handler {@link URLStreamHandler}
 	 * @return URL
-	 * @since 4.1.9
+	 * 
 	 */
 	public static URL toUrlForHttp(String urlStr, URLStreamHandler handler) {
 		Assert.notBlank(urlStr, "Url is blank !");
@@ -185,7 +182,7 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param urlStr URL字符串
 	 * @return 编码后的字符串
-	 * @since 4.5.14
+	 * 
 	 */
 	public static String encodeBlank(CharSequence urlStr) {
 		if (urlStr == null) {
@@ -270,7 +267,7 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param url URL
 	 * @return 域名的URI
-	 * @since 4.6.9
+	 * 
 	 */
 	public static URI getHost(URL url) {
 		if (null == url) {
@@ -315,7 +312,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param url URL
 	 * @return 解码后的URL
 	 * @throws UtilException UnsupportedEncodingException
-	 * @since 3.1.2
+	 * 
 	 */
 	public static String decode(String url) throws UtilException {
 		return decode(url, CharsetUtil.UTF_8);
@@ -329,7 +326,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param content 被解码内容
 	 * @param charset 编码，null表示不解码
 	 * @return 编码后的字符
-	 * @since 4.4.1
+	 * 
 	 */
 	public static String decode(String content, Charset charset) {
 		return URLDecoder.decode(content, charset);
@@ -343,7 +340,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param charset       编码，null表示不解码
 	 * @param isPlusToSpace 是否+转换为空格
 	 * @return 编码后的字符
-	 * @since 5.6.3
+	 * 
 	 */
 	public static String decode(String content, Charset charset, boolean isPlusToSpace) {
 		return URLDecoder.decode(content, charset, isPlusToSpace);
@@ -380,7 +377,7 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param url {@link URL}
 	 * @return 路径
-	 * @since 3.0.8
+	 * 
 	 */
 	public static String getDecodedPath(URL url) {
 		if (null == url) {
@@ -415,7 +412,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param isEncode 是否编码参数中的特殊字符（默认UTF-8编码）
 	 * @return URI
 	 * @throws UtilException 包装URISyntaxException
-	 * @since 4.6.9
+	 * 
 	 */
 	public static URI toURI(URL url, boolean isEncode) throws UtilException {
 		if (null == url) {
@@ -443,7 +440,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param isEncode 是否编码参数中的特殊字符（默认UTF-8编码）
 	 * @return URI
 	 * @throws UtilException 包装URISyntaxException
-	 * @since 4.6.9
+	 * 
 	 */
 	public static URI toURI(String location, boolean isEncode) throws UtilException {
 		if (isEncode) {
@@ -462,7 +459,7 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param url {@link URL}
 	 * @return 是否为文件
-	 * @since 3.0.9
+	 * 
 	 */
 	public static boolean isFileURL(URL url) {
 		Assert.notNull(url, "URL must be not null");
@@ -492,7 +489,7 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param url the URL to check
 	 * @return whether the URL has been identified as a JAR file URL
-	 * @since 4.1
+	 * 
 	 */
 	public static boolean isJarFileURL(URL url) {
 		Assert.notNull(url, "URL must be not null");
@@ -505,7 +502,7 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param url {@link URL}
 	 * @return InputStream流
-	 * @since 3.2.1
+	 * 
 	 */
 	public static InputStream getStream(URL url) {
 		Assert.notNull(url, "URL must be not null");
@@ -522,7 +519,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param url     {@link URL}
 	 * @param charset 编码
 	 * @return {@link BufferedReader}
-	 * @since 3.2.1
+	 * 
 	 */
 	public static BufferedReader getReader(URL url, Charset charset) {
 		return IoUtil.getReader(getStream(url), charset);
@@ -533,7 +530,7 @@ public class URLUtil extends URLEncodeUtil {
 	 *
 	 * @param url URL
 	 * @return JarFile
-	 * @since 4.1.5
+	 * 
 	 */
 	public static JarFile getJarFile(URL url) {
 		try {
@@ -572,7 +569,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param url          URL字符串
 	 * @param isEncodePath 是否对URL中path部分的中文和特殊字符做转义（不包括 http:, /和域名部分）
 	 * @return 标准化后的URL字符串
-	 * @since 4.4.1
+	 * 
 	 */
 	public static String normalize(String url, boolean isEncodePath) {
 		return normalize(url, isEncodePath, false);
@@ -592,7 +589,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param isEncodePath 是否对URL中path部分的中文和特殊字符做转义（不包括 http:, /和域名部分）
 	 * @param replaceSlash 是否替换url body中的 //
 	 * @return 标准化后的URL字符串
-	 * @since 5.5.5
+	 * 
 	 */
 	public static String normalize(String url, boolean isEncodePath, boolean replaceSlash) {
 		if (StrUtil.isBlank(url)) {
@@ -647,7 +644,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param url URL
 	 * @return 内容长度，未知返回-1
 	 * @throws IORuntimeException IO异常
-	 * @since 5.3.4
+	 * 
 	 */
 	public static long getContentLength(URL url) throws IORuntimeException {
 		if (null == url) {
@@ -680,7 +677,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param mimeType 可选项（null表示无），数据类型（image/png、text/plain等）
 	 * @param data     编码后的数据
 	 * @return Data URI字符串
-	 * @since 5.3.11
+	 * 
 	 */
 	public static String getDataUriBase64(String mimeType, String data) {
 		return getDataUri(mimeType, null, "base64", data);
@@ -700,7 +697,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param encoding 数据编码方式（US-ASCII，BASE64等）
 	 * @param data     编码后的数据
 	 * @return Data URI字符串
-	 * @since 5.3.6
+	 * 
 	 */
 	public static String getDataUri(String mimeType, String encoding, String data) {
 		return getDataUri(mimeType, null, encoding, data);
@@ -721,7 +718,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * @param encoding 数据编码方式（US-ASCII，BASE64等）
 	 * @param data     编码后的数据
 	 * @return Data URI字符串
-	 * @since 5.3.6
+	 * 
 	 */
 	public static String getDataUri(String mimeType, Charset charset, String encoding, String data) {
 		final StringBuilder builder = StrUtil.builder("data:");

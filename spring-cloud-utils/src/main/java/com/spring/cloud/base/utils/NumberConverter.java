@@ -81,7 +81,7 @@ public class NumberConverter extends AbstractConverter<Number> {
 	 * @param targetType 目标的数字类型
 	 * @param toStrFunc  转换为字符串的函数
 	 * @return 转换后的数字
-	 * @since 5.5.0
+	 *
 	 */
 	protected static Number convert(Object value, Class<? extends Number> targetType, Function<Object, String> toStrFunc) {
 		// 枚举转换为数字默认为其顺序

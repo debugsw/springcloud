@@ -159,7 +159,6 @@ public class CharUtil implements CharPool {
 	 *
 	 * @param c 字符
 	 * @return 是否为16进制规范的字符
-	 * @since 4.1.5
 	 */
 	public static boolean isHexChar(char c) {
 		return isNumber(c) || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
@@ -235,7 +234,6 @@ public class CharUtil implements CharPool {
 	 * @return 是否空白符
 	 * @see Character#isWhitespace(int)
 	 * @see Character#isSpaceChar(int)
-	 * @since 4.0.10
 	 */
 	public static boolean isBlankChar(char c) {
 		return isBlankChar((int) c);
@@ -249,7 +247,7 @@ public class CharUtil implements CharPool {
 	 * @return 是否空白符
 	 * @see Character#isWhitespace(int)
 	 * @see Character#isSpaceChar(int)
-	 * @since 4.0.10
+	 * 
 	 */
 	public static boolean isBlankChar(int c) {
 		return Character.isWhitespace(c)
@@ -270,7 +268,7 @@ public class CharUtil implements CharPool {
 	 *
 	 * @param c 字符
 	 * @return 是否为emoji
-	 * @since 4.0.8
+	 * 
 	 */
 	public static boolean isEmoji(char c) {
 		//noinspection ConstantConditions
@@ -289,7 +287,7 @@ public class CharUtil implements CharPool {
 	 *
 	 * @param c 字符
 	 * @return 是否为Windows或者Linux（Unix）文件分隔符
-	 * @since 4.1.11
+	 * 
 	 */
 	public static boolean isFileSeparator(char c) {
 		return SLASH == c || BACKSLASH == c;
@@ -302,7 +300,7 @@ public class CharUtil implements CharPool {
 	 * @param c2              字符2
 	 * @param caseInsensitive 是否忽略大小写
 	 * @return 是否相同
-	 * @since 4.0.3
+	 * 
 	 */
 	public static boolean equals(char c1, char c2, boolean caseInsensitive) {
 		if (caseInsensitive) {
@@ -316,7 +314,7 @@ public class CharUtil implements CharPool {
 	 *
 	 * @param c 字符
 	 * @return 字符类型
-	 * @since 5.2.3
+	 * 
 	 */
 	public static int getType(int c) {
 		return Character.getType(c);
@@ -327,7 +325,7 @@ public class CharUtil implements CharPool {
 	 *
 	 * @param b 字符
 	 * @return 16进制字符
-	 * @since 5.3.1
+	 * 
 	 */
 	public static int digit16(int b) {
 		return Character.digit(b, 16);
@@ -347,7 +345,7 @@ public class CharUtil implements CharPool {
 	 * @return 转换后的字符
 	 * @see <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters#Unicode_symbols">Unicode_symbols</a>
 	 * @see <a href="https://en.wikipedia.org/wiki/Enclosed_Alphanumerics">Alphanumerics</a>
-	 * @since 5.6.2
+	 * 
 	 */
 	public static char toCloseChar(char c) {
 		int result = c;
@@ -377,7 +375,7 @@ public class CharUtil implements CharPool {
 	 * @see <a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%88%97%E8%A1%A8">维基百科wikipedia-Unicode字符列表</a>
 	 * @see <a href="https://coolsymbol.com/">coolsymbol</a>
 	 * @see <a href="https://baike.baidu.com/item/%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/112715?fr=aladdin">百度百科 特殊字符</a>
-	 * @since 5.6.2
+	 * 
 	 */
 	public static char toCloseByNumber(int number) {
 		if (number > 20) {

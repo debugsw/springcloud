@@ -24,7 +24,6 @@ public interface Func1<P, R> extends Serializable {
 	 *
 	 * @param parameter 参数
 	 * @return 函数执行结果
-	 * @since 5.3.6
 	 */
 	default R callWithRuntimeException(P parameter) {
 		try {

@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.map;
 
-import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.Serializable;
@@ -167,10 +167,9 @@ public class MapProxy implements Map<Object, Object>, OptNullBasicTypeFromObject
 	/**
 	 * 将Map代理为指定接口的动态代理对象
 	 *
-	 * @param <T> 代理的Bean类型
+	 * @param <T>            代理的Bean类型
 	 * @param interfaceClass 接口
 	 * @return 代理对象
-	 * @since 4.5.2
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> T toProxyBean(Class<T> interfaceClass) {

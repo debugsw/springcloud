@@ -67,7 +67,6 @@ public class ThreadUtil {
 	 * @param maximumPoolSize  最大线程池大小
 	 * @param maximumQueueSize 最大任务队列大小
 	 * @return {@link ThreadPoolExecutor}
-	 * @since 5.4.1
 	 */
 	public static ExecutorService newExecutor(int corePoolSize, int maximumPoolSize, int maximumQueueSize) {
 		return ExecutorBuilder.create()
@@ -87,7 +86,7 @@ public class ThreadUtil {
 	 *
 	 * @param blockingCoefficient 阻塞系数，阻塞因子介于0~1之间的数，阻塞因子越大，线程池中的线程数越多。
 	 * @return {@link ThreadPoolExecutor}
-	 * @since 3.0.6
+	 * 
 	 */
 	public static ThreadPoolExecutor newExecutorByBlockingCoefficient(float blockingCoefficient) {
 		if (blockingCoefficient >= 1 || blockingCoefficient < 0) {
@@ -112,7 +111,7 @@ public class ThreadUtil {
 	 * @param handler          拒绝策略
 	 * @return ExecutorService
 	 * @author luozongle
-	 * @since 5.8.0
+	 * 
 	 */
 	public static ExecutorService newFixedExecutor(int nThreads,
 												   int maximumQueueSize,
@@ -169,7 +168,7 @@ public class ThreadUtil {
 	 * @param runnable {@link Runnable}
 	 * @param name     线程名
 	 * @return {@link Thread}
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Thread newThread(Runnable runnable, String name) {
 		final Thread t = newThread(runnable, name, false);
@@ -186,7 +185,7 @@ public class ThreadUtil {
 	 * @param name     线程名
 	 * @param isDaemon 是否守护线程
 	 * @return {@link Thread}
-	 * @since 4.1.2
+	 * 
 	 */
 	public static Thread newThread(Runnable runnable, String name, boolean isDaemon) {
 		final Thread t = new Thread(null, runnable, name);
@@ -228,7 +227,7 @@ public class ThreadUtil {
 	 *
 	 * @param millis 挂起的毫秒数
 	 * @return 被中断返回false，否则true
-	 * @since 5.3.2
+	 * 
 	 */
 	public static boolean sleep(long millis) {
 		if (millis > 0) {
@@ -262,7 +261,7 @@ public class ThreadUtil {
 	 * @param millis 给定的sleep时间
 	 * @return 被中断返回false，否则true
 	 * @see ThreadUtil#sleep(Number)
-	 * @since 5.3.2
+	 * 
 	 */
 	public static boolean safeSleep(long millis) {
 		long done = 0;
@@ -326,7 +325,7 @@ public class ThreadUtil {
 	 * @param supplier 初始化线程对象函数
 	 * @return 本地线程
 	 * @see ThreadLocal#withInitial(Supplier)
-	 * @since 5.6.7
+	 * 
 	 */
 	public static <T> ThreadLocal<T> createThreadLocal(Supplier<? extends T> supplier) {
 		return ThreadLocal.withInitial(supplier);
@@ -338,7 +337,7 @@ public class ThreadUtil {
 	 * @param threadNamePrefix 线程名称前缀
 	 * @return {@link ThreadFactory}
 	 * @see ThreadFactoryBuilder#build()
-	 * @since 5.8.0
+	 * 
 	 */
 	public static ThreadFactory createThreadFactory(String threadNamePrefix) {
 		return ThreadFactoryBuilder.create().setNamePrefix(threadNamePrefix).build();
@@ -431,7 +430,7 @@ public class ThreadUtil {
 	 * 获取当前线程的线程组
 	 *
 	 * @return 线程组
-	 * @since 3.1.2
+	 * 
 	 */
 	public static ThreadGroup currentThreadGroup() {
 		final SecurityManager s = System.getSecurityManager();
@@ -442,7 +441,7 @@ public class ThreadUtil {
 	 * 阻塞当前线程，保证在main方法中执行不被退出
 	 *
 	 * @param obj 对象所在线程
-	 * @since 4.5.6
+	 * 
 	 */
 	@SuppressWarnings("SynchronizationOnLocalVariableOrMethodParameter")
 	public static void sync(Object obj) {
@@ -460,7 +459,7 @@ public class ThreadUtil {
 	 *
 	 * @param corePoolSize 初始线程池大小
 	 * @return {@link ScheduledThreadPoolExecutor}
-	 * @since 5.5.8
+	 * 
 	 */
 	public static ScheduledThreadPoolExecutor createScheduledExecutor(int corePoolSize) {
 		return new ScheduledThreadPoolExecutor(corePoolSize);
@@ -481,7 +480,7 @@ public class ThreadUtil {
 	 * @param period                执行周期，单位毫秒
 	 * @param fixedRateOrFixedDelay {@code true}表示fixedRate模式，{@code false}表示fixedDelay模式
 	 * @return {@link ScheduledThreadPoolExecutor}
-	 * @since 5.5.8
+	 * 
 	 */
 	public static ScheduledThreadPoolExecutor schedule(ScheduledThreadPoolExecutor executor,
 													   Runnable command,
@@ -506,7 +505,7 @@ public class ThreadUtil {
 	 * @param timeUnit              时间单位
 	 * @param fixedRateOrFixedDelay {@code true}表示fixedRate模式，{@code false}表示fixedDelay模式
 	 * @return {@link ScheduledThreadPoolExecutor}
-	 * @since 5.6.5
+	 * 
 	 */
 	public static ScheduledThreadPoolExecutor schedule(ScheduledThreadPoolExecutor executor,
 													   Runnable command,

@@ -40,7 +40,6 @@ public class NumberWordFormatter {
 	 *
 	 * @param value 被格式化的数字
 	 * @return 格式化后的数字
-	 * @since 5.5.9
 	 */
 	public static String formatSimple(long value) {
 		return formatSimple(value, true);
@@ -52,7 +51,6 @@ public class NumberWordFormatter {
 	 * @param value 对应数字的值
 	 * @param isTwo 控制是否为只为k、w，例如当为{@code false}时返回4.38m，{@code true}返回438.43w
 	 * @return 格式化后的数字
-	 * @since 5.5.9
 	 */
 	public static String formatSimple(long value, boolean isTwo) {
 		if (value < 1000) {

@@ -56,7 +56,6 @@ public class Tuple extends CloneSupport<Tuple> implements Iterable<Object>, Seri
 	 * 将元组转换成列表
 	 *
 	 * @return 转换得到的列表
-	 * @since 5.6.6
 	 */
 	public final List<Object> toList() {
 		return ListUtil.toList(this.members);
@@ -68,7 +67,6 @@ public class Tuple extends CloneSupport<Tuple> implements Iterable<Object>, Seri
 	 *
 	 * @param cacheHash 是否缓存hash值
 	 * @return this
-	 * @since 5.2.1
 	 */
 	public Tuple setCacheHash(boolean cacheHash) {
 		this.cacheHash = cacheHash;
@@ -79,7 +77,7 @@ public class Tuple extends CloneSupport<Tuple> implements Iterable<Object>, Seri
 	 * 得到元组的大小
 	 *
 	 * @return 元组的大小
-	 * @since 5.6.6
+	 * 
 	 */
 	public int size() {
 		return this.members.length;
@@ -90,7 +88,7 @@ public class Tuple extends CloneSupport<Tuple> implements Iterable<Object>, Seri
 	 *
 	 * @param value 需要判定的元素
 	 * @return 是否包含
-	 * @since 5.6.6
+	 * 
 	 */
 	public boolean contains(Object value) {
 		return ArrayUtil.contains(this.members, value);
@@ -100,7 +98,7 @@ public class Tuple extends CloneSupport<Tuple> implements Iterable<Object>, Seri
 	 * 将元组转成流
 	 *
 	 * @return 流
-	 * @since 5.6.6
+	 * 
 	 */
 	public final Stream<Object> stream() {
 		return Arrays.stream(this.members);
@@ -110,7 +108,7 @@ public class Tuple extends CloneSupport<Tuple> implements Iterable<Object>, Seri
 	 * 将元组转成并行流
 	 *
 	 * @return 流
-	 * @since 5.6.6
+	 * 
 	 */
 	public final Stream<Object> parallelStream() {
 		return StreamSupport.stream(spliterator(), true);
@@ -122,7 +120,7 @@ public class Tuple extends CloneSupport<Tuple> implements Iterable<Object>, Seri
 	 * @param start 起始位置（包括）
 	 * @param end   终止位置（不包括）
 	 * @return 截取得到的元组
-	 * @since 5.6.6
+	 * 
 	 */
 	public final Tuple sub(final int start, final int end) {
 		return new Tuple(ArrayUtil.sub(this.members, start, end));

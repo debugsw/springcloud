@@ -18,7 +18,6 @@ public class StrSplitter {
 	 *
 	 * @param str 被切分的字符串
 	 * @return 切分后的集合
-	 * @since 3.0.8
 	 */
 	public static List<String> splitPath(CharSequence str) {
 		return splitPath(str, 0);
@@ -29,7 +28,6 @@ public class StrSplitter {
 	 *
 	 * @param str 被切分的字符串
 	 * @return 切分后的集合
-	 * @since 3.0.8
 	 */
 	public static String[] splitPathToArray(CharSequence str) {
 		return toArray(splitPath(str));
@@ -41,7 +39,7 @@ public class StrSplitter {
 	 * @param str   被切分的字符串
 	 * @param limit 限制分片数
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static List<String> splitPath(CharSequence str, int limit) {
 		return split(str, StrUtil.C_SLASH, limit, true, true);
@@ -53,7 +51,7 @@ public class StrSplitter {
 	 * @param str   被切分的字符串
 	 * @param limit 限制分片数
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static String[] splitPathToArray(CharSequence str, int limit) {
 		return toArray(splitPath(str, limit));
@@ -66,7 +64,7 @@ public class StrSplitter {
 	 * @param separator   分隔符字符
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.2.1
+	 * 
 	 */
 	public static List<String> splitTrim(CharSequence str, char separator, boolean ignoreEmpty) {
 		return split(str, separator, 0, true, ignoreEmpty);
@@ -80,7 +78,7 @@ public class StrSplitter {
 	 * @param isTrim      是否去除切分字符串后每个元素两边的空格
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static List<String> split(CharSequence str, char separator, boolean isTrim, boolean ignoreEmpty) {
 		return split(str, separator, 0, isTrim, ignoreEmpty);
@@ -94,7 +92,7 @@ public class StrSplitter {
 	 * @param limit       限制分片数，-1不限制
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static List<String> splitTrim(CharSequence str, char separator, int limit, boolean ignoreEmpty) {
 		return split(str, separator, limit, true, ignoreEmpty, false);
@@ -109,7 +107,7 @@ public class StrSplitter {
 	 * @param isTrim      是否去除切分字符串后每个元素两边的空格
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static List<String> split(CharSequence str, char separator, int limit, boolean isTrim, boolean ignoreEmpty) {
 		return split(str, separator, limit, isTrim, ignoreEmpty, false);
@@ -125,7 +123,7 @@ public class StrSplitter {
 	 * @param ignoreEmpty 是否忽略空串
 	 * @param mapping     切分后的字符串元素的转换方法
 	 * @return 切分后的集合，元素类型是经过 mapping 转换后的
-	 * @since 5.7.14
+	 * 
 	 */
 	public static <R> List<R> split(CharSequence str, char separator, int limit, boolean ignoreEmpty, Function<String, R> mapping) {
 		return split(str, separator, limit, ignoreEmpty, false, mapping);
@@ -140,7 +138,7 @@ public class StrSplitter {
 	 * @param isTrim      是否去除切分字符串后每个元素两边的空格
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.2.1
+	 * 
 	 */
 	public static List<String> splitIgnoreCase(CharSequence text, char separator, int limit, boolean isTrim, boolean ignoreEmpty) {
 		return split(text, separator, limit, isTrim, ignoreEmpty, true);
@@ -173,7 +171,7 @@ public class StrSplitter {
 	 * @param ignoreCase  是否忽略大小写
 	 * @param mapping     切分后的字符串元素的转换方法
 	 * @return 切分后的集合，元素类型是经过 mapping 转换后的
-	 * @since 5.7.14
+	 * 
 	 */
 	public static <R> List<R> split(CharSequence text, char separator, int limit, boolean ignoreEmpty,
 									boolean ignoreCase, Function<String, R> mapping) {
@@ -193,7 +191,7 @@ public class StrSplitter {
 	 * @param isTrim      是否去除切分字符串后每个元素两边的空格
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static String[] splitToArray(CharSequence str, char separator, int limit, boolean isTrim, boolean ignoreEmpty) {
 		return toArray(split(str, separator, limit, isTrim, ignoreEmpty));
@@ -209,7 +207,7 @@ public class StrSplitter {
 	 * @param isTrim      是否去除切分字符串后每个元素两边的空格
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static List<String> split(CharSequence str, String separator, boolean isTrim, boolean ignoreEmpty) {
 		return split(str, separator, -1, isTrim, ignoreEmpty, false);
@@ -222,7 +220,7 @@ public class StrSplitter {
 	 * @param separator   分隔符字符串
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.2.1
+	 * 
 	 */
 	public static List<String> splitTrim(CharSequence str, String separator, boolean ignoreEmpty) {
 		return split(str, separator, true, ignoreEmpty);
@@ -237,7 +235,7 @@ public class StrSplitter {
 	 * @param isTrim      是否去除切分字符串后每个元素两边的空格
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static List<String> split(CharSequence str, String separator, int limit, boolean isTrim, boolean ignoreEmpty) {
 		return split(str, separator, limit, isTrim, ignoreEmpty, false);
@@ -251,7 +249,7 @@ public class StrSplitter {
 	 * @param limit       限制分片数
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.2.1
+	 * 
 	 */
 	public static List<String> splitTrim(CharSequence str, String separator, int limit, boolean ignoreEmpty) {
 		return split(str, separator, limit, true, ignoreEmpty);
@@ -266,7 +264,7 @@ public class StrSplitter {
 	 * @param isTrim      是否去除切分字符串后每个元素两边的空格
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.2.1
+	 * 
 	 */
 	public static List<String> splitIgnoreCase(CharSequence str, String separator, int limit, boolean isTrim, boolean ignoreEmpty) {
 		return split(str, separator, limit, isTrim, ignoreEmpty, true);
@@ -280,7 +278,7 @@ public class StrSplitter {
 	 * @param limit       限制分片数
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.2.1
+	 * 
 	 */
 	public static List<String> splitTrimIgnoreCase(CharSequence str, String separator, int limit, boolean ignoreEmpty) {
 		return split(str, separator, limit, true, ignoreEmpty, true);
@@ -297,7 +295,7 @@ public class StrSplitter {
 	 * @param ignoreEmpty 是否忽略空串
 	 * @param ignoreCase  是否忽略大小写
 	 * @return 切分后的集合
-	 * @since 3.2.1
+	 * 
 	 */
 	public static List<String> split(CharSequence text, String separator, int limit, boolean isTrim, boolean ignoreEmpty, boolean ignoreCase) {
 		if (null == text) {
@@ -316,7 +314,7 @@ public class StrSplitter {
 	 * @param isTrim      是否去除切分字符串后每个元素两边的空格
 	 * @param ignoreEmpty 是否忽略空串
 	 * @return 切分后的集合
-	 * @since 3.0.8
+	 * 
 	 */
 	public static String[] splitToArray(CharSequence str, String separator, int limit, boolean isTrim, boolean ignoreEmpty) {
 		return toArray(split(str, separator, limit, isTrim, ignoreEmpty));

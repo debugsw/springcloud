@@ -89,7 +89,6 @@ public class AnnotationUtil {
 	 * @param annotationEle  {@link AnnotatedElement}，可以是Class、Method、Field、Constructor、ReflectPermission
 	 * @param annotationType 限定的
 	 * @return 注解对象数组
-	 * @since 5.8.0
 	 */
 	public static <T> T[] getCombinationAnnotations(AnnotatedElement annotationEle, Class<T> annotationType) {
 		return getAnnotations(annotationEle, true, annotationType);
@@ -103,7 +102,6 @@ public class AnnotationUtil {
 	 * @param isToCombination 是否为转换为组合注解，组合注解可以递归获取注解的注解
 	 * @param annotationType  限定的
 	 * @return 注解对象数组
-	 * @since 5.8.0
 	 */
 	public static <T> T[] getAnnotations(AnnotatedElement annotationEle, boolean isToCombination, Class<T> annotationType) {
 		final Annotation[] annotations = getAnnotations(annotationEle, isToCombination,
@@ -124,7 +122,6 @@ public class AnnotationUtil {
 	 * @param isToCombination 是否为转换为组合注解，组合注解可以递归获取注解的注解
 	 * @param predicate       过滤器，{@link Predicate#test(Object)}返回{@code true}保留，否则不保留
 	 * @return 注解对象，如果提供的{@link AnnotatedElement}为{@code null}，返回{@code null}
-	 * @since 5.8.0
 	 */
 	public static Annotation[] getAnnotations(AnnotatedElement annotationEle, boolean isToCombination, Predicate<Annotation> predicate) {
 		if (null == annotationEle) {
@@ -216,7 +213,7 @@ public class AnnotationUtil {
 	 * @param propertyName  属性名，例如注解中定义了name()方法，则 此处传入name
 	 * @return 注解对象
 	 * @throws UtilException 调用注解中的方法时执行异常
-	 * @since 5.8.9
+	 * 
 	 */
 	public static <A extends Annotation, R> R getAnnotationValue(AnnotatedElement annotationEle, Func1<A, R> propertyName) {
 		if (propertyName == null) {
@@ -403,7 +400,7 @@ public class AnnotationUtil {
 	 * @param annotation      注解对象
 	 * @param annotationField 注解属性（字段）名称
 	 * @param value           要更新的属性值
-	 * @since 5.5.2
+	 * 
 	 */
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static void setValue(Annotation annotation, String annotationField, Object value) {
@@ -429,7 +426,7 @@ public class AnnotationUtil {
 	 * @param annotationType 注解类型Class
 	 * @param <T>            注解类型
 	 * @return 别名支持后的注解
-	 * @since 5.7.23
+	 * 
 	 */
 	public static <T extends Annotation> T getAnnotationAlias(AnnotatedElement annotationEle, Class<T> annotationType) {
 		final T annotation = getAnnotation(annotationEle, annotationType);

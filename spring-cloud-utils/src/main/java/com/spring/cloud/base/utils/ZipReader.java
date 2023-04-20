@@ -1,9 +1,9 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.interf.Filter;
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.interf.Filter;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.Closeable;
 import java.io.File;
@@ -137,7 +137,6 @@ public class ZipReader implements Closeable {
 	 * @param entryFilter 过滤器，排除不需要的文件
 	 * @return 解压的目录
 	 * @throws IORuntimeException IO异常
-	 * @since 5.7.12
 	 */
 	public File readTo(File outFile, Filter<ZipEntry> entryFilter) throws IORuntimeException {
 		read((zipEntry) -> {

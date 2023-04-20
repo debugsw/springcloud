@@ -58,7 +58,6 @@ public class TypeUtil {
 	 * @param clazz     Bean类
 	 * @param fieldName 字段名
 	 * @return 字段的泛型类型
-	 * @since 5.4.2
 	 */
 	public static Type getFieldType(Class<?> clazz, String fieldName) {
 		return getType(ReflectUtil.getField(clazz, fieldName));
@@ -69,7 +68,6 @@ public class TypeUtil {
 	 *
 	 * @param field {@link Field}
 	 * @return 原始类，如果无法获取原始类，返回{@code null}
-	 * @since 3.1.2
 	 */
 	public static Class<?> getClass(Field field) {
 		return null == field ? null : field.getType();
@@ -83,7 +81,7 @@ public class TypeUtil {
 	 *
 	 * @param method 方法
 	 * @return {@link Type}，可能为{@code null}
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Type getFirstParamType(Method method) {
 		return getParamType(method, 0);
@@ -94,7 +92,7 @@ public class TypeUtil {
 	 *
 	 * @param method 方法
 	 * @return 第一个参数类型，可能为{@code null}
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Class<?> getFirstParamClass(Method method) {
 		return getParamClass(method, 0);
@@ -122,7 +120,7 @@ public class TypeUtil {
 	 * @param method 方法
 	 * @param index  第几个参数的索引，从0开始计数
 	 * @return 参数类，可能为{@code null}
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Class<?> getParamClass(Method method, int index) {
 		Class<?>[] classes = getParamClasses(method);
@@ -153,7 +151,7 @@ public class TypeUtil {
 	 * @return 参数类型类列表
 	 * @see Method#getGenericParameterTypes
 	 * @see Method#getParameterTypes
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Class<?>[] getParamClasses(Method method) {
 		return null == method ? null : method.getParameterTypes();
@@ -181,7 +179,7 @@ public class TypeUtil {
 	 * @return 返回值类型的类
 	 * @see Method#getGenericReturnType
 	 * @see Method#getReturnType
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Class<?> getReturnClass(Method method) {
 		return null == method ? null : method.getReturnType();
@@ -250,7 +248,7 @@ public class TypeUtil {
 	 *
 	 * @param type {@link Type}
 	 * @return {@link ParameterizedType}
-	 * @since 4.5.2
+	 * 
 	 */
 	public static ParameterizedType toParameterizedType(Type type) {
 		ParameterizedType result = null;
@@ -278,7 +276,7 @@ public class TypeUtil {
 	 *
 	 * @param type Type类型
 	 * @return 是否未知类型
-	 * @since 4.5.2
+	 * 
 	 */
 	public static boolean isUnknown(Type type) {
 		return null == type || type instanceof TypeVariable;
@@ -289,7 +287,7 @@ public class TypeUtil {
 	 *
 	 * @param types 泛型数组
 	 * @return 是否含有泛型变量
-	 * @since 4.5.7
+	 * 
 	 */
 	public static boolean hasTypeVariable(Type... types) {
 		for (Type type : types) {

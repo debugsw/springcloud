@@ -38,7 +38,6 @@ public class ByteUtil {
 	 *
 	 * @param byteValue byte值
 	 * @return 无符号int值
-	 * @since 3.2.0
 	 */
 	public static int byteToUnsignedInt(byte byteValue) {
 		// Java 总是把 byte 当做有符处理；我们可以通过将其和 0xFF 进行二进制与得到它的无符值
@@ -148,7 +147,6 @@ public class ByteUtil {
 	 * @param start     开始位置（包含）
 	 * @param byteOrder 端序
 	 * @return int值
-	 * @since 5.7.21
 	 */
 	public static int bytesToInt(byte[] bytes, int start, ByteOrder byteOrder) {
 		if (ByteOrder.LITTLE_ENDIAN == byteOrder) {
@@ -276,7 +274,6 @@ public class ByteUtil {
 	 * @param start     计算数组开始位置
 	 * @param byteOrder 端序
 	 * @return long值
-	 * @since 5.7.21
 	 */
 	public static long bytesToLong(byte[] bytes, int start, ByteOrder byteOrder) {
 		long values = 0;
@@ -300,7 +297,6 @@ public class ByteUtil {
 	 *
 	 * @param floatValue float值
 	 * @return byte数组
-	 * @since 5.7.18
 	 */
 	public static byte[] floatToBytes(float floatValue) {
 		return floatToBytes(floatValue, DEFAULT_ORDER);
@@ -312,7 +308,7 @@ public class ByteUtil {
 	 * @param floatValue float值
 	 * @param byteOrder  端序
 	 * @return byte数组
-	 * @since 5.7.18
+	 * 
 	 */
 	public static byte[] floatToBytes(float floatValue, ByteOrder byteOrder) {
 		return intToBytes(Float.floatToIntBits(floatValue), byteOrder);
@@ -324,7 +320,7 @@ public class ByteUtil {
 	 *
 	 * @param bytes byte数组
 	 * @return float值
-	 * @since 5.7.18
+	 * 
 	 */
 	public static float bytesToFloat(byte[] bytes) {
 		return bytesToFloat(bytes, DEFAULT_ORDER);
@@ -337,7 +333,7 @@ public class ByteUtil {
 	 * @param bytes     byte数组
 	 * @param byteOrder 端序
 	 * @return float值
-	 * @since 5.7.18
+	 * 
 	 */
 	public static float bytesToFloat(byte[] bytes, ByteOrder byteOrder) {
 		return Float.intBitsToFloat(bytesToInt(bytes, byteOrder));

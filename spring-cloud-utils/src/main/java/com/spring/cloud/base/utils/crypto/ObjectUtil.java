@@ -34,7 +34,7 @@ public class ObjectUtil {
      * @param obj2 对象2
      * @return 是否相等
      * @see #equal(Object, Object)
-     * @since 5.4.3
+     *
      */
     public static boolean equals(Object obj1, Object obj2) {
         return equal(obj1, obj2);
@@ -67,7 +67,6 @@ public class ObjectUtil {
      * @param obj1 对象1
      * @param obj2 对象2
      * @return 是否不等
-     * @since 3.0.7
      */
     public static boolean notEqual(Object obj1, Object obj2) {
         return false == equal(obj1, obj2);
@@ -236,7 +235,7 @@ public class ObjectUtil {
      *
      * @param obj 被判断的对象
      * @return 是否为空，如果类型不支持，返回false
-     * @since 4.5.7
+     *
      */
     @SuppressWarnings("rawtypes")
     public static boolean isEmpty(Object obj) {
@@ -272,7 +271,7 @@ public class ObjectUtil {
      *
      * @param obj 被判断的对象
      * @return 是否为空，如果类型不支持，返回true
-     * @since 4.5.7
+     *
      */
     public static boolean isNotEmpty(Object obj) {
         return false == isEmpty(obj);
@@ -293,7 +292,7 @@ public class ObjectUtil {
      * @param object       被检查对象，可能为{@code null}
      * @param defaultValue 被检查对象为{@code null}返回的默认值，可以为{@code null}
      * @return 被检查对象为{@code null}返回默认值，否则返回原值
-     * @since 3.0.7
+     *
      */
     public static <T> T defaultIfNull(final T object, final T defaultValue) {
         return isNull(object) ? defaultValue : object;
@@ -307,7 +306,7 @@ public class ObjectUtil {
      * @param <T>                  对象类型
      * @return 被检查对象为{@code null}返回默认值，否则返回自定义handle处理后的返回值
      * @throws NullPointerException {@code defaultValueSupplier == null} 时，抛出
-     * @since 5.7.20
+     *
      */
     public static <T> T defaultIfNull(T source, Supplier<? extends T> defaultValueSupplier) {
         if (isNull(source)) {
@@ -324,7 +323,7 @@ public class ObjectUtil {
      * @param <T>                  对象类型
      * @return 被检查对象为{@code null}返回默认值，否则返回自定义handle处理后的返回值
      * @throws NullPointerException {@code defaultValueSupplier == null} 时，抛出
-     * @since 5.7.20
+     *
      */
     public static <T> T defaultIfNull(T source, Function<T, ? extends T> defaultValueSupplier) {
         if (isNull(source)) {
@@ -341,7 +340,7 @@ public class ObjectUtil {
      * @param defaultValue 默认为空的返回值
      * @param <T>          被检查对象为{@code null}返回默认值，否则返回自定义handle处理后的返回值
      * @return 处理后的返回值
-     * @since 5.4.6
+     *
      * @deprecated 当str为{@code null}时，handle使用了str相关的方法引用会导致空指针问题
      */
     @Deprecated
@@ -361,7 +360,7 @@ public class ObjectUtil {
      * @param handle       非空时自定义的处理方法
      * @param defaultValue 默认为空的返回值
      * @return 处理后的返回值
-     * @since 5.4.6
+     *
      */
     public static <T, R> T defaultIfNull(R source, Function<R, ? extends T> handle, final T defaultValue) {
         if (isNotNull(source)) {
@@ -378,7 +377,7 @@ public class ObjectUtil {
      * @param defaultValue 默认为空的返回值
      * @param <T>          被检查对象为{@code null}或者 ""返回默认值，否则返回自定义handle处理后的返回值
      * @return 处理后的返回值
-     * @since 5.4.6
+     *
      * @deprecated 当str为{@code null}时，handle使用了str相关的方法引用会导致空指针问题
      */
     @Deprecated
@@ -397,7 +396,7 @@ public class ObjectUtil {
      * @param defaultValue 默认为空的返回值
      * @param <T>          被检查对象为{@code null}或者 ""返回默认值，否则返回自定义handle处理后的返回值
      * @return 处理后的返回值
-     * @since 5.4.6
+     *
      */
     public static <T> T defaultIfEmpty(String str, Function<CharSequence, ? extends T> handle, final T defaultValue) {
         if (StrUtil.isNotEmpty(str)) {
@@ -421,7 +420,7 @@ public class ObjectUtil {
      * @param str          被检查对象，可能为{@code null}
      * @param defaultValue 被检查对象为{@code null}或者 ""返回的默认值，可以为{@code null}或者 ""
      * @return 被检查对象为{@code null}或者 ""返回默认值，否则返回原值
-     * @since 5.0.4
+     *
      */
     public static <T extends CharSequence> T defaultIfEmpty(final T str, final T defaultValue) {
         return StrUtil.isEmpty(str) ? defaultValue : str;
@@ -435,7 +434,7 @@ public class ObjectUtil {
      * @param <T>                  对象类型（必须实现CharSequence接口）
      * @return 被检查对象为{@code null}返回默认值，否则返回自定义handle处理后的返回值
      * @throws NullPointerException {@code defaultValueSupplier == null} 时，抛出
-     * @since 5.7.20
+     *
      */
     public static <T extends CharSequence> T defaultIfEmpty(T str, Supplier<? extends T> defaultValueSupplier) {
         if (StrUtil.isEmpty(str)) {
@@ -452,7 +451,7 @@ public class ObjectUtil {
      * @param <T>                  对象类型（必须实现CharSequence接口）
      * @return 被检查对象为{@code null}返回默认值，否则返回自定义handle处理后的返回值
      * @throws NullPointerException {@code defaultValueSupplier == null} 时，抛出
-     * @since 5.7.20
+     *
      */
     public static <T extends CharSequence> T defaultIfEmpty(T str, Function<T, ? extends T> defaultValueSupplier) {
         if (StrUtil.isEmpty(str)) {
@@ -476,7 +475,7 @@ public class ObjectUtil {
      * @param str          被检查对象，可能为{@code null}
      * @param defaultValue 被检查对象为{@code null}或者 ""或者空白符返回的默认值，可以为{@code null}或者 ""或者空白符
      * @return 被检查对象为{@code null}或者 ""或者空白符返回默认值，否则返回原值
-     * @since 5.0.4
+     *
      */
     public static <T extends CharSequence> T defaultIfBlank(final T str, final T defaultValue) {
         return StrUtil.isBlank(str) ? defaultValue : str;
@@ -490,7 +489,7 @@ public class ObjectUtil {
      * @param <T>                  对象类型（必须实现CharSequence接口）
      * @return 被检查对象为{@code null}返回默认值，否则返回自定义handle处理后的返回值
      * @throws NullPointerException {@code defaultValueSupplier == null} 时，抛出
-     * @since 5.7.20
+     *
      */
     public static <T extends CharSequence> T defaultIfBlank(T str, Supplier<? extends T> defaultValueSupplier) {
         if (StrUtil.isBlank(str)) {
@@ -507,7 +506,7 @@ public class ObjectUtil {
      * @param <T>                  对象类型（必须实现CharSequence接口）
      * @return 被检查对象为{@code null}返回默认值，否则返回自定义handle处理后的返回值
      * @throws NullPointerException {@code defaultValueSupplier == null} 时，抛出
-     * @since 5.7.20
+     *
      */
     public static <T extends CharSequence> T defaultIfBlank(T str, Function<T, ? extends T> defaultValueSupplier) {
         if (StrUtil.isBlank(str)) {
@@ -634,7 +633,7 @@ public class ObjectUtil {
      * @param c2  对象2，可以为{@code null}
      * @return 比较结果，如果c1 &lt; c2，返回数小于0，c1==c2返回0，c1 &gt; c2 大于0
      * @see java.util.Comparator#compare(Object, Object)
-     * @since 3.0.7
+     *
      */
     public static <T extends Comparable<? super T>> int compare(T c1, T c2) {
         return CompareUtil.compare(c1, c2);
@@ -649,7 +648,7 @@ public class ObjectUtil {
      * @param nullGreater 当被比较对象为null时是否排在前面
      * @return 比较结果，如果c1 &lt; c2，返回数小于0，c1==c2返回0，c1 &gt; c2 大于0
      * @see java.util.Comparator#compare(Object, Object)
-     * @since 3.0.7
+     *
      */
     public static <T extends Comparable<? super T>> int compare(T c1, T c2, boolean nullGreater) {
         return CompareUtil.compare(c1, c2, nullGreater);
@@ -660,7 +659,7 @@ public class ObjectUtil {
      *
      * @param obj 被检查的对象
      * @return {@link Class}
-     * @since 3.0.8
+     *
      */
     public static Class<?> getTypeArgument(Object obj) {
         return getTypeArgument(obj, 0);
@@ -672,7 +671,7 @@ public class ObjectUtil {
      * @param obj   被检查的对象
      * @param index 泛型类型的索引号，即第几个泛型类型
      * @return {@link Class}
-     * @since 3.0.8
+     *
      */
     public static Class<?> getTypeArgument(Object obj, int index) {
         return ClassUtil.getTypeArgument(obj.getClass(), index);
@@ -688,7 +687,7 @@ public class ObjectUtil {
      *
      * @param obj Bean对象
      * @return Bean所有字段转为Map后的字符串
-     * @since 3.2.0
+     *
      */
     public static String toString(Object obj) {
         if (null == obj) {
@@ -717,7 +716,7 @@ public class ObjectUtil {
      * @param objs 被检查对象
      * @return 是否存在
      * @see ArrayUtil#hasNull(Object[])
-     * @since 5.5.3
+     *
      */
     public static boolean hasNull(Object... objs) {
         return ArrayUtil.hasNull(objs);

@@ -17,8 +17,6 @@ import java.util.function.Function;
  */
 public interface ForestMap<K, V> extends Map<K, TreeEntry<K, V>> {
 
-	// ===================== Map接口方法的重定义 =====================
-
 	/**
 	 * 添加一个节点，效果等同于 {@code putNode(key, node.getValue())}
 	 * <ul>

@@ -123,7 +123,6 @@ public class ClassScanner implements Serializable {
 	 * 扫描该包路径下所有class文件，包括其他加载的jar或者类
 	 *
 	 * @return 类集合
-	 * @since 5.7.5
 	 */
 	public static Set<Class<?>> scanAllPackage() {
 		return scanAllPackage(StrUtil.EMPTY, null);
@@ -156,7 +155,7 @@ public class ClassScanner implements Serializable {
 	 * @param packageName 包路径 com | com. | com.abs | com.abs.
 	 * @param classFilter class过滤器，过滤掉不需要的class
 	 * @return 类集合
-	 * @since 5.7.5
+	 * 
 	 */
 	public static Set<Class<?>> scanAllPackage(String packageName, Filter<Class<?>> classFilter) {
 		return new ClassScanner(packageName, classFilter).scan(true);
@@ -244,7 +243,7 @@ public class ClassScanner implements Serializable {
 	 *
 	 * @param forceScanJavaClassPaths 是否强制扫描其他位于classpath关联jar中的类
 	 * @return 类集合
-	 * @since 5.7.5
+	 * 
 	 */
 	public Set<Class<?>> scan(boolean forceScanJavaClassPaths) {
 
@@ -282,7 +281,7 @@ public class ClassScanner implements Serializable {
 	 * 设置自定义的类加载器
 	 *
 	 * @param classLoader 类加载器
-	 * @since 4.6.9
+	 * 
 	 */
 	public void setClassLoader(ClassLoader classLoader) {
 		this.classLoader = classLoader;

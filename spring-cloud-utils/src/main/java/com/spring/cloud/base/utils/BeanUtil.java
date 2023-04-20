@@ -68,7 +68,6 @@ public class BeanUtil {
 	 *
 	 * @param clazz 待测试类
 	 * @return 是否为Bean对象
-	 * @since 4.2.2
 	 */
 	public static boolean hasSetter(Class<?> clazz) {
 		if (ClassUtil.isNormalClass(clazz)) {
@@ -88,7 +87,6 @@ public class BeanUtil {
 	 *
 	 * @param clazz 待测试类
 	 * @return 是否为Bean对象
-	 * @since 4.2.2
 	 */
 	public static boolean hasGetter(Class<?> clazz) {
 		if (ClassUtil.isNormalClass(clazz)) {
@@ -111,7 +109,6 @@ public class BeanUtil {
 	 *
 	 * @param clazz 待测试类
 	 * @return 是否有public类型字段
-	 * @since 5.1.0
 	 */
 	public static boolean hasPublicField(Class<?> clazz) {
 		if (ClassUtil.isNormalClass(clazz)) {
@@ -140,7 +137,6 @@ public class BeanUtil {
 	 *
 	 * @param clazz Bean类
 	 * @return {@link BeanDesc}
-	 * @since 3.1.2
 	 */
 	public static BeanDesc getBeanDesc(Class<?> clazz) {
 		return BeanDescCache.INSTANCE.getBeanDesc(clazz, () -> new BeanDesc(clazz));
@@ -302,7 +298,6 @@ public class BeanUtil {
 	 * @param expression 表达式，例如：person.friend[5].name
 	 * @return Bean属性值，bean为{@code null}或者express为空，返回{@code null}
 	 * @see BeanPath#get(Object)
-	 * @since 3.0.7
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T getProperty(Object bean, String expression) {
@@ -319,7 +314,6 @@ public class BeanUtil {
 	 * @param expression 表达式，例如：person.friend[5].name
 	 * @param value      属性值
 	 * @see BeanPath#get(Object)
-	 * @since 4.0.6
 	 */
 	public static void setProperty(Object bean, String expression, Object value) {
 		BeanPath.create(expression).set(bean, value);
@@ -451,7 +445,6 @@ public class BeanUtil {
 	 * @param isToCamelCase 是否将Map中的下划线风格key转换为驼峰风格
 	 * @param copyOptions   属性复制选项 {@link CopyOptions}
 	 * @return Bean
-	 * @since 3.3.1
 	 */
 	public static <T> T fillBeanWithMap(Map<?, ?> map, T bean, boolean isToCamelCase, CopyOptions copyOptions) {
 		if (MapUtil.isEmpty(map)) {
@@ -473,7 +466,7 @@ public class BeanUtil {
 	 * @param source Bean对象或Map
 	 * @param clazz  目标的Bean类型
 	 * @return Bean对象
-	 * @since 4.1.20
+	 * 
 	 */
 	public static <T> T toBean(Object source, Class<T> clazz) {
 		return toBean(source, clazz, null);
@@ -486,7 +479,7 @@ public class BeanUtil {
 	 * @param source Bean对象或Map
 	 * @param clazz  目标的Bean类型
 	 * @return Bean对象
-	 * @since 5.4.0
+	 * 
 	 */
 	public static <T> T toBeanIgnoreError(Object source, Class<T> clazz) {
 		return toBean(source, clazz, CopyOptions.create().setIgnoreError(true));
@@ -500,7 +493,7 @@ public class BeanUtil {
 	 * @param clazz       目标的Bean类型
 	 * @param ignoreError 是否忽略注入错误
 	 * @return Bean对象
-	 * @since 5.4.0
+	 * 
 	 */
 	public static <T> T toBeanIgnoreCase(Object source, Class<T> clazz, boolean ignoreError) {
 		return toBean(source, clazz,
@@ -517,7 +510,7 @@ public class BeanUtil {
 	 * @param clazz   目标的Bean类型
 	 * @param options 属性拷贝选项
 	 * @return Bean对象
-	 * @since 5.2.4
+	 * 
 	 */
 	public static <T> T toBean(Object source, Class<T> clazz, CopyOptions options) {
 		return toBean(source, () -> ReflectUtil.newInstanceIfPossible(clazz), options);
@@ -531,7 +524,7 @@ public class BeanUtil {
 	 * @param targetSupplier 目标的Bean创建器
 	 * @param options        属性拷贝选项
 	 * @return Bean对象
-	 * @since 5.8.0
+	 * 
 	 */
 	public static <T> T toBean(Object source, Supplier<T> targetSupplier, CopyOptions options) {
 		if (null == source || null == targetSupplier) {
@@ -584,7 +577,7 @@ public class BeanUtil {
 	 * @param bean       bean
 	 * @param properties 需要拷贝的属性值，{@code null}或空表示拷贝所有值
 	 * @return Map
-	 * @since 5.8.0
+	 * 
 	 */
 	public static Map<String, Object> beanToMap(Object bean, String... properties) {
 		int mapSize = 16;
@@ -622,7 +615,7 @@ public class BeanUtil {
 	 * @param isToUnderlineCase 是否转换为下划线模式
 	 * @param ignoreNullValue   是否忽略值为空的字段
 	 * @return Map
-	 * @since 3.2.3
+	 * 
 	 */
 	public static Map<String, Object> beanToMap(Object bean, Map<String, Object> targetMap, final boolean isToUnderlineCase, boolean ignoreNullValue) {
 		if (null == bean) {
@@ -647,7 +640,7 @@ public class BeanUtil {
 	 * @param ignoreNullValue 是否忽略值为空的字段
 	 * @param keyEditor       属性字段（Map的key）编辑器，用于筛选、编辑key，如果这个Editor返回null则忽略这个字段
 	 * @return Map
-	 * @since 4.0.5
+	 * 
 	 */
 	public static Map<String, Object> beanToMap(Object bean, Map<String, Object> targetMap, boolean ignoreNullValue, Editor<String> keyEditor) {
 		if (null == bean) {
@@ -677,7 +670,7 @@ public class BeanUtil {
 	 * @param targetMap   目标的Map
 	 * @param copyOptions 拷贝选项
 	 * @return Map
-	 * @since 5.7.15
+	 * 
 	 */
 	public static Map<String, Object> beanToMap(Object bean, Map<String, Object> targetMap, CopyOptions copyOptions) {
 		if (null == bean) {
@@ -754,7 +747,7 @@ public class BeanUtil {
 	 * @param copyOptions 拷贝选项
 	 * @param <T>         Bean类型
 	 * @return 复制后的List
-	 * @since 5.6.4
+	 * 
 	 */
 	public static <T> List<T> copyToList(Collection<?> collection, Class<T> targetType, CopyOptions copyOptions) {
 		if (null == collection) {
@@ -778,7 +771,7 @@ public class BeanUtil {
 	 * @param targetType 目标Bean类型
 	 * @param <T>        Bean类型
 	 * @return 复制后的List
-	 * @since 5.6.6
+	 * 
 	 */
 	public static <T> List<T> copyToList(Collection<?> collection, Class<T> targetType) {
 		return copyToList(collection, targetType, CopyOptions.create());
@@ -809,7 +802,7 @@ public class BeanUtil {
 	 * @param editor 编辑器函数
 	 * @param <T>    被编辑的Bean类型
 	 * @return bean
-	 * @since 5.6.4
+	 * 
 	 */
 	public static <T> T edit(T bean, Editor<Field> editor) {
 		if (bean == null) {
@@ -863,7 +856,7 @@ public class BeanUtil {
 	 * @param bean             Bean对象
 	 * @param ignoreFieldNames 忽略检查的字段名
 	 * @return 是否为非空，{@code true} - 非空 / {@code false} - 空
-	 * @since 5.0.7
+	 * 
 	 */
 	public static boolean isNotEmpty(Object bean, String... ignoreFieldNames) {
 		return false == isEmpty(bean, ignoreFieldNames);
@@ -876,7 +869,7 @@ public class BeanUtil {
 	 * @param bean             Bean对象
 	 * @param ignoreFieldNames 忽略检查的字段名
 	 * @return 是否为空，{@code true} - 空 / {@code false} - 非空
-	 * @since 4.1.10
+	 * 
 	 */
 	public static boolean isEmpty(Object bean, String... ignoreFieldNames) {
 		if (null != bean) {
@@ -900,7 +893,7 @@ public class BeanUtil {
 	 * @param bean             Bean对象
 	 * @param ignoreFieldNames 忽略检查的字段名
 	 * @return 是否包含值为<code>null</code>的属性，{@code true} - 包含 / {@code false} - 不包含
-	 * @since 4.1.10
+	 * 
 	 */
 	public static boolean hasNullField(Object bean, String... ignoreFieldNames) {
 		if (null == bean) {
@@ -930,7 +923,7 @@ public class BeanUtil {
 	 * @param getterOrSetterName Getter或Setter方法名
 	 * @return 字段名称
 	 * @throws IllegalArgumentException 非Getter或Setter方法
-	 * @since 5.7.23
+	 * 
 	 */
 	public static String getFieldName(String getterOrSetterName) {
 		if (getterOrSetterName.startsWith("get") || getterOrSetterName.startsWith("set")) {
@@ -950,7 +943,7 @@ public class BeanUtil {
 	 * @param ignoreProperties 不需要检测的字段
 	 * @return 判断结果，如果为true则证明所有字段的值都相同
 	 * @author Takak11
-	 * @since 5.8.4
+	 * 
 	 */
 	public static boolean isCommonFieldsEqual(Object source, Object target, String... ignoreProperties) {
 

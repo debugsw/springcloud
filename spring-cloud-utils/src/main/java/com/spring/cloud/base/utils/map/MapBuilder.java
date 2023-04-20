@@ -19,7 +19,6 @@ public class MapBuilder<K, V> implements Builder<Map<K, V>> {
 	 * @param <K> Key类型
 	 * @param <V> Value类型
 	 * @return MapBuilder
-	 * @since 5.3.0
 	 */
 	public static <K, V> MapBuilder<K, V> create() {
 		return create(false);
@@ -32,7 +31,7 @@ public class MapBuilder<K, V> implements Builder<Map<K, V>> {
 	 * @param <V>      Value类型
 	 * @param isLinked true创建LinkedHashMap，false创建HashMap
 	 * @return MapBuilder
-	 * @since 5.3.0
+	 * 
 	 */
 	public static <K, V> MapBuilder<K, V> create(boolean isLinked) {
 		return create(MapUtil.newHashMap(isLinked));
@@ -45,7 +44,7 @@ public class MapBuilder<K, V> implements Builder<Map<K, V>> {
 	 * @param <V> Value类型
 	 * @param map Map实体类
 	 * @return MapBuilder
-	 * @since 3.2.3
+	 * 
 	 */
 	public static <K, V> MapBuilder<K, V> create(Map<K, V> map) {
 		return new MapBuilder<>(map);
@@ -79,7 +78,7 @@ public class MapBuilder<K, V> implements Builder<Map<K, V>> {
 	 * @param k         Key类型
 	 * @param v         Value类型
 	 * @return 当前类
-	 * @since 5.7.5
+	 * 
 	 */
 	public MapBuilder<K, V> put(boolean condition, K k, V v) {
 		if (condition) {
@@ -95,7 +94,7 @@ public class MapBuilder<K, V> implements Builder<Map<K, V>> {
 	 * @param k         Key类型
 	 * @param supplier  Value类型结果提供方
 	 * @return 当前类
-	 * @since 5.7.5
+	 * 
 	 */
 	public MapBuilder<K, V> put(boolean condition, K k, Supplier<V> supplier) {
 		if (condition) {
@@ -119,7 +118,7 @@ public class MapBuilder<K, V> implements Builder<Map<K, V>> {
 	 * 清空Map
 	 *
 	 * @return this
-	 * @since 5.7.23
+	 * 
 	 */
 	public MapBuilder<K, V> clear() {
 		this.map.clear();
@@ -139,7 +138,7 @@ public class MapBuilder<K, V> implements Builder<Map<K, V>> {
 	 * 创建后的map
 	 *
 	 * @return 创建后的map
-	 * @since 3.3.0
+	 * 
 	 */
 	@Override
 	public Map<K, V> build() {

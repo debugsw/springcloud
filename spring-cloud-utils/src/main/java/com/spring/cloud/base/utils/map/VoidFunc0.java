@@ -19,8 +19,6 @@ public interface VoidFunc0 extends Serializable {
 
 	/**
 	 * 执行函数，异常包装为RuntimeException
-	 *
-	 * @since 5.3.6
 	 */
 	default void callWithRuntimeException() {
 		try {

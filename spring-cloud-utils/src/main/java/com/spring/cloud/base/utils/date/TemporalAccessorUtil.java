@@ -39,7 +39,6 @@ public class TemporalAccessorUtil extends TemporalUtil {
 	 * @param time      {@link TemporalAccessor}
 	 * @param formatter 日期格式化器，预定义的格式见：{@link DateTimeFormatter}
 	 * @return 格式化后的字符串
-	 * @since 5.3.10
 	 */
 	public static String format(TemporalAccessor time, DateTimeFormatter formatter) {
 		if (null == time) {
@@ -74,7 +73,6 @@ public class TemporalAccessorUtil extends TemporalUtil {
 	 * @param time   {@link TemporalAccessor}
 	 * @param format 日期格式
 	 * @return 格式化后的字符串
-	 * @since 5.3.10
 	 */
 	public static String format(TemporalAccessor time, String format) {
 		if (null == time) {
@@ -102,7 +100,6 @@ public class TemporalAccessorUtil extends TemporalUtil {
 	 *
 	 * @param temporalAccessor Date对象
 	 * @return {@link Instant}对象
-	 * @since 5.4.1
 	 */
 	public static long toEpochMilli(TemporalAccessor temporalAccessor) {
 		if (temporalAccessor instanceof DayOfWeek) {
@@ -118,7 +115,7 @@ public class TemporalAccessorUtil extends TemporalUtil {
 	 *
 	 * @param temporalAccessor Date对象
 	 * @return {@link Instant}对象
-	 * @since 5.3.10
+	 * 
 	 */
 	public static Instant toInstant(TemporalAccessor temporalAccessor) {
 		if (null == temporalAccessor) {
@@ -160,7 +157,7 @@ public class TemporalAccessorUtil extends TemporalUtil {
 	 * @param beginDate 起始日期（包含）
 	 * @param endDate   结束日期（包含）
 	 * @return 是否在范围内
-	 * @since 5.8.5
+	 * 
 	 */
 	public static boolean isIn(TemporalAccessor date, TemporalAccessor beginDate, TemporalAccessor endDate) {
 		return isIn(date, beginDate, endDate, true, true);
@@ -179,7 +176,7 @@ public class TemporalAccessorUtil extends TemporalUtil {
 	 * @param includeEnd   时间范围是否包含结束日期
 	 * @return 是否在范围内
 	 * @author FengBaoheng
-	 * @since 5.8.6
+	 * 
 	 */
 	public static boolean isIn(TemporalAccessor date, TemporalAccessor beginDate, TemporalAccessor endDate,
 							   boolean includeBegin, boolean includeEnd) {

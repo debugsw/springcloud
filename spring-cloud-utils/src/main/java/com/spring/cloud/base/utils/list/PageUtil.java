@@ -100,7 +100,7 @@ public class PageUtil {
 	 * @param pageNo   页码（从0计数）
 	 * @param pageSize 每页条目数
 	 * @return 开始位置
-	 * @since 5.2.5
+	 *
 	 */
 	public static int getEnd(int pageNo, int pageSize) {
 		final int start = getStart(pageNo, pageSize);
@@ -157,7 +157,7 @@ public class PageUtil {
 	 * @param pageNo   页码（从0计数）
 	 * @param pageSize 每页条目数
 	 * @return {@link Segment}
-	 * @since 5.5.3
+	 *
 	 */
 	public static Segment<Integer> toSegment(int pageNo, int pageSize) {
 		final int[] startEnd = transToStartEnd(pageNo, pageSize);
@@ -181,7 +181,6 @@ public class PageUtil {
 	 * @param totalCount 总数
 	 * @param pageSize   每页数
 	 * @return 总页数
-	 * @since 5.8.5
 	 */
 	public static int totalPage(long totalCount, int pageSize) {
 		if (pageSize == 0) {

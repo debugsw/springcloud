@@ -23,8 +23,6 @@ public class RSA extends AsymmetricCrypto {
 	 */
 	private static final AsymmetricAlgorithm ALGORITHM_RSA = AsymmetricAlgorithm.RSA_ECB_PKCS1;
 
-	// ------------------------------------------------------------------ Static method start
-
 	/**
 	 * 生成RSA私钥
 	 *
@@ -86,7 +84,6 @@ public class RSA extends AsymmetricCrypto {
 	 * @param rsaAlgorithm  自定义RSA算法，例如RSA/ECB/PKCS1Padding
 	 * @param privateKeyStr 私钥Hex或Base64表示
 	 * @param publicKeyStr  公钥Hex或Base64表示
-	 * @since 4.5.8
 	 */
 	public RSA(String rsaAlgorithm, String privateKeyStr, String publicKeyStr) {
 		super(rsaAlgorithm, privateKeyStr, publicKeyStr);
@@ -112,7 +109,6 @@ public class RSA extends AsymmetricCrypto {
 	 * @param modulus         N特征值
 	 * @param privateExponent d特征值
 	 * @param publicExponent  e特征值
-	 * @since 3.1.1
 	 */
 	public RSA(BigInteger modulus, BigInteger privateExponent, BigInteger publicExponent) {
 		this(generatePrivateKey(modulus, privateExponent), generatePublicKey(modulus, publicExponent));
@@ -125,7 +121,6 @@ public class RSA extends AsymmetricCrypto {
 	 *
 	 * @param privateKey 私钥
 	 * @param publicKey  公钥
-	 * @since 3.1.1
 	 */
 	public RSA(PrivateKey privateKey, PublicKey publicKey) {
 		super(ALGORITHM_RSA, privateKey, publicKey);
@@ -139,7 +134,7 @@ public class RSA extends AsymmetricCrypto {
 	 * @param rsaAlgorithm 自定义RSA算法，例如RSA/ECB/PKCS1Padding
 	 * @param privateKey   私钥
 	 * @param publicKey    公钥
-	 * @since 4.5.8
+	 * 
 	 */
 	public RSA(String rsaAlgorithm, PrivateKey privateKey, PublicKey publicKey) {
 		super(rsaAlgorithm, privateKey, publicKey);

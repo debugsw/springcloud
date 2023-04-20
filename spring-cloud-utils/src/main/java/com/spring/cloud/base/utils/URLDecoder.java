@@ -96,7 +96,7 @@ public class URLDecoder implements Serializable {
 	 * @param bytes         url编码的bytes
 	 * @param isPlusToSpace 是否+转换为空格
 	 * @return 解码后的bytes
-	 * @since 5.6.3
+	 *
 	 */
 	public static byte[] decode(byte[] bytes, boolean isPlusToSpace) {
 		if (bytes == null) {

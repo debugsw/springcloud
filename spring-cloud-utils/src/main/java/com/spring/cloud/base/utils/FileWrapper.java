@@ -19,7 +19,6 @@ public class FileWrapper implements Serializable{
 	/** 默认编码：UTF-8 */
 	public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
-	// ------------------------------------------------------- Constructor start
 	/**
 	 * 构造
 	 * @param file 文件
@@ -29,9 +28,7 @@ public class FileWrapper implements Serializable{
 		this.file = file;
 		this.charset = charset;
 	}
-	// ------------------------------------------------------- Constructor end
 
-	// ------------------------------------------------------- Setters and Getters start start
 	/**
 	 * 获得文件
 	 * @return 文件
@@ -67,7 +64,6 @@ public class FileWrapper implements Serializable{
 		this.charset = charset;
 		return this;
 	}
-	// ------------------------------------------------------- Setters and Getters start end
 
 	/**
 	 * 可读的文件大小

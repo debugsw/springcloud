@@ -34,7 +34,6 @@ public class RowKeyTable<R, C, V> extends AbsTable<R, C, V> {
 	 * 构造
 	 *
 	 * @param isLinked 是否有序，有序则使用{@link java.util.LinkedHashMap}作为原始Map
-	 * @since 5.8.0
 	 */
 	public RowKeyTable(boolean isLinked) {
 		this(MapUtil.newHashMap(isLinked), () -> MapUtil.newHashMap(isLinked));

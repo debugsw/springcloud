@@ -25,7 +25,6 @@ public class ConsoleTable {
 	 * 创建ConsoleTable对象
 	 *
 	 * @return ConsoleTable
-	 * @since 5.4.5
 	 */
 	public static ConsoleTable create() {
 		return new ConsoleTable();
@@ -50,7 +49,7 @@ public class ConsoleTable {
 	 *
 	 * @param isSBCMode 是否全角模式
 	 * @return this
-	 * @since 5.8.0
+	 * 
 	 */
 	public ConsoleTable setSBCMode(boolean isSBCMode) {
 		this.isSBCMode = isSBCMode;

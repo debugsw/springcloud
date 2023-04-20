@@ -53,12 +53,11 @@ public class DESede extends SymmetricCrypto {
 
 	/**
 	 * 构造
-	 * 
-	 * @param mode 模式{@link Mode}
+	 *
+	 * @param mode    模式{@link Mode}
 	 * @param padding {@link Padding}补码方式
-	 * @param key 密钥，长度24位
-	 * @param iv 偏移向量，加盐
-	 * @since 3.3.0
+	 * @param key     密钥，长度24位
+	 * @param iv      偏移向量，加盐
 	 */
 	public DESede(Mode mode, Padding padding, byte[] key, byte[] iv) {
 		this(mode.name(), padding.name(), key, iv);
@@ -66,11 +65,11 @@ public class DESede extends SymmetricCrypto {
 
 	/**
 	 * 构造
-	 * 
+	 *
 	 * @param mode 模式{@link Mode}
 	 * @param padding {@link Padding}补码方式
 	 * @param key 密钥，长度24位
-	 * @since 3.3.0
+	 * 
 	 */
 	public DESede(Mode mode, Padding padding, SecretKey key) {
 		this(mode, padding, key, null);
@@ -78,12 +77,12 @@ public class DESede extends SymmetricCrypto {
 
 	/**
 	 * 构造
-	 * 
+	 *
 	 * @param mode 模式{@link Mode}
 	 * @param padding {@link Padding}补码方式
 	 * @param key 密钥，长度24位
 	 * @param iv 偏移向量，加盐
-	 * @since 3.3.0
+	 * 
 	 */
 	public DESede(Mode mode, Padding padding, SecretKey key, IvParameterSpec iv) {
 		this(mode.name(), padding.name(), key, iv);

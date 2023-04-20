@@ -46,7 +46,6 @@ public class Console {
 	 *
 	 * @param obj1      第一个要打印的对象
 	 * @param otherObjs 其它要打印的对象
-	 * @since 5.4.3
 	 */
 	public static void log(Object obj1, Object... otherObjs) {
 		if (ArrayUtil.isEmpty(otherObjs)) {
@@ -92,7 +91,6 @@ public class Console {
 	 *
 	 * @param template 文本模板，被替换的部分用 {} 表示
 	 * @param values   值
-	 * @since 5.4.3
 	 */
 	private static void logInternal(String template, Object... values) {
 		log(null, template, values);
@@ -104,7 +102,6 @@ public class Console {
 	 * 打印表格到控制台
 	 *
 	 * @param consoleTable 控制台表格
-	 * @since 5.4.5
 	 */
 	public static void table(ConsoleTable consoleTable) {
 		print(consoleTable.toString());
@@ -114,7 +111,7 @@ public class Console {
 	 * 同 System.out.print()方法，打印控制台日志
 	 *
 	 * @param obj 要打印的对象
-	 * @since 3.3.1
+	 * 
 	 */
 	public static void print(Object obj) {
 		print(TEMPLATE_VAR, obj);
@@ -126,7 +123,7 @@ public class Console {
 	 *
 	 * @param obj1      第一个要打印的对象
 	 * @param otherObjs 其它要打印的对象
-	 * @since 5.4.3
+	 * 
 	 */
 	public static void print(Object obj1, Object... otherObjs) {
 		if (ArrayUtil.isEmpty(otherObjs)) {
@@ -141,7 +138,7 @@ public class Console {
 	 *
 	 * @param template 文本模板，被替换的部分用 {} 表示
 	 * @param values   值
-	 * @since 3.3.1
+	 * 
 	 */
 	public static void print(String template, Object... values) {
 		if (ArrayUtil.isEmpty(values) || StrUtil.contains(template, TEMPLATE_VAR)) {
@@ -156,7 +153,7 @@ public class Console {
 	 *
 	 * @param showChar 进度条提示字符，例如“#”
 	 * @param len      打印长度
-	 * @since 4.5.6
+	 * 
 	 */
 	public static void printProgress(char showChar, int len) {
 		print("{}{}", CharUtil.CR, StrUtil.repeat(showChar, len));
@@ -168,7 +165,7 @@ public class Console {
 	 * @param showChar 进度条提示字符，例如“#”
 	 * @param totalLen 总长度
 	 * @param rate     总长度所占比取值0~1
-	 * @since 4.5.6
+	 * 
 	 */
 	public static void printProgress(char showChar, int totalLen, double rate) {
 		Assert.isTrue(rate >= 0 && rate <= 1, "Rate must between 0 and 1 (both include)");
@@ -180,7 +177,7 @@ public class Console {
 	 *
 	 * @param template 文本模板，被替换的部分用 {} 表示
 	 * @param values   值
-	 * @since 5.4.3
+	 * 
 	 */
 	private static void printInternal(String template, Object... values) {
 		out.print(StrUtil.format(template, values));
@@ -215,7 +212,7 @@ public class Console {
 	 *
 	 * @param obj1      第一个要打印的对象
 	 * @param otherObjs 其它要打印的对象
-	 * @since 5.4.3
+	 * 
 	 */
 	public static void error(Object obj1, Object... otherObjs) {
 		if (ArrayUtil.isEmpty(otherObjs)) {
@@ -270,7 +267,7 @@ public class Console {
 	 * 创建从控制台读取内容的{@link Scanner}
 	 *
 	 * @return {@link Scanner}
-	 * @since 3.3.1
+	 * 
 	 */
 	public static Scanner scanner() {
 		return new Scanner(System.in);
@@ -280,7 +277,7 @@ public class Console {
 	 * 读取用户输入的内容（在控制台敲回车前的内容）
 	 *
 	 * @return 用户输入的内容
-	 * @since 3.3.1
+	 * 
 	 */
 	public static String input() {
 		return scanner().nextLine();
@@ -293,7 +290,7 @@ public class Console {
 	 *
 	 * @return 返回当前行号
 	 * @author dahuoyzs
-	 * @since 5.2.5
+	 * 
 	 */
 	public static String where() {
 		final StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];
@@ -308,7 +305,7 @@ public class Console {
 	 * 返回当前行号 (不支持Lambda、内部类、递归内使用)
 	 *
 	 * @return 返回当前行号
-	 * @since 5.2.5
+	 * 
 	 */
 	public static Integer lineNumber() {
 		return new Throwable().getStackTrace()[1].getLineNumber();

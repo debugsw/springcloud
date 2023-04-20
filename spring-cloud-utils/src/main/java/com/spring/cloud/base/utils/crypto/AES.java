@@ -35,7 +35,6 @@ public class AES extends SymmetricCrypto {
 	 * 构造，使用默认的AES/ECB/PKCS5Padding
 	 *
 	 * @param key 密钥
-	 * @since 5.5.2
 	 */
 	public AES(SecretKey key) {
 		super(SymmetricAlgorithm.AES, key);
@@ -69,7 +68,7 @@ public class AES extends SymmetricCrypto {
 	 * @param padding {@link Padding}补码方式
 	 * @param key     密钥，支持三种密钥长度：128、192、256位
 	 * @param iv      偏移向量，加盐
-	 * @since 3.3.0
+	 * 
 	 */
 	public AES(Mode mode, Padding padding, byte[] key, byte[] iv) {
 		this(mode.name(), padding.name(), key, iv);
@@ -81,7 +80,7 @@ public class AES extends SymmetricCrypto {
 	 * @param mode    模式{@link Mode}
 	 * @param padding {@link Padding}补码方式
 	 * @param key     密钥，支持三种密钥长度：128、192、256位
-	 * @since 3.3.0
+	 * 
 	 */
 	public AES(Mode mode, Padding padding, SecretKey key) {
 		this(mode, padding, key, (IvParameterSpec) null);
@@ -94,7 +93,7 @@ public class AES extends SymmetricCrypto {
 	 * @param padding {@link Padding}补码方式
 	 * @param key     密钥，支持三种密钥长度：128、192、256位
 	 * @param iv      偏移向量，加盐
-	 * @since 4.6.7
+	 * 
 	 */
 	public AES(Mode mode, Padding padding, SecretKey key, byte[] iv) {
 		this(mode, padding, key, ArrayUtil.isEmpty(iv) ? null : new IvParameterSpec(iv));
@@ -107,7 +106,7 @@ public class AES extends SymmetricCrypto {
 	 * @param padding    {@link Padding}补码方式
 	 * @param key        密钥，支持三种密钥长度：128、192、256位
 	 * @param paramsSpec 算法参数，例如加盐等
-	 * @since 3.3.0
+	 * 
 	 */
 	public AES(Mode mode, Padding padding, SecretKey key, AlgorithmParameterSpec paramsSpec) {
 		this(mode.name(), padding.name(), key, paramsSpec);

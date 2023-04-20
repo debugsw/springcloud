@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils;
 
-import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.nio.charset.Charset;
 
@@ -44,7 +44,6 @@ public class URLEncodeUtil {
 	 * @param url URL
 	 * @return 编码后的URL
 	 * @throws UtilException UnsupportedEncodingException
-	 * @since 3.1.2
 	 */
 	public static String encode(String url) throws UtilException {
 		return encode(url, CharsetUtil.CHARSET_UTF_8);
@@ -58,7 +57,6 @@ public class URLEncodeUtil {
 	 * @param url     被编码内容
 	 * @param charset 编码
 	 * @return 编码后的字符
-	 * @since 4.4.1
 	 */
 	public static String encode(String url, Charset charset) {
 		return RFC3986.PATH.encode(url, charset);
@@ -72,7 +70,7 @@ public class URLEncodeUtil {
 	 * @param url URL
 	 * @return 编码后的URL
 	 * @throws UtilException UnsupportedEncodingException
-	 * @since 3.1.2
+	 * 
 	 */
 	public static String encodeQuery(String url) throws UtilException {
 		return encodeQuery(url, CharsetUtil.CHARSET_UTF_8);
@@ -86,7 +84,7 @@ public class URLEncodeUtil {
 	 * @param url     被编码内容
 	 * @param charset 编码
 	 * @return 编码后的字符
-	 * @since 4.4.1
+	 * 
 	 */
 	public static String encodeQuery(String url, Charset charset) {
 		return RFC3986.QUERY.encode(url, charset);
@@ -106,7 +104,7 @@ public class URLEncodeUtil {
 	 * @param url URL
 	 * @return 编码后的URL
 	 * @throws UtilException UnsupportedEncodingException
-	 * @since 5.6.5
+	 * 
 	 */
 	public static String encodePathSegment(String url) throws UtilException {
 		return encodePathSegment(url, CharsetUtil.CHARSET_UTF_8);
@@ -126,7 +124,7 @@ public class URLEncodeUtil {
 	 * @param url     被编码内容
 	 * @param charset 编码
 	 * @return 编码后的字符
-	 * @since 5.6.5
+	 * 
 	 */
 	public static String encodePathSegment(String url, Charset charset) {
 		if (StrUtil.isEmpty(url)) {
@@ -151,7 +149,7 @@ public class URLEncodeUtil {
 	 *
 	 * @param url 被编码内容
 	 * @return 编码后的字符
-	 * @since 5.7.13
+	 * 
 	 */
 	public static String encodeFragment(String url) throws UtilException {
 		return encodeFragment(url, CharsetUtil.CHARSET_UTF_8);
@@ -173,7 +171,7 @@ public class URLEncodeUtil {
 	 * @param url     被编码内容
 	 * @param charset 编码
 	 * @return 编码后的字符
-	 * @since 5.7.13
+	 * 
 	 */
 	public static String encodeFragment(String url, Charset charset) {
 		if (StrUtil.isEmpty(url)) {

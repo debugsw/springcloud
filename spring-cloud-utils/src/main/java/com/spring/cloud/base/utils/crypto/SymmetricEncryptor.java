@@ -117,7 +117,6 @@ public interface SymmetricEncryptor {
 	 * @param data    被加密的字符串
 	 * @param charset 编码
 	 * @return 加密后的Base64
-	 * @since 4.5.12
 	 */
 	default String encryptBase64(String data, Charset charset) {
 		return Base64.encode(encrypt(data, charset));

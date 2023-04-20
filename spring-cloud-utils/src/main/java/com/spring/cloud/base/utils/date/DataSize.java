@@ -126,7 +126,6 @@ public final class DataSize implements Comparable<DataSize> {
 	 * @param amount 大小
 	 * @param unit   数据大小单位，null表示默认的BYTES
 	 * @return DataSize
-	 * @since 5.4.5
 	 */
 	public static DataSize of(BigDecimal amount, DataUnit unit) {
 		if (null == unit) {

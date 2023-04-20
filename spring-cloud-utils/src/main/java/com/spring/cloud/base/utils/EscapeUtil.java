@@ -33,7 +33,7 @@ public class EscapeUtil {
 	 *
 	 * @param xml XML文本
 	 * @return 转义后的文本
-	 * @since 5.7.2
+	 *
 	 */
 	public static String escapeXml(CharSequence xml) {
 		XmlEscape escape = new XmlEscape();
@@ -45,7 +45,6 @@ public class EscapeUtil {
 	 *
 	 * @param xml XML文本
 	 * @return 转义后的文本
-	 * @since 5.7.2
 	 */
 	public static String unescapeXml(CharSequence xml) {
 		XmlUnescape unescape = new XmlUnescape();
@@ -57,7 +56,6 @@ public class EscapeUtil {
 	 *
 	 * @param html HTML文本
 	 * @return 转义后的文本
-	 * @since 4.1.5
 	 */
 	public static String escapeHtml4(CharSequence html) {
 		Html4Escape escape = new Html4Escape();
@@ -69,7 +67,7 @@ public class EscapeUtil {
 	 *
 	 * @param html HTML文本
 	 * @return 转义后的文本
-	 * @since 4.1.5
+	 * 
 	 */
 	public static String unescapeHtml4(CharSequence html) {
 		Html4Unescape unescape = new Html4Unescape();

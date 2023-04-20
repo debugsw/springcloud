@@ -15,7 +15,6 @@ public interface DatePrinter extends DateBasic {
 	 *
 	 * @param millis 日期毫秒数
 	 * @return the formatted string
-	 * @since 2.1
 	 */
 	String format(long millis);
 

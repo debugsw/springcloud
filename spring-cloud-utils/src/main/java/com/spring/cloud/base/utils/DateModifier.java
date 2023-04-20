@@ -50,7 +50,7 @@ public class DateModifier {
 	 * @param modifyType          修改类型，包括舍去、四舍五入、进一等
 	 * @param truncateMillisecond 是否归零毫秒
 	 * @return 修改后的{@link Calendar}
-	 * @since 5.7.5
+	 *
 	 */
 	public static Calendar modify(Calendar calendar, int dateField, ModifyType modifyType, boolean truncateMillisecond) {
 		// AM_PM上下午特殊处理

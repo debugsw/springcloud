@@ -210,7 +210,6 @@ public class CollectorUtil {
 	 * @param <K> key的类型
 	 * @param <V> value的类型
 	 * @return 聚合后的map
-	 * @since 5.8.5
 	 */
 	public static <K, V> Collector<Map<K, V>, ?, Map<K, List<V>>> reduceListMap() {
 		return reduceListMap(HashMap::new);
@@ -225,7 +224,6 @@ public class CollectorUtil {
 	 * @param <V>         value的类型
 	 * @param <R>         返回值的类型
 	 * @return 聚合后的map
-	 * @since 5.8.5
 	 */
 	public static <K, V, R extends Map<K, List<V>>> Collector<Map<K, V>, ?, R> reduceListMap(final Supplier<R> mapSupplier) {
 		return Collectors.reducing(mapSupplier.get(), value -> {

@@ -41,7 +41,7 @@ public class StrFormatter {
 	 * @param placeHolder 占位符，例如{}
 	 * @param argArray    参数列表
 	 * @return 结果
-	 * @since 5.7.14
+	 *
 	 */
 	public static String formatWith(String strPattern, String placeHolder, Object... argArray) {
 		if (StrUtil.isBlank(strPattern) || StrUtil.isBlank(placeHolder) || ArrayUtil.isEmpty(argArray)) {
@@ -101,7 +101,6 @@ public class StrFormatter {
 	 * @param map        参数值对
 	 * @param ignoreNull 是否忽略 {@code null} 值，忽略则 {@code null} 值对应的变量不被替换，否则替换为""
 	 * @return 格式化后的文本
-	 * @since 5.7.10
 	 */
 	public static String format(CharSequence template, Map<?, ?> map, boolean ignoreNull) {
 		if (null == template) {

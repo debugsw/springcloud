@@ -16,7 +16,6 @@ public class CompareUtil {
 	 *
 	 * @param <E> 排序节点类型
 	 * @return 默认排序器
-	 * @since 5.7.21
 	 */
 	@SuppressWarnings("unchecked")
 	public static <E extends Comparable<? super E>> Comparator<E> naturalComparator() {
@@ -36,7 +35,7 @@ public class CompareUtil {
 	 * @param comparator 比较器
 	 * @return 比较结果
 	 * @see Comparator#compare(Object, Object)
-	 * @since 4.6.9
+	 * 
 	 */
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static <T> int compare(T c1, T c2, Comparator<T> comparator) {
@@ -129,7 +128,7 @@ public class CompareUtil {
 	 * @param keyExtractor 从对象中提取中文(参与比较的内容)
 	 * @param <T>          对象类型
 	 * @return 中文比较器
-	 * @since 5.4.3
+	 * 
 	 */
 	public static <T> Comparator<T> comparingPinyin(Function<T, String> keyExtractor) {
 		return comparingPinyin(keyExtractor, false);
@@ -142,7 +141,7 @@ public class CompareUtil {
 	 * @param reverse      是否反序
 	 * @param <T>          对象类型
 	 * @return 中文比较器
-	 * @since 5.4.3
+	 * 
 	 */
 	public static <T> Comparator<T> comparingPinyin(Function<T, String> keyExtractor, boolean reverse) {
 		Objects.requireNonNull(keyExtractor);
@@ -162,7 +161,7 @@ public class CompareUtil {
 	 * @param <T>          对象类型
 	 * @param <U>          数组对象类型
 	 * @return 索引比较器
-	 * @since 5.8.0
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T, U> Comparator<T> comparingIndexed(Function<? super T, ? extends U> keyExtractor, U... objs) {
@@ -179,7 +178,7 @@ public class CompareUtil {
 	 * @param <T>          对象类型
 	 * @param <U>          数组对象类型
 	 * @return 索引比较器
-	 * @since 5.8.0
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T, U> Comparator<T> comparingIndexed(Function<? super T, ? extends U> keyExtractor, boolean atEndIfMiss, U... objs) {

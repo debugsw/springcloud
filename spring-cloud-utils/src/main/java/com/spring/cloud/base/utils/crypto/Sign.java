@@ -1,6 +1,9 @@
 package com.spring.cloud.base.utils.crypto;
 
-import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.CharsetUtil;
+import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.HexUtil;
+import com.spring.cloud.base.utils.IoUtil;
 import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.exception.CryptoException;
 import com.spring.cloud.base.utils.str.StrUtil;
@@ -169,7 +172,6 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 *
 	 * @param params {@link AlgorithmParameterSpec}
 	 * @return this
-	 * @since 4.6.5
 	 */
 	public Sign setParameter(AlgorithmParameterSpec params) {
 		try {
@@ -188,7 +190,6 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 * @param data    被签名数据
 	 * @param charset 编码
 	 * @return 签名
-	 * @since 5.7.0
 	 */
 	public byte[] sign(String data, Charset charset) {
 		return sign(StrUtil.bytes(data, charset));
@@ -199,7 +200,6 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 *
 	 * @param data 被签名数据
 	 * @return 签名
-	 * @since 5.7.0
 	 */
 	public byte[] sign(String data) {
 		return sign(data, CharsetUtil.CHARSET_UTF_8);
@@ -211,7 +211,7 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 * @param data    被签名数据
 	 * @param charset 编码
 	 * @return 签名
-	 * @since 5.7.0
+	 * 
 	 */
 	public String signHex(String data, Charset charset) {
 		return HexUtil.encodeHexStr(sign(data, charset));
@@ -222,7 +222,7 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 *
 	 * @param data 被签名数据
 	 * @return 签名
-	 * @since 5.7.0
+	 * 
 	 */
 	public String signHex(String data) {
 		return signHex(data, CharsetUtil.CHARSET_UTF_8);
@@ -243,7 +243,7 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 *
 	 * @param data 被签名数据
 	 * @return 签名
-	 * @since 5.7.0
+	 * 
 	 */
 	public String signHex(byte[] data) {
 		return HexUtil.encodeHexStr(sign(data));
@@ -255,7 +255,7 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 *
 	 * @param data 被签名数据
 	 * @return 签名
-	 * @since 5.7.0
+	 * 
 	 */
 	public String signHex(InputStream data) {
 		return HexUtil.encodeHexStr(sign(data));
@@ -266,7 +266,7 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 *
 	 * @param data {@link InputStream} 数据流
 	 * @return 签名bytes
-	 * @since 5.7.0
+	 * 
 	 */
 	public byte[] sign(InputStream data) {
 		return sign(data, IoUtil.DEFAULT_BUFFER_SIZE);
@@ -279,7 +279,7 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 * @param data         被签名数据
 	 * @param bufferLength 缓存长度，不足1使用 {@link IoUtil#DEFAULT_BUFFER_SIZE} 做为默认值
 	 * @return 签名
-	 * @since 5.7.0
+	 * 
 	 */
 	public String digestHex(InputStream data, int bufferLength) {
 		return HexUtil.encodeHexStr(sign(data, bufferLength));
@@ -291,7 +291,7 @@ public class Sign extends BaseAsymmetric<Sign> {
 	 * @param data         {@link InputStream} 数据流
 	 * @param bufferLength 缓存长度，不足1使用 {@link IoUtil#DEFAULT_BUFFER_SIZE} 做为默认值
 	 * @return 签名bytes
-	 * @since 5.7.0
+	 * 
 	 */
 	public byte[] sign(InputStream data, int bufferLength) {
 		if (bufferLength < 1) {

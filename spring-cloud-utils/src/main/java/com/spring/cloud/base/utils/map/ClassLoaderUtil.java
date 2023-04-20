@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.interf.CharPool;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.interf.CharPool;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.File;
@@ -86,7 +86,6 @@ public class ClassLoaderUtil {
 	 *
 	 * @return 系统{@link ClassLoader}
 	 * @see ClassLoader#getSystemClassLoader()
-	 * @since 5.7.0
 	 */
 	public static ClassLoader getSystemClassLoader() {
 		if (System.getSecurityManager() == null) {
@@ -216,7 +215,7 @@ public class ClassLoaderUtil {
 	 *
 	 * @param jarOrDir jar文件或者包含jar和class文件的目录
 	 * @return {@link JarClassLoader}
-	 * @since 4.4.2
+	 * 
 	 */
 	public static JarClassLoader getJarClassLoader(File jarOrDir) {
 		return JarClassLoader.load(jarOrDir);
@@ -228,7 +227,7 @@ public class ClassLoaderUtil {
 	 * @param jarOrDir jar文件或者包含jar和class文件的目录
 	 * @param name     类名
 	 * @return 类
-	 * @since 4.4.2
+	 * 
 	 */
 	public static Class<?> loadClass(File jarOrDir, String name) {
 		try {
@@ -313,7 +312,7 @@ public class ClassLoaderUtil {
 	 * @param classLoader   {@link ClassLoader}，{@code null} 则使用系统默认ClassLoader
 	 * @param isInitialized 是否初始化类（调用static模块内容和初始化static属性）
 	 * @return 类名对应的类
-	 * @since 4.1.20
+	 * 
 	 */
 	private static Class<?> tryLoadInnerClass(String name, ClassLoader classLoader, boolean isInitialized) {
 		final int lastDotIndex = name.lastIndexOf(PACKAGE_SEPARATOR);
