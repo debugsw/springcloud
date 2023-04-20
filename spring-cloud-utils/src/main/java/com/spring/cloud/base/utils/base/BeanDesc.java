@@ -129,7 +129,7 @@ public class BeanDesc implements Serializable {
 		PropDesc prop;
 		for (Field field : ReflectUtil.getFields(this.beanClass)) {
 			// 排除静态属性和对象子类
-			if (false == ModifierUtil.isStatic(field) && false == ReflectUtil.isOuterClassField(field)) {
+			if (!ModifierUtil.isStatic(field) && !ReflectUtil.isOuterClassField(field)) {
 				prop = createProp(field, gettersAndSetters);
 				// 只有不存在时才放入，防止父类属性覆盖子类属性
 				this.propMap.putIfAbsent(prop.getFieldName(), prop);
@@ -243,14 +243,13 @@ public class BeanDesc implements Serializable {
 		if (isBooleanField) {
 			if (fieldName.startsWith("is")) {
 				// 字段已经是is开头
-				if (methodName.equals(fieldName) // isName -》 isName
-						|| ("get" + handledFieldName).equals(methodName)// isName -》 getIsName
-						|| ("is" + handledFieldName).equals(methodName)// isName -》 isIsName
+				if (methodName.equals(fieldName)
+						|| ("get" + handledFieldName).equals(methodName)
+						|| ("is" + handledFieldName).equals(methodName)
 				) {
 					return true;
 				}
 			} else if (("is" + handledFieldName).equals(methodName)) {
-				// 字段非is开头， name -》 isName
 				return true;
 			}
 		}
@@ -288,7 +287,7 @@ public class BeanDesc implements Serializable {
 		}
 
 		// 非标准Setter方法跳过
-		if (false == methodName.startsWith("set")) {
+		if (!methodName.startsWith("set")) {
 			return false;
 		}
 

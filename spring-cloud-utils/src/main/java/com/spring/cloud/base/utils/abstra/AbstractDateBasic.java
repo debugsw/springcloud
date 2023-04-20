@@ -58,7 +58,7 @@ public abstract class AbstractDateBasic implements DateBasic, Serializable {
 
 	@Override
 	public boolean equals(final Object obj) {
-		if (obj instanceof FastDatePrinter == false) {
+		if (!(obj instanceof FastDatePrinter)) {
 			return false;
 		}
 		final AbstractDateBasic other = (AbstractDateBasic) obj;

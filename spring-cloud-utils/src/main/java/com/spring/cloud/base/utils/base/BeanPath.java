@@ -101,17 +101,8 @@ public class BeanPath implements Serializable {
 		return this.patternParts.toString();
 	}
 
-	//region Private Methods
-
 	/**
-	 * 设置表达式指定位置（或filed对应）的值<br>
-	 * 若表达式指向一个List则设置其坐标对应位置的值，若指向Map则put对应key的值，Bean则设置字段的值<br>
-	 * 注意：
-	 *
-	 * <pre>
-	 * 1. 如果为List，如果下标不大于List长度，则替换原有值，否则追加值
-	 * 2. 如果为数组，如果下标不大于数组长度，则替换原有值，否则追加值
-	 * </pre>
+	 * 设置表达式指定位置（或filed对应）的值
 	 *
 	 * @param bean           Bean、Map或List
 	 * @param patternParts   表达式块列表
@@ -121,16 +112,14 @@ public class BeanPath implements Serializable {
 	private void set(Object bean, List<String> patternParts, boolean nextNumberPart, Object value) {
 		Object subBean = this.get(patternParts, bean, true);
 		if (null == subBean) {
-			// 当前节点是空，则先创建父节点
 			final List<String> parentParts = getParentParts(patternParts);
-			this.set(bean, parentParts, lastIsNumber(parentParts), nextNumberPart ? new ArrayList<>() : new HashMap<>());
+			this.set(bean, parentParts, lastIsNumber(parentParts), nextNumberPart ? new ArrayList<>() : new HashMap<>(16));
 			//set中有可能做过转换，因此此处重新获取bean
 			subBean = this.get(patternParts, bean, true);
 		}
 
 		final Object newSubBean = BeanUtil.setFieldValue(subBean, patternParts.get(patternParts.size() - 1), value);
 		if (newSubBean != subBean) {
-			// 对象变更，重新加入
 			this.set(bean, getParentParts(patternParts), nextNumberPart, newSubBean);
 		}
 	}
@@ -176,7 +165,7 @@ public class BeanPath implements Serializable {
 			subBean = getFieldValue(subBean, patternPart);
 			if (null == subBean) {
 				// 支持表达式的第一个对象为Bean本身（若用户定义表达式$开头，则不做此操作）
-				if (isFirst && false == this.isStartWith && BeanUtil.isMatchName(bean, patternPart, true)) {
+				if (isFirst && !this.isStartWith && BeanUtil.isMatchName(bean, patternPart, true)) {
 					subBean = bean;
 					isFirst = false;
 				} else {
@@ -246,8 +235,8 @@ public class BeanPath implements Serializable {
 
 		final StringBuilder builder = new StringBuilder();
 		char c;
-		boolean isNumStart = false;// 下标标识符开始
-		boolean isInWrap = false; //标识是否在引号内
+		boolean isNumStart = false;
+		boolean isInWrap = false;
 		for (int i = 0; i < length; i++) {
 			c = expression.charAt(i);
 			if (0 == i && '$' == c) {
@@ -258,15 +247,15 @@ public class BeanPath implements Serializable {
 
 			if ('\'' == c) {
 				// 结束
-				isInWrap = (false == isInWrap);
+				isInWrap = (!isInWrap);
 				continue;
 			}
 
-			if (false == isInWrap && ArrayUtil.contains(EXP_CHARS, c)) {
+			if (!isInWrap && ArrayUtil.contains(EXP_CHARS, c)) {
 				// 处理边界符号
 				if (CharUtil.BRACKET_END == c) {
 					// 中括号（数字下标）结束
-					if (false == isNumStart) {
+					if (!isNumStart) {
 						throw new IllegalArgumentException(StrUtil.format("Bad expression '{}':{}, we find ']' but no '[' !", expression, i));
 					}
 					isNumStart = false;

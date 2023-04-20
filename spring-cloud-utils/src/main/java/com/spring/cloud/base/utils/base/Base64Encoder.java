@@ -161,14 +161,14 @@ public class Base64Encoder {
 			return new byte[0];
 		}
 
-		int evenlen = (len / 3) * 3;
+		int evenLen = (len / 3) * 3;
 		int cnt = ((len - 1) / 3 + 1) << 2;
-		int destlen = cnt + (isMultiLine ? (cnt - 1) / 76 << 1 : 0);
-		byte[] dest = new byte[destlen];
+		int destLen = cnt + (isMultiLine ? (cnt - 1) / 76 << 1 : 0);
+		byte[] dest = new byte[destLen];
 
 		byte[] encodeTable = isUrlSafe ? URL_SAFE_ENCODE_TABLE : STANDARD_ENCODE_TABLE;
 
-		for (int s = 0, d = 0, cc = 0; s < evenlen; ) {
+		for (int s = 0, d = 0, cc = 0; s < evenLen; ) {
 			int i = (arr[s++] & 0xff) << 16 | (arr[s++] & 0xff) << 8 | (arr[s++] & 0xff);
 
 			dest[d++] = encodeTable[(i >>> 18) & 0x3f];
@@ -176,33 +176,33 @@ public class Base64Encoder {
 			dest[d++] = encodeTable[(i >>> 6) & 0x3f];
 			dest[d++] = encodeTable[i & 0x3f];
 
-			if (isMultiLine && ++cc == 19 && d < destlen - 2) {
+			if (isMultiLine && ++cc == 19 && d < destLen - 2) {
 				dest[d++] = '\r';
 				dest[d++] = '\n';
 				cc = 0;
 			}
 		}
 
-		int left = len - evenlen;
+		int left = len - evenLen;
 		if (left > 0) {
-			int i = ((arr[evenlen] & 0xff) << 10) | (left == 2 ? ((arr[len - 1] & 0xff) << 2) : 0);
+			int i = ((arr[evenLen] & 0xff) << 10) | (left == 2 ? ((arr[len - 1] & 0xff) << 2) : 0);
 
-			dest[destlen - 4] = encodeTable[i >> 12];
-			dest[destlen - 3] = encodeTable[(i >>> 6) & 0x3f];
+			dest[destLen - 4] = encodeTable[i >> 12];
+			dest[destLen - 3] = encodeTable[(i >>> 6) & 0x3f];
 
 			if (isUrlSafe) {
 				// 在URL Safe模式下，=为URL中的关键字符，不需要补充。空余的byte位要去掉。
-				int urlSafeLen = destlen - 2;
+				int urlSafeLen = destLen - 2;
 				if (2 == left) {
-					dest[destlen - 2] = encodeTable[i & 0x3f];
+					dest[destLen - 2] = encodeTable[i & 0x3f];
 					urlSafeLen += 1;
 				}
 				byte[] urlSafeDest = new byte[urlSafeLen];
 				System.arraycopy(dest, 0, urlSafeDest, 0, urlSafeLen);
 				return urlSafeDest;
 			} else {
-				dest[destlen - 2] = (left == 2) ? encodeTable[i & 0x3f] : (byte) '=';
-				dest[destlen - 1] = '=';
+				dest[destLen - 2] = (left == 2) ? encodeTable[i & 0x3f] : (byte) '=';
+				dest[destLen - 1] = '=';
 			}
 		}
 		return dest;

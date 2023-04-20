@@ -75,24 +75,6 @@ public abstract class AbstractTypeAnnotationScanner<T extends AbstractTypeAnnota
 	}
 
 	/**
-	 * 是否允许扫描父类
-	 *
-	 * @return 是否允许扫描父类
-	 */
-	public boolean isIncludeSuperClass() {
-		return includeSuperClass;
-	}
-
-	/**
-	 * 是否允许扫描父接口
-	 *
-	 * @return 是否允许扫描父接口
-	 */
-	public boolean isIncludeInterfaces() {
-		return includeInterfaces;
-	}
-
-	/**
 	 * 设置过滤器，若类型无法通过该过滤器，则该类型及其树结构将直接不被查找
 	 *
 	 * @param filter 过滤器
@@ -101,33 +83,6 @@ public abstract class AbstractTypeAnnotationScanner<T extends AbstractTypeAnnota
 	public T setFilter(Predicate<Class<?>> filter) {
 		Assert.notNull(filter, "filter must not null");
 		this.filter = filter;
-		return typedThis;
-	}
-
-	/**
-	 * 添加不扫描的类型，该类型及其树结构将直接不被查找
-	 *
-	 * @param excludeTypes 不扫描的类型
-	 * @return 当前实例
-	 */
-	public T addExcludeTypes(Class<?>... excludeTypes) {
-		CollUtil.addAll(this.excludeTypes, excludeTypes);
-		return typedThis;
-	}
-
-	/**
-	 * 添加转换器
-	 *
-	 * @param converter 转换器
-	 * @return 当前实例
-	 * @see JdkProxyClassConverter
-	 */
-	public T addConverters(UnaryOperator<Class<?>> converter) {
-		Assert.notNull(converter, "converter must not null");
-		this.converters.add(converter);
-		if (!this.hasConverters) {
-			this.hasConverters = CollUtil.isNotEmpty(this.converters);
-		}
 		return typedThis;
 	}
 

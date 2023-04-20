@@ -9,6 +9,7 @@ import com.spring.cloud.base.utils.map.WeakConcurrentMap;
  * @Date: 2023/4/13 16:11
  */
 public enum BeanDescCache {
+
 	INSTANCE;
 
 	private final WeakConcurrentMap<Class<?>, BeanDesc> bdCache = new WeakConcurrentMap<>();
