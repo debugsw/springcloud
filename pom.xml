@@ -17,7 +17,7 @@
     </parent>
 
     <groupId>com.springcloud.base</groupId>
-    <artifactId>base-service-common</artifactId>
+    <artifactId>spring-cloud</artifactId>
     <version>1.0.0</version>
 
     <properties>
