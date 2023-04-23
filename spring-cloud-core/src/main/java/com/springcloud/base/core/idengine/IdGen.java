@@ -1,6 +1,6 @@
 package com.springcloud.base.core.idengine;
 
-import cn.hutool.core.util.RandomUtil;
+import com.spring.cloud.base.utils.crypto.RandomUtil;
 
 /**
  * @Author: ls
