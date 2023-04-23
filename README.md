@@ -34,5 +34,7 @@
 
 ### spring-cloud-utils 功能说明
 
-- [x] 支持AES｜RSA｜RSA2｜SM2｜SM3｜SM4加解密（采用telnet方式）
+- [x] 支持AES｜RSA｜RSA2｜SM2｜SM3｜SM4加解密
+- [x] 常见工具类File｜字节｜字符｜ZIP｜URL｜BASE64等
+
 
