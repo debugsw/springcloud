@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.base.Mutable;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
-import com.spring.cloud.base.utils.interf.Mutable;
 
 import java.io.Serializable;
 
@@ -41,7 +41,6 @@ public class MutableObj<T> implements Mutable<T>, Serializable {
 		this.value = value;
 	}
 
-	// -----------------------------------------------------------------------
 	@Override
 	public T get() {
 		return this.value;
@@ -52,7 +51,6 @@ public class MutableObj<T> implements Mutable<T>, Serializable {
 		this.value = value;
 	}
 
-	// -----------------------------------------------------------------------
 	@Override
 	public boolean equals(final Object obj) {
 		if (obj == null) {
@@ -73,7 +71,6 @@ public class MutableObj<T> implements Mutable<T>, Serializable {
 		return value == null ? 0 : value.hashCode();
 	}
 
-	// -----------------------------------------------------------------------
 	@Override
 	public String toString() {
 		return value == null ? "null" : value.toString();

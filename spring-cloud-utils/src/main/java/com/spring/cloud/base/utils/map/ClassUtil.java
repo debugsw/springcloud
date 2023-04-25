@@ -864,5 +864,16 @@ public class ClassUtil {
 		return values;
 	}
 
+	public static boolean isJdkClass(Class<?> clazz) {
+		final Package objectPackage = clazz.getPackage();
+		if (null == objectPackage) {
+			return false;
+		}
+		final String objectPackageName = objectPackage.getName();
+		return objectPackageName.startsWith("java.") //
+				|| objectPackageName.startsWith("javax.") //
+				|| clazz.getClassLoader() == null;
+	}
+
 
 }

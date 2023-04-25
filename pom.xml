@@ -8,6 +8,9 @@
         <module>spring-cloud-utils</module>
         <module>spring-cloud-monitor</module>
         <module>spring-cloud-log</module>
+        <module>spring-cloud-captcha</module>
+        <module>spring-cloud-http</module>
+        <module>spring-cloud-jwt</module>
     </modules>
 
     <parent>

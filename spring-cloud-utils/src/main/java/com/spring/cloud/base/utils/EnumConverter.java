@@ -1,9 +1,9 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.abstra.AbstractConverter;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.exception.ConvertException;
 import com.spring.cloud.base.utils.interf.EnumItem;
-import com.spring.cloud.base.utils.map.AbstractConverter;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.map.WeakConcurrentMap;
@@ -38,7 +38,7 @@ public class EnumConverter extends AbstractConverter<Object> {
 	@Override
 	protected Object convertInternal(Object value) {
 		Enum enumValue = tryConvertEnum(value, this.enumClass);
-		if (null == enumValue && false == value instanceof String) {
+		if (null == enumValue && !(value instanceof String)) {
 			// 最后尝试先将value转String，再valueOf转换
 			enumValue = Enum.valueOf(this.enumClass, convertToStr(value));
 		}
@@ -133,7 +133,7 @@ public class EnumConverter extends AbstractConverter<Object> {
 				.filter(ModifierUtil::isStatic)
 				.filter(m -> m.getReturnType() == enumClass)
 				.filter(m -> m.getParameterCount() == 1)
-				.filter(m -> false == "valueOf".equals(m.getName()))
+				.filter(m -> !"valueOf".equals(m.getName()))
 				.collect(Collectors.toMap(m -> m.getParameterTypes()[0], m -> m, (k1, k2) -> k1)));
 	}
 }
