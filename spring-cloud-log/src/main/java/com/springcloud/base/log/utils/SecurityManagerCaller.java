@@ -10,6 +10,7 @@ import java.io.Serializable;
  * @Date: 2023/4/25 10:03
  */
 public class SecurityManagerCaller extends SecurityManager implements Caller, Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	private static final int OFFSET = 1;

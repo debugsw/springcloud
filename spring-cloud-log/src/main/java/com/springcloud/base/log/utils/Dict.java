@@ -32,8 +32,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 */
 	private boolean caseInsensitive;
 
-	// --------------------------------------------------------------- Static method start
-
 	/**
 	 * 创建Dict
 	 *
@@ -102,9 +100,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 
 		return dict;
 	}
-	// --------------------------------------------------------------- Static method end
-
-	// --------------------------------------------------------------- Constructor start
 
 	/**
 	 * 构造
@@ -315,8 +310,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 		return result;
 	}
 
-	// -------------------------------------------------------------------- Set start
-
 	/**
 	 * 设置列
 	 *
@@ -342,9 +335,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 		}
 		return this;
 	}
-	// -------------------------------------------------------------------- Set end
-
-	// -------------------------------------------------------------------- Get start
 
 	@Override
 	public Object getObj(String key) {
@@ -561,7 +551,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	public <T> T getByPath(String expression, Class<T> resultType) {
 		return Convert.convert(resultType, getByPath(expression));
 	}
-	// -------------------------------------------------------------------- Get end
 
 	@Override
 	public boolean containsKey(Object key) {
@@ -608,7 +597,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 		return super.replace(customKey(key), value);
 	}
 
-	//---------------------------------------------------------------------------- Override default methods start
 	@Override
 	public Object getOrDefault(Object key, Object defaultValue) {
 		return super.getOrDefault(customKey((String) key), defaultValue);
@@ -639,8 +627,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 		return super.computeIfAbsent(customKey(key), mappingFunction);
 	}
 
-	//---------------------------------------------------------------------------- Override default methods end
-
 	/**
 	 * 将Key转为小写
 	 *
@@ -655,12 +641,7 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	}
 
 	/**
-	 * 通过lambda批量设置值<br>
-	 * 实际使用时，可以使用getXXX的方法引用来完成键值对的赋值：
-	 * <pre>
-	 *     User user = GenericBuilder.of(User::new).with(User::setUsername, "hutool").build();
-	 *     Dict.create().setFields(user::getNickname, user::getUsername);
-	 * </pre>
+	 * 通过lambda批量设置值
 	 *
 	 * @param fields lambda,不能为空
 	 * @return this

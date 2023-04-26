@@ -6,6 +6,7 @@ package com.springcloud.base.log.utils;
  * @Date: 2023/4/25 10:03
  */
 public class CallerUtil {
+
 	private static final Caller INSTANCE;
 
 	static {

@@ -22,8 +22,6 @@ public class ConsoleLog extends AbstractLog {
 
 	private final String name;
 
-	//------------------------------------------------------------------------- Constructor
-
 	/**
 	 * 构造
 	 *
@@ -58,7 +56,6 @@ public class ConsoleLog extends AbstractLog {
 		currentLevels = customLevels;
 	}
 
-	//------------------------------------------------------------------------- Trace
 	@Override
 	public boolean isTraceEnabled() {
 		return isEnabled(Levels.TRACE);
@@ -69,7 +66,6 @@ public class ConsoleLog extends AbstractLog {
 		log(fqcn, Levels.TRACE, t, format, arguments);
 	}
 
-	//------------------------------------------------------------------------- Debug
 	@Override
 	public boolean isDebugEnabled() {
 		return isEnabled(Levels.DEBUG);
@@ -80,7 +76,6 @@ public class ConsoleLog extends AbstractLog {
 		log(fqcn, Levels.DEBUG, t, format, arguments);
 	}
 
-	//------------------------------------------------------------------------- Info
 	@Override
 	public boolean isInfoEnabled() {
 		return isEnabled(Levels.INFO);
@@ -91,7 +86,6 @@ public class ConsoleLog extends AbstractLog {
 		log(fqcn, Levels.INFO, t, format, arguments);
 	}
 
-	//------------------------------------------------------------------------- Warn
 	@Override
 	public boolean isWarnEnabled() {
 		return isEnabled(Levels.WARN);
@@ -102,7 +96,6 @@ public class ConsoleLog extends AbstractLog {
 		log(fqcn, Levels.WARN, t, format, arguments);
 	}
 
-	//------------------------------------------------------------------------- Error
 	@Override
 	public boolean isErrorEnabled() {
 		return isEnabled(Levels.ERROR);
@@ -113,7 +106,6 @@ public class ConsoleLog extends AbstractLog {
 		log(fqcn, Levels.ERROR, t, format, arguments);
 	}
 
-	//------------------------------------------------------------------------- Log
 	@Override
 	public void log(String fqcn, Levels levels, Throwable t, String format, Object... arguments) {
 		// fqcn 无效
@@ -130,7 +122,6 @@ public class ConsoleLog extends AbstractLog {
 
 		final String logMsg = StrUtil.format(logFormat, dict);
 
-		//WARN以上级别打印至System.err
 		if (levels.ordinal() >= Levels.WARN.ordinal()) {
 			Console.error(t, logMsg);
 		} else {
