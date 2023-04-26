@@ -109,7 +109,7 @@ public class ConsoleLog extends AbstractLog {
 	@Override
 	public void log(String fqcn, Levels levels, Throwable t, String format, Object... arguments) {
 		// fqcn 无效
-		if (false == isEnabled(levels)) {
+		if (!isEnabled(levels)) {
 			return;
 		}
 
