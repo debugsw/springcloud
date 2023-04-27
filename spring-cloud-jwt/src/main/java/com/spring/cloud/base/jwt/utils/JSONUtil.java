@@ -189,13 +189,7 @@ public class JSONUtil {
 	}
 
 	/**
-	 * 转换对象为JSON，如果用户不配置JSONConfig，则JSON的有序与否与传入对象有关。<br>
-	 * 支持的对象：
-	 * <ul>
-	 *     <li>String: 转换为相应的对象</li>
-	 *     <li>Array、Iterable、Iterator：转换为JSONArray</li>
-	 *     <li>Bean对象：转为JSONObject</li>
-	 * </ul>
+	 * 转换对象为JSON，如果用户不配置JSONConfig，则JSON的有序与否与传入对象有关。
 	 *
 	 * @param obj    对象
 	 * @param config JSON配置，{@code null}使用默认配置
@@ -233,10 +227,6 @@ public class JSONUtil {
 		return XML.toJSONObject(xmlStr);
 	}
 
-	// -------------------------------------------------------------------- Parse end
-
-	// -------------------------------------------------------------------- Read start
-
 	/**
 	 * 读取JSON
 	 *
@@ -272,9 +262,6 @@ public class JSONUtil {
 	public static JSONArray readJSONArray(File file, Charset charset) throws IORuntimeException {
 		return parseArray(FileReader.create(file, charset).readString());
 	}
-	// -------------------------------------------------------------------- Read end
-
-	// -------------------------------------------------------------------- toString start
 
 	/**
 	 * 转为JSON字符串
@@ -386,9 +373,6 @@ public class JSONUtil {
 	public static String toXmlStr(JSON json) {
 		return XML.toXml(json);
 	}
-	// -------------------------------------------------------------------- toString end
-
-	// -------------------------------------------------------------------- toBean start
 
 	/**
 	 * JSON字符串转为实体类对象，转换异常将被抛出
@@ -487,7 +471,6 @@ public class JSONUtil {
 		}
 		return json.toBean(beanType, ignoreError);
 	}
-	// -------------------------------------------------------------------- toBean end
 
 	/**
 	 * 将JSONArray字符串转换为Bean的List，默认为ArrayList
@@ -514,20 +497,7 @@ public class JSONUtil {
 	}
 
 	/**
-	 * 通过表达式获取JSON中嵌套的对象<br>
-	 * <ol>
-	 * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
-	 * <li>[]表达式，可以获取集合等对象中对应index的值</li>
-	 * </ol>
-	 * <p>
-	 * 表达式栗子：
-	 *
-	 * <pre>
-	 * persion
-	 * persion.name
-	 * persons[3]
-	 * person.friends[5].name
-	 * </pre>
+	 * 通过表达式获取JSON中嵌套的对象
 	 *
 	 * @param json       {@link JSON}
 	 * @param expression 表达式
@@ -539,20 +509,7 @@ public class JSONUtil {
 	}
 
 	/**
-	 * 通过表达式获取JSON中嵌套的对象<br>
-	 * <ol>
-	 * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
-	 * <li>[]表达式，可以获取集合等对象中对应index的值</li>
-	 * </ol>
-	 * <p>
-	 * 表达式栗子：
-	 *
-	 * <pre>
-	 * persion
-	 * persion.name
-	 * persons[3]
-	 * person.friends[5].name
-	 * </pre>
+	 * 通过表达式获取JSON中嵌套的对象
 	 *
 	 * @param <T>          值类型
 	 * @param json         {@link JSON}
@@ -575,22 +532,7 @@ public class JSONUtil {
 	}
 
 	/**
-	 * 设置表达式指定位置（或filed对应）的值<br>
-	 * 若表达式指向一个JSONArray则设置其坐标对应位置的值，若指向JSONObject则put对应key的值<br>
-	 * 注意：如果为JSONArray，则设置值得下标不能大于已有JSONArray的长度<br>
-	 * <ol>
-	 * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
-	 * <li>[]表达式，可以获取集合等对象中对应index的值</li>
-	 * </ol>
-	 * <p>
-	 * 表达式栗子：
-	 *
-	 * <pre>
-	 * persion
-	 * persion.name
-	 * persons[3]
-	 * person.friends[5].name
-	 * </pre>
+	 * 设置表达式指定位置（或filed对应）的值
 	 *
 	 * @param json       JSON，可以为JSONObject或JSONArray
 	 * @param expression 表达式
@@ -709,16 +651,7 @@ public class JSONUtil {
 	}
 
 	/**
-	 * 在需要的时候包装对象<br>
-	 * 包装包括：
-	 * <ul>
-	 * <li>{@code null} =》 {@code JSONNull.NULL}</li>
-	 * <li>array or collection =》 JSONArray</li>
-	 * <li>map =》 JSONObject</li>
-	 * <li>standard property (Double, String, et al) =》 原对象</li>
-	 * <li>来自于java包 =》 字符串</li>
-	 * <li>其它 =》 尝试包装为JSONObject，否则返回{@code null}</li>
-	 * </ul>
+	 * 在需要的时候包装对象
 	 *
 	 * @param object     被包装的对象
 	 * @param jsonConfig JSON选项

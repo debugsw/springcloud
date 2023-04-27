@@ -211,8 +211,6 @@ public class JSONWriter extends Writer {
 		this.writer.close();
 	}
 
-	// ------------------------------------------------------------------------------ Private methods
-
 	/**
 	 * 写出值，自动处理分隔符和缩进，自动判断类型，并根据不同类型写出特定格式的值
 	 *
@@ -409,7 +407,6 @@ public class JSONWriter extends Writer {
 
 			if (GlobalCustomFormat.FORMAT_SECONDS.equals(format)
 					|| GlobalCustomFormat.FORMAT_MILLISECONDS.equals(format)) {
-				// Hutool自定义的秒和毫秒表示，默认不包装双引号
 				return dateStr;
 			}
 			//用户定义了日期格式

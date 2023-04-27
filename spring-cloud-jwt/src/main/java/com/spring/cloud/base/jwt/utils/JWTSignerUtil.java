@@ -218,9 +218,6 @@ public class JWTSignerUtil {
 		return createSigner("ESHA1",key);
 	}
 
-
-
-
 	/**
 	 * 创建签名器
 	 *

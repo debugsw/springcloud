@@ -41,8 +41,6 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	 */
 	private List<Object> rawList;
 
-	// region Constructors
-
 	/**
 	 * 构造<br>
 	 * 默认使用{@link ArrayList} 实现
@@ -84,14 +82,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	}
 
 	/**
-	 * 从对象构造，忽略{@code null}的值<br>
-	 * 支持以下类型的参数：
-	 *
-	 * <pre>
-	 * 1. 数组
-	 * 2. {@link Iterable}对象
-	 * 3. JSON数组字符串
-	 * </pre>
+	 * 从对象构造，忽略{@code null}的值
 	 *
 	 * @param object 数组或集合或JSON数组字符串
 	 * @throws JSONException 非数组或集合
@@ -101,14 +92,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	}
 
 	/**
-	 * 从对象构造<br>
-	 * 支持以下类型的参数：
-	 *
-	 * <pre>
-	 * 1. 数组
-	 * 2. {@link Iterable}对象
-	 * 3. JSON数组字符串
-	 * </pre>
+	 * 从对象构造
 	 *
 	 * @param object          数组或集合或JSON数组字符串
 	 * @param ignoreNullValue 是否忽略空值
@@ -119,14 +103,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	}
 
 	/**
-	 * 从对象构造<br>
-	 * 支持以下类型的参数：
-	 *
-	 * <pre>
-	 * 1. 数组
-	 * 2. {@link Iterable}对象
-	 * 3. JSON数组字符串
-	 * </pre>
+	 * 从对象构造
 	 *
 	 * @param object     数组或集合或JSON数组字符串
 	 * @param jsonConfig JSON选项
@@ -137,14 +114,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	}
 
 	/**
-	 * 从对象构造<br>
-	 * 支持以下类型的参数：
-	 *
-	 * <pre>
-	 * 1. 数组
-	 * 2. {@link Iterable}对象
-	 * 3. JSON数组字符串
-	 * </pre>
+	 * 从对象构造
 	 *
 	 * @param object     数组或集合或JSON数组字符串
 	 * @param jsonConfig JSON选项
@@ -564,10 +534,8 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 		if (null != filter) {
 			final Mutable<Object> mutable = new MutableObj<>(obj);
 			if (filter.accept(mutable)) {
-				// 使用修改后的值
 				obj = mutable.get();
 			} else {
-				// 键值对被过滤
 				return false;
 			}
 		}
