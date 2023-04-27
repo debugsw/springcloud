@@ -8,7 +8,6 @@ import java.math.BigDecimal;
  * @author ls
  * @version 2022/02/13
  */
-
 public class CheckOverflow {
 
 	static final BigDecimal MAX_LONG = new BigDecimal(Long.MAX_VALUE);
