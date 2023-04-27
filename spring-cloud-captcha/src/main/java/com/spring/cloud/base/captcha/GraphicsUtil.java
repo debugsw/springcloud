@@ -21,13 +21,11 @@ public class GraphicsUtil {
 	 */
 	public static Graphics2D createGraphics(BufferedImage image, Color color) {
 		final Graphics2D g = image.createGraphics();
-
 		if (null != color) {
 			// 填充背景
 			g.setColor(color);
 			g.fillRect(0, 0, image.getWidth(), image.getHeight());
 		}
-
 		return g;
 	}
 
@@ -45,7 +43,7 @@ public class GraphicsUtil {
 		try {
 			metrics = g.getFontMetrics();
 		} catch (Exception e) {
-			// 此处报告bug某些情况下会抛出IndexOutOfBoundsException，在此做容错处理
+			System.err.println(e);
 		}
 		int y;
 		if (null != metrics) {

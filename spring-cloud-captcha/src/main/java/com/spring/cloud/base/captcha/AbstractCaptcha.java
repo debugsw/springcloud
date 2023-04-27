@@ -84,7 +84,7 @@ public abstract class AbstractCaptcha implements ICaptcha {
 		this.height = height;
 		this.generator = generator;
 		this.interfereCount = interfereCount;
-		// 字体高度设为验证码高度-2，留边距
+
 		this.font = new Font(Font.SANS_SERIF, Font.PLAIN, (int) (this.height * 0.75));
 	}
 
@@ -99,8 +99,6 @@ public abstract class AbstractCaptcha implements ICaptcha {
 
 	/**
 	 * 生成验证码字符串
-	 *
-	 * @since 3.3.0
 	 */
 	protected void generateCode() {
 		this.code = generator.generate();
@@ -160,7 +158,7 @@ public abstract class AbstractCaptcha implements ICaptcha {
 	 * 获取图形验证码图片bytes
 	 *
 	 * @return 图形验证码图片bytes
-	 * @since 4.5.17
+	 *
 	 */
 	public byte[] getImageBytes() {
 		if (null == this.imageBytes) {
@@ -182,7 +180,7 @@ public abstract class AbstractCaptcha implements ICaptcha {
 	 * 获得图片的Base64形式
 	 *
 	 * @return 图片的Base64
-	 * @since 3.3.0
+	 *
 	 */
 	public String getImageBase64() {
 		return Base64.encode(getImageBytes());
@@ -192,7 +190,7 @@ public abstract class AbstractCaptcha implements ICaptcha {
 	 * 获取图片带文件格式的 Base64
 	 *
 	 * @return 图片带文件格式的 Base64
-	 * @since 5.3.11
+	 *
 	 */
 	public String getImageBase64Data(){
 		return URLUtil.getDataUriBase64("image/png", getImageBase64());
@@ -229,7 +227,7 @@ public abstract class AbstractCaptcha implements ICaptcha {
 	 * 设置背景色
 	 *
 	 * @param background 背景色
-	 * @since 4.1.22
+	 *
 	 */
 	public void setBackground(Color background) {
 		this.background = background;
@@ -239,7 +237,7 @@ public abstract class AbstractCaptcha implements ICaptcha {
 	 * 设置文字透明度
 	 *
 	 * @param textAlpha 文字透明度，取值0~1，1表示不透明
-	 * @since 4.5.17
+	 *
 	 */
 	public void setTextAlpha(float textAlpha) {
 		this.textAlpha = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, textAlpha);

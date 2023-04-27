@@ -13,6 +13,7 @@ import java.io.ByteArrayOutputStream;
  * @Date: 2023/4/17 15:00
  */
 public class GifCaptcha extends AbstractCaptcha {
+
 	private static final long serialVersionUID = 7091627304326538464L;
 
 	//量化器取样间隔 - 默认是10ms
@@ -103,14 +104,14 @@ public class GifCaptcha extends AbstractCaptcha {
 		generateCode();
 		final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-		AnimatedGifEncoder gifEncoder = new AnimatedGifEncoder();// gif编码类
+		AnimatedGifEncoder gifEncoder = new AnimatedGifEncoder();
 		//生成字符
 		gifEncoder.start(out);
-		gifEncoder.setQuality(quality);//设置量化器取样间隔
+		gifEncoder.setQuality(quality);
 		// 帧延迟 (默认100)
 		int delay = 100;
-		gifEncoder.setDelay(delay);//设置帧延迟
-		gifEncoder.setRepeat(repeat);//帧循环次数
+		gifEncoder.setDelay(delay);
+		gifEncoder.setRepeat(repeat);
 		BufferedImage frame;
 		char[] chars = code.toCharArray();
 		Color[] fontColor = new Color[chars.length];
@@ -163,7 +164,7 @@ public class GifCaptcha extends AbstractCaptcha {
 					RandomUtil.randomInt(width),
 					RandomUtil.randomInt(height),
 					RandomUtil.randomInt(5, 30), 5 + RandomUtil.randomInt(5, 30)
-			);//绘制椭圆边框
+			);
 			g2d.drawString(words[i] + "", x + (font.getSize() + m) * i, y);
 		}
 		g2d.dispose();

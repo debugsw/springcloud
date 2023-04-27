@@ -13,8 +13,10 @@ import java.util.Stack;
  * @Date: 2023/4/17 15:00
  */
 public class Calculator {
-	private final Stack<String> postfixStack = new Stack<>();// 后缀式栈
-	private final int[] operatPriority = new int[]{0, 3, 2, 1, -1, 1, 0, 2};// 运用运算符ASCII码-40做索引的运算符优先级
+
+	private final Stack<String> postfixStack = new Stack<>();
+
+	private final int[] operatPriority = new int[]{0, 3, 2, 1, -1, 1, 0, 2};
 
 	/**
 	 * 计算表达式的值
@@ -36,11 +38,11 @@ public class Calculator {
 		prepare(transform(expression));
 
 		final Stack<String> resultStack = new Stack<>();
-		Collections.reverse(postfixStack);// 将后缀式栈反转
-		String firstValue, secondValue, currentOp;// 参与计算的第一个值，第二个值和算术运算符
+		Collections.reverse(postfixStack);
+		String firstValue, secondValue, currentOp;
 		while (false == postfixStack.isEmpty()) {
 			currentOp = postfixStack.pop();
-			if (false == isOperator(currentOp.charAt(0))) {// 如果不是运算符则存入操作数栈中
+			if (false == isOperator(currentOp.charAt(0))) {
 				currentOp = currentOp.replace("~", "-");
 				resultStack.push(currentOp);
 			} else {// 如果是运算符则从操作数栈中取两个值和该数值一起参与运算
@@ -68,19 +70,19 @@ public class Calculator {
 	 */
 	private void prepare(String expression) {
 		final Stack<Character> opStack = new Stack<>();
-		opStack.push(',');// 运算符放入栈底元素逗号，此符号优先级最低
+		opStack.push(',');
 		final char[] arr = expression.toCharArray();
-		int currentIndex = 0;// 当前字符的位置
-		int count = 0;// 上次算术运算符到本次算术运算符的字符的长度便于或者之间的数值
-		char currentOp, peekOp;// 当前操作符和栈顶操作符
+		int currentIndex = 0;
+		int count = 0;
+		char currentOp, peekOp;
 		for (int i = 0; i < arr.length; i++) {
 			currentOp = arr[i];
-			if (isOperator(currentOp)) {// 如果当前字符是运算符
+			if (isOperator(currentOp)) {
 				if (count > 0) {
-					postfixStack.push(new String(arr, currentIndex, count));// 取两个运算符之间的数字
+					postfixStack.push(new String(arr, currentIndex, count));
 				}
 				peekOp = opStack.peek();
-				if (currentOp == ')') {// 遇到反括号则将运算符栈中的元素移除到后缀式栈中直到遇到左括号
+				if (currentOp == ')') {
 					while (opStack.peek() != '(') {
 						postfixStack.push(String.valueOf(opStack.pop()));
 					}
@@ -98,12 +100,12 @@ public class Calculator {
 				count++;
 			}
 		}
-		if (count > 1 || (count == 1 && !isOperator(arr[currentIndex]))) {// 最后一个字符不是括号或者其他运算符的则加入后缀式栈中
+		if (count > 1 || (count == 1 && !isOperator(arr[currentIndex]))) {
 			postfixStack.push(new String(arr, currentIndex, count));
 		}
 
 		while (opStack.peek() != ',') {
-			postfixStack.push(String.valueOf(opStack.pop()));// 将操作符栈中的剩余的元素添加到后缀式栈中
+			postfixStack.push(String.valueOf(opStack.pop()));
 		}
 	}
 
@@ -124,7 +126,7 @@ public class Calculator {
 	 * @param peek peek
 	 * @return 优先级，如果cur高或相等，返回true，否则false
 	 */
-	private boolean compare(char cur, char peek) {// 如果是peek优先级高于cur，返回true，默认都是peek优先级要低
+	private boolean compare(char cur, char peek) {
 		final int offset = 40;
 		if (cur == '%') {
 			// %优先级最高

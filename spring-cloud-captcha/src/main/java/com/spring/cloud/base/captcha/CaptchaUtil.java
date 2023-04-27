@@ -37,7 +37,7 @@ public class CaptchaUtil {
 	 * @param width  图片宽
 	 * @param height 图片高
 	 * @return {@link CircleCaptcha}
-	 * @since 3.2.3
+	 * 
 	 */
 	public static CircleCaptcha createCircleCaptcha(int width, int height) {
 		return new CircleCaptcha(width, height);
@@ -51,7 +51,7 @@ public class CaptchaUtil {
 	 * @param codeCount   字符个数
 	 * @param circleCount 干扰圆圈条数
 	 * @return {@link CircleCaptcha}
-	 * @since 3.2.3
+	 * 
 	 */
 	public static CircleCaptcha createCircleCaptcha(int width, int height, int codeCount, int circleCount) {
 		return new CircleCaptcha(width, height, codeCount, circleCount);
@@ -63,7 +63,7 @@ public class CaptchaUtil {
 	 * @param width  图片宽
 	 * @param height 图片高
 	 * @return {@link ShearCaptcha}
-	 * @since 3.2.3
+	 * 
 	 */
 	public static ShearCaptcha createShearCaptcha(int width, int height) {
 		return new ShearCaptcha(width, height);
@@ -77,7 +77,7 @@ public class CaptchaUtil {
 	 * @param codeCount 字符个数
 	 * @param thickness 干扰线宽度
 	 * @return {@link ShearCaptcha}
-	 * @since 3.3.0
+	 * 
 	 */
 	public static ShearCaptcha createShearCaptcha(int width, int height, int codeCount, int thickness) {
 		return new ShearCaptcha(width, height, codeCount, thickness);

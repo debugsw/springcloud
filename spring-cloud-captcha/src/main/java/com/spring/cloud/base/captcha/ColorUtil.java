@@ -29,7 +29,7 @@ public class ColorUtil {
 	 *
 	 * @param color {@link Color}
 	 * @return 16进制的颜色值，例如#fcf6d6
-	 * @since 4.1.14
+	 * 
 	 */
 	public static String toHex(Color color) {
 		return toHex(color.getRed(), color.getGreen(), color.getBlue());
@@ -56,7 +56,7 @@ public class ColorUtil {
 	 *
 	 * @param colorName 颜色的英文名，16进制表示或RGB表示
 	 * @return {@link Color}
-	 * @since 4.1.14
+	 * 
 	 */
 	public static Color getColor(String colorName) {
 		if (StrUtil.isBlank(colorName)) {
@@ -123,7 +123,7 @@ public class ColorUtil {
 	 *
 	 * @param rgb RGB值
 	 * @return {@link Color}
-	 * @since 4.1.14
+	 * 
 	 */
 	public static Color getColor(int rgb) {
 		return new Color(rgb);
@@ -134,7 +134,7 @@ public class ColorUtil {
 	 *
 	 * @param hex 16进制的颜色值，例如#fcf6d6
 	 * @return {@link Color}
-	 * @since 4.1.14
+	 * 
 	 */
 	public static Color hexToColor(String hex) {
 		return getColor(Integer.parseInt(StrUtil.removePrefix(hex, "#"), 16));
@@ -166,7 +166,7 @@ public class ColorUtil {
 	 * 生成随机颜色
 	 *
 	 * @return 随机颜色
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Color randomColor() {
 		return randomColor(null);
@@ -177,7 +177,7 @@ public class ColorUtil {
 	 *
 	 * @param random 随机对象 {@link Random}
 	 * @return 随机颜色
-	 * @since 3.1.2
+	 * 
 	 */
 	public static Color randomColor(Random random) {
 		if (null == random) {
@@ -192,7 +192,7 @@ public class ColorUtil {
 	 * @param image      {@link BufferedImage}
 	 * @param rgbFilters 过滤多种颜色
 	 * @return {@link String} #ffffff
-	 * @since 5.6.7
+	 * 
 	 */
 	public static String getMainColor(BufferedImage image, int[]... rgbFilters) {
 		int r, g, b;
