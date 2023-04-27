@@ -16,21 +16,21 @@ import java.nio.file.Paths;
  */
 public class AnimatedGifEncoder {
 
-	protected int width; // image size
+	protected int width;
+
 	protected int height;
-	protected Color transparent = null; // transparent color if given
-	protected boolean transparentExactMatch = false; // transparent color will be found by looking for the closest color
-	// or for the exact color if transparentExactMatch == true
-	protected Color background = null;  // background color if given
-	protected int transIndex; // transparent index in color table
-	protected int repeat = -1; // no repeat
-	protected int delay = 0; // frame delay (hundredths)
-	protected boolean started = false; // ready to output frames
+	protected Color transparent = null;
+	protected boolean transparentExactMatch = false;
+	protected Color background = null;
+	protected int transIndex;
+	protected int repeat = -1;
+	protected int delay = 0;
+	protected boolean started = false;
 	protected OutputStream out;
-	protected BufferedImage image; // current frame
-	protected byte[] pixels; // BGR byte array from frame
-	protected byte[] indexedPixels; // converted frame indexed to palette
-	protected int colorDepth; // number of bit planes
+	protected BufferedImage image;
+	protected byte[] pixels;
+	protected byte[] indexedPixels;
+	protected int colorDepth;
 	protected byte[] colorTab; // RGB palette
 	protected boolean[] usedEntry = new boolean[256]; // active palette entries
 	protected int palSize = 7; // color table size (bits-1)
@@ -64,82 +64,28 @@ public class AnimatedGifEncoder {
 		}
 	}
 
-	/**
-	 * Sets the number of times the set of GIF frames
-	 * should be played.  Default is 1; 0 means play
-	 * indefinitely.  Must be invoked before the first
-	 * image is added.
-	 *
-	 * @param iter int number of iterations.
-	 */
 	public void setRepeat(int iter) {
 		if (iter >= 0) {
 			repeat = iter;
 		}
 	}
 
-	/**
-	 * Sets the transparent color for the last added frame
-	 * and any subsequent frames.
-	 * Since all colors are subject to modification
-	 * in the quantization process, the color in the final
-	 * palette for each frame closest to the given color
-	 * becomes the transparent color for that frame.
-	 * May be set to null to indicate no transparent color.
-	 *
-	 * @param c Color to be treated as transparent on display.
-	 */
 	public void setTransparent(Color c) {
 		setTransparent(c, false);
 	}
 
-	/**
-	 * Sets the transparent color for the last added frame
-	 * and any subsequent frames.
-	 * Since all colors are subject to modification
-	 * in the quantization process, the color in the final
-	 * palette for each frame closest to the given color
-	 * becomes the transparent color for that frame.
-	 * If exactMatch is set to true, transparent color index
-	 * is search with exact match, and not looking for the
-	 * closest one.
-	 * May be set to null to indicate no transparent color.
-	 *
-	 * @param c          Color to be treated as transparent on display.
-	 * @param exactMatch If exactMatch is set to true, transparent color index is search with exact match
-	 */
+
 	public void setTransparent(Color c, boolean exactMatch) {
 		transparent = c;
 		transparentExactMatch = exactMatch;
 	}
 
 
-	/**
-	 * Sets the background color for the last added frame
-	 * and any subsequent frames.
-	 * Since all colors are subject to modification
-	 * in the quantization process, the color in the final
-	 * palette for each frame closest to the given color
-	 * becomes the background color for that frame.
-	 * May be set to null to indicate no background color
-	 * which will default to black.
-	 *
-	 * @param c Color to be treated as background on display.
-	 */
+
 	public void setBackground(Color c) {
 		background = c;
 	}
 
-	/**
-	 * Adds next GIF frame.  The frame is not written immediately, but is
-	 * actually deferred until the next frame is received so that timing
-	 * data can be inserted.  Invoking {@code finish()} flushes all
-	 * frames.  If {@code setSize} was not invoked, the size of the
-	 * first image is used for all subsequent frames.
-	 *
-	 * @param im BufferedImage containing frame to write.
-	 * @return true if successful.
-	 */
 	public boolean addFrame(BufferedImage im) {
 		if ((im == null) || !started) {
 			return false;
