@@ -12,14 +12,31 @@
 
 ![https://tft-zlgl-test.cdtft.cn/dev/git/dev/spring/cloud/readme/img_1.png](img_1.png)
 
-### spring-cloud-common 功能说明
+### spring-cloud-captcha 功能说明
 
 - [x] 共同场景使用的类以及方法
 - [x] oss上传图片封装方法以及xxl-job定时任务集成
+- 
+### spring-cloud-common 功能说明
+
+- [x] 图片验证码实现
 
 ### spring-cloud-core 功能说明
 
 - [x] 基础环境依赖包包含常用工具以及规范格式化
+
+### spring-cloud-http 功能说明
+
+- [x] 基于HttpUrlConnection的Http客户端封装
+
+### spring-cloud-jwt 功能说明
+
+- [x] JSON Web Token (JWT)封装实现
+- [x] 根据jwt进行部分JSON实现
+
+### spring-cloud-log 功能说明
+
+- [x] 自动识别日志实现的日志门面
 
 ### spring-cloud-monitor 功能说明
 
