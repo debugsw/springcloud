@@ -58,7 +58,6 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * @param charset        编码，从请求编码中获取默认编码
      * @param isAsync        是否异步
      * @param isIgnoreBody   是否忽略读取响应体
-     * @since 3.1.2
      */
     protected HttpResponse(HttpConnection httpConnection, HttpConfig config, Charset charset, boolean isAsync, boolean isIgnoreBody) {
         this.httpConnection = httpConnection;
@@ -82,7 +81,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * 请求是否成功，判断依据为：状态码范围在200~299内。
      *
      * @return 是否成功请求
-     * @since 4.1.9
+     *
      */
     public boolean isOk() {
         return this.status >= 200 && this.status < 300;
@@ -118,7 +117,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * </ul>
      *
      * @return 长度，-1表示服务端未返回或长度无效
-     * @since 5.7.9
+     *
      */
     public long contentLength() {
         long contentLength = Convert.toLong(header(Header.CONTENT_LENGTH), -1L);
@@ -143,7 +142,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * 是否为zlib(Deflate)压缩过的内容
      *
      * @return 是否为zlib(Deflate)压缩过的内容
-     * @since 4.5.7
+     *
      */
     public boolean isDeflate() {
         final String contentEncoding = contentEncoding();
@@ -154,7 +153,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * 是否为Transfer-Encoding:Chunked的内容
      *
      * @return 是否为Transfer-Encoding:Chunked的内容
-     * @since 4.6.2
+     *
      */
     public boolean isChunked() {
         final String transferEncoding = header(Header.TRANSFER_ENCODING);
@@ -165,7 +164,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * 获取本次请求服务器返回的Cookie信息
      *
      * @return Cookie字符串
-     * @since 3.1.1
+     *
      */
     public String getCookieStr() {
         return header(Header.SET_COOKIE);
@@ -175,7 +174,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * 获取Cookie
      *
      * @return Cookie列表
-     * @since 3.1.1
+     *
      */
     public List<HttpCookie> getCookies() {
         return GlobalCookieManager.getCookies(this.httpConnection);
@@ -186,7 +185,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      *
      * @param name Cookie名
      * @return {@link HttpCookie}
-     * @since 4.1.4
+     *
      */
     public HttpCookie getCookie(String name) {
         List<HttpCookie> cookie = getCookies();
@@ -205,7 +204,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      *
      * @param name Cookie名
      * @return Cookie值
-     * @since 4.1.4
+     *
      */
     public String getCookieValue(String name) {
         final HttpCookie cookie = getCookie(name);
@@ -276,7 +275,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * @param isCloseOut     是否关闭输出流
      * @param streamProgress 进度显示接口，通过实现此接口显示下载进度
      * @return 写出bytes数
-     * @since 3.3.2
+     *
      */
     public long writeBody(OutputStream out, boolean isCloseOut, StreamProgress streamProgress) {
         Assert.notNull(out, "[out] must be not null!");
@@ -299,7 +298,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * @param targetFileOrDir 写出到的文件或目录
      * @param streamProgress  进度显示接口，通过实现此接口显示下载进度
      * @return 写出bytes数
-     * @since 3.3.2
+     *
      */
     public long writeBody(File targetFileOrDir, StreamProgress streamProgress) {
         Assert.notNull(targetFileOrDir, "[targetFileOrDir] must be not null!");
@@ -319,7 +318,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * @param tempFileSuffix  临时文件后缀，默认".temp"
      * @param streamProgress  进度显示接口，通过实现此接口显示下载进度
      * @return 写出bytes数
-     * @since 5.7.12
+     *
      */
     public long writeBody(File targetFileOrDir, String tempFileSuffix, StreamProgress streamProgress) {
         Assert.notNull(targetFileOrDir, "[targetFileOrDir] must be not null!");
@@ -361,7 +360,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * @param targetFileOrDir 写出到的文件
      * @param streamProgress  进度显示接口，通过实现此接口显示下载进度
      * @return 写出的文件
-     * @since 5.6.4
+     *
      */
     public File writeBodyForFile(File targetFileOrDir, StreamProgress streamProgress) {
         Assert.notNull(targetFileOrDir, "[targetFileOrDir] must be not null!");
@@ -379,7 +378,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      *
      * @param targetFileOrDir 写出到的文件或目录
      * @return 写出bytes数
-     * @since 3.3.2
+     *
      */
     public long writeBody(File targetFileOrDir) {
         return writeBody(targetFileOrDir, null);
@@ -392,7 +391,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      *
      * @param targetFileOrDir 写出到的文件或目录的路径
      * @return 写出bytes数
-     * @since 3.3.2
+     *
      */
     public long writeBody(String targetFileOrDir) {
         return writeBody(FileUtil.file(targetFileOrDir));
@@ -426,7 +425,7 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      *
      * @param targetFileOrDir 目标文件夹或者目标文件
      * @return File 保存的文件
-     * @since 5.4.1
+     *
      */
     public File completeFileNameFromHeader(File targetFileOrDir) {
         if (false == targetFileOrDir.isDirectory()) {

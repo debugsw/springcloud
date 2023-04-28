@@ -64,7 +64,6 @@ public class HttpGlobalConfig implements Serializable {
      * 获取全局默认的Multipart边界
      *
      * @return 全局默认的Multipart边界
-     * @since 5.7.17
      */
     public static String getBoundary() {
         return boundary;
@@ -74,7 +73,7 @@ public class HttpGlobalConfig implements Serializable {
      * 设置默认的Multipart边界
      *
      * @param customBoundary 自定义Multipart边界
-     * @since 5.7.17
+     *
      */
     synchronized public static void setBoundary(String customBoundary) {
         boundary = customBoundary;
@@ -85,7 +84,7 @@ public class HttpGlobalConfig implements Serializable {
      * 如果设置为1，表示重定向一次，即请求两次
      *
      * @return 全局默认的最大重定向次数
-     * @since 5.7.19
+     *
      */
     public static int getMaxRedirectCount() {
         return maxRedirectCount;
@@ -96,7 +95,7 @@ public class HttpGlobalConfig implements Serializable {
      * 如果设置为1，表示重定向一次，即请求两次
      *
      * @param customMaxRedirectCount 全局默认的最大重定向次数
-     * @since 5.7.19
+     *
      */
     synchronized public static void setMaxRedirectCount(int customMaxRedirectCount) {
         maxRedirectCount = customMaxRedirectCount;
@@ -108,7 +107,7 @@ public class HttpGlobalConfig implements Serializable {
      * 如果服务端未遵循这个规范或响应没有正常结束，会报EOF异常，此选项用于是否忽略这个异常。
      *
      * @return 是否忽略响应读取时可能的EOF异常
-     * @since 5.7.20
+     *
      */
     public static boolean isIgnoreEOFError() {
         return ignoreEOFError;
@@ -120,7 +119,7 @@ public class HttpGlobalConfig implements Serializable {
      * 如果服务端未遵循这个规范或响应没有正常结束，会报EOF异常，此选项用于是否忽略这个异常。
      *
      * @param customIgnoreEOFError 是否忽略响应读取时可能的EOF异常。
-     * @since 5.7.20
+     *
      */
     synchronized public static void setIgnoreEOFError(boolean customIgnoreEOFError) {
         ignoreEOFError = customIgnoreEOFError;
@@ -132,7 +131,7 @@ public class HttpGlobalConfig implements Serializable {
      * 按照RFC3986规范，在发送请求时，全部编码之。如果为{@code false}，则不会解码已经编码的内容，在请求时只编码需要编码的部分。
      *
      * @return 是否忽略解码URL
-     * @since 5.7.22
+     *
      */
     public static boolean isDecodeUrl() {
         return decodeUrl;
@@ -144,7 +143,7 @@ public class HttpGlobalConfig implements Serializable {
      * 按照RFC3986规范，在发送请求时，全部编码之。如果为{@code false}，则不会解码已经编码的内容，在请求时只编码需要编码的部分。
      *
      * @param customDecodeUrl 是否忽略解码URL
-     * @since 5.7.22
+     *
      */
     synchronized public static void setDecodeUrl(boolean customDecodeUrl) {
         decodeUrl = customDecodeUrl;
@@ -155,7 +154,7 @@ public class HttpGlobalConfig implements Serializable {
      *
      * @return {@link CookieManager}
      * @see GlobalCookieManager#getCookieManager()
-     * @since 4.1.0
+     *
      */
     public static CookieManager getCookieManager() {
         return GlobalCookieManager.getCookieManager();
@@ -166,7 +165,7 @@ public class HttpGlobalConfig implements Serializable {
      *
      * @param customCookieManager 自定义的{@link CookieManager}
      * @see GlobalCookieManager#setCookieManager(CookieManager)
-     * @since 4.5.14
+     *
      */
     synchronized public static void setCookieManager(CookieManager customCookieManager) {
         GlobalCookieManager.setCookieManager(customCookieManager);
@@ -176,7 +175,7 @@ public class HttpGlobalConfig implements Serializable {
      * 关闭Cookie
      *
      * @see GlobalCookieManager#setCookieManager(CookieManager)
-     * @since 4.1.9
+     *
      */
     synchronized public static void closeCookie() {
         GlobalCookieManager.setCookieManager(null);
@@ -187,7 +186,7 @@ public class HttpGlobalConfig implements Serializable {
      * 此方法通过注入方式修改{@link HttpURLConnection}中的methods静态属性，增加PATCH方法<br>
      * see: <a href="https://stackoverflow.com/questions/25163131/httpurlconnection-invalid-http-method-patch">https://stackoverflow.com/questions/25163131/httpurlconnection-invalid-http-method-patch</a>
      *
-     * @since 5.7.4
+     *
      */
     synchronized public static void allowPatch() {
         if (isAllowPatch) {
@@ -218,7 +217,7 @@ public class HttpGlobalConfig implements Serializable {
      * @param field 字段
      * @return 字段值
      * @throws UtilException 包装IllegalAccessException异常
-     * @since 5.1.0
+     *
      */
     private static Object getStaticFieldValue(Field field) throws UtilException {
         return getFieldValue(null, field);

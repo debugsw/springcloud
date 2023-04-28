@@ -159,7 +159,7 @@ public abstract class HttpBase<T> {
      * @param headers    请求头
      * @param isOverride 是否覆盖已有头信息
      * @return this
-     * @since 4.6.3
+     * 
      */
     public T headerMap(Map<String, String> headers, boolean isOverride) {
         if (MapUtil.isEmpty(headers)) {
@@ -189,7 +189,7 @@ public abstract class HttpBase<T> {
      * @param headers    请求头
      * @param isOverride 是否覆盖已有头信息
      * @return this
-     * @since 4.0.8
+     * 
      */
     public T header(Map<String, List<String>> headers, boolean isOverride) {
         if (MapUtil.isEmpty(headers)) {
@@ -212,7 +212,7 @@ public abstract class HttpBase<T> {
      *
      * @param headers 请求头
      * @return this
-     * @since 4.0.3
+     * 
      */
     public T addHeaders(Map<String, String> headers) {
         if (MapUtil.isEmpty(headers)) {
@@ -261,7 +261,7 @@ public abstract class HttpBase<T> {
      * 清除所有头信息，包括全局头信息
      *
      * @return this
-     * @since 5.7.13
+     * 
      */
     public T clearHeaders() {
         this.headers.clear();

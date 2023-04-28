@@ -72,7 +72,6 @@ public enum GlobalHeaders {
      *
      * @param name Header名
      * @return Header值
-     * @since 3.1.1
      */
     public List<String> headerList(String name) {
         if (StrUtil.isBlank(name)) {
@@ -213,7 +212,7 @@ public enum GlobalHeaders {
      * 清除所有头信息，包括全局头信息
      *
      * @return this
-     * @since 5.7.13
+     *
      */
     synchronized public GlobalHeaders clearHeaders() {
         this.headers.clear();

@@ -103,7 +103,7 @@ public class SSLContextBuilder implements SSLProtocols, Builder<SSLContext> {
      * @return {@link SSLContext}
      * @throws NoSuchAlgorithmException 无此算法异常
      * @throws KeyManagementException   密钥管理异常
-     * @since 5.7.22
+     * 
      */
     public SSLContext buildChecked() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance(protocol);

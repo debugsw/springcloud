@@ -51,7 +51,7 @@ public class GlobalCookieManager {
      *
      * @param conn HTTP连接
      * @return Cookie信息列表
-     * @since 4.6.9
+     * 
      */
     public static List<HttpCookie> getCookies(HttpConnection conn) {
         return cookieManager.getCookieStore().get(getURI(conn));

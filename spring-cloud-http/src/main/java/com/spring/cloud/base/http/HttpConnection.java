@@ -72,7 +72,6 @@ public class HttpConnection {
      * 初始化连接相关信息
      *
      * @return HttpConnection
-     * @since 4.4.1
      */
     public HttpConnection initConn() {
         try {
@@ -381,7 +380,7 @@ public class HttpConnection {
      * 静默断开连接。不抛出异常
      *
      * @return this
-     * @since 4.6.0
+     *
      */
     public HttpConnection disconnectQuietly() {
         try {
@@ -485,7 +484,7 @@ public class HttpConnection {
      * 从ContentType中获取
      *
      * @return {@link Charset}编码
-     * @since 3.0.9
+     *
      */
     public Charset getCharset() {
         Charset charset = null;

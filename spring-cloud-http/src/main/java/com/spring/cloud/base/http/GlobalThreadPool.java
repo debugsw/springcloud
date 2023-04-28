@@ -87,7 +87,6 @@ public class GlobalThreadPool {
      *
      * @param runnable 可运行对象
      * @return {@link Future}
-     * @since 3.0.5
      */
     public static Future<?> submit(Runnable runnable) {
         return executor.submit(runnable);

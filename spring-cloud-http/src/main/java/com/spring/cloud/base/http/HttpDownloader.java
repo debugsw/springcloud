@@ -65,7 +65,7 @@ public class HttpDownloader {
      * @param timeout         超时，单位毫秒，-1表示默认超时
      * @param streamProgress  进度条
      * @return 下载大小
-     * @since 5.7.12
+     * 
      */
     public long downloadFile(String url, File targetFileOrDir, String tempFileSuffix, int timeout, StreamProgress streamProgress) {
         return requestDownload(url, timeout).writeBody(targetFileOrDir, tempFileSuffix, streamProgress);
@@ -105,7 +105,7 @@ public class HttpDownloader {
      * @param url     请求下载文件地址
      * @param timeout 超时时间
      * @return HttpResponse
-     * @since 5.4.1
+     * 
      */
     private static HttpResponse requestDownload(String url, int timeout) {
         Assert.notBlank(url, "[url] is blank !");

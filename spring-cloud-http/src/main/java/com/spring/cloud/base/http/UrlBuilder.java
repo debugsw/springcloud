@@ -69,7 +69,6 @@ public final class UrlBuilder implements Builder<String> {
 	 *
 	 * @param httpUrl URL字符串
 	 * @return UrlBuilder
-	 * @since 5.4.3
 	 */
 	public static UrlBuilder ofHttpWithoutEncode(String httpUrl) {
 		return ofHttp(httpUrl, null);
@@ -80,7 +79,7 @@ public final class UrlBuilder implements Builder<String> {
 	 *
 	 * @param httpUrl URL字符串
 	 * @return UrlBuilder
-	 * @since 5.6.3
+	 *
 	 */
 	public static UrlBuilder ofHttp(String httpUrl) {
 		return ofHttp(httpUrl, CharsetUtil.CHARSET_UTF_8);
@@ -335,7 +334,7 @@ public final class UrlBuilder implements Builder<String> {
 	 *
 	 * @param withEngTag 是否path的末尾加 /
 	 * @return this
-	 * @since 5.8.5
+	 *
 	 */
 	public UrlBuilder setWithEndTag(boolean withEngTag) {
 		if (null == this.path) {
@@ -373,7 +372,7 @@ public final class UrlBuilder implements Builder<String> {
 	 *
 	 * @param segment 路径节点
 	 * @return this
-	 * @since 5.7.16
+	 *
 	 */
 	public UrlBuilder addPathSegment(CharSequence segment) {
 		if (StrUtil.isEmpty(segment)) {

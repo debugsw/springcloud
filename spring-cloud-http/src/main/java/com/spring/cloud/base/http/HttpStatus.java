@@ -334,7 +334,6 @@ public class HttpStatus {
      *
      * @param responseCode 被检查的状态码
      * @return 是否为重定向状态码
-     * @since 5.6.3
      */
     public static boolean isRedirected(int responseCode) {
         return responseCode == HTTP_MOVED_PERM

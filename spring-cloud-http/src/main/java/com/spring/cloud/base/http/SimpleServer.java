@@ -86,7 +86,7 @@ public class SimpleServer {
      *
      * @param filter {@link Filter} 请求过滤器
      * @return this
-     * @since 5.5.7
+     *
      */
     public SimpleServer addFilter(Filter filter) {
         this.filters.add(filter);
@@ -107,7 +107,7 @@ public class SimpleServer {
      *
      * @param filter {@link Filter} 请求过滤器
      * @return this
-     * @since 5.5.7
+     *
      */
     public SimpleServer addFilter(HttpFilter filter) {
         return addFilter(new SimpleFilter() {
@@ -137,7 +137,6 @@ public class SimpleServer {
      * @param path    路径，例如:/a/b 或者 a/b
      * @param handler 处理器，包括请求和响应处理
      * @return {@link HttpContext}
-     * @since 5.5.7
      */
     public HttpContext createContext(String path, HttpHandler handler) {
         // 非/开头的路径会报错

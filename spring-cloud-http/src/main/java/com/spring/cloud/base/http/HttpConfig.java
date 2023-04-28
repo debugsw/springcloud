@@ -249,7 +249,7 @@ public class HttpConfig {
      *
      * @param ignoreEOFError 是否忽略响应读取时可能的EOF异常。
      * @return this
-     * @since 5.7.20
+     * 
      */
     public HttpConfig setIgnoreEOFError(boolean ignoreEOFError) {
         this.ignoreEOFError = ignoreEOFError;
@@ -307,7 +307,7 @@ public class HttpConfig {
      *
      * @param followRedirectsCookie 自动重定向时是否处理cookie
      * @return this
-     * @since 5.8.15
+     * 
      */
     public HttpConfig setFollowRedirectsCookie(boolean followRedirectsCookie) {
         this.followRedirectsCookie = followRedirectsCookie;

@@ -22,7 +22,6 @@ public interface RequestBody {
      * 写出并关闭{@link OutputStream}
      *
      * @param out {@link OutputStream}
-     * @since 5.7.17
      */
     default void writeClose(OutputStream out) {
         try {

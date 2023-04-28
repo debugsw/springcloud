@@ -45,7 +45,7 @@ public class MultipartOutputStream extends OutputStream {
      * @param out      HTTP写出流
      * @param charset  编码
      * @param boundary 边界符
-     * @since 5.7.17
+     * 
      */
     public MultipartOutputStream(OutputStream out, Charset charset, String boundary) {
         this.out = out;

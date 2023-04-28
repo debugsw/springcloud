@@ -82,7 +82,6 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param url URL
      * @return HttpRequest
-     * @since 3.0.9
      */
     public static HttpRequest patch(String url) {
         return of(url).method(Method.PATCH);
@@ -116,7 +115,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param url URL链接，默认自动编码URL中的参数等信息
      * @return HttpRequest
-     * @since 5.7.18
+     *
      */
     public static HttpRequest of(String url) {
         return of(url, HttpGlobalConfig.isDecodeUrl() ? DEFAULT_CHARSET : null);
@@ -131,7 +130,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * @param url     URL链接
      * @param charset 编码，如果为{@code null}不自动解码编码URL
      * @return HttpRequest
-     * @since 5.7.18
+     *
      */
     public static HttpRequest of(String url, Charset charset) {
         return of(UrlBuilder.ofHttp(url, charset));
@@ -142,7 +141,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param url {@link UrlBuilder}
      * @return HttpRequest
-     * @since 5.8.0
+     *
      */
     public static HttpRequest of(UrlBuilder url) {
         return new HttpRequest(url);
@@ -153,7 +152,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param customTimeout 超时时长
      * @see HttpGlobalConfig#setTimeout(int)
-     * @since 4.6.2
+     *
      */
     public static void setGlobalTimeout(int customTimeout) {
         HttpGlobalConfig.setTimeout(customTimeout);
@@ -164,7 +163,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @return {@link CookieManager}
      * @see GlobalCookieManager#getCookieManager()
-     * @since 4.1.0
+     *
      */
     public static CookieManager getCookieManager() {
         return GlobalCookieManager.getCookieManager();
@@ -175,7 +174,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param customCookieManager 自定义的{@link CookieManager}
      * @see GlobalCookieManager#setCookieManager(CookieManager)
-     * @since 4.5.14
+     *
      */
     public static void setCookieManager(CookieManager customCookieManager) {
         GlobalCookieManager.setCookieManager(customCookieManager);
@@ -185,7 +184,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * 关闭Cookie
      *
      * @see GlobalCookieManager#setCookieManager(CookieManager)
-     * @since 4.1.9
+     *
      */
     public static void closeCookie() {
         GlobalCookieManager.setCookieManager(null);
@@ -252,7 +251,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * 获取请求URL
      *
      * @return URL字符串
-     * @since 4.1.8
+     *
      */
     public String getUrl() {
         return url.toString();
@@ -263,7 +262,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param url url字符串
      * @return this
-     * @since 4.1.8
+     *
      */
     public HttpRequest setUrl(String url) {
         return setUrl(UrlBuilder.ofHttp(url, this.charset));
@@ -274,7 +273,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param urlBuilder url字符串
      * @return this
-     * @since 5.3.1
+     *
      */
     public HttpRequest setUrl(UrlBuilder urlBuilder) {
         this.url = urlBuilder;
@@ -292,7 +291,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param urlHandler {@link URLStreamHandler}
      * @return this
-     * @since 4.1.9
+     *
      */
     public HttpRequest setUrlHandler(URLStreamHandler urlHandler) {
         this.urlHandler = urlHandler;
@@ -303,7 +302,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * 获取Http请求方法
      *
      * @return {@link Method}
-     * @since 4.1.8
+     *
      */
     public Method getMethod() {
         return this.method;
@@ -315,7 +314,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * @param method HTTP方法
      * @return HttpRequest
      * @see #method(Method)
-     * @since 4.1.8
+     *
      */
     public HttpRequest setMethod(Method method) {
         return method(method);
@@ -326,7 +325,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * 在{@link #execute()} 执行前此对象为null
      *
      * @return {@link HttpConnection}
-     * @since 4.2.2
+     *
      */
     public HttpConnection getConnection() {
         return this.httpConnection;
@@ -405,7 +404,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param cookies Cookie值数组，如果为{@code null}则设置无效，使用默认Cookie行为
      * @return this
-     * @since 5.4.1
+     *
      */
     public HttpRequest cookie(Collection<HttpCookie> cookies) {
         return cookie(CollUtil.isEmpty(cookies) ? null : cookies.toArray(new HttpCookie[0]));
@@ -417,7 +416,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param cookies Cookie值数组，如果为{@code null}则设置无效，使用默认Cookie行为
      * @return this
-     * @since 3.1.1
+     *
      */
     public HttpRequest cookie(HttpCookie... cookies) {
         if (ArrayUtil.isEmpty(cookies)) {
@@ -433,7 +432,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param cookie Cookie值，如果为{@code null}则设置无效，使用默认Cookie行为
      * @return this
-     * @since 3.0.7
+     *
      */
     public HttpRequest cookie(String cookie) {
         this.cookie = cookie;
@@ -446,7 +445,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * 如果想启动默认的Cookie行为（自动回填服务器传回的Cookie），则调用{@link #enableDefaultCookie()}
      *
      * @return this
-     * @since 3.0.7
+     *
      */
     public HttpRequest disableCookie() {
         return cookie(StrUtil.EMPTY);
@@ -543,7 +542,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param formMapStr 表单内容
      * @return this
-     * @since 5.6.7
+     *
      */
     public HttpRequest formStr(Map<String, String> formMapStr) {
         if (MapUtil.isNotEmpty(formMapStr)) {
@@ -607,7 +606,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * @param fileBytes 需要上传的文件
      * @param fileName  文件名
      * @return this
-     * @since 4.1.0
+     *
      */
     public HttpRequest form(String name, byte[] fileBytes, String fileName) {
         if (null != fileBytes) {
@@ -623,7 +622,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * @param name     名
      * @param resource 数据源，文件可以使用{@link FileResource}包装使用
      * @return this
-     * @since 4.0.9
+     *
      */
     public HttpRequest form(String name, Resource resource) {
         if (null != resource) {
@@ -650,7 +649,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * 获取文件表单数据
      *
      * @return 文件表单Map
-     * @since 3.3.0
+     *
      */
     public Map<String, Resource> fileForm() {
         final Map<String, Resource> result = MapUtil.newHashMap();
@@ -783,7 +782,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param milliseconds 超时毫秒数
      * @return this
-     * @since 4.5.6
+     *
      */
     public HttpRequest setConnectionTimeout(int milliseconds) {
         config.setConnectionTimeout(milliseconds);
@@ -795,7 +794,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param milliseconds 超时毫秒数
      * @return this
-     * @since 4.5.6
+     *
      */
     public HttpRequest setReadTimeout(int milliseconds) {
         config.setReadTimeout(milliseconds);
@@ -857,7 +856,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param maxRedirectCount 最大重定向次数
      * @return this
-     * @since 3.3.0
+     *
      */
     public HttpRequest setMaxRedirectCount(int maxRedirectCount) {
         config.setMaxRedirectCount(maxRedirectCount);
@@ -882,7 +881,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * @param host 代理 主机
      * @param port 代理 端口
      * @return this
-     * @since 5.4.5
+     *
      */
     public HttpRequest setHttpProxy(String host, int port) {
         config.setHttpProxy(host, port);
@@ -939,7 +938,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param isRest 是否rest模式
      * @return this
-     * @since 4.5.0
+     *
      */
     public HttpRequest setRest(boolean isRest) {
         this.isRest = isRest;
@@ -952,7 +951,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param blockSize 块大小（bytes数），0或小于0表示不设置Chuncked模式
      * @return this
-     * @since 4.6.5
+     *
      */
     public HttpRequest setChunkedStreamingMode(int blockSize) {
         config.setBlockSize(blockSize);
@@ -965,7 +964,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * @param interceptor 拦截器实现
      * @return this
      * @see #addRequestInterceptor(HttpInterceptor)
-     * @since 5.7.16
+     *
      */
     public HttpRequest addInterceptor(HttpInterceptor<HttpRequest> interceptor) {
         return addRequestInterceptor(interceptor);
@@ -976,7 +975,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param interceptor 拦截器实现
      * @return this
-     * @since 5.8.0
+     *
      */
     public HttpRequest addRequestInterceptor(HttpInterceptor<HttpRequest> interceptor) {
         config.addRequestInterceptor(interceptor);
@@ -988,7 +987,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param interceptor 拦截器实现
      * @return this
-     * @since 5.8.0
+     *
      */
     public HttpRequest addResponseInterceptor(HttpInterceptor<HttpResponse> interceptor) {
         config.addResponseInterceptor(interceptor);
@@ -1033,7 +1032,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * 处理结束后关闭连接
      *
      * @param consumer 响应内容处理函数
-     * @since 5.7.8
+     *
      */
     public void then(Consumer<HttpResponse> consumer) {
         try (final HttpResponse response = execute(true)) {
@@ -1048,7 +1047,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * @param <T>      处理结果类型
      * @param function 响应内容处理函数
      * @return 处理结果
-     * @since 5.8.5
+     *
      */
     public <T> T thenFunction(Function<HttpResponse, T> function) {
         try (final HttpResponse response = execute(true)) {
@@ -1079,7 +1078,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * @param username 用户名
      * @param password 密码
      * @return this
-     * @since 5.4.6
+     *
      */
     public HttpRequest basicProxyAuth(String username, String password) {
         return proxyAuth(HttpUtil.buildBasicAuth(username, password, charset));
@@ -1090,7 +1089,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param token 令牌内容
      * @return HttpRequest
-     * @since 5.5.3
+     *
      */
     public HttpRequest bearerAuth(String token) {
         return auth("Bearer " + token);
@@ -1101,7 +1100,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param content 验证内容
      * @return HttpRequest
-     * @since 5.2.4
+     *
      */
     public HttpRequest auth(String content) {
         header(Header.AUTHORIZATION, content, true);
@@ -1113,7 +1112,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * @param content 验证内容
      * @return HttpRequest
-     * @since 5.4.6
+     *
      */
     public HttpRequest proxyAuth(String content) {
         header(Header.PROXY_AUTHORIZATION, content, true);
@@ -1342,7 +1341,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * HEAD、CONNECT、OPTIONS、TRACE方法将不读取响应体
      *
      * @return 是否需要忽略响应body部分
-     * @since 3.1.2
+     *
      */
     private boolean isIgnoreResponseBody() {
         return Method.HEAD == this.method //
