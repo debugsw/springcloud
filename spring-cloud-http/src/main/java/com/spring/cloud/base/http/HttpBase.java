@@ -281,7 +281,7 @@ public abstract class HttpBase<T> {
     /**
      * 设置http版本，此方法不会影响到实际请求的HTTP版本，只用于帮助判断是否connect:Keep-Alive
      *
-     * @param httpVersion Http版本，{@link HttpBase#HTTP_1_0}，{@link HttpBase#HTTP_1_1}
+     * @param httpVersion
      * @return this
      */
     public T httpVersion(String httpVersion) {

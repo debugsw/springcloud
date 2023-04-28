@@ -387,7 +387,7 @@ public class HttpConnection {
         try {
             disconnect();
         } catch (Throwable e) {
-            // ignore
+
         }
 
         return this;
@@ -448,10 +448,6 @@ public class HttpConnection {
         this.conn.setDoOutput(true);
         final OutputStream out = this.conn.getOutputStream();
 
-        // 解决在Rest请求中，GET请求附带body导致GET请求被强制转换为POST
-        // 在sun.net.www.protocol.http.HttpURLConnection.getOutputStream0方法中，会把GET方法
-        // 修改为POST，而且无法调用setRequestMethod方法修改，因此此处使用反射强制修改字段属性值
-        // https://stackoverflow.com/questions/978061/http-get-with-request-body/983458
         if (method == Method.GET && method != getMethod()) {
             reflectSetMethod(method);
         }
