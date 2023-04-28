@@ -212,7 +212,7 @@ public class SimpleServer {
      */
     public void start() {
         final InetSocketAddress address = getAddress();
-        Console.log("Hutool Simple Http Server listen on 【{}:{}】", address.getHostName(), address.getPort());
+        Console.log("SpringCloud Simple Http Server listen on 【{}:{}】", address.getHostName(), address.getPort());
         this.server.start();
     }
 }

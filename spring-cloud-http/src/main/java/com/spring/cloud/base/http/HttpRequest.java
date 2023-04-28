@@ -287,7 +287,6 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      * 它会验证 SSL 服务器在数字证书中返回的主机名是否与用于连接 SSL 服务器的 URL 主机名相匹配。如果主机名不匹配，则删除此连接。<br>
      * 因此weblogic不支持https的sni协议的主机名验证，此时需要将此值设置为sun.net.www.protocol.https.Handler对象。
      * <p>
-     * 相关issue见：<a href="https://gitee.com/dromara/hutool/issues/IMD1X">https://gitee.com/dromara/hutool/issues/IMD1X</a>
      *
      * @param urlHandler {@link URLStreamHandler}
      * @return this
@@ -400,11 +399,10 @@ public class HttpRequest extends HttpBase<HttpRequest> {
 
     /**
      * 设置Cookie<br>
-     * 自定义Cookie后会覆盖Hutool的默认Cookie行为
+     * 自定义Cookie后会覆盖默认Cookie行为
      *
      * @param cookies Cookie值数组，如果为{@code null}则设置无效，使用默认Cookie行为
      * @return this
-     *
      */
     public HttpRequest cookie(Collection<HttpCookie> cookies) {
         return cookie(CollUtil.isEmpty(cookies) ? null : cookies.toArray(new HttpCookie[0]));
@@ -412,7 +410,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
 
     /**
      * 设置Cookie<br>
-     * 自定义Cookie后会覆盖Hutool的默认Cookie行为
+     * 自定义Cookie后会覆盖的默认Cookie行为
      *
      * @param cookies Cookie值数组，如果为{@code null}则设置无效，使用默认Cookie行为
      * @return this
@@ -428,7 +426,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
 
     /**
      * 设置Cookie<br>
-     * 自定义Cookie后会覆盖Hutool的默认Cookie行为
+     * 自定义Cookie后会覆盖的默认Cookie行为
      *
      * @param cookie Cookie值，如果为{@code null}则设置无效，使用默认Cookie行为
      * @return this
@@ -667,7 +665,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * <pre>
      * 1. 标准参数，例如 a=1&amp;b=2 这种格式
-     * 2. Rest模式，此时body需要传入一个JSON或者XML字符串，Hutool会自动绑定其对应的Content-Type
+     * 2. Rest模式，此时body需要传入一个JSON或者XML字符串，会自动绑定其对应的Content-Type
      * </pre>
      *
      * @param body 请求体
@@ -683,7 +681,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
      *
      * <pre>
      * 1. 标准参数，例如 a=1&amp;b=2 这种格式
-     * 2. Rest模式，此时body需要传入一个JSON或者XML字符串，Hutool会自动绑定其对应的Content-Type
+     * 2. Rest模式，此时body需要传入一个JSON或者XML字符串，会自动绑定其对应的Content-Type
      * </pre>
      *
      * @param body        请求体
@@ -1245,7 +1243,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
                 throw new HttpException(e);
             }
             // 支持自动重定向时处理cookie
-            // https://github.com/dromara/hutool/issues/2960
+            // https://github.com/dromara//issues/2960
             if (config.followRedirectsCookie) {
                 GlobalCookieManager.store(httpConnection);
             }

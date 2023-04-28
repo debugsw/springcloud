@@ -114,7 +114,6 @@ public class HttpConnection {
                     HttpGlobalConfig.allowPatch();
                 } catch (Exception ignore) {
                     // ignore
-                    // https://github.com/dromara/hutool/issues/2832
                 }
             }
         }

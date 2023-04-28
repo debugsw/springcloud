@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * @Author: ls
- * @Description: 全局Cookie管理器，只针对Hutool请求有效
+ * @Description: 全局Cookie管理器，只针对请求有效
  * @Date: 2023/4/26 15:00
  */
 public class GlobalCookieManager {
