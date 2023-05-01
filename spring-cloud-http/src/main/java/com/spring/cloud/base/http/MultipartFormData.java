@@ -1,6 +1,7 @@
 package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.list.ListValueMap;
 
 import java.io.IOException;
@@ -70,7 +71,7 @@ public class MultipartFormData {
 			}
 
 			if (header.isFile == true) {
-				// 文件类型的表单项
+
 				String fileName = header.fileName;
 				if (fileName.length() > 0 && header.contentType.contains("application/x-macbinary")) {
 					input.skipBytes(128);
@@ -80,14 +81,14 @@ public class MultipartFormData {
 					putFile(header.formFieldName, newFile);
 				}
 			} else {
-				// 标准表单项
+
 				putParameter(header.formFieldName, input.readString(charset));
 			}
 
 			input.skipBytes(1);
 			input.mark(1);
 
-			// read byte, but may be end of stream
+
 			int nextByte = input.read();
 			if (nextByte == -1 || nextByte == '-') {
 				input.reset();
@@ -97,7 +98,6 @@ public class MultipartFormData {
 		}
 	}
 
-	// ---------------------------------------------------------------- parameters
 
 	/**
 	 * 返回单一参数值，如果有多个只返回第一个
@@ -139,7 +139,7 @@ public class MultipartFormData {
 	 *
 	 * @param paramName 参数名
 	 * @return 数组表单值
-	 * @since 5.3.0
+	 * @
 	 */
 	public List<String> getListParam(String paramName) {
 		return requestParameters.get(paramName);
@@ -163,7 +163,6 @@ public class MultipartFormData {
 		return this.requestParameters;
 	}
 
-	// --------------------------------------------------------------------------- Files parameters
 
 	/**
 	 * 获取上传的文件
@@ -200,7 +199,7 @@ public class MultipartFormData {
 	 *
 	 * @param paramName 属性名
 	 * @return 上传的文件列表
-	 * @since 5.3.0
+	 * @
 	 */
 	public List<UploadFile> getFileList(String paramName) {
 		return requestFiles.get(paramName);
@@ -233,7 +232,6 @@ public class MultipartFormData {
 		return this.requestFiles;
 	}
 
-	// --------------------------------------------------------------------------- Load
 
 	/**
 	 * 是否已被解析
@@ -244,7 +242,6 @@ public class MultipartFormData {
 		return loaded;
 	}
 
-	// ---------------------------------------------------------------- Private method start
 
 	/**
 	 * 加入上传文件
@@ -277,5 +274,5 @@ public class MultipartFormData {
 		}
 		loaded = true;
 	}
-	// ---------------------------------------------------------------- Private method end
+
 }
