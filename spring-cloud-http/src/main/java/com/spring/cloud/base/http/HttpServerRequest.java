@@ -1,6 +1,14 @@
 package com.spring.cloud.base.http;
 
+import com.spring.cloud.base.http.utils.HttpUtil;
+import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.CharsetUtil;
+import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.list.ListValueMap;
+import com.spring.cloud.base.utils.map.CaseInsensitiveMap;
+import com.spring.cloud.base.utils.str.StrUtil;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 
@@ -283,9 +291,9 @@ public class HttpServerRequest extends HttpServerBase {
 
 	/**
 	 * 获取指定名称的参数值，取第一个值
+	 *
 	 * @param name 参数名
 	 * @return 参数值
-	 * @since 5.5.8
 	 */
 	public String getParam(String name){
 		return getParams().get(name, 0);
@@ -296,7 +304,7 @@ public class HttpServerRequest extends HttpServerBase {
 	 *
 	 * @param name 参数名
 	 * @return 参数值
-	 * @since 5.5.8
+	 *
 	 */
 	public List<String> getParams(String name){
 		return getParams().get(name);
@@ -373,7 +381,7 @@ public class HttpServerRequest extends HttpServerBase {
 	 *
 	 * @param headerNames 自定义头，通常在Http服务器（例如Nginx）中配置
 	 * @return IP地址
-	 * @since 4.4.1
+	 *
 	 */
 	public String getClientIPByHeader(String... headerNames) {
 		String ip;
@@ -393,7 +401,7 @@ public class HttpServerRequest extends HttpServerBase {
 	 *
 	 * @return MultipartFormData
 	 * @throws IORuntimeException IO异常
-	 * @since 5.3.0
+	 *
 	 */
 	public MultipartFormData getMultipart() throws IORuntimeException {
 		if(null == this.multipartFormDataCache){
@@ -410,7 +418,7 @@ public class HttpServerRequest extends HttpServerBase {
 	 * @param uploadSetting 上传文件的设定，包括最大文件大小、保存在内存的边界大小、临时目录、扩展名限定等
 	 * @return MultiPart表单
 	 * @throws IORuntimeException IO异常
-	 * @since 5.3.0
+	 *
 	 */
 	public MultipartFormData parseMultipart(UploadSetting uploadSetting) throws IORuntimeException {
 		final MultipartFormData formData = new MultipartFormData(uploadSetting);

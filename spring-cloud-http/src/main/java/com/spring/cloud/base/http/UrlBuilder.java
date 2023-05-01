@@ -3,6 +3,7 @@ package com.spring.cloud.base.http;
 import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.CharsetUtil;
 import com.spring.cloud.base.utils.RFC3986;
+import com.spring.cloud.base.utils.URLUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.net.*;

@@ -1,6 +1,12 @@
 package com.spring.cloud.base.http;
 
+import com.spring.cloud.base.http.utils.HttpUtil;
+import com.spring.cloud.base.utils.FileUtil;
+import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.URLUtil;
+import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
+import com.spring.cloud.base.utils.str.StrUtil;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 
@@ -55,7 +61,6 @@ public class HttpServerResponse extends HttpServerBase {
 	 *
 	 * @param bodyLength 响应体长度，默认0表示不定长度，会输出Transfer-encoding: chunked
 	 * @return this
-	 * @since 5.5.7
 	 */
 	public HttpServerResponse sendOk(int bodyLength) {
 		return send(HttpStatus.HTTP_OK, bodyLength);
@@ -297,7 +302,7 @@ public class HttpServerResponse extends HttpServerBase {
 	 * @param in          需要返回客户端的内容
 	 * @param contentType 返回的类型
 	 * @return this
-	 * @since 5.2.6
+	 *
 	 */
 	public HttpServerResponse write(InputStream in, String contentType) {
 		return write(in, 0, contentType);
@@ -310,7 +315,7 @@ public class HttpServerResponse extends HttpServerBase {
 	 * @param length      内容长度，默认0表示不定长度，会输出Transfer-encoding: chunked
 	 * @param contentType 返回的类型
 	 * @return this
-	 * @since 5.2.7
+	 *
 	 */
 	public HttpServerResponse write(InputStream in, int length, String contentType) {
 		setContentType(contentType);
@@ -354,7 +359,7 @@ public class HttpServerResponse extends HttpServerBase {
 	 *
 	 * @param file 写出的文件对象
 	 * @return this
-	 * @since 5.2.6
+	 *
 	 */
 	public HttpServerResponse write(File file) {
 		return write(file, null);
@@ -366,7 +371,7 @@ public class HttpServerResponse extends HttpServerBase {
 	 * @param file     写出的文件对象
 	 * @param fileName 文件名
 	 * @return this
-	 * @since 5.5.8
+	 *
 	 */
 	public HttpServerResponse write(File file, String fileName) {
 		final long fileSize = file.length();
@@ -394,7 +399,7 @@ public class HttpServerResponse extends HttpServerBase {
 	 * @param in          需要返回客户端的内容
 	 * @param contentType 返回的类型
 	 * @param fileName    文件名
-	 * @since 5.2.6
+	 *
 	 */
 	public void write(InputStream in, String contentType, String fileName) {
 		write(in, 0, contentType, fileName);
@@ -408,13 +413,13 @@ public class HttpServerResponse extends HttpServerBase {
 	 * @param contentType 返回的类型
 	 * @param fileName    文件名
 	 * @return this
-	 * @since 5.2.7
+	 *
 	 */
 	public HttpServerResponse write(InputStream in, int length, String contentType, String fileName) {
 		final Charset charset = ObjectUtil.defaultIfNull(this.charset, DEFAULT_CHARSET);
 
 		if (false == contentType.startsWith("text/")) {
-			// 非文本类型数据直接走下载
+
 			setHeader(Header.CONTENT_DISPOSITION, StrUtil.format("attachment;filename={}", URLUtil.encode(fileName, charset)));
 		}
 		return write(in, length, contentType);
