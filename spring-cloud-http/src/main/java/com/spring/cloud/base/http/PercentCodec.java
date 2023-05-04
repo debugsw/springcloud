@@ -137,8 +137,8 @@ public class PercentCodec implements Serializable {
     /**
      * 将URL中的字符串编码为%形式
      *
-     * @param path           需要编码的字符串
-     * @param charset        编码, {@code null}返回原字符串，表示不编码
+     * @param path    需要编码的字符串
+     * @param charset 编码, {@code null}返回原字符串，表示不编码
      * @param customSafeChar 自定义安全字符
      * @return 编码后的字符串
      */
@@ -160,6 +160,7 @@ public class PercentCodec implements Serializable {
                 // 对于空格单独处理
                 rewrittenPath.append('+');
             } else {
+                // convert to external encoding before hex conversion
                 try {
                     writer.write(c);
                     writer.flush();
@@ -167,8 +168,11 @@ public class PercentCodec implements Serializable {
                     buf.reset();
                     continue;
                 }
+
+                // 兼容双字节的Unicode符处理（如部分emoji）
                 byte[] ba = buf.toByteArray();
                 for (byte toEncode : ba) {
+                    // Converting each byte in the buffer
                     rewrittenPath.append('%');
                     HexUtil.appendHex(rewrittenPath, toEncode, false);
                 }

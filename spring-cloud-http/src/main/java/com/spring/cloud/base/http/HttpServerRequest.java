@@ -1,6 +1,8 @@
 package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.http.utils.HttpUtil;
+import com.spring.cloud.base.http.utils.NetUtil;
+import com.spring.cloud.base.http.utils.UserAgentUtil;
 import com.spring.cloud.base.utils.ArrayUtil;
 import com.spring.cloud.base.utils.CharsetUtil;
 import com.spring.cloud.base.utils.CollUtil;
@@ -213,10 +215,7 @@ public class HttpServerRequest extends HttpServerBase {
 	 */
 	public Map<String, HttpCookie> getCookieMap() {
 		if (null == this.cookieCache) {
-			cookieCache = Collections.unmodifiableMap(CollUtil.toMap(
-					NetUtil.parseCookies(getCookiesStr()),
-					new CaseInsensitiveMap<>(),
-					HttpCookie::getName));
+			cookieCache = Collections.unmodifiableMap(CollUtil.toMap(NetUtil.parseCookies(getCookiesStr()), new CaseInsensitiveMap<>(), HttpCookie::getName));
 		}
 		return cookieCache;
 	}
