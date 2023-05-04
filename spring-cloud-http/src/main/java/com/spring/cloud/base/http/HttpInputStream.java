@@ -95,15 +95,12 @@ public class HttpInputStream extends InputStream {
         }
 
         if (response.isGzip() && false == (response.in instanceof GZIPInputStream)) {
-            // Accept-Encoding: gzip
             try {
                 this.in = new GZIPInputStream(this.in);
             } catch (IOException e) {
-                // 在类似于Head等方法中无body返回，此时GZIPInputStream构造会出现错误，在此忽略此错误读取普通数据
-                // ignore
+
             }
         } else if (response.isDeflate() && false == (this.in instanceof InflaterInputStream)) {
-            // Accept-Encoding: defalte
             this.in = new InflaterInputStream(this.in, new Inflater(true));
         }
     }

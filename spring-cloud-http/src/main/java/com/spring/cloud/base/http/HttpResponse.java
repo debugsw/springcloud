@@ -98,8 +98,6 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
         return this.isAsync ? forceSync() : this;
     }
 
-    // ---------------------------------------------------------------- Http Response Header start
-
     /**
      * 获取内容编码
      *
@@ -210,9 +208,6 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
         final HttpCookie cookie = getCookie(name);
         return (null == cookie) ? null : cookie.getValue();
     }
-    // ---------------------------------------------------------------- Http Response Header end
-
-    // ---------------------------------------------------------------- Body start
 
     /**
      * 获得服务区响应流<br>
@@ -263,7 +258,8 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * @throws HttpException 包装IO异常
      */
     public String body() throws HttpException {
-        return HttpUtil.getString(bodyBytes(), this.charset, null == this.charsetFromResponse);
+        return HttpUtil.getString(bodyBytes(), this.charset,
+                null == this.charsetFromResponse);
     }
 
     /**
@@ -311,7 +307,6 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
      * 将响应内容写出到文件-避免未完成的文件<br>
      * 异步模式下直接读取Http流写出，同步模式下将存储在内存中的响应内容写出<br>
      * 写出后会关闭Http流（异步模式）<br>
-     * 来自：https://gitee.com/dromara/hutool/pulls/407<br>
      * 此方法原理是先在目标文件同级目录下创建临时文件，下载之，等下载完毕后重命名，避免因下载错误导致的文件不完整。
      *
      * @param targetFileOrDir 写出到的文件或目录
@@ -396,7 +391,6 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
     public long writeBody(String targetFileOrDir) {
         return writeBody(FileUtil.file(targetFileOrDir));
     }
-    // ---------------------------------------------------------------- Body end
 
     @Override
     public void close() {
@@ -469,8 +463,6 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
         return fileName;
     }
 
-    // ---------------------------------------------------------------- Private method start
-
     /**
      * 初始化Http响应，并在报错时关闭连接。<br>
      * 初始化包括：
@@ -524,7 +516,6 @@ public class HttpResponse extends HttpBase<HttpResponse> implements Closeable {
             this.headers = httpConnection.headers();
         } catch (IllegalArgumentException e) {
             // ignore
-            // StaticLog.warn(e, e.getMessage());
         }
 
         // 存储服务端设置的Cookie信息

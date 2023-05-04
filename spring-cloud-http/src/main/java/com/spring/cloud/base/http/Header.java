@@ -8,17 +8,11 @@ package com.spring.cloud.base.http;
 public enum Header {
 
     /**
-     * 提供验证头，例如：
-     * <pre>
-     * Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
-     * </pre>
+     * 提供验证头
      */
     AUTHORIZATION("Authorization"),
     /**
-     * 提供给代理服务器的用于身份验证的凭证，例如：
-     * <pre>
-     * Proxy-Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
-     * </pre>
+     * 提供给代理服务器的用于身份验证的凭证
      */
     PROXY_AUTHORIZATION("Proxy-Authorization"),
     /**
@@ -62,7 +56,6 @@ public enum Header {
      */
     CONTENT_TYPE("Content-Type"),
 
-    //------------------------------------------------------------- 请求头域
     /**
      * 指定请求资源的Intenet主机和端口号，必须表示请求url的原始服务器或网关的位置。HTTP/1.1请求必须包含主机头域，否则系统会以400状态码返回
      */
@@ -104,7 +97,6 @@ public enum Header {
      */
     CONTENT_LENGTH("Content-Length"),
 
-    //------------------------------------------------------------- 响应头域
     /**
      * 提供WWW验证响应头
      */

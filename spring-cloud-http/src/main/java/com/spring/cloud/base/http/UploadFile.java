@@ -38,8 +38,6 @@ public class UploadFile {
 		this.setting = setting;
 	}
 
-	// ---------------------------------------------------------------- operations
-
 	/**
 	 * 从磁盘或者内存中删除这个文件
 	 */
@@ -79,7 +77,7 @@ public class UploadFile {
 	public File write(File destination) throws IOException {
 		assertValid();
 
-		if (destination.isDirectory() == true) {
+		if (destination.isDirectory()) {
 			destination = new File(destination, this.header.getFileName());
 		}
 		if (data != null) {
@@ -91,7 +89,7 @@ public class UploadFile {
 			if (null == this.tempFile) {
 				throw new NullPointerException("Temp file is null !");
 			}
-			if (false == this.tempFile.exists()) {
+			if (!this.tempFile.exists()) {
 				throw new NoSuchFileException("Temp file: [" + this.tempFile.getAbsolutePath() + "] not exist!");
 			}
 
@@ -132,8 +130,6 @@ public class UploadFile {
 		return null;
 	}
 
-	// ---------------------------------------------------------------- header
-
 	/**
 	 * @return 上传文件头部信息
 	 */
@@ -171,8 +167,6 @@ public class UploadFile {
 		return data != null;
 	}
 
-	// ---------------------------------------------------------------- process
-
 	/**
 	 * 处理上传表单流，提取出文件
 	 *
@@ -207,7 +201,7 @@ public class UploadFile {
 		if (data != null) {
 			size = data.length;
 			out.write(data);
-			data = null; // not needed anymore
+			data = null;
 		}
 		final long maxFileSize = setting.maxFileSize;
 		try {
@@ -215,7 +209,7 @@ public class UploadFile {
 				size += input.copy(out);
 				return true;
 			}
-			size += input.copy(out, maxFileSize - size + 1); // one more byte to detect larger files
+			size += input.copy(out, maxFileSize - size + 1);
 			if (size > maxFileSize) {
 				// 超出上传大小限制
 				//noinspection ResultOfMethodCallIgnored
@@ -260,7 +254,7 @@ public class UploadFile {
 	 * @throws IOException IO异常
 	 */
 	private void assertValid() throws IOException {
-		if (false == isUploaded()) {
+		if (!isUploaded()) {
 			throw new IOException(StrUtil.format("File [{}] upload fail", getFileName()));
 		}
 	}

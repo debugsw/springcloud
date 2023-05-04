@@ -34,11 +34,7 @@ public enum GlobalHeaders {
      * @return this
      */
     public GlobalHeaders putDefault(boolean isReset) {
-        // 解决HttpURLConnection中无法自定义Host等头信息的问题
-        // https://stackoverflow.com/questions/9096987/how-to-overwrite-http-header-host-in-a-httpurlconnection/9098440
         System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
-
-        //解决server certificate change is restricted during renegotiation问题
         System.setProperty("jdk.tls.allowUnsafeServerCertChange", "true");
         System.setProperty("sun.security.ssl.allowUnsafeRenegotiation", "true");
 
@@ -95,7 +91,7 @@ public enum GlobalHeaders {
     }
 
     /**
-     * 设置一个header<br>
+     * 设置一个header
      * 如果覆盖模式，则替换之前的值，否则加入到值列表中
      *
      * @param name       Header名
@@ -118,7 +114,7 @@ public enum GlobalHeaders {
     }
 
     /**
-     * 设置一个header<br>
+     * 设置一个header
      * 如果覆盖模式，则替换之前的值，否则加入到值列表中
      *
      * @param name       Header名
@@ -131,7 +127,7 @@ public enum GlobalHeaders {
     }
 
     /**
-     * 设置一个header<br>
+     * 设置一个header
      * 覆盖模式，则替换之前的值
      *
      * @param name  Header名
@@ -143,7 +139,7 @@ public enum GlobalHeaders {
     }
 
     /**
-     * 设置一个header<br>
+     * 设置一个header
      * 覆盖模式，则替换之前的值
      *
      * @param name  Header名
@@ -155,7 +151,7 @@ public enum GlobalHeaders {
     }
 
     /**
-     * 设置请求头<br>
+     * 设置请求头
      * 不覆盖原有请求头
      *
      * @param headers 请求头

@@ -1,5 +1,6 @@
 package com.spring.cloud.base.http;
 
+import com.spring.cloud.base.utils.PercentCodec;
 import com.spring.cloud.base.utils.RFC3986;
 
 /**
@@ -9,10 +10,5 @@ import com.spring.cloud.base.utils.RFC3986;
  */
 public class FormUrlencoded {
 
-	/**
-	 * query中的value，默认除"-", "_", ".", "*"外都编码<br>
-	 * 这个类似于JDK提供的{@link java.net.URLEncoder}
-	 */
-	public static final PercentCodec ALL = PercentCodec.of(RFC3986.UNRESERVED)
-			.removeSafe('~').addSafe('*').setEncodeSpaceAsPlus(true);
+	public static final PercentCodec ALL = PercentCodec.of(RFC3986.UNRESERVED).removeSafe('~').addSafe('*').setEncodeSpaceAsPlus(true);
 }

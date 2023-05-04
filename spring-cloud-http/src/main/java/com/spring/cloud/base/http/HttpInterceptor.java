@@ -23,13 +23,6 @@ public interface HttpInterceptor<T extends HttpBase<T>> {
      * 拦截器链
      *
      * @param <T> 过滤参数类型，HttpRequest或者HttpResponse
-     * @author looly
-     *
-     */
-    /**
-     * 拦截器链
-     *
-     * @param <T> 过滤参数类型，HttpRequest或者HttpResponse
      */
     class Chain<T extends HttpBase<T>> implements com.spring.cloud.base.utils.interf.Chain<HttpInterceptor<T>, Chain<T>> {
         private final List<HttpInterceptor<T>> interceptors = new LinkedList<>();

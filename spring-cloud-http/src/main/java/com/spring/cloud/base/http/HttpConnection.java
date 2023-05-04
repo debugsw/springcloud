@@ -159,12 +159,8 @@ public class HttpConnection {
         return conn;
     }
 
-    // --------------------------------------------------------------- Getters And Setters end
-
-    // ---------------------------------------------------------------- Headers start
-
     /**
-     * 设置请求头<br>
+     * 设置请求头
      * 当请求头存在时，覆盖之
      *
      * @param header     头名
@@ -185,7 +181,7 @@ public class HttpConnection {
     }
 
     /**
-     * 设置请求头<br>
+     * 设置请求头
      * 当请求头存在时，覆盖之
      *
      * @param header     头名
@@ -198,7 +194,7 @@ public class HttpConnection {
     }
 
     /**
-     * 设置请求头<br>
+     * 设置请求头
      * 不覆盖原有请求头
      *
      * @param headerMap  请求头
@@ -247,10 +243,8 @@ public class HttpConnection {
         return this.conn.getHeaderFields();
     }
 
-    // ---------------------------------------------------------------- Headers end
-
     /**
-     * 设置https请求参数<br>
+     * 设置https请求参数
      * 有些时候htts请求会出现com.sun.net.ssl.internal.www.protocol.https.HttpsURLConnectionOldImpl的实现，此为sun内部api，按照普通http请求处理
      *
      * @param hostnameVerifier 域名验证器，非https传入null
@@ -338,7 +332,7 @@ public class HttpConnection {
     }
 
     /**
-     * 采用流方式上传数据，无需本地缓存数据。<br>
+     * 采用流方式上传数据，无需本地缓存数据。
      * HttpUrlConnection默认是将所有数据读到本地缓存，然后再发送给服务器，这样上传大文件时就会导致内存溢出。
      *
      * @param blockSize 块大小（bytes数），0或小于0表示不设置Chuncked模式
@@ -404,7 +398,7 @@ public class HttpConnection {
     }
 
     /**
-     * 获得输入流对象<br>
+     * 获得输入流对象
      * 输入流对象用于读取数据
      *
      * @return 输入流对象
@@ -467,8 +461,8 @@ public class HttpConnection {
     }
 
     /**
-     * 获得字符集编码<br>
-     * 从Http连接的头信息中获得字符集<br>
+     * 获得字符集编码
+     * 从Http连接的头信息中获得字符集
      * 从ContentType中获取
      *
      * @return 字符集编码
@@ -478,12 +472,11 @@ public class HttpConnection {
     }
 
     /**
-     * 获取字符集编码<br>
-     * 从Http连接的头信息中获得字符集<br>
+     * 获取字符集编码
+     * 从Http连接的头信息中获得字符集
      * 从ContentType中获取
      *
      * @return {@link Charset}编码
-     *
      */
     public Charset getCharset() {
         Charset charset = null;
@@ -503,16 +496,11 @@ public class HttpConnection {
         StringBuilder sb = StrUtil.builder();
         sb.append("Request URL: ").append(this.url).append(StrUtil.CRLF);
         sb.append("Request Method: ").append(this.getMethod()).append(StrUtil.CRLF);
-        // sb.append("Request Headers: ").append(StrUtil.CRLF);
-        // for (Entry<String, List<String>> entry : this.conn.getHeaderFields().entrySet()) {
-        // sb.append(" ").append(entry).append(StrUtil.CRLF);
-        // }
-
         return sb.toString();
     }
 
     /**
-     * 初始化http或https请求参数<br>
+     * 初始化http或https请求参数
      * 有些时候https请求会出现com.sun.net.ssl.internal.www.protocol.https.HttpsURLConnectionOldImpl的实现，此为sun内部api，按照普通http请求处理
      *
      * @return {@link HttpURLConnection}，https返回{@link HttpsURLConnection}
@@ -523,7 +511,6 @@ public class HttpConnection {
             // 防止其它协议造成的转换异常
             throw new HttpException("'{}' of URL [{}] is not a http connection, make sure URL is format for http.", conn.getClass().getName(), this.url);
         }
-
         return (HttpURLConnection) conn;
     }
 
@@ -544,8 +531,6 @@ public class HttpConnection {
      */
     private void reflectSetMethod(Method method) {
         ReflectUtil.setFieldValue(this.conn, "method", method.name());
-
-        // HttpsURLConnectionImpl实现中，使用了代理类，需要修改被代理类的method方法
         final Object delegate = ReflectUtil.getFieldValue(this.conn, "delegate");
         if (null != delegate) {
             ReflectUtil.setFieldValue(delegate, "method", method.name());
