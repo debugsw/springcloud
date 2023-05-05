@@ -14,7 +14,7 @@ import java.nio.file.NoSuchFileException;
  */
 public class UploadFile {
 
-	private static final String TMP_FILE_PREFIX = "hutool-";
+	private static final String TMP_FILE_PREFIX = "spring-cloud-";
 	private static final String TMP_FILE_SUFFIX = ".upload.tmp";
 
 	private final UploadFileHeader header;

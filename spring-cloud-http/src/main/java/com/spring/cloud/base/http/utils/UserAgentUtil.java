@@ -1,6 +1,7 @@
 package com.spring.cloud.base.http.utils;
 
 import com.spring.cloud.base.http.UserAgent;
+import com.spring.cloud.base.http.UserAgentParser;
 
 /**
  * @Author: ls
