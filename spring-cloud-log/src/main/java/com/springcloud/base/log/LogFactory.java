@@ -9,9 +9,9 @@ import java.net.URL;
 import java.util.Map;
 
 /**
- * 日志工厂类
- *
- * @author Looly
+ * @Author: ls
+ * @Description: 日志工厂类
+ * @Date: 2023/4/25 10:03
  */
 public abstract class LogFactory {
 

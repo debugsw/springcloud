@@ -1,5 +1,10 @@
 package com.springcloud.base.socket.aio;
 
+import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.exception.IORuntimeException;
+import com.springcloud.base.socket.SocketConfig;
+import com.springcloud.base.socket.SocketUtil;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.SocketAddress;
@@ -29,7 +34,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 构造
-	 * 
+	 *
 	 * @param channel {@link AsynchronousSocketChannel}
 	 * @param ioAction IO消息处理类
 	 * @param config 配置项
@@ -46,7 +51,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 获取{@link AsynchronousSocketChannel}
-	 * 
+	 *
 	 * @return {@link AsynchronousSocketChannel}
 	 */
 	public AsynchronousSocketChannel getChannel() {
@@ -55,7 +60,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 获取读取Buffer
-	 * 
+	 *
 	 * @return 读取Buffer
 	 */
 	public ByteBuffer getReadBuffer() {
@@ -64,7 +69,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 获取写Buffer
-	 * 
+	 *
 	 * @return 写Buffer
 	 */
 	public ByteBuffer getWriteBuffer() {
@@ -73,7 +78,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 获取消息处理器
-	 * 
+	 *
 	 * @return {@link IoAction}
 	 */
 	public IoAction<ByteBuffer> getIoAction() {
@@ -82,7 +87,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 获取远程主机（客户端）地址和端口
-	 * 
+	 *
 	 * @return 远程主机（客户端）地址和端口
 	 */
 	public SocketAddress getRemoteAddress() {
@@ -91,7 +96,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 读取数据到Buffer
-	 * 
+	 *
 	 * @return this
 	 */
 	public AioSession read() {
@@ -100,7 +105,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 读取数据到Buffer
-	 * 
+	 *
 	 * @param handler {@link CompletionHandler}
 	 * @return this
 	 */
@@ -148,7 +153,7 @@ public class AioSession implements Closeable{
 	/**
 	 * 会话是否打开状态<br>
 	 * 当Socket保持连接时会话始终打开
-	 * 
+	 *
 	 * @return 会话是否打开状态
 	 */
 	public boolean isOpen() {
@@ -157,7 +162,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 关闭输出
-	 * 
+	 *
 	 * @return this
 	 */
 	public AioSession closeIn() {
@@ -173,7 +178,7 @@ public class AioSession implements Closeable{
 
 	/**
 	 * 关闭输出
-	 * 
+	 *
 	 * @return this
 	 */
 	public AioSession closeOut() {

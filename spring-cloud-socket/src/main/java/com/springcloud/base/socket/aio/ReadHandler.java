@@ -1,5 +1,7 @@
 package com.springcloud.base.socket.aio;
 
+import com.springcloud.base.socket.SocketRuntimeException;
+
 import java.nio.channels.CompletionHandler;
 
 /**

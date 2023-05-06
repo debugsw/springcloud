@@ -23,6 +23,11 @@
             <artifactId>spring-cloud-utils</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.springcloud.base</groupId>
+            <artifactId>spring-cloud-log</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
