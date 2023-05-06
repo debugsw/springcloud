@@ -49,6 +49,14 @@
 - [x] 日志新增打印来源IP功能
 - [x] 增加健康检查访问端口
 
+### spring-cloud-setting 功能说明
+
+- [x] 配置文件增强
+
+### spring-cloud-socket 功能说明
+
+- [x] 套接字，包括BIO、NIO、AIO封装
+
 ### spring-cloud-utils 功能说明
 
 - [x] 支持AES｜RSA｜RSA2｜SM2｜SM3｜SM4加解密
