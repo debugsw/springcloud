@@ -11,6 +11,8 @@
         <module>spring-cloud-captcha</module>
         <module>spring-cloud-http</module>
         <module>spring-cloud-jwt</module>
+        <module>spring-cloud-setting</module>
+        <module>spring-cloud-socket</module>
     </modules>
 
     <parent>

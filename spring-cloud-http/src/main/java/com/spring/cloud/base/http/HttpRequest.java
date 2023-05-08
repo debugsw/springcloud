@@ -1243,7 +1243,6 @@ public class HttpRequest extends HttpBase<HttpRequest> {
                 throw new HttpException(e);
             }
             // 支持自动重定向时处理cookie
-            // https://github.com/dromara//issues/2960
             if (config.followRedirectsCookie) {
                 GlobalCookieManager.store(httpConnection);
             }
