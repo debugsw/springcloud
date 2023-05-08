@@ -43,12 +43,7 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 	private final Map<WatchKey, Path> watchKeyPathMap = new HashMap<>();
 
 	/**
-	 * 初始化<br>
-	 * 初始化包括：
-	 * <pre>
-	 * 1、解析传入的路径，判断其为目录还是文件
-	 * 2、创建{@link WatchService} 对象
-	 * </pre>
+	 * 初始化
 	 *
 	 * @throws WatchException 监听异常，IO异常时抛出此异常
 	 */
@@ -64,12 +59,7 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 	}
 
 	/**
-	 * 设置监听选项，例如监听频率等，可设置项包括：
-	 *
-	 * <pre>
-	 * 1、com.sun.nio.file.StandardWatchEventKinds
-	 * 2、com.sun.nio.file.SensitivityWatchEventModifier
-	 * </pre>
+	 * 设置监听选项
 	 *
 	 * @param modifiers 监听选项，例如监听频率等
 	 */
@@ -94,7 +84,6 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 				key = path.register(this.watchService, kinds, this.modifiers);
 			}
 			watchKeyPathMap.put(key, path);
-
 			// 递归注册下一层层级的目录
 			if (maxDepth > 1) {
 				//遍历所有子目录并加入监听
@@ -110,8 +99,6 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 			if (!(e instanceof AccessDeniedException)) {
 				throw new WatchException(e);
 			}
-
-			//对于禁止访问的目录，跳过监听
 		}
 	}
 
@@ -136,7 +123,7 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 
 		for (WatchEvent<?> event : wk.pollEvents()) {
 			// 如果监听文件，检查当前事件是否与所监听文件关联
-			if (null != watchFilter && false == watchFilter.accept(event)) {
+			if (null != watchFilter && !watchFilter.accept(event)) {
 				continue;
 			}
 
@@ -155,7 +142,6 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 	public void watch(Watcher watcher, Filter<WatchEvent<?>> watchFilter) {
 		watch((event, currentPath) -> {
 			final WatchEvent.Kind<?> kind = event.kind();
-
 			if (kind == WatchKind.CREATE.getValue()) {
 				watcher.onCreate(event, currentPath);
 			} else if (kind == WatchKind.MODIFY.getValue()) {

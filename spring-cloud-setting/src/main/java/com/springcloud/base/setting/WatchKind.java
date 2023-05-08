@@ -30,12 +30,8 @@ public enum WatchKind {
 	/**
 	 * 全部事件
 	 */
-	public static final WatchEvent.Kind<?>[] ALL = {//
-			OVERFLOW.getValue(),      //事件丢失
-			MODIFY.getValue(), //修改
-			CREATE.getValue(),  //创建
-			DELETE.getValue()   //删除
-	};
+	public static final WatchEvent.Kind<?>[] ALL = {
+			OVERFLOW.getValue(), MODIFY.getValue(), CREATE.getValue(), DELETE.getValue()};
 
 	private final WatchEvent.Kind<?> value;
 

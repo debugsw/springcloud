@@ -306,7 +306,7 @@ public class WatchMonitor extends WatchServer {
 	@Override
 	public void init() throws WatchException {
 		//获取目录或文件路径
-		if (false == Files.exists(this.path, LinkOption.NOFOLLOW_LINKS)) {
+		if (!Files.exists(this.path, LinkOption.NOFOLLOW_LINKS)) {
 			// 不存在的路径
 			final Path lastPathEle = getLastPathEle(this.path);
 			if (null != lastPathEle) {
@@ -317,7 +317,6 @@ public class WatchMonitor extends WatchServer {
 					this.path = this.filePath.getParent();
 				}
 			}
-
 			//创建不存在的目录或父目录
 			try {
 				Files.createDirectories(this.path);
@@ -329,7 +328,6 @@ public class WatchMonitor extends WatchServer {
 			this.filePath = this.path;
 			this.path = this.filePath.getParent();
 		}
-
 		super.init();
 	}
 
@@ -367,7 +365,6 @@ public class WatchMonitor extends WatchServer {
 		if (isClosed) {
 			throw new WatchException("Watch Monitor is closed !");
 		}
-
 		// 按照层级注册路径及其子路径
 		registerPath();
 		while (false == isClosed) {

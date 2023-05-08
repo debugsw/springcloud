@@ -130,7 +130,6 @@ public class WatchUtil {
 		return new WatchMonitor(path, maxDepth, events);
 	}
 
-
 	/**
 	 * 创建并初始化监听，监听所有事件
 	 *
@@ -247,7 +246,6 @@ public class WatchUtil {
 		watchMonitor.setWatcher(watcher);
 		return watchMonitor;
 	}
-
 
 	/**
 	 * 创建并初始化监听，监听修改事件

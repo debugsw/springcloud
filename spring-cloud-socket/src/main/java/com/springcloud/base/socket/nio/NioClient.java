@@ -86,19 +86,6 @@ public class NioClient implements Closeable {
 
 	/**
 	 * 开始监听
-	 */
-	public void listen() {
-		ThreadUtil.execute(() -> {
-			try {
-				doListen();
-			} catch (IOException e) {
-				log.error("Listen failed", e);
-			}
-		});
-	}
-
-	/**
-	 * 开始监听
 	 *
 	 * @throws IOException IO异常
 	 */

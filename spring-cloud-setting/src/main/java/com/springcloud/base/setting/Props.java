@@ -489,16 +489,7 @@ public final class Props extends Properties implements BasicTypeGetter<String>, 
 	}
 
 	/**
-	 * 将配置文件转换为Bean，支持嵌套Bean<br>
-	 * 支持的表达式：
-	 *
-	 * <pre>
-	 * persion
-	 * persion.name
-	 * persons[3]
-	 * person.friends[5].name
-	 * ['person']['friends'][5]['name']
-	 * </pre>
+	 * 将配置文件转换为Bean，支持嵌套Bean
 	 *
 	 * @param <T>       Bean类型
 	 * @param beanClass Bean类
@@ -509,16 +500,7 @@ public final class Props extends Properties implements BasicTypeGetter<String>, 
 	}
 
 	/**
-	 * 将配置文件转换为Bean，支持嵌套Bean<br>
-	 * 支持的表达式：
-	 *
-	 * <pre>
-	 * persion
-	 * persion.name
-	 * persons[3]
-	 * person.friends[5].name
-	 * ['person']['friends'][5]['name']
-	 * </pre>
+	 * 将配置文件转换为Bean，支持嵌套Bean
 	 *
 	 * @param <T>       Bean类型
 	 * @param beanClass Bean类
@@ -531,16 +513,7 @@ public final class Props extends Properties implements BasicTypeGetter<String>, 
 	}
 
 	/**
-	 * 将配置文件转换为Bean，支持嵌套Bean<br>
-	 * 支持的表达式：
-	 *
-	 * <pre>
-	 * persion
-	 * persion.name
-	 * persons[3]
-	 * person.friends[5].name
-	 * ['person']['friends'][5]['name']
-	 * </pre>
+	 * 将配置文件转换为Bean，支持嵌套Bean
 	 *
 	 * @param <T>    Bean类型
 	 * @param bean   Bean对象
@@ -549,12 +522,10 @@ public final class Props extends Properties implements BasicTypeGetter<String>, 
 	 */
 	public <T> T fillBean(T bean, String prefix) {
 		prefix = StrUtil.nullToEmpty(StrUtil.addSuffixIfNot(prefix, StrUtil.DOT));
-
 		String key;
 		for (java.util.Map.Entry<Object, Object> entry : this.entrySet()) {
 			key = (String) entry.getKey();
-			if (false == StrUtil.startWith(key, prefix)) {
-
+			if (!StrUtil.startWith(key, prefix)) {
 				continue;
 			}
 			try {
@@ -564,7 +535,6 @@ public final class Props extends Properties implements BasicTypeGetter<String>, 
 				StaticLog.debug("Ignore property: [{}],because of: {}", key, e);
 			}
 		}
-
 		return bean;
 	}
 
