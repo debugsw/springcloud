@@ -56,7 +56,6 @@ public class FontUtil {
 		try {
 			return Font.createFont(Font.TRUETYPE_FONT, fontFile);
 		} catch (FontFormatException e) {
-			// True Type字体无效时使用Type1字体
 			try {
 				return Font.createFont(Font.TYPE1_FONT, fontFile);
 			} catch (Exception e1) {
@@ -99,7 +98,6 @@ public class FontUtil {
 	public static Dimension getDimension(FontMetrics metrics, String str) {
 		final int width = metrics.stringWidth(str);
 		final int height = metrics.getAscent() - metrics.getLeading() - metrics.getDescent();
-
 		return new Dimension(width, height);
 	}
 

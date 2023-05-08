@@ -40,9 +40,9 @@ public class Calculator {
 		final Stack<String> resultStack = new Stack<>();
 		Collections.reverse(postfixStack);
 		String firstValue, secondValue, currentOp;
-		while (false == postfixStack.isEmpty()) {
+		while (!postfixStack.isEmpty()) {
 			currentOp = postfixStack.pop();
-			if (false == isOperator(currentOp.charAt(0))) {
+			if (!isOperator(currentOp.charAt(0))) {
 				currentOp = currentOp.replace("~", "-");
 				resultStack.push(currentOp);
 			} else {// 如果是运算符则从操作数栈中取两个值和该数值一起参与运算
@@ -57,10 +57,7 @@ public class Calculator {
 				resultStack.push(tempResult.toString());
 			}
 		}
-
-		// 当结果集中有多个数字时，可能是省略*，类似(1+2)3
 		return NumberUtil.mul(resultStack.toArray(new String[0])).doubleValue();
-		//return Double.parseDouble(resultStack.pop());
 	}
 
 	/**
