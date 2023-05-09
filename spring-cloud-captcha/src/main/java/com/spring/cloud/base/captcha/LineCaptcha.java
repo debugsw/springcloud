@@ -40,14 +40,14 @@ public class LineCaptcha extends AbstractCaptcha {
 
     @Override
     public Image createImage(String code) {
-        // 图像buffer
+        
         final BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         final Graphics2D g = GraphicsUtil.createGraphics(image, ObjectUtil.defaultIfNull(this.background, Color.WHITE));
 
-        // 干扰线
+        
         drawInterfere(g);
 
-        // 字符串
+        
         drawString(g, code);
 
         return image;
@@ -60,7 +60,7 @@ public class LineCaptcha extends AbstractCaptcha {
      * @param code 验证码
      */
     private void drawString(Graphics2D g, String code) {
-        // 指定透明度
+        
         if (null != this.textAlpha) {
             g.setComposite(this.textAlpha);
         }
@@ -74,7 +74,7 @@ public class LineCaptcha extends AbstractCaptcha {
      */
     private void drawInterfere(Graphics2D g) {
         final ThreadLocalRandom random = RandomUtil.getRandom();
-        // 干扰线
+        
         for (int i = 0; i < this.interfereCount; i++) {
             int xs = random.nextInt(width);
             int ys = random.nextInt(height);

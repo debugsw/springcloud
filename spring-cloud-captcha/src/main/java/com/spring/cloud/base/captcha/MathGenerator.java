@@ -56,7 +56,7 @@ public class MathGenerator implements CodeGenerator {
 		try {
 			result = Integer.parseInt(userInputCode);
 		} catch (NumberFormatException e) {
-			// 用户输入非数字
+			
 			return false;
 		}
 

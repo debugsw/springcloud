@@ -52,12 +52,12 @@ public class ShearCaptcha extends AbstractCaptcha {
 		final BufferedImage image = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
 		final Graphics2D g = GraphicsUtil.createGraphics(image, ObjectUtil.defaultIfNull(this.background, Color.WHITE));
 
-		// 画字符串
+		
 		drawString(g, code);
 
-		// 扭曲
+		
 		shear(g, this.width, this.height, ObjectUtil.defaultIfNull(this.background, Color.WHITE));
-		// 画干扰线
+		
 		drawInterfere(g, 0, RandomUtil.randomInt(this.height) + 1, this.width, RandomUtil.randomInt(this.height) + 1, this.interfereCount, ImgUtil.randomColor());
 
 		return image;
@@ -70,7 +70,7 @@ public class ShearCaptcha extends AbstractCaptcha {
 	 * @param code 验证码
 	 */
 	private void drawString(Graphics2D g, String code) {
-		// 指定透明度
+		
 		if (null != this.textAlpha) {
 			g.setComposite(this.textAlpha);
 		}
@@ -133,7 +133,7 @@ public class ShearCaptcha extends AbstractCaptcha {
 			double d = (double) (period >> 1) * Math.sin((double) i / (double) period + (6.2831853071795862D * (double) phase) / (double) frames);
 			g.copyArea(i, 0, 1, h1, 0, (int) d);
 			g.setColor(color);
-			// 擦除原位置的痕迹
+			
 			g.drawLine(i, (int) d, i, 0);
 			g.drawLine(i, (int) d + h1, i, h1);
 		}
@@ -154,11 +154,11 @@ public class ShearCaptcha extends AbstractCaptcha {
 	@SuppressWarnings("SameParameterValue")
 	private void drawInterfere(Graphics g, int x1, int y1, int x2, int y2, int thickness, Color c) {
 
-		// The thick line is in fact a filled polygon
+		
 		g.setColor(c);
 		int dX = x2 - x1;
 		int dY = y2 - y1;
-		// line length
+		
 		double lineLength = Math.sqrt(dX * dX + dY * dY);
 
 		double scale = (double) (thickness) / (2 * lineLength);

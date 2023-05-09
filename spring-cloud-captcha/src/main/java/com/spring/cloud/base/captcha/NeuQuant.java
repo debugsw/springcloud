@@ -60,7 +60,7 @@ public class NeuQuant {
 
 	protected int samplefac; /* sampling factor 1..30 */
 
-	//   typedef int pixel[4];                /* BGRc */
+	
 	protected int[][] network; /* the network itself - [netsize][4] */
 
 	protected int[] netindex = new int[256];
@@ -191,7 +191,7 @@ public class NeuQuant {
 					alpha * (((rad * rad - i * i) * RADBIAS) / (rad * rad));
 		}
 
-		//fprintf(stderr,"beginning 1D learning: initial radius=%d\n", rad);
+		
 
 		if (lengthcount < MINPICTUREBYTES) {
 			step = 3;
@@ -243,7 +243,7 @@ public class NeuQuant {
 				}
 			}
 		}
-		//fprintf(stderr,"finished 1D learning: final alpha=%f !\n",((float)alpha)/initalpha);
+		
 	}
 
 	/* Search for BGR values 0..255 (after net is unbiased) and return colour index
@@ -364,7 +364,7 @@ public class NeuQuant {
 					p[1] -= (a * (p[1] - g)) / ALPHARADBIAS;
 					p[2] -= (a * (p[2] - r)) / ALPHARADBIAS;
 				} catch (Exception ignored) {
-				} // prevents 1.3 miscompilation
+				} 
 			}
 			if (k > lo) {
 				p = network[k--];

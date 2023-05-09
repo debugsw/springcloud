@@ -33,12 +33,12 @@ import java.util.Random;
  */
 public class ImgUtil {
 
-	public static final String IMAGE_TYPE_GIF = "gif";// 图形交换格式
-	public static final String IMAGE_TYPE_JPG = "jpg";// 联合照片专家组
-	public static final String IMAGE_TYPE_JPEG = "jpeg";// 联合照片专家组
-	public static final String IMAGE_TYPE_BMP = "bmp";// 英文Bitmap（位图）的简写，它是Windows操作系统中的标准图像文件格式
-	public static final String IMAGE_TYPE_PNG = "png";// 可移植网络图形
-	public static final String IMAGE_TYPE_PSD = "psd";// Photoshop的专用格式Photoshop
+	public static final String IMAGE_TYPE_GIF = "gif";
+	public static final String IMAGE_TYPE_JPG = "jpg";
+	public static final String IMAGE_TYPE_JPEG = "jpeg";
+	public static final String IMAGE_TYPE_BMP = "bmp";
+	public static final String IMAGE_TYPE_PNG = "png";
+	public static final String IMAGE_TYPE_PSD = "psd";
 
 	/**
 	 * 缩放图像（按比例缩放），目标文件的扩展名决定目标文件类型
@@ -151,9 +151,9 @@ public class ImgUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static void scale(File srcImageFile, File destImageFile, int width, int height, Color fixedColor) throws IORuntimeException {
-		Img.from(srcImageFile)//
-				.setTargetImageType(FileUtil.extName(destImageFile))//
-				.scale(width, height, fixedColor)//
+		Img.from(srcImageFile)
+				.setTargetImageType(FileUtil.extName(destImageFile))
+				.scale(width, height, fixedColor)
 				.write(destImageFile);
 	}
 
@@ -216,7 +216,7 @@ public class ImgUtil {
 		return Img.from(srcImage).scale(width, height, fixedColor).getImg();
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- cut
+	
 
 	/**
 	 * 图像切割(按指定起点坐标和宽高切割)
@@ -354,13 +354,13 @@ public class ImgUtil {
 	 */
 	public static void slice(Image srcImage, File descDir, int destWidth, int destHeight) {
 		if (destWidth <= 0) {
-			destWidth = 200; // 切片宽度
+			destWidth = 200; 
 		}
 		if (destHeight <= 0) {
-			destHeight = 150; // 切片高度
+			destHeight = 150; 
 		}
-		int srcWidth = srcImage.getWidth(null); // 源图宽度
-		int srcHeight = srcImage.getHeight(null); // 源图高度
+		int srcWidth = srcImage.getWidth(null); 
+		int srcHeight = srcImage.getHeight(null); 
 
 		if (srcWidth < destWidth) {
 			destWidth = srcWidth;
@@ -369,9 +369,9 @@ public class ImgUtil {
 			destHeight = srcHeight;
 		}
 
-		int cols; // 切片横向数量
-		int rows; // 切片纵向数量
-		// 计算切片的横向和纵向数量
+		int cols; 
+		int rows; 
+		
 		if (srcWidth % destWidth == 0) {
 			cols = srcWidth / destWidth;
 		} else {
@@ -382,14 +382,14 @@ public class ImgUtil {
 		} else {
 			rows = (int) Math.floor((double) srcHeight / destHeight) + 1;
 		}
-		// 循环建立切片
+		
 		Image tag;
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				// 四个参数分别为图像起点坐标和宽高
-				// 即: CropImageFilter(int x,int y,int width,int height)
+				
+				
 				tag = cut(srcImage, new Rectangle(j * destWidth, i * destHeight, destWidth, destHeight));
-				// 输出为文件
+				
 				write(tag, FileUtil.file(descDir, "_r" + i + "_c" + j + ".jpg"));
 			}
 		}
@@ -455,25 +455,25 @@ public class ImgUtil {
 
 		try {
 			if (rows <= 0 || rows > 20) {
-				rows = 2; // 切片行数
+				rows = 2; 
 			}
 			if (cols <= 0 || cols > 20) {
-				cols = 2; // 切片列数
+				cols = 2; 
 			}
-			// 读取源图像
+			
 			final BufferedImage bi = toBufferedImage(srcImage);
-			int srcWidth = bi.getWidth(); // 源图宽度
-			int srcHeight = bi.getHeight(); // 源图高度
+			int srcWidth = bi.getWidth(); 
+			int srcHeight = bi.getHeight(); 
 
-			int destWidth = NumberUtil.partValue(srcWidth, cols); // 每张切片的宽度
-			int destHeight = NumberUtil.partValue(srcHeight, rows); // 每张切片的高度
+			int destWidth = NumberUtil.partValue(srcWidth, cols); 
+			int destHeight = NumberUtil.partValue(srcHeight, rows); 
 
-			// 循环建立切片
+			
 			Image tag;
 			for (int i = 0; i < rows; i++) {
 				for (int j = 0; j < cols; j++) {
 					tag = cut(bi, new Rectangle(j * destWidth, i * destHeight, destWidth, destHeight));
-					// 输出为文件
+					
 					ImageIO.write(toRenderedImage(tag), format, new File(destDir, "_r" + i + "_c" + j + "." + format));
 				}
 			}
@@ -482,7 +482,7 @@ public class ImgUtil {
 		}
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- convert
+	
 
 	/**
 	 * 图像类型转换：GIF=》JPG、GIF=》PNG、PNG=》JPG、PNG=》GIF(X)、BMP=》PNG
@@ -498,7 +498,7 @@ public class ImgUtil {
 		final String srcExtName = FileUtil.extName(srcImageFile);
 		final String destExtName = FileUtil.extName(destImageFile);
 		if (StrUtil.equalsIgnoreCase(srcExtName, destExtName)) {
-			// 扩展名相同直接复制文件
+			
 			FileUtil.copy(srcImageFile, destImageFile, true);
 		}
 
@@ -542,7 +542,7 @@ public class ImgUtil {
 		}
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- grey
+	
 
 	/**
 	 * 彩色转为黑白
@@ -625,7 +625,7 @@ public class ImgUtil {
 		return Img.from(srcImage).gray().getImg();
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- binary
+	
 
 	/**
 	 * 彩色转为黑白二值化图片，根据目标文件扩展名确定转换后的格式
@@ -712,7 +712,7 @@ public class ImgUtil {
 		return Img.from(srcImage).binary().getImg();
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- press
+	
 
 	/**
 	 * 给图片添加文字水印
@@ -963,7 +963,7 @@ public class ImgUtil {
 		return Img.from(srcImage).pressImage(pressImg, rectangle, alpha).getImg();
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- rotate
+	
 
 	/**
 	 * 旋转图片为指定角度<br>
@@ -1023,7 +1023,7 @@ public class ImgUtil {
 
 	/**
 	 * 旋转图片为指定角度<br>
-	 * 来自：<a href="http://blog.51cto.com/cping1982/130066">http://blog.51cto.com/cping1982/130066</a>
+	 * 来自：<a href="http:
 	 *
 	 * @param image  目标图像
 	 * @param degree 旋转角度
@@ -1034,7 +1034,7 @@ public class ImgUtil {
 		return Img.from(image).rotate(degree).getImg();
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- flip
+	
 
 	/**
 	 * 水平翻转图像
@@ -1095,7 +1095,7 @@ public class ImgUtil {
 		return Img.from(image).flip().getImg();
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- compress
+	
 
 	/**
 	 * 压缩图像，输出图像只支持jpg文件
@@ -1110,7 +1110,7 @@ public class ImgUtil {
 		Img.from(imageFile).setQuality(quality).write(outFile);
 	}
 
-	// ---------------------------------------------------------------------------------------------------------------------- other
+	
 
 	/**
 	 * {@link Image} 转 {@link RenderedImage}<br>
@@ -1269,8 +1269,8 @@ public class ImgUtil {
 	 * 
 	 */
 	public static BufferedImage copyImage(Image img, int imageType, Color backgroundColor) {
-		// ensures that all the pixels loaded
-		// issue#1821@Github
+		
+		
 		img = new ImageIcon(img).getImage();
 
 		final BufferedImage bimage = new BufferedImage(
@@ -1411,27 +1411,27 @@ public class ImgUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static BufferedImage createImage(String str, Font font, Color backgroundColor, Color fontColor, int imageType) throws IORuntimeException {
-		// 获取font的样式应用在str上的整个矩形
+		
 		final Rectangle2D r = getRectangle(str, font);
-		// 获取单个字符的高度
+		
 		int unitHeight = (int) Math.floor(r.getHeight());
-		// 获取整个str用了font样式的宽度这里用四舍五入后+1保证宽度绝对能容纳这个字符串作为图片的宽度
+		
 		int width = (int) Math.round(r.getWidth()) + 1;
-		// 把单个字符的高度+3保证高度绝对能容纳字符串作为图片的高度
+		
 		int height = unitHeight + 3;
 
-		// 创建图片
+		
 		BufferedImage image = new BufferedImage(width, height, imageType);
 		Graphics g = image.getGraphics();
 		if (null != backgroundColor) {
-			// 先用背景色填充整张图片,也就是背景
+			
 			g.setColor(backgroundColor);
 			g.fillRect(0, 0, width, height);
 		}
 
 		g.setColor(ObjectUtil.defaultIfNull(fontColor, Color.BLACK));
-		g.setFont(font);// 设置画笔字体
-		g.drawString(str, 0, font.getSize());// 画出字符串
+		g.setFont(font);
+		g.drawString(str, 0, font.getSize());
 		g.dispose();
 
 		return image;
@@ -1650,14 +1650,14 @@ public class ImgUtil {
 
 		writer.setOutput(output);
 		final RenderedImage renderedImage = toRenderedImage(image);
-		// 设置质量
+		
 		ImageWriteParam imgWriteParams = null;
 		if (quality > 0 && quality < 1) {
 			imgWriteParams = writer.getDefaultWriteParam();
 			if (imgWriteParams.canWriteCompressed()) {
 				imgWriteParams.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
 				imgWriteParams.setCompressionQuality(quality);
-				final ColorModel colorModel = renderedImage.getColorModel();// ColorModel.getRGBdefault();
+				final ColorModel colorModel = renderedImage.getColorModel();
 				imgWriteParams.setDestinationType(new ImageTypeSpecifier(colorModel, colorModel.createCompatibleSampleModel(16, 16)));
 			}
 		}
@@ -1909,7 +1909,7 @@ public class ImgUtil {
 			writer = iter.next();
 		}
 		if (null == writer) {
-			// 尝试扩展名获取
+			
 			iter = ImageIO.getImageWritersBySuffix(formatName);
 			if (iter.hasNext()) {
 				writer = iter.next();
@@ -1918,7 +1918,7 @@ public class ImgUtil {
 		return writer;
 	}
 
-	// -------------------------------------------------------------------------------------------------------------------- Color
+	
 
 	/**
 	 * Color对象转16进制表示，例如#fcf6d6
@@ -2020,8 +2020,8 @@ public class ImgUtil {
 	 */
 	public static Point getPointBaseCentre(Rectangle rectangle, int backgroundWidth, int backgroundHeight) {
 		return new Point(
-				rectangle.x + (Math.abs(backgroundWidth - rectangle.width) / 2), //
-				rectangle.y + (Math.abs(backgroundHeight - rectangle.height) / 2)//
+				rectangle.x + (Math.abs(backgroundWidth - rectangle.width) / 2), 
+				rectangle.y + (Math.abs(backgroundHeight - rectangle.height) / 2)
 		);
 	}
 

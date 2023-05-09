@@ -77,7 +77,7 @@ public class FontUtil {
 		try {
 			return Font.createFont(Font.TRUETYPE_FONT, fontStream);
 		} catch (FontFormatException e) {
-			// True Type字体无效时使用Type1字体
+			
 			try {
 				return Font.createFont(Font.TYPE1_FONT, fontStream);
 			} catch (Exception e1) {

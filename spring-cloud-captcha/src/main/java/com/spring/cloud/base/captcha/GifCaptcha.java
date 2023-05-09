@@ -16,13 +16,13 @@ public class GifCaptcha extends AbstractCaptcha {
 
 	private static final long serialVersionUID = 7091627304326538464L;
 
-	//量化器取样间隔 - 默认是10ms
+	
 	private int quality = 10;
-	// 帧循环次数
+	
 	private int repeat = 0;
-	//设置随机颜色时，最小的取色范围
+	
 	private int minColor = 0;
-	//设置随机颜色时，最大的取色范围
+	
 	private int maxColor = 255;
 
 
@@ -105,10 +105,10 @@ public class GifCaptcha extends AbstractCaptcha {
 		final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
 		AnimatedGifEncoder gifEncoder = new AnimatedGifEncoder();
-		//生成字符
+		
 		gifEncoder.start(out);
 		gifEncoder.setQuality(quality);
-		// 帧延迟 (默认100)
+		
 		int delay = 100;
 		gifEncoder.setDelay(delay);
 		gifEncoder.setRepeat(repeat);
@@ -140,19 +140,19 @@ public class GifCaptcha extends AbstractCaptcha {
 	 */
 	private BufferedImage graphicsImage(char[] chars, Color[] fontColor, char[] words, int flag) {
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		//或得图形上下文
+		
 		Graphics2D g2d = image.createGraphics();
-		//利用指定颜色填充背景
+		
 		g2d.setColor(ObjectUtil.defaultIfNull(this.background, Color.WHITE));
 		g2d.fillRect(0, 0, width, height);
 		AlphaComposite ac;
-		// 字符的y坐标
+		
 		float y = (height >> 1) + (font.getSize() >> 1);
 		float m = 1.0f * (width - (chars.length * font.getSize())) / chars.length;
-		//字符的x坐标
+		
 		float x = Math.max(m / 2.0f, 2);
 		g2d.setFont(font);
-		// 指定透明度
+		
 		if (null != this.textAlpha) {
 			g2d.setComposite(this.textAlpha);
 		}

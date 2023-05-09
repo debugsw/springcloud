@@ -123,11 +123,11 @@ public class Calculator {
 	private boolean compare(char cur, char peek) {
 		final int offset = 40;
 		if (cur == '%') {
-			// %优先级最高
+			
 			cur = 47;
 		}
 		if (peek == '%') {
-			// %优先级最高
+			
 			peek = 47;
 		}
 

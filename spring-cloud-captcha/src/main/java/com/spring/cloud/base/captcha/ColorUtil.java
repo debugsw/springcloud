@@ -44,7 +44,7 @@ public class ColorUtil {
 	 * @return 返回字符串形式的 十六进制颜色码 如
 	 */
 	public static String toHex(int r, int g, int b) {
-		// rgb 小于 255
+		
 		if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
 			throw new IllegalArgumentException("RGB must be 0~255!");
 		}
@@ -91,18 +91,18 @@ public class ColorUtil {
 		} else if ("BLUE".equals(colorName)) {
 			return Color.BLUE;
 		} else if ("DARKGOLD".equals(colorName)) {
-			// 暗金色
+			
 			return hexToColor("#9e7e67");
 		} else if ("LIGHTGOLD".equals(colorName)) {
-			// 亮金色
+			
 			return hexToColor("#ac9c85");
 		} else if (StrUtil.startWith(colorName, '#')) {
 			return hexToColor(colorName);
 		} else if (StrUtil.startWith(colorName, '$')) {
-			// 由于#在URL传输中无法传输，因此用$代替#
+			
 			return hexToColor("#" + colorName.substring(1));
 		} else {
-			// rgb值
+			
 			final List<String> rgb = StrUtil.split(colorName, ',');
 			if (3 == rgb.size()) {
 				final Integer r = Convert.toInt(rgb.get(0));

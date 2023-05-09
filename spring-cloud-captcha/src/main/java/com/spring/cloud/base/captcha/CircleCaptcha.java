@@ -53,10 +53,10 @@ public class CircleCaptcha extends AbstractCaptcha {
 		final BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		final Graphics2D g = ImgUtil.createGraphics(image, ObjectUtil.defaultIfNull(this.background, Color.WHITE));
 
-		// 随机画干扰圈圈
+
 		drawInterfere(g);
 
-		// 画字符串
+
 		drawString(g, code);
 
 		return image;
@@ -69,7 +69,7 @@ public class CircleCaptcha extends AbstractCaptcha {
 	 * @param code 验证码
 	 */
 	private void drawString(Graphics2D g, String code) {
-		// 指定透明度
+
 		if (null != this.textAlpha) {
 			g.setComposite(this.textAlpha);
 		}

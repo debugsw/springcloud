@@ -22,7 +22,7 @@ public class GraphicsUtil {
 	public static Graphics2D createGraphics(BufferedImage image, Color color) {
 		final Graphics2D g = image.createGraphics();
 		if (null != color) {
-			// 填充背景
+			
 			g.setColor(color);
 			g.fillRect(0, 0, image.getWidth(), image.getHeight());
 		}
@@ -38,7 +38,7 @@ public class GraphicsUtil {
 	 * @return 最小高度，-1表示无法获取
 	 */
 	public static int getCenterY(Graphics g, int backgroundHeight) {
-		// 获取允许文字最小高度
+		
 		FontMetrics metrics = null;
 		try {
 			metrics = g.getFontMetrics();
@@ -80,14 +80,14 @@ public class GraphicsUtil {
 	 * @return 画笔对象
 	 */
 	public static Graphics drawString(Graphics g, String str, Font font, Color color, int width, int height) {
-		// 抗锯齿
+		
 		if (g instanceof Graphics2D) {
 			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		}
-		// 创建字体
+		
 		g.setFont(font);
 
-		// 文字高度（必须在设置字体后调用）
+		
 		int midY = getCenterY(g, height);
 		if (null != color) {
 			g.setColor(color);
@@ -97,7 +97,7 @@ public class GraphicsUtil {
 		int charWidth = width / len;
 		for (int i = 0; i < len; i++) {
 			if (null == color) {
-				// 产生随机的颜色值，让输出的每个字符的颜色值都将不同。
+				
 				g.setColor(ImgUtil.randomColor());
 			}
 			g.drawString(String.valueOf(str.charAt(i)), i * charWidth, midY);
@@ -117,16 +117,16 @@ public class GraphicsUtil {
 	 * @return 画笔对象
 	 */
 	public static Graphics drawString(Graphics g, String str, Font font, Color color, Rectangle rectangle) {
-		// 背景长宽
+		
 		final int backgroundWidth = rectangle.width;
 		final int backgroundHeight = rectangle.height;
 
-		//获取字符串本身的长宽
+		
 		Dimension dimension;
 		try {
 			dimension = FontUtil.getDimension(g.getFontMetrics(font), str);
 		} catch (Exception e) {
-			// 此处报告bug某些情况下会抛出IndexOutOfBoundsException，在此做容错处理
+			
 			dimension = new Dimension(backgroundWidth / 3, backgroundHeight / 3);
 		}
 
@@ -147,7 +147,7 @@ public class GraphicsUtil {
 	 * @return 画笔对象
 	 */
 	public static Graphics drawString(Graphics g, String str, Font font, Color color, Point point) {
-		// 抗锯齿
+		
 		if (g instanceof Graphics2D) {
 			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		}

@@ -68,9 +68,9 @@ public class BackgroundRemoval {
 			return false;
 		}
 		try {
-			// 获取图片左上、中上、右上、右中、右下、下中、左下、左中、8个像素点rgb的16进制值
+
 			BufferedImage bufferedImage = ImageIO.read(input);
-			// 图片输出的格式为 png
+
 			return ImageIO.write(backgroundRemoval(bufferedImage, override, tolerance), "png", output);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -87,18 +87,18 @@ public class BackgroundRemoval {
 	 * @return 返回处理好的图片流
 	 */
 	public static BufferedImage backgroundRemoval(BufferedImage bufferedImage, Color override, int tolerance) {
-		// 容差值 最大255 最小0
+
 		tolerance = Math.min(255, Math.max(tolerance, 0));
-		// 绘制icon
+
 		ImageIcon imageIcon = new ImageIcon(bufferedImage);
 		BufferedImage image = new BufferedImage(imageIcon.getIconWidth(), imageIcon.getIconHeight(),
 				BufferedImage.TYPE_4BYTE_ABGR);
-		// 绘图工具
+
 		Graphics graphics = image.getGraphics();
 		graphics.drawImage(imageIcon.getImage(), 0, 0, imageIcon.getImageObserver());
-		// 需要删除的RGB元素
+
 		String[] removeRgb = getRemoveRgb(bufferedImage);
-		// 获取图片的大概主色调
+
 		String mainColor = getMainColor(bufferedImage);
 		int alpha = 0;
 		for (int y = image.getMinY(); y < image.getHeight(); y++) {
@@ -142,34 +142,34 @@ public class BackgroundRemoval {
 	 * @return String数组 包含 各个位置的rgb数值
 	 */
 	private static String[] getRemoveRgb(BufferedImage image) {
-		// 获取图片流的宽和高
+
 		int width = image.getWidth() - 1;
 		int height = image.getHeight() - 1;
-		// 左上
+
 		int leftUpPixel = image.getRGB(1, 1);
 		String leftUp = ImgUtil.toHex((leftUpPixel & 0xff0000) >> 16, (leftUpPixel & 0xff00) >> 8, (leftUpPixel & 0xff));
-		// 上中
+
 		int upMiddlePixel = image.getRGB(width / 2, 1);
 		String upMiddle = ImgUtil.toHex((upMiddlePixel & 0xff0000) >> 16, (upMiddlePixel & 0xff00) >> 8, (upMiddlePixel & 0xff));
-		// 右上
+
 		int rightUpPixel = image.getRGB(width, 1);
 		String rightUp = ImgUtil.toHex((rightUpPixel & 0xff0000) >> 16, (rightUpPixel & 0xff00) >> 8, (rightUpPixel & 0xff));
-		// 右中
+
 		int rightMiddlePixel = image.getRGB(width, height / 2);
 		String rightMiddle = ImgUtil.toHex((rightMiddlePixel & 0xff0000) >> 16, (rightMiddlePixel & 0xff00) >> 8, (rightMiddlePixel & 0xff));
-		// 右下
+
 		int lowerRightPixel = image.getRGB(width, height);
 		String lowerRight = ImgUtil.toHex((lowerRightPixel & 0xff0000) >> 16, (lowerRightPixel & 0xff00) >> 8, (lowerRightPixel & 0xff));
-		// 下中
+
 		int lowerMiddlePixel = image.getRGB(width / 2, height);
 		String lowerMiddle = ImgUtil.toHex((lowerMiddlePixel & 0xff0000) >> 16, (lowerMiddlePixel & 0xff00) >> 8, (lowerMiddlePixel & 0xff));
-		// 左下
+
 		int leftLowerPixel = image.getRGB(1, height);
 		String leftLower = ImgUtil.toHex((leftLowerPixel & 0xff0000) >> 16, (leftLowerPixel & 0xff00) >> 8, (leftLowerPixel & 0xff));
-		// 左中
+
 		int leftMiddlePixel = image.getRGB(1, height / 2);
 		String leftMiddle = ImgUtil.toHex((leftMiddlePixel & 0xff0000) >> 16, (leftMiddlePixel & 0xff00) >> 8, (leftMiddlePixel & 0xff));
-		// 需要删除的RGB元素
+
 		return new String[]{leftUp, upMiddle, rightUp, rightMiddle, lowerRight, lowerMiddle, leftLower, leftMiddle};
 	}
 
@@ -256,7 +256,7 @@ public class BackgroundRemoval {
 			throw new IllegalArgumentException("图片流是空的");
 		}
 
-		// 存储图片的所有RGB元素
+
 		List<String> list = new ArrayList<>();
 		for (int y = bufferedImage.getMinY(); y < bufferedImage.getHeight(); y++) {
 			for (int x = bufferedImage.getMinX(); x < bufferedImage.getWidth(); x++) {
@@ -286,7 +286,7 @@ public class BackgroundRemoval {
 			}
 		}
 		String[] strings = max.split("-");
-		// rgb 的数量只有3个
+
 		int rgbLength = 3;
 		if (strings.length == rgbLength) {
 			return ImgUtil.toHex(Integer.parseInt(strings[0]), Integer.parseInt(strings[1]),
@@ -307,9 +307,9 @@ public class BackgroundRemoval {
 		if (!input.exists()) {
 			throw new IllegalArgumentException("给定文件为空");
 		}
-		// 获取图片类型
+
 		String type = FileTypeUtil.getType(input);
-		// 类型对比
+
 		if (!ArrayUtil.contains(imagesType, type)) {
 			throw new IllegalArgumentException(StrUtil.format("文件类型{}不支持", type));
 		}

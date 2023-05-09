@@ -228,21 +228,21 @@ public class Img implements Serializable {
 	 */
 	public Img scale(float scale) {
 		if (scale < 0) {
-			// 自动修正负数
+			
 			scale = -scale;
 		}
 		final Image srcImg = getValidSrcImg();
 
-		// PNG图片特殊处理
+		
 		if (ImgUtil.IMAGE_TYPE_PNG.equals(this.targetImageType)) {
-			// 修正float转double导致的精度丢失
+			
 			final double scaleDouble = NumberUtil.toDouble(scale);
 			this.targetImage = ImgUtil.transform(AffineTransform.getScaleInstance(scaleDouble, scaleDouble),
 					ImgUtil.toBufferedImage(srcImg, this.targetImageType));
 		} else {
-			// 缩放后的图片宽
+			
 			final int width = NumberUtil.mul((Number) srcImg.getWidth(null), scale).intValue();
-			// 缩放后的图片高
+			
 			final int height = NumberUtil.mul((Number) srcImg.getHeight(null), scale).intValue();
 			scale(width, height);
 		}
@@ -277,15 +277,15 @@ public class Img implements Serializable {
 		final int srcHeight = srcImg.getHeight(null);
 		final int srcWidth = srcImg.getWidth(null);
 		if (srcHeight == height && srcWidth == width) {
-			// 源与目标长宽一致返回原图
+			
 			this.targetImage = srcImg;
 			return this;
 		}
 
 		if (ImgUtil.IMAGE_TYPE_PNG.equals(this.targetImageType)) {
-			// png特殊处理，借助AffineTransform可以实现透明度保留
-			final double sx = NumberUtil.div(width, srcWidth);// 宽度缩放比
-			final double sy = NumberUtil.div(height, srcHeight); // 高度缩放比
+			
+			final double sx = NumberUtil.div(width, srcWidth);
+			final double sy = NumberUtil.div(height, srcHeight); 
 			this.targetImage = ImgUtil.transform(AffineTransform.getScaleInstance(sx, sy),
 					ImgUtil.toBufferedImage(srcImg, this.targetImageType));
 		} else {
@@ -311,19 +311,19 @@ public class Img implements Serializable {
 		double heightRatio = NumberUtil.div(height, srcHeight);
 		double widthRatio = NumberUtil.div(width, srcWidth);
 
-		// 浮点数之间的等值判断,基本数据类型不能用==比较,包装数据类型不能用equals来判断。
+		
 		if (NumberUtil.equals(heightRatio, widthRatio)) {
-			// 长宽都按照相同比例缩放时，返回缩放后的图片
+			
 			scale(width, height);
 		} else if (widthRatio < heightRatio) {
-			// 宽缩放比例多就按照宽缩放
+			
 			scale(width, (int) (srcHeight * widthRatio));
 		} else {
-			// 否则按照高缩放
+			
 			scale((int) (srcWidth * heightRatio), height);
 		}
 
-		// 获取缩放后的新的宽和高
+		
 		srcImage = getValidSrcImg();
 		srcHeight = srcImage.getHeight(null);
 		srcWidth = srcImage.getWidth(null);
@@ -331,13 +331,13 @@ public class Img implements Serializable {
 		final BufferedImage image = new BufferedImage(width, height, getTypeInt());
 		Graphics2D g = image.createGraphics();
 
-		// 设置背景
+		
 		if (null != fixedColor) {
 			g.setBackground(fixedColor);
 			g.clearRect(0, 0, width, height);
 		}
 
-		// 在中间贴图
+		
 		g.drawImage(srcImage, (width - srcWidth) / 2, (height - srcHeight) / 2, srcWidth, srcHeight, fixedColor, null);
 
 		g.dispose();
@@ -386,7 +386,7 @@ public class Img implements Serializable {
 		final int width = srcImage.getWidth(null);
 		final int height = srcImage.getHeight(null);
 
-		// 计算直径
+		
 		final int diameter = radius > 0 ? radius * 2 : Math.min(width, height);
 		final BufferedImage targetImage = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
 		final Graphics2D g = targetImage.createGraphics();
@@ -414,13 +414,13 @@ public class Img implements Serializable {
 		final int width = srcImage.getWidth(null);
 		final int height = srcImage.getHeight(null);
 
-		// 通过弧度占比计算弧度
+		
 		arc = NumberUtil.mul(arc, Math.min(width, height));
 
 		final BufferedImage targetImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		final Graphics2D g2 = targetImage.createGraphics();
 		g2.setComposite(AlphaComposite.Src);
-		// 抗锯齿
+		
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.fill(new RoundRectangle2D.Double(0, 0, width, height, arc, arc));
 		g2.setComposite(AlphaComposite.SrcAtop);
@@ -481,25 +481,25 @@ public class Img implements Serializable {
 		final BufferedImage targetImage = ImgUtil.toBufferedImage(getValidSrcImg(), this.targetImageType);
 
 		if (null == font) {
-			// 默认字体
+			
 			font = FontUtil.createSansSerifFont((int) (targetImage.getHeight() * 0.75));
 		}
 
 		final Graphics2D g = targetImage.createGraphics();
-		// 透明度
+		
 		g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, alpha));
 
-		// 绘制
+		
 		if (positionBaseCentre) {
-			// 基于中心绘制
+			
 			GraphicsUtil.drawString(g, pressText, font, color,
 					new Rectangle(point.x, point.y, targetImage.getWidth(), targetImage.getHeight()));
 		} else {
-			// 基于左上角绘制
+			
 			GraphicsUtil.drawString(g, pressText, font, color, point);
 		}
 
-		// 收笔
+		
 		g.dispose();
 		this.targetImage = targetImage;
 
@@ -523,29 +523,29 @@ public class Img implements Serializable {
 		final BufferedImage targetImage = ImgUtil.toBufferedImage(getValidSrcImg(), this.targetImageType);
 
 		if (null == font) {
-			// 默认字体
+			
 			font = FontUtil.createSansSerifFont((int) (targetImage.getHeight() * 0.75));
 		}
 		final int targetHeight = targetImage.getHeight();
 		final int targetWidth = targetImage.getWidth();
 
-		// 创建画笔，并设置透明度和角度
+		
 		final Graphics2D g = targetImage.createGraphics();
 		g.setColor(color);
-		// 基于图片中心旋转
+		
 		g.rotate(Math.toRadians(degree), targetWidth >> 1, targetHeight >> 1);
 		g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, alpha));
 
-		//获取字符串本身的长宽
+		
 		Dimension dimension;
 		try {
 			dimension = FontUtil.getDimension(g.getFontMetrics(font), pressText);
 		} catch (Exception e) {
-			// 此处报告bug某些情况下会抛出IndexOutOfBoundsException，在此做容错处理
+			
 			dimension = new Dimension(targetWidth / 3, targetHeight / 3);
 		}
 		final int intervalHeight = dimension.height * lineHeight;
-		// 在画笔按照画布中心旋转后，达到45度时，上下左右会出现空白区，此处各延申长款的1.5倍实现全覆盖
+		
 		int y = -targetHeight >> 1;
 		while (y < targetHeight * 1.5) {
 			int x = -targetWidth >> 1;
@@ -594,7 +594,7 @@ public class Img implements Serializable {
 
 	/**
 	 * 旋转图片为指定角度<br>
-	 * 来自：http://blog.51cto.com/cping1982/130066
+	 * 来自：http:
 	 *
 	 * @param degree 旋转角度
 	 * @return 旋转后的图片
@@ -607,9 +607,9 @@ public class Img implements Serializable {
 		final Rectangle rectangle = calcRotatedSize(width, height, degree);
 		final BufferedImage targetImg = new BufferedImage(rectangle.width, rectangle.height, getTypeInt());
 		Graphics2D graphics2d = targetImg.createGraphics();
-		// 抗锯齿
+		
 		graphics2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		// 从中心旋转
+		
 		graphics2d.translate((rectangle.width - width) / 2D, (rectangle.height - height) / 2D);
 		graphics2d.rotate(Math.toRadians(degree), width / 2D, height / 2D);
 		graphics2d.drawImage(image, 0, 0, null);
@@ -724,7 +724,7 @@ public class Img implements Serializable {
 		}
 
 		if (targetFile.exists()) {
-			//noinspection ResultOfMethodCallIgnored
+			
 			targetFile.delete();
 		}
 
@@ -765,7 +765,7 @@ public class Img implements Serializable {
 	 * @see BufferedImage#TYPE_INT_RGB
 	 */
 	private int getTypeInt() {
-		//noinspection SwitchStatementWithTooFewBranches
+		
 		switch (this.targetImageType) {
 			case ImgUtil.IMAGE_TYPE_PNG:
 				return BufferedImage.TYPE_INT_ARGB;
@@ -806,7 +806,7 @@ public class Img implements Serializable {
 	private Rectangle fixRectangle(Rectangle rectangle, int baseWidth, int baseHeight) {
 		if (this.positionBaseCentre) {
 			final Point pointBaseCentre = ImgUtil.getPointBaseCentre(rectangle, baseWidth, baseHeight);
-			// 修正图片位置从背景的中心计算
+			
 			rectangle.setLocation(pointBaseCentre.x, pointBaseCentre.y);
 		}
 		return rectangle;
@@ -823,7 +823,7 @@ public class Img implements Serializable {
 	 */
 	private static Rectangle calcRotatedSize(int width, int height, int degree) {
 		if (degree < 0) {
-			// 负数角度转换为正数角度
+			
 			degree += 360;
 		}
 		if (degree >= 90) {
