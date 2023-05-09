@@ -267,7 +267,6 @@ public abstract class HttpBase<T> {
         this.headers.clear();
         return (T) this;
     }
-    // ---------------------------------------------------------------- Headers end
 
     /**
      * 返回http版本

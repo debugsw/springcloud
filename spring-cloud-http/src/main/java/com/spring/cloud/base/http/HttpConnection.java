@@ -102,23 +102,17 @@ public class HttpConnection {
      * @return 自己
      */
     public HttpConnection setMethod(Method method) {
-        if (Method.POST.equals(method) //
-                || Method.PUT.equals(method)//
-                || Method.PATCH.equals(method)//
-                || Method.DELETE.equals(method)) {
+        if (Method.POST.equals(method) || Method.PUT.equals(method)
+                || Method.PATCH.equals(method) || Method.DELETE.equals(method)) {
             this.conn.setUseCaches(false);
-
-            // 增加PATCH方法支持
             if (Method.PATCH.equals(method)) {
                 try {
                     HttpGlobalConfig.allowPatch();
                 } catch (Exception ignore) {
-                    // ignore
+
                 }
             }
         }
-
-        // method
         try {
             this.conn.setRequestMethod(method.toString());
         } catch (ProtocolException e) {
@@ -254,7 +248,6 @@ public class HttpConnection {
      */
     public HttpConnection setHttpsInfo(HostnameVerifier hostnameVerifier, SSLSocketFactory ssf) throws HttpException {
         final HttpURLConnection conn = this.conn;
-
         if (conn instanceof HttpsURLConnection) {
             // Https请求
             final HttpsURLConnection httpsConn = (HttpsURLConnection) conn;
@@ -262,7 +255,6 @@ public class HttpConnection {
             httpsConn.setHostnameVerifier(ObjectUtil.defaultIfNull(hostnameVerifier, DefaultSSLInfo.TRUST_ANY_HOSTNAME_VERIFIER));
             httpsConn.setSSLSocketFactory(ObjectUtil.defaultIfNull(ssf, DefaultSSLInfo.DEFAULT_SSF));
         }
-
         return this;
     }
 
@@ -301,7 +293,6 @@ public class HttpConnection {
         if (timeout > 0 && null != this.conn) {
             this.conn.setReadTimeout(timeout);
         }
-
         return this;
     }
 
@@ -433,17 +424,12 @@ public class HttpConnection {
         if (null == this.conn) {
             throw new IOException("HttpURLConnection has not been initialized.");
         }
-
         final Method method = getMethod();
-
-        // 当有写出需求时，自动打开之
         this.conn.setDoOutput(true);
         final OutputStream out = this.conn.getOutputStream();
-
         if (method == Method.GET && method != getMethod()) {
             reflectSetMethod(method);
         }
-
         return out;
     }
 

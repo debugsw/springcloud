@@ -108,7 +108,7 @@ public class ColorUtil {
 				final Integer r = Convert.toInt(rgb.get(0));
 				final Integer g = Convert.toInt(rgb.get(1));
 				final Integer b = Convert.toInt(rgb.get(2));
-				if (false == ArrayUtil.hasNull(r, g, b)) {
+				if (!ArrayUtil.hasNull(r, g, b)) {
 					return new Color(r, g, b);
 				}
 			} else {

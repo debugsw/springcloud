@@ -37,11 +37,9 @@ public enum GlobalHeaders {
         System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
         System.setProperty("jdk.tls.allowUnsafeServerCertChange", "true");
         System.setProperty("sun.security.ssl.allowUnsafeRenegotiation", "true");
-
         if (isReset) {
             this.headers.clear();
         }
-
         header(Header.ACCEPT, "text/html,application/json,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", true);
         header(Header.ACCEPT_ENCODING, "gzip, deflate", true);
         header(Header.ACCEPT_LANGUAGE, "zh-CN,zh;q=0.8", true);
@@ -73,7 +71,6 @@ public enum GlobalHeaders {
         if (StrUtil.isBlank(name)) {
             return null;
         }
-
         return headers.get(name.trim());
     }
 

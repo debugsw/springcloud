@@ -45,14 +45,11 @@ public class Calculator {
 			if (!isOperator(currentOp.charAt(0))) {
 				currentOp = currentOp.replace("~", "-");
 				resultStack.push(currentOp);
-			} else {// 如果是运算符则从操作数栈中取两个值和该数值一起参与运算
+			} else {
 				secondValue = resultStack.pop();
 				firstValue = resultStack.pop();
-
-				// 将负数标记符改为负号
 				firstValue = firstValue.replace("~", "-");
 				secondValue = secondValue.replace("~", "-");
-
 				final BigDecimal tempResult = calculate(firstValue, secondValue, currentOp.charAt(0));
 				resultStack.push(tempResult.toString());
 			}

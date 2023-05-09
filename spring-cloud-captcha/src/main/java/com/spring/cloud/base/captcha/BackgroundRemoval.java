@@ -32,12 +32,6 @@ public class BackgroundRemoval {
 
 	/**
 	 * 背景移除
-	 * 图片去底工具
-	 * 将 "纯色背景的图片" 还原成 "透明背景的图片"
-	 * 将纯色背景的图片转成矢量图
-	 * 取图片边缘的像素点和获取到的图片主题色作为要替换的背景色
-	 * 再加入一定的容差值,然后将所有像素点与该颜色进行比较
-	 * 发现相同则将颜色不透明度设置为0,使颜色完全透明.
 	 *
 	 * @param inputPath  要处理图片的路径
 	 * @param outputPath 输出图片的路径
@@ -50,12 +44,6 @@ public class BackgroundRemoval {
 
 	/**
 	 * 背景移除
-	 * 图片去底工具
-	 * 将 "纯色背景的图片" 还原成 "透明背景的图片"
-	 * 将纯色背景的图片转成矢量图
-	 * 取图片边缘的像素点和获取到的图片主题色作为要替换的背景色
-	 * 再加入一定的容差值,然后将所有像素点与该颜色进行比较
-	 * 发现相同则将颜色不透明度设置为0,使颜色完全透明.
 	 *
 	 * @param input     需要进行操作的图片
 	 * @param output    最后输出的文件
@@ -68,12 +56,6 @@ public class BackgroundRemoval {
 
 	/**
 	 * 背景移除
-	 * 图片去底工具
-	 * 将 "纯色背景的图片" 还原成 "透明背景的图片"
-	 * 将纯色背景的图片转成矢量图
-	 * 取图片边缘的像素点和获取到的图片主题色作为要替换的背景色
-	 * 再加入一定的容差值,然后将所有像素点与该颜色进行比较
-	 * 发现相同则将颜色不透明度设置为0,使颜色完全透明.
 	 *
 	 * @param input     需要进行操作的图片
 	 * @param output    最后输出的文件
@@ -98,12 +80,6 @@ public class BackgroundRemoval {
 
 	/**
 	 * 背景移除
-	 * 图片去底工具
-	 * 将 "纯色背景的图片" 还原成 "透明背景的图片"
-	 * 将纯色背景的图片转成矢量图
-	 * 取图片边缘的像素点和获取到的图片主题色作为要替换的背景色
-	 * 再加入一定的容差值,然后将所有像素点与该颜色进行比较
-	 * 发现相同则将颜色不透明度设置为0,使颜色完全透明.
 	 *
 	 * @param bufferedImage 需要进行处理的图片流
 	 * @param override      指定替换成的背景颜色 为null时背景为透明
@@ -127,7 +103,6 @@ public class BackgroundRemoval {
 		int alpha = 0;
 		for (int y = image.getMinY(); y < image.getHeight(); y++) {
 			for (int x = image.getMinX(); x < image.getWidth(); x++) {
-				// 获取像素的16进制
 				int rgb = image.getRGB(x, y);
 				String hex = ImgUtil.toHex((rgb & 0xff0000) >> 16, (rgb & 0xff00) >> 8, (rgb & 0xff));
 				boolean isTrue = ArrayUtil.contains(removeRgb, hex) ||
@@ -144,12 +119,6 @@ public class BackgroundRemoval {
 
 	/**
 	 * 背景移除
-	 * 图片去底工具
-	 * 将 "纯色背景的图片" 还原成 "透明背景的图片"
-	 * 将纯色背景的图片转成矢量图
-	 * 取图片边缘的像素点和获取到的图片主题色作为要替换的背景色
-	 * 再加入一定的容差值,然后将所有像素点与该颜色进行比较
-	 * 发现相同则将颜色不透明度设置为0,使颜色完全透明.
 	 *
 	 * @param outputStream 需要进行处理的图片字节数组流
 	 * @param override     指定替换成的背景颜色 为null时背景为透明

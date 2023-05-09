@@ -28,7 +28,7 @@ public class RocketMqHealthIndicator extends AbstractHealthIndicator {
     protected void doHealthCheck(Health.Builder builder) {
         final Serializable serializable = rocketActuateHandler.collectClusterNum();
         if (serializable instanceof String) {
-            //异常提示信息
+            
             builder.status(Status.DOWN);
             builder.withDetail("exception", serializable);
         } else if (serializable instanceof HashMap) {

@@ -31,19 +31,17 @@ public class AnimatedGifEncoder {
 	protected byte[] pixels;
 	protected byte[] indexedPixels;
 	protected int colorDepth;
-	protected byte[] colorTab; // RGB palette
-	protected boolean[] usedEntry = new boolean[256]; // active palette entries
-	protected int palSize = 7; // color table size (bits-1)
-	protected int dispose = -1; // disposal code (-1 = use default)
-	protected boolean closeStream = false; // close stream when finished
+	protected byte[] colorTab;
+	protected boolean[] usedEntry = new boolean[256];
+	protected int palSize = 7;
+	protected int dispose = -1;
+	protected boolean closeStream = false;
 	protected boolean firstFrame = true;
-	protected boolean sizeSet = false; // if false, get size from first frame
-	protected int sample = 10; // default sample interval for quantizer
+	protected boolean sizeSet = false;
+	protected int sample = 10;
 
 	/**
 	 * 设置每一帧的间隔时间
-	 * Sets the delay time between each frame, or changes it
-	 * for subsequent frames (applies to last frame added).
 	 *
 	 * @param ms 间隔时间，单位毫秒
 	 */
@@ -51,13 +49,6 @@ public class AnimatedGifEncoder {
 		delay = Math.round(ms / 10.0f);
 	}
 
-	/**
-	 * Sets the GIF frame disposal code for the last added frame
-	 * and any subsequent frames.  Default is 0 if no transparent
-	 * color has been set, otherwise 2.
-	 *
-	 * @param code int disposal code.
-	 */
 	public void setDispose(int code) {
 		if (code >= 0) {
 			dispose = code;
@@ -81,7 +72,6 @@ public class AnimatedGifEncoder {
 	}
 
 
-
 	public void setBackground(Color c) {
 		background = c;
 	}
@@ -93,26 +83,26 @@ public class AnimatedGifEncoder {
 		boolean ok = true;
 		try {
 			if (!sizeSet) {
-				// use first frame's size
+
 				setSize(im.getWidth(), im.getHeight());
 			}
 			image = im;
-			getImagePixels(); // convert to correct format if necessary
-			analyzePixels(); // build color table & map pixels
+			getImagePixels();
+			analyzePixels();
 			if (firstFrame) {
-				writeLSD(); // logical screen descriptior
-				writePalette(); // global color table
+				writeLSD();
+				writePalette();
 				if (repeat >= 0) {
-					// use NS app extension to indicate reps
+
 					writeNetscapeExt();
 				}
 			}
-			writeGraphicCtrlExt(); // write graphic control extension
-			writeImageDesc(); // image descriptor
+			writeGraphicCtrlExt();
+			writeImageDesc();
 			if (!firstFrame) {
-				writePalette(); // local color table
+				writePalette();
 			}
-			writePixels(); // encode and write pixel data
+			writePixels();
 			firstFrame = false;
 		} catch (IOException e) {
 			ok = false;
@@ -121,13 +111,6 @@ public class AnimatedGifEncoder {
 		return ok;
 	}
 
-	/**
-	 * Flushes any pending data and closes output file.
-	 * If writing to an OutputStream, the stream is not
-	 * closed.
-	 *
-	 * @return is ok
-	 */
 	public boolean finish() {
 		if (!started) {
 			return false;
@@ -144,7 +127,7 @@ public class AnimatedGifEncoder {
 			ok = false;
 		}
 
-		// reset for subsequent use
+
 		transIndex = 0;
 		out = null;
 		image = null;
@@ -157,12 +140,6 @@ public class AnimatedGifEncoder {
 		return ok;
 	}
 
-	/**
-	 * Sets frame rate in frames per second.  Equivalent to
-	 * {@code setDelay(1000/fps)}.
-	 *
-	 * @param fps float frame rate (frames per second)
-	 */
 	public void setFrameRate(float fps) {
 		if (fps != 0f) {
 			delay = Math.round(100f / fps);
@@ -234,7 +211,7 @@ public class AnimatedGifEncoder {
 			colorTab[i + 2] = temp;
 			usedEntry[i / 3] = false;
 		}
-		// map image pixels to new palette
+
 		int k = 0;
 		for (int i = 0; i < nPix; i++) {
 			int index =
@@ -292,7 +269,7 @@ public class AnimatedGifEncoder {
 		int len = colorTab.length / 3;
 		for (int index = 0; index < len; ++index) {
 			int i = index * 3;
-			// If the entry is used in colorTab, then check if it is the same exact color we're looking for
+
 			if (usedEntry[index] && r == (colorTab[i] & 0xff) && g == (colorTab[i + 1] & 0xff) && b == (colorTab[i + 2] & 0xff)) {
 				return index;
 			}
@@ -307,7 +284,7 @@ public class AnimatedGifEncoder {
 		if ((w != width)
 				|| (h != height)
 				|| (type != BufferedImage.TYPE_3BYTE_BGR)) {
-			// create new image with right size/format
+
 			BufferedImage temp =
 					new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 			Graphics2D g = temp.createGraphics();
@@ -320,32 +297,25 @@ public class AnimatedGifEncoder {
 	}
 
 	protected void writeGraphicCtrlExt() throws IOException {
-		out.write(0x21); // extension introducer
-		out.write(0xf9); // GCE label
-		out.write(4); // data block size
+		out.write(0x21);
+		out.write(0xf9);
+		out.write(4);
 		int transp, disp;
 		if (transparent == null) {
 			transp = 0;
-			disp = 0; // dispose = no action
+			disp = 0;
 		} else {
 			transp = 1;
-			disp = 2; // force clear if using transparent color
+			disp = 2;
 		}
 		if (dispose >= 0) {
-			disp = dispose & 7; // user override
+			disp = dispose & 7;
 		}
 		disp <<= 2;
-
-		// packed fields
-		//noinspection PointlessBitwiseExpression
-		out.write(0 | // 1:3 reserved
-				disp | // 4:6 disposal
-				0 | // 7   user input - 0 = none
-				transp); // 8   transparency flag
-
-		writeShort(delay); // delay x 1/100 sec
-		out.write(transIndex); // transparent color index
-		out.write(0); // block terminator
+		out.write(0 | disp | 0 | transp);
+		writeShort(delay);
+		out.write(transIndex);
+		out.write(0);
 	}
 
 	protected void writeImageDesc() throws IOException {
@@ -362,29 +332,22 @@ public class AnimatedGifEncoder {
 	}
 
 	protected void writeLSD() throws IOException {
-		// logical screen size
 		writeShort(width);
 		writeShort(height);
-		// packed fields
-		//noinspection PointlessBitwiseExpression
-		out.write((0x80 | // 1   : global color table flag = 1 (gct used)
-				0x70 | // 2-4 : color resolution = 7
-				0x00 | // 5   : gct sort flag = 0
-				palSize)); // 6-8 : gct size
-
-		out.write(0); // background color index
-		out.write(0); // pixel aspect ratio - assume 1:1
+		out.write((0x80 | 0x70 | 0x00 | palSize));
+		out.write(0);
+		out.write(0);
 	}
 
 	protected void writeNetscapeExt() throws IOException {
-		out.write(0x21); // extension introducer
-		out.write(0xff); // app extension label
-		out.write(11); // block size
-		writeString("NETSCAPE" + "2.0"); // app id + auth code
-		out.write(3); // sub-block size
-		out.write(1); // loop sub-block id
-		writeShort(repeat); // loop count (extra iterations, 0=repeat forever)
-		out.write(0); // block terminator
+		out.write(0x21);
+		out.write(0xff);
+		out.write(11);
+		writeString("NETSCAPE" + "2.0");
+		out.write(3);
+		out.write(1);
+		writeShort(repeat);
+		out.write(0);
 	}
 
 	protected void writePalette() throws IOException {
