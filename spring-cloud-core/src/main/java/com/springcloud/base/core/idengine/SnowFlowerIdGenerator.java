@@ -17,17 +17,17 @@ public class SnowFlowerIdGenerator {
      * Start time intercept (Thu, 04 Nov 2010 01:42:54 GMT)
      */
     public static final long EPOCH = 1288834974657L;
-    // 序列所占位数
+    
     private static final long SEQUENCE_BITS = 12L;
-    // workerId所占位数
+    
     private static final long WORKER_ID_BITS = 10L;
-    // 序列掩码（111111111111B = 4095）
+    
     private static final long SEQUENCE_MASK = 4095L;
-    // workerId左边共12位（序列号）
+    
     private static final long WORKER_ID_LEFT_SHIFT_BITS = 12L;
-    // 时间戳左边共22位（序列号+workerId）
+    
     private static final long TIMESTAMP_LEFT_SHIFT_BITS = 22L;
-    // 工作机器ID最大值1024
+    
     private static final long WORKER_ID_MAX_VALUE = 1024L;
     private long workerId;
     private long sequence;

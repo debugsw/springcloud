@@ -11,18 +11,18 @@ import java.util.List;
  */
 @Data
 public class RoleInfoModel {
-    //ID
+    
     private String id;
 
-    //角色编码
+    
     private String code;
 
-    //角色名称
+    
     private String name;
 
-    //角色拥有的资源
+    
     private List<ResourceInfoModel> resourceInfo;
 
-    //角色拥有的组织机构
+    
     private List<OrgInfoModel> orgInfo;
 }

@@ -12,7 +12,7 @@ public class IdGen {
     private static final SnowFlowerIdGenerator SNOW_FLOWER_ID_GENERATOR;
 
     static {
-        // 默认设置雪花算法的workerId为0
+
         SNOW_FLOWER_ID_GENERATOR = new SnowFlowerIdGenerator();
         SNOW_FLOWER_ID_GENERATOR.initialize(RandomUtil.randomInt(0, 1024));
     }

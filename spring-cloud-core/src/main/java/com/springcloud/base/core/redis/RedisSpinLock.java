@@ -57,16 +57,16 @@ public class RedisSpinLock {
      */
     public Boolean lock(long timeout, long sleepTime, int retryTimes) {
 
-        // 如果重试为小于等于0 那么则设置为1
-        // 只会进行重试一次
+        
+        
         retryTimes = retryTimes <= 0 ? 1 : retryTimes;
 
-        // 如果已经持有锁，先释放锁
+        
         if (this.handleLock) {
             this.unLock();
         }
 
-        // 默认没有拿到锁
+        
         this.handleLock = false;
         this.redisLockValue = UUID.randomUUID().toString();
 
@@ -78,10 +78,10 @@ public class RedisSpinLock {
                 return true;
             }
 
-            // 如果睡眠时间为0 那么则不进行睡眠
-            // 如果已经是最后一次获取那么也不进行自旋
+            
+            
             if (sleepTime != 0 && i < retryTimes - 1) {
-                // 自旋操作
+                
                 try {
                     log.debug("第{}次获取自旋锁失败，进入睡眠，睡眠时间{}ms,key:{}", i + 1, sleepTime, this.redisLockKey);
                     Thread.sleep(sleepTime);
@@ -89,7 +89,7 @@ public class RedisSpinLock {
                 }
             }
         }
-        // 超过retryTimes之后 说明获取获取锁失败
+        
         log.warn("自旋结束，获取redis自旋锁失败key : {}", this.redisLockKey);
         return false;
     }

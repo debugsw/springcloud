@@ -46,7 +46,7 @@ public class WebApiExceptionHandler {
     @ResponseBody
     @ExceptionHandler({RuntimeException.class, Exception.class})
     public ResponseEntity<Result<?>> exceptionHandler(Exception exception) {
-        // 这种异常是开发者始料未及的异常，一般会做日志记录。
+        
         log.error("【未知错误】：" + exception.getMessage(), exception);
         return this.wrapperResponseEntity(
                 this.wrapErrorInfo(
@@ -59,7 +59,7 @@ public class WebApiExceptionHandler {
     @ResponseBody
     @ExceptionHandler({DefaultException.class})
         public ResponseEntity<Result<?>> defaultException(DefaultException defaultException) {
-            // 这种异常都是业务异常，又开发者自行曝出，所以直接返回给调用者
+            
             log.warn("【异常警告】：" + defaultException.getMessage(), defaultException);
             return this.wrapperResponseEntity(
                     this.wrapErrorInfo(
@@ -73,7 +73,7 @@ public class WebApiExceptionHandler {
     @ExceptionHandler({MissingServletRequestParameterException.class})
     public ResponseEntity<Result<?>> missingServletRequestParameterException(MissingServletRequestParameterException
                                                                                      missingServletRequestParameterException) {
-        // 参数验证异常
+        
         log.debug(missingServletRequestParameterException.getMessage());
         return this.wrapperResponseEntity(
                 this.wrapErrorInfo(
@@ -83,29 +83,29 @@ public class WebApiExceptionHandler {
         );
     }
 
-//    @ResponseBody
-//    @ExceptionHandler({FeignOptionalDecoder.RemoteFeignDecoderException.class})
-//    public ResponseEntity<Result<?>> feignRemoteException(FeignOptionalDecoder.RemoteFeignDecoderException
-//                                                                  remoteFeignDecoderException) {
-//
-//        if (remoteFeignDecoderException.getCause() instanceof DefaultException) {
-//            log.error("【异常警告】：" + remoteFeignDecoderException.getCause().getMessage(), remoteFeignDecoderException.getCause());
-//            return this.wrapperResponseEntity(
-//                    this.wrapErrorInfo(
-//                            Result.error(remoteFeignDecoderException.getCause().getMessage()),
-//                            (DefaultException) remoteFeignDecoderException.getCause()
-//                    )
-//            );
-//        } else {
-//            log.error("【异常警告】：" + remoteFeignDecoderException.getMessage(), remoteFeignDecoderException);
-//            return this.wrapperResponseEntity(
-//                    this.wrapErrorInfo(
-//                            Result.error("系统内部错误，管理员正在修复。"),
-//                            remoteFeignDecoderException
-//                    )
-//            );
-//        }
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 将错误异常包装

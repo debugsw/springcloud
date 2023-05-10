@@ -10,16 +10,16 @@ import lombok.Data;
 @Data
 public class DeptInfoModel {
 
-    //ID
+    
     private String id;
 
-    //编号
+    
     private String code;
 
-    //组织名称
+    
     private String name;
 
-    //父级ID，默认O就是顶层
+    
     private String parentId;
 
 }

@@ -18,7 +18,7 @@ public class RandomUtils {
     public static String random(int length) {
         StringBuilder sb = new StringBuilder();
         for (int j = 0; j < length; j++) {
-            //生成一个30-39之间的int类型整数--为了生成数字
+            
             int intValN = (int) (Math.random() * 10 + 48);
             sb.append((char) intValN);
         }
@@ -34,11 +34,11 @@ public class RandomUtils {
     public static String randomString(int length) {
         StringBuilder sb = new StringBuilder();
         for (int j = 0; j < length; j++) {
-            //生成一个97-122之间的int类型整数--为了生成小写字母
+            
             int intValL = (int) (Math.random() * 26 + 97);
-            //生成一个65-90之间的int类型整数--为了生成大写字母
+            
             int intValU = (int) (Math.random() * 26 + 65);
-            //生成一个30-39之间的int类型整数--为了生成数字
+            
             int intValN = (int) (Math.random() * 10 + 48);
 
             int intVal = 0;

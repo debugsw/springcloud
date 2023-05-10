@@ -50,7 +50,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      */
     private String currencyValue;
 
-    // 构造器 ====================================================
 
     /**
      * 缺省构造器。
@@ -215,7 +214,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      */
     public MultiCurrencyMoney(double amount, Currency currency) {
         this.setCurrency(currency);
-        //      this.cent = Math.round(amount * getCentFactor());        
+
         this.cent = Math.round(CheckOverflow.doubleCheckedMultiply(amount, getCentFactor()));
     }
 
@@ -231,7 +230,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      */
     public MultiCurrencyMoney(double amount, String currencyValue) {
         this.setCurrencyValue(currencyValue);
-        //       this.cent = Math.round(amount * getCentFactor());
+
         this.cent = Math.round(CheckOverflow.doubleCheckedMultiply(amount, getCentFactor()));
 
     }
@@ -328,7 +327,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
                 roundingMode);
     }
 
-    // Bean方法 ====================================================
 
     /**
      * 获取本货币对象代表的金额数。
@@ -376,7 +374,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
         return CENT_FACTORS[currency.getDefaultFractionDigits()];
     }
 
-    // 基本对象方法 ===================================================
 
     /**
      * 判断本货币对象与另一对象是否相等。
@@ -437,7 +434,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
         return new MultiCurrencyMoney(this.getAmount(), this.getCurrencyValue());
     }
 
-    // Comparable接口 ========================================
 
     /**
      * 货币比较。
@@ -482,7 +478,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
         return compareTo(other) > 0;
     }
 
-    // 货币算术 ==========================================
 
     /**
      * 货币加法。
@@ -499,7 +494,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
     public MultiCurrencyMoney add(MultiCurrencyMoney other) {
         assertSameCurrencyAs(other);
 
-        //        return newMoneyWithSameCurrency(  cent + other.cent);
+
         return newMoneyWithSameCurrency(CheckOverflow.longCheckedAdd(cent, other.cent));
     }
 
@@ -536,7 +531,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
     public MultiCurrencyMoney subtract(MultiCurrencyMoney other) {
         assertSameCurrencyAs(other);
 
-        //       return newMoneyWithSameCurrency(cent - other.cent);
+
         return newMoneyWithSameCurrency(CheckOverflow.longCheckedSubtract(cent, other.cent));
     }
 
@@ -695,7 +690,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      * @return 相除后的结果。
      */
     public MultiCurrencyMoney divide(double val) {
-        //  return newMoneyWithSameCurrency(Math.round(cent / val));
+
         return this.divide(new BigDecimal(val));
     }
 
@@ -710,7 +705,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      * @return 累除后的结果。
      */
     public MultiCurrencyMoney divideBy(double val) {
-        //   this.cent = Math.round(this.cent / val);
+
         return this.divideBy(new BigDecimal(val));
     }
 
@@ -847,7 +842,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
         return results;
     }
 
-    // 格式化方法 =================================================
 
     /**
      * 生成本对象的缺省字符串表示。
@@ -876,7 +870,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      */
     public void setCurrency(Currency currency) {
 
-        //所支持的币种类
+
         CurrencyEnum supportCurrency = CurrencyEnum.getByCurrencyCode(currency.getCurrencyCode());
 
         if (null == supportCurrency) {
@@ -906,16 +900,16 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
 
         CurrencyEnum supportCurrency = null;
 
-        //防止数据库存储为空的数据错误创建对象
+
         if (StringUtils.isBlank(currencyValue)) {
             this.currencyValue = null;
             this.currency = null;
         } else {
 
-            //默认：根据币种值转换【999，156】
+
             supportCurrency = CurrencyEnum.getByCurrencyValue(currencyValue);
 
-            //兼容老支付系统数据格式【999，CNY】
+
             if (null == supportCurrency) {
                 supportCurrency = CurrencyEnum.getByCurrencyCode(currencyValue);
             }
@@ -949,7 +943,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
         return this.currency.getCurrencyCode();
     }
 
-    // 内部方法 ===================================================
 
     /**
      * 断言本货币对象与另一货币对象是否具有相同的币种。
@@ -993,7 +986,6 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
         return money;
     }
 
-    // 调试方式 ==================================================
 
     /**
      * 生成本对象内部变量的字符串表示，用于调试。

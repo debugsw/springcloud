@@ -10,25 +10,25 @@ import lombok.Data;
 @Data
 public class UserInfoModel {
 
-    //用户ID
+    
     private String id;
 
-    //帐号
+    
     private String username;
 
-    //昵称
+    
     private String nickname;
 
-    //绑定手机号
+    
     private String mobile;
 
-    //性别 1 男 2 女
+    
     private Integer gender;
 
-    //组织机构ID
+    
     private String deptId;
 
-    //组织机构Code
+    
     private DeptInfoModel deptInfo;
 
 }
