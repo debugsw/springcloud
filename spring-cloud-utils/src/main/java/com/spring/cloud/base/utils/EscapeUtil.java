@@ -14,26 +14,15 @@ public class EscapeUtil {
 	 * 不转义的符号编码
 	 */
 	private static final String NOT_ESCAPE_CHARS = "*@-_+./";
-	private static final Filter<Character> JS_ESCAPE_FILTER = c -> false == (
-			Character.isDigit(c)
-					|| Character.isLowerCase(c)
-					|| Character.isUpperCase(c)
-					|| StrUtil.contains(NOT_ESCAPE_CHARS, c)
-	);
+
+	private static final Filter<Character> JS_ESCAPE_FILTER
+			= c -> false == (Character.isDigit(c) || Character.isLowerCase(c) || Character.isUpperCase(c) || StrUtil.contains(NOT_ESCAPE_CHARS, c));
 
 	/**
-	 * 转义XML中的特殊字符<br>
-	 * <pre>
-	 * 	 &amp; (ampersand) 替换为 &amp;amp;
-	 * 	 &lt; (less than) 替换为 &amp;lt;
-	 * 	 &gt; (greater than) 替换为 &amp;gt;
-	 * 	 &quot; (double quote) 替换为 &amp;quot;
-	 * 	 ' (single quote / apostrophe) 替换为 &amp;apos;
-	 * </pre>
+	 * 转义XML中的特殊字符
 	 *
 	 * @param xml XML文本
 	 * @return 转义后的文本
-	 *
 	 */
 	public static String escapeXml(CharSequence xml) {
 		XmlEscape escape = new XmlEscape();
@@ -67,7 +56,7 @@ public class EscapeUtil {
 	 *
 	 * @param html HTML文本
 	 * @return 转义后的文本
-	 * 
+	 *
 	 */
 	public static String unescapeHtml4(CharSequence html) {
 		Html4Unescape unescape = new Html4Unescape();
@@ -75,9 +64,7 @@ public class EscapeUtil {
 	}
 
 	/**
-	 * Escape编码（Unicode）（等同于JS的escape()方法）<br>
-	 * 该方法不会对 ASCII 字母和数字进行编码，也不会对下面这些 ASCII 标点符号进行编码： * @ - _ + . / <br>
-	 * 其他所有的字符都会被转义序列替换。
+	 * Escape编码（Unicode）（等同于JS的escape()方法）
 	 *
 	 * @param content 被转义的内容
 	 * @return 编码后的字符串
@@ -87,8 +74,7 @@ public class EscapeUtil {
 	}
 
 	/**
-	 * Escape编码（Unicode）<br>
-	 * 该方法不会对 ASCII 字母和数字进行编码。其他所有的字符都会被转义序列替换。
+	 * Escape编码（Unicode）
 	 *
 	 * @param content 被转义的内容
 	 * @return 编码后的字符串
@@ -98,8 +84,7 @@ public class EscapeUtil {
 	}
 
 	/**
-	 * Escape编码（Unicode）<br>
-	 * 该方法不会对 ASCII 字母和数字进行编码。其他所有的字符都会被转义序列替换。
+	 * Escape编码（Unicode）
 	 *
 	 * @param content 被转义的内容
 	 * @param filter  编码过滤器，对于过滤器中accept为false的字符不做编码
@@ -109,12 +94,11 @@ public class EscapeUtil {
 		if (StrUtil.isEmpty(content)) {
 			return StrUtil.str(content);
 		}
-
 		final StringBuilder tmp = new StringBuilder(content.length() * 6);
 		char c;
 		for (int i = 0; i < content.length(); i++) {
 			c = content.charAt(i);
-			if (false == filter.accept(c)) {
+			if (!filter.accept(c)) {
 				tmp.append(c);
 			} else if (c < 256) {
 				tmp.append("%");
@@ -144,7 +128,6 @@ public class EscapeUtil {
 		if (StrUtil.isBlank(content)) {
 			return content;
 		}
-
 		StringBuilder tmp = new StringBuilder(content.length());
 		int lastPos = 0;
 		int pos;
