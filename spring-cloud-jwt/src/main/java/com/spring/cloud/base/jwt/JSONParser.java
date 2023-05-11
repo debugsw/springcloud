@@ -67,7 +67,7 @@ public class JSONParser {
 					key = tokener.nextValue().toString();
 			}
 
-			// The key is followed by ':'.
+			
 
 			c = tokener.nextClean();
 			if (c != ':') {
@@ -76,14 +76,14 @@ public class JSONParser {
 
 			jsonObject.set(key, tokener.nextValue(), filter, jsonObject.getConfig().isCheckDuplicate());
 
-			// Pairs are separated by ','.
+			
 
 			switch (tokener.nextClean()) {
 				case ';':
 				case ',':
 					if (tokener.nextClean() == '}') {
-						// issue#2380
-						// 尾后逗号（Trailing Commas），JSON中虽然不支持，但是ECMAScript 2017支持，此处做兼容。
+						
+						
 						return;
 					}
 					tokener.back();
@@ -133,5 +133,5 @@ public class JSONParser {
 			}
 		}
 	}
-	// endregion
+	
 }

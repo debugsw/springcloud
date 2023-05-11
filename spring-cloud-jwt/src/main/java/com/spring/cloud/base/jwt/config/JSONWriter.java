@@ -115,12 +115,12 @@ public class JSONWriter extends Writer {
 	 * @return this
 	 */
 	public JSONWriter end() {
-		// 换行缩进
+		
 		writeLF().writeSpace(indent);
 		writeRaw(arrayMode ? CharUtil.BRACKET_END : CharUtil.DELIM_END);
 		flush();
 		arrayMode = false;
-		// 当前对象或数组结束，当新的
+		
 		needSeparator = true;
 		return this;
 	}
@@ -135,7 +135,7 @@ public class JSONWriter extends Writer {
 		if (needSeparator) {
 			writeRaw(CharUtil.COMMA);
 		}
-		// 换行缩进
+		
 		writeLF().writeSpace(indentFactor + indent);
 		return writeRaw(JSONUtil.quote(key));
 	}
@@ -184,7 +184,7 @@ public class JSONWriter extends Writer {
 
 		if (null == filter || filter.accept(pair)) {
 			if (false == arrayMode) {
-				// JSONArray只写值，JSONObject写键值对
+				
 				writeKey(StrUtil.toString(pair.getKey()));
 			}
 			return writeValueDirect(pair.getValue(), filter);
@@ -223,7 +223,7 @@ public class JSONWriter extends Writer {
 			if (needSeparator) {
 				writeRaw(CharUtil.COMMA);
 			}
-			// 换行缩进
+			
 			writeLF().writeSpace(indentFactor + indent);
 		} else {
 			writeRaw(CharUtil.COLON).writeSpace(1);
@@ -256,7 +256,7 @@ public class JSONWriter extends Writer {
 		} else if (value instanceof Number) {
 			writeNumberValue((Number) value);
 		} else if (value instanceof Date || value instanceof Calendar || value instanceof TemporalAccessor) {
-			// issue#2572@Github
+			
 			if (value instanceof MonthDay) {
 				writeStrValue(value.toString());
 				return this;
@@ -283,7 +283,7 @@ public class JSONWriter extends Writer {
 	 * @param number 数字
 	 */
 	private void writeNumberValue(Number number) {
-		// since 5.6.2可配置是否去除末尾多余0，例如如果为true,5.0返回5
+		
 		final boolean isStripTrailingZeros = null == config || config.isStripTrailingZeros();
 		writeRaw(NumberUtil.toStr(number, isStripTrailingZeros));
 	}
@@ -409,11 +409,11 @@ public class JSONWriter extends Writer {
 					|| GlobalCustomFormat.FORMAT_MILLISECONDS.equals(format)) {
 				return dateStr;
 			}
-			//用户定义了日期格式
+			
 			return JSONUtil.quote(dateStr);
 		}
 
-		//默认使用时间戳
+		
 		long timeMillis;
 		if (dateObj instanceof TemporalAccessor) {
 			timeMillis = TemporalAccessorUtil.toEpochMilli((TemporalAccessor) dateObj);

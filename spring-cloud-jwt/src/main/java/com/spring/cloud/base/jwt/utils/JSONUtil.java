@@ -206,11 +206,11 @@ public class JSONUtil {
 			final String jsonStr = StrUtil.trim((CharSequence) obj);
 			json = isTypeJSONArray(jsonStr) ? parseArray(jsonStr, config) : parseObj(jsonStr, config);
 		} else if (obj instanceof MapWrapper) {
-			// MapWrapper实现了Iterable会被当作JSONArray，此处做修正
+			
 			json = parseObj(obj, config);
 		} else if (obj instanceof Iterable || obj instanceof Iterator || ArrayUtil.isArray(obj)) {
 			json = parseArray(obj, config);
-		} else {// 对象
+		} else {
 			json = parseObj(obj, config);
 		}
 
@@ -568,7 +568,7 @@ public class JSONUtil {
 		try {
 			return quote(string, sw, isWrap).toString();
 		} catch (IOException ignored) {
-			// will never happen - we are writing to a string writer
+			
 			return StrUtil.EMPTY;
 		}
 	}
@@ -606,7 +606,7 @@ public class JSONUtil {
 			return writer;
 		}
 
-		char c; // 当前字符
+		char c; 
 		int len = str.length();
 		if (isWrap) {
 			writer.write('"');
@@ -675,38 +675,38 @@ public class JSONUtil {
 		}
 
 		try {
-			// fix issue#1399@Github
+			
 			if (object instanceof SQLException) {
 				return object.toString();
 			}
 
-			// JSONArray
+			
 			if (object instanceof Iterable || ArrayUtil.isArray(object)) {
 				return new JSONArray(object, jsonConfig);
 			}
-			// JSONObject
+			
 			if (object instanceof Map || object instanceof Map.Entry) {
 				return new JSONObject(object, jsonConfig);
 			}
 
-			// 日期类型原样保存，便于格式化
+			
 			if (object instanceof Date
 					|| object instanceof Calendar
 					|| object instanceof TemporalAccessor
 			) {
 				return object;
 			}
-			// 枚举类保存其字符串形式（4.0.2新增）
+			
 			if (object instanceof Enum) {
 				return object.toString();
 			}
 
-			// Java内部类不做转换
+			
 			if (ClassUtil.isJdkClass(object.getClass())) {
 				return object.toString();
 			}
 
-			// 默认按照JSONObject对待
+			
 			return new JSONObject(object, jsonConfig);
 		} catch (final Exception exception) {
 			return null;
@@ -873,11 +873,11 @@ public class JSONUtil {
 			case '\r':
 				return "\\r";
 			default:
-				if (c < StrUtil.C_SPACE || //
-						(c >= '\u0080' && c <= '\u00a0') || //
-						(c >= '\u2000' && c <= '\u2010') || //
-						(c >= '\u2028' && c <= '\u202F') || //
-						(c >= '\u2066' && c <= '\u206F')//
+				if (c < StrUtil.C_SPACE || 
+						(c >= '\u0080' && c <= '\u00a0') || 
+						(c >= '\u2000' && c <= '\u2010') || 
+						(c >= '\u2028' && c <= '\u202F') || 
+						(c >= '\u2066' && c <= '\u206F')
 				) {
 					return HexUtil.toUnicodeHex(c);
 				} else {

@@ -55,16 +55,16 @@ public class JSONXMLSerializer {
 		final StringBuilder sb = new StringBuilder();
 		if (object instanceof JSONObject) {
 
-			// Emit <tagName>
+			
 			appendTag(sb, tagName, false);
 
-			// Loop thru the keys.
+			
 			((JSONObject) object).forEach((key, value) -> {
 				if (ArrayUtil.isArray(value)) {
 					value = new JSONArray(value);
 				}
 
-				// Emit content in body
+				
 				if (ArrayUtil.contains(contentKeys, key)) {
 					if (value instanceof JSONArray) {
 						int i = 0;
@@ -93,7 +93,7 @@ public class JSONXMLSerializer {
 				}
 			});
 
-			// Emit the </tagname> close tag
+			
 			appendTag(sb, tagName, true);
 			return sb.toString();
 		}
@@ -104,9 +104,9 @@ public class JSONXMLSerializer {
 
 		if (object instanceof JSONArray) {
 			for (Object val : (JSONArray) object) {
-				// XML does not have good support for arrays. If an array
-				// appears in a place where XML is lacking, synthesize an
-				// <array> element.
+				
+				
+				
 				sb.append(toXml(val, tagName == null ? "array" : tagName, contentKeys));
 			}
 			return sb.toString();

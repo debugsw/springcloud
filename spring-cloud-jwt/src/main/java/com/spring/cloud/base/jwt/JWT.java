@@ -105,7 +105,7 @@ public class JWT implements RegisteredPayload<JWT> {
      * @return this
      */
     public JWT setKey(byte[] key) {
-        // 检查头信息中是否有算法信息
+        
         final String claim = (String) this.header.getClaim(JWTHeader.ALGORITHM);
         if (StrUtil.isNotBlank(claim)) {
             return setSigner(JWTSignerUtil.createSigner(claim, key));
@@ -297,13 +297,13 @@ public class JWT implements RegisteredPayload<JWT> {
     public String sign(JWTSigner signer) {
         Assert.notNull(signer, () -> new JWTException("No Signer provided!"));
 
-        // 检查tye信息
+        
         final String type = (String) this.header.getClaim(JWTHeader.TYPE);
         if (StrUtil.isBlank(type)) {
             this.header.setClaim(JWTHeader.TYPE, "JWT");
         }
 
-        // 检查头信息中是否有算法信息
+        
         final String algorithm = (String) this.header.getClaim(JWTHeader.ALGORITHM);
         if (StrUtil.isBlank(algorithm)) {
             this.header.setClaim(JWTHeader.ALGORITHM,
@@ -345,7 +345,7 @@ public class JWT implements RegisteredPayload<JWT> {
             return false;
         }
 
-        // 校验时间字段
+        
         try {
             JWTValidator.of(this).validateDate(DateUtil.date(), leeway);
         } catch (ValidateException e) {
@@ -363,7 +363,7 @@ public class JWT implements RegisteredPayload<JWT> {
      */
     public boolean verify(JWTSigner signer) {
         if (null == signer) {
-            // 如果无签名器提供，默认认为是无签名JWT信息
+            
             signer = NoneJWTSigner.NONE;
         }
 

@@ -54,7 +54,7 @@ public class JWTSignerUtil {
 		return createSigner("HS512", key);
 	}
 
-	//------------------------------------------------------------------------- RSxxx
+	
 
 	/**
 	 * RS256(SHA256withRSA)签名器
@@ -86,7 +86,7 @@ public class JWTSignerUtil {
 		return createSigner("RS512", key);
 	}
 
-	//------------------------------------------------------------------------- ESxxx
+	
 
 	/**
 	 * ES256(SHA256withECDSA)签名器

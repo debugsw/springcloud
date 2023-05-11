@@ -63,14 +63,14 @@ public class BeanConverter<T> extends AbstractConverter<T> {
 				value instanceof ValueProvider ||
 				BeanUtil.isBean(value.getClass())) {
 			if (value instanceof Map && this.beanClass.isInterface()) {
-				// 将Map动态代理为Bean
+				
 				return MapProxy.create((Map<?, ?>) value).toProxyBean(this.beanClass);
 			}
 
-			//限定被转换对象类型
+			
 			return BeanCopier.create(value, ReflectUtil.newInstanceIfPossible(this.beanClass), this.beanType, this.copyOptions).copy();
 		} else if (value instanceof byte[]) {
-			// 尝试反序列化
+			
 			return ObjectUtil.deserialize((byte[]) value);
 		}
 

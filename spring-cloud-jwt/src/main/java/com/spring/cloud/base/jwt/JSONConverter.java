@@ -27,7 +27,7 @@ import java.util.Map;
 public class JSONConverter implements Converter<JSON> {
 
 	static {
-		// 注册到转换中心
+		
 		final ConverterRegistry registry = ConverterRegistry.getInstance();
 		registry.putCustom(JSON.class, JSONConverter.class);
 		registry.putCustom(JSONObject.class, JSONConverter.class);
@@ -75,7 +75,7 @@ public class JSONConverter implements Converter<JSON> {
 			return null;
 		}
 
-		// since 5.7.8，增加自定义Bean反序列化接口
+		
 		if (targetType instanceof Class) {
 			final Class<?> clazz = (Class<?>) targetType;
 			if (JSONBeanParser.class.isAssignableFrom(clazz)) {
@@ -86,7 +86,7 @@ public class JSONConverter implements Converter<JSON> {
 				target.parse(value);
 				return (T) target;
 			} else if (targetType == byte[].class && value instanceof CharSequence) {
-				// issue#I59LW4
+				
 				return (T) Base64.decode((CharSequence) value);
 			}
 		}
@@ -113,15 +113,15 @@ public class JSONConverter implements Converter<JSON> {
 		if (value instanceof JSON) {
 			final JSONDeserializer<?> deserializer = GlobalSerializeMapping.getDeserializer(targetType);
 			if (null != deserializer) {
-				//noinspection unchecked
+				
 				return (T) deserializer.deserialize((JSON) value);
 			}
 
-			// issue#2212@Github
-			// 在JSONObject转Bean时，读取JSONObject本身的配置文件
+			
+			
 			if (value instanceof JSONGetter
 					&& targetType instanceof Class
-					// Map.Entry特殊处理
+					
 					&& (!Map.Entry.class.isAssignableFrom((Class<?>) targetType)
 					&& BeanUtil.hasSetter((Class<?>) targetType))) {
 
@@ -136,8 +136,8 @@ public class JSONConverter implements Converter<JSON> {
 
 		if (null == targetValue && !ignoreError) {
 			if (StrUtil.isBlankIfStr(value)) {
-				// 对于传入空字符串的情况，如果转换的目标对象是非字符串或非原始类型，转换器会返回false。
-				// 此处特殊处理，认为返回null属于正常情况
+				
+				
 				return null;
 			}
 

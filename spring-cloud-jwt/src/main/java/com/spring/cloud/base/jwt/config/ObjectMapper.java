@@ -51,7 +51,7 @@ public class ObjectMapper {
 			return;
 		}
 
-		// 自定义序列化
+		
 		final JSONSerializer serializer = GlobalSerializeMapping.getSerializer(source.getClass());
 		if (serializer instanceof JSONObjectSerializer) {
 			serializer.serialize(jsonObject, source);
@@ -68,7 +68,7 @@ public class ObjectMapper {
 			final Map.Entry entry = (Map.Entry) source;
 			jsonObject.set(Convert.toStr(entry.getKey()), entry.getValue(), filter, jsonObject.getConfig().isCheckDuplicate());
 		} else if (source instanceof CharSequence) {
-			// 可能为JSON字符串
+			
 			mapFromStr((CharSequence) source, jsonObject, filter);
 		} else if (source instanceof Reader) {
 			mapFromTokener(new JSONTokener((Reader) source, jsonObject.getConfig()), jsonObject, filter);
@@ -77,10 +77,10 @@ public class ObjectMapper {
 		} else if (source instanceof byte[]) {
 			mapFromTokener(new JSONTokener(IoUtil.toStream((byte[]) source), jsonObject.getConfig()), jsonObject, filter);
 		} else if (source instanceof JSONTokener) {
-			// JSONTokener
+			
 			mapFromTokener((JSONTokener) source, jsonObject, filter);
 		} else if (source instanceof ResourceBundle) {
-			// JSONTokener
+			
 			mapFromResourceBundle((ResourceBundle) source, jsonObject, filter);
 		} else if (BeanUtil.isReadableBean(source.getClass())) {
 			mapFromBean(source, jsonObject);
@@ -103,10 +103,10 @@ public class ObjectMapper {
 
 		final JSONSerializer serializer = GlobalSerializeMapping.getSerializer(source.getClass());
 		if (null != serializer && JSONArray.class.equals(TypeUtil.getTypeArgument(serializer.getClass()))) {
-			// 自定义序列化
+			
 			serializer.serialize(jsonArray, source);
 		} else if (source instanceof CharSequence) {
-			// JSON字符串
+			
 			mapFromStr((CharSequence) source, jsonArray, filter);
 		} else if (source instanceof Reader) {
 			mapFromTokener(new JSONTokener((Reader) source, jsonArray.getConfig()), jsonArray, filter);
@@ -114,11 +114,11 @@ public class ObjectMapper {
 			mapFromTokener(new JSONTokener((InputStream) source, jsonArray.getConfig()), jsonArray, filter);
 		} else if (source instanceof byte[]) {
 			final byte[] bytesSource = (byte[]) source;
-			// 如果是普通的的byte[], 要避免下标越界
+			
 			if (bytesSource.length > 1 && '[' == bytesSource[0] && ']' == bytesSource[bytesSource.length - 1]) {
 				mapFromTokener(new JSONTokener(IoUtil.toStream(bytesSource), jsonArray.getConfig()), jsonArray, filter);
 			} else {
-				// 非标准的二进制流，则按照普通数组对待
+				
 				for (final byte b : bytesSource) {
 					jsonArray.add(b);
 				}
@@ -143,7 +143,7 @@ public class ObjectMapper {
 			Object next;
 			while (iter.hasNext()) {
 				next = iter.next();
-				// 检查循环引用
+				
 				if (next != source) {
 					jsonArray.addRaw(JSONUtil.wrap(next, config), filter);
 				}
@@ -178,7 +178,7 @@ public class ObjectMapper {
 	private static void mapFromStr(CharSequence source, JSONObject jsonObject, Filter<MutablePair<String, Object>> filter) {
 		final String jsonStr = StrUtil.trim(source);
 		if (StrUtil.startWith(jsonStr, '<')) {
-			// 可能为XML
+			
 			XML.toJSONObject(jsonObject, jsonStr, false);
 			return;
 		}

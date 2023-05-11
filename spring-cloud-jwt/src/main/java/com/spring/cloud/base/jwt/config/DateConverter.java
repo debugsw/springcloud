@@ -75,10 +75,10 @@ public class DateConverter extends AbstractConverter<Date> {
 		} else if (value instanceof Number) {
 			return wrap(((Number) value).longValue());
 		} else {
-			// 统一按照字符串处理
+			
 			final String valueStr = convertToStr(value);
-			final DateTime dateTime = StrUtil.isBlank(this.format) //
-					? DateUtil.parse(valueStr) //
+			final DateTime dateTime = StrUtil.isBlank(this.format) 
+					? DateUtil.parse(valueStr) 
 					: DateUtil.parse(valueStr, this.format);
 			if (null != dateTime) {
 				return wrap(dateTime);
@@ -95,7 +95,7 @@ public class DateConverter extends AbstractConverter<Date> {
 	 * @return 目标类型对象
 	 */
 	private java.util.Date wrap(DateTime date) {
-		// 返回指定类型
+		
 		if (java.util.Date.class == targetType) {
 			return date.toJdkDate();
 		}
@@ -123,11 +123,11 @@ public class DateConverter extends AbstractConverter<Date> {
 	 */
 	private java.util.Date wrap(long mills) {
 		if (GlobalCustomFormat.FORMAT_SECONDS.equals(this.format)) {
-			// Unix时间戳
+			
 			return DateUtil.date(mills * 1000);
 		}
 
-		// 返回指定类型
+		
 		if (java.util.Date.class == targetType) {
 			return new java.util.Date(mills);
 		}

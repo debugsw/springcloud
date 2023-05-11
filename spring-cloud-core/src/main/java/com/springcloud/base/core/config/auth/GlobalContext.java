@@ -4,7 +4,7 @@ package com.springcloud.base.core.config.auth;
 import com.springcloud.base.core.auth.JwtInfoModel;
 
 /**
- * @Author: Yangshan
+ * @Author: ls
  * @Date: 2020/4/28
  * @Description: 全局上下文
  **/

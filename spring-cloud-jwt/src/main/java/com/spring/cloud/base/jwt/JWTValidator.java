@@ -140,7 +140,7 @@ public class JWTValidator {
 		}
 
 		if (StrUtil.isEmpty(algorithmId)) {
-			// 可能无签名
+			
 			if (null == signer || signer instanceof NoneJWTSigner) {
 				return;
 			}
@@ -157,7 +157,7 @@ public class JWTValidator {
 					, algorithmId, algorithmIdInSigner);
 		}
 
-		// 通过算法验证签名是否正确
+		
 		if (false == jwt.verify(signer)) {
 			throw new ValidateException("Signature verification failed!");
 		}
@@ -181,21 +181,21 @@ public class JWTValidator {
 	 */
 	private static void validateDate(JWTPayload payload, Date now, long leeway) throws ValidateException {
 		if (null == now) {
-			// 默认当前时间
+			
 			now = DateUtil.date();
-			// truncate millis
+			
 			now.setTime(now.getTime() / 1000 * 1000);
 		}
 
-		// 检查生效时间（生效时间不能晚于当前时间）
+		
 		final Date notBefore = payload.getClaimsJson().getDate(JWTPayload.NOT_BEFORE);
 		validateNotAfter(JWTPayload.NOT_BEFORE, notBefore, now, leeway);
 
-		// 检查失效时间（失效时间不能早于当前时间）
+		
 		final Date expiresAt = payload.getClaimsJson().getDate(JWTPayload.EXPIRES_AT);
 		validateNotBefore(JWTPayload.EXPIRES_AT, expiresAt, now, leeway);
 
-		// 检查签发时间（签发时间不能晚于当前时间）
+		
 		final Date issueAt = payload.getClaimsJson().getDate(JWTPayload.ISSUED_AT);
 		validateNotAfter(JWTPayload.ISSUED_AT, issueAt, now, leeway);
 	}

@@ -82,12 +82,12 @@ public class JSONXMLParser {
 			return false;
 		} else if (token == XML.QUEST) {
 
-			// <?
+			
 			x.skipPast("?>");
 			return false;
 		} else if (token == XML.SLASH) {
 
-			// Close tag </
+			
 
 			token = x.nextToken();
 			if (name == null) {
@@ -104,7 +104,7 @@ public class JSONXMLParser {
 		} else if (token instanceof Character) {
 			throw x.syntaxError("Misshaped tag");
 
-			// Open tag <
+			
 
 		} else {
 			tagName = (String) token;
@@ -115,7 +115,7 @@ public class JSONXMLParser {
 					token = x.nextToken();
 				}
 
-				// attribute = value
+				
 				if (token instanceof String) {
 					string = (String) token;
 					token = x.nextToken();
@@ -131,7 +131,7 @@ public class JSONXMLParser {
 					}
 
 				} else if (token == XML.SLASH) {
-					// Empty tag <.../>
+					
 					if (x.nextToken() != XML.GT) {
 						throw x.syntaxError("Misshaped tag");
 					}
@@ -143,7 +143,7 @@ public class JSONXMLParser {
 					return false;
 
 				} else if (token == XML.GT) {
-					// Content, between <...> and </...>
+					
 					for (; ; ) {
 						token = x.nextContent();
 						if (token == null) {
@@ -158,7 +158,7 @@ public class JSONXMLParser {
 							}
 
 						} else if (token == XML.LT) {
-							// Nested element
+							
 							if (parse(x, jsonobject, tagName, keepStrings)) {
 								if (jsonobject.size() == 0) {
 									context.accumulate(tagName, "");

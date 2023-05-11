@@ -31,7 +31,7 @@ public class NumberWithFormat extends Number implements TypeConverter {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object convert(Type targetType, Object value) {
-		// 自定义日期格式
+
 		if (null != this.format && targetType instanceof Class) {
 			final Class<?> clazz = (Class<?>) targetType;
 			if (Date.class.isAssignableFrom(clazz)) {
@@ -42,10 +42,10 @@ public class NumberWithFormat extends Number implements TypeConverter {
 				return toString();
 			}
 
-			// 其他情况按照正常数字转换
+
 		}
 
-		// 按照正常数字转换
+
 		return Convert.convertWithCheck(targetType, this.number, null, false);
 	}
 

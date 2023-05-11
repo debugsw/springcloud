@@ -128,7 +128,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 
 	@Override
 	default Date getDate(K key, Date defaultValue) {
-		// 默认转换
+		
 		final Object obj = getObj(key);
 		if (JSONUtil.isNull(obj)) {
 			return defaultValue;
@@ -143,7 +143,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 		if (formatOps.isPresent()) {
 			final String format = formatOps.get();
 			if (StrUtil.isNotBlank(format)) {
-				// 用户指定了日期格式，获取日期属性时使用对应格式
+				
 				final String str = Convert.toStr(obj);
 				if (null == str) {
 					return defaultValue;
@@ -163,7 +163,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 	 * @return {@link LocalDateTime}
 	 */
 	default LocalDateTime getLocalDateTime(K key, LocalDateTime defaultValue) {
-		// 默认转换
+		
 		final Object obj = getObj(key);
 		if (JSONUtil.isNull(obj)) {
 			return defaultValue;
@@ -176,7 +176,7 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 		if (formatOps.isPresent()) {
 			final String format = formatOps.get();
 			if (StrUtil.isNotBlank(format)) {
-				// 用户指定了日期格式，获取日期属性时使用对应格式
+				
 				final String str = Convert.toStr(obj);
 				if (null == str) {
 					return defaultValue;

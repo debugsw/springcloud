@@ -387,11 +387,11 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	 * @return 替换的值，即之前的值
 	 */
 	public Object set(int index, Object element, Filter<MutablePair<Integer, Object>> filter) {
-		// 添加前置过滤，通过MutablePair实现过滤、修改键值对等
+		
 		if (null != filter) {
 			final MutablePair<Integer, Object> pair = new MutablePair<>(index, element);
 			if (filter.accept(pair)) {
-				// 使用修改后的值
+				
 				element = pair.getValue();
 			}
 		}
@@ -511,7 +511,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 
 		CollUtil.forEach(this, (value, index) -> jsonWriter.writeField(new MutablePair<>(index, value), filter));
 		jsonWriter.end();
-		// 此处不关闭Writer，考虑writer后续还需要填内容
+		
 		return writer;
 	}
 
@@ -530,7 +530,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	 * @return 是否加入成功
 	 */
 	public boolean addRaw(Object obj, Filter<Mutable<Object>> filter) {
-		// 添加前置过滤，通过MutablePair实现过滤、修改键值对等
+		
 		if (null != filter) {
 			final Mutable<Object> mutable = new MutableObj<>(obj);
 			if (filter.accept(mutable)) {
