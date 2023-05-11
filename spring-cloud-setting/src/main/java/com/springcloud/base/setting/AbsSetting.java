@@ -1,8 +1,8 @@
 package com.springcloud.base.setting;
 
-import com.spring.cloud.base.utils.BeanUtil;
+import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.Convert;
-import com.spring.cloud.base.utils.CopyOptions;
+import com.spring.cloud.base.utils.bean.CopyOptions;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.ValueProvider;

@@ -1,5 +1,7 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.bean;
 
+import com.spring.cloud.base.utils.Assert;
+import com.spring.cloud.base.utils.TypeUtil;
 import com.spring.cloud.base.utils.abstra.AbsCopier;
 import com.spring.cloud.base.utils.base.PropDesc;
 
@@ -48,37 +50,30 @@ public class BeanToBeanCopier<S, T> extends AbsCopier<S, T> {
 				// 字段空或不可读，跳过
 				return;
 			}
-
 			sFieldName = copyOptions.editFieldName(sFieldName);
 			// 对key做转换，转换后为null的跳过
 			if (null == sFieldName) {
 				return;
 			}
-
 			// 忽略不需要拷贝的 key,
 			if (false == copyOptions.testKeyFilter(sFieldName)) {
 				return;
 			}
-
 			// 检查目标字段可写性
 			final PropDesc tDesc = targetPropDescMap.get(sFieldName);
 			if (null == tDesc || false == tDesc.isWritable(this.copyOptions.transientSupport)) {
 				// 字段不可写，跳过之
 				return;
 			}
-
 			// 检查源对象属性是否过滤属性
 			Object sValue = sDesc.getValue(this.source);
 			if (false == copyOptions.testPropertyFilter(sDesc.getField(), sValue)) {
 				return;
 			}
-
 			// 获取目标字段真实类型并转换源值
 			final Type fieldType = TypeUtil.getActualType(this.targetType, tDesc.getFieldType());
-			//sValue = Convert.convertWithCheck(fieldType, sValue, null, this.copyOptions.ignoreError);
 			sValue = this.copyOptions.convertField(fieldType, sValue);
 			sValue = copyOptions.editFieldValue(sFieldName, sValue);
-
 			// 目标赋值
 			tDesc.setValue(this.target, sValue, copyOptions.ignoreNullValue, copyOptions.ignoreError, copyOptions.override);
 		});

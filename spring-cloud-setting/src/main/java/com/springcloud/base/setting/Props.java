@@ -2,6 +2,7 @@ package com.springcloud.base.setting;
 
 import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.base.ReflectUtil;
+import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.*;
 import com.spring.cloud.base.utils.str.StrUtil;

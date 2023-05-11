@@ -12,7 +12,7 @@ import com.spring.cloud.base.jwt.map.CaseInsensitiveTreeMap;
 import com.spring.cloud.base.utils.ArrayUtil;
 import com.spring.cloud.base.utils.CharUtil;
 import com.spring.cloud.base.utils.Convert;
-import com.spring.cloud.base.utils.CopyOptions;
+import com.spring.cloud.base.utils.bean.CopyOptions;
 import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.Filter;

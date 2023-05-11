@@ -2,6 +2,8 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.abstra.AbsCopier;
 import com.spring.cloud.base.utils.base.PropDesc;
+import com.spring.cloud.base.utils.bean.BeanUtil;
+import com.spring.cloud.base.utils.bean.CopyOptions;
 import com.spring.cloud.base.utils.interf.ValueProvider;
 
 import java.lang.reflect.Type;

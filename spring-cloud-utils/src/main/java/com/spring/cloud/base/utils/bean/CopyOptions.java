@@ -1,5 +1,9 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.bean;
 
+import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.Convert;
+import com.spring.cloud.base.utils.LambdaUtil;
 import com.spring.cloud.base.utils.crypto.Func1;
 import com.spring.cloud.base.utils.interf.TypeConverter;
 import com.spring.cloud.base.utils.map.Editor;
@@ -24,24 +28,24 @@ public class CopyOptions implements Serializable {
 	 * 限制的类或接口，必须为目标对象的实现接口或父类，用于限制拷贝的属性，例如一个类我只想复制其父类的一些属性，就可以将editable设置为父类<br>
 	 * 如果目标对象是Map，源对象是Bean，则作用于源对象上
 	 */
-	protected Class<?> editable;
+	public Class<?> editable;
 	/**
 	 * 是否忽略空值，当源对象的值为null时，true: 忽略而不注入此值，false: 注入null
 	 */
-	protected boolean ignoreNullValue;
+	public boolean ignoreNullValue;
 	/**
 	 * 属性过滤器，断言通过的属性才会被复制<br>
 	 * 断言参数中Field为源对象的字段对象,如果源对象为Map，使用目标对象，Object为源对象的对应值
 	 */
-	private BiPredicate<Field, Object> propertiesFilter;
+	public BiPredicate<Field, Object> propertiesFilter;
 	/**
 	 * 是否忽略字段注入错误
 	 */
-	protected boolean ignoreError;
+	public boolean ignoreError;
 	/**
 	 * 是否忽略字段大小写
 	 */
-	protected boolean ignoreCase;
+	public boolean ignoreCase;
 	/**
 	 * 字段属性编辑器，用于自定义属性转换规则，例如驼峰转下划线等<br>
 	 * 规则为，{@link Editor#edit(Object)}属性为源对象的字段名称或key，返回值为目标对象的字段名称或key
@@ -50,15 +54,15 @@ public class CopyOptions implements Serializable {
 	/**
 	 * 字段属性值编辑器，用于自定义属性值转换规则，例如null转""等
 	 */
-	protected BiFunction<String, Object, Object> fieldValueEditor;
+	public BiFunction<String, Object, Object> fieldValueEditor;
 	/**
 	 * 是否支持transient关键字修饰和@Transient注解，如果支持，被修饰的字段或方法对应的字段将被忽略。
 	 */
-	protected boolean transientSupport = true;
+	public boolean transientSupport = true;
 	/**
 	 * 是否覆盖目标值，如果不覆盖，会先读取目标对象的值，非{@code null}则写，否则忽略。如果覆盖，则不判断直接写
 	 */
-	protected boolean override = true;
+	public boolean override = true;
 
 	/**
 	 * 源对象和目标对象都是 {@code Map} 时, 需要忽略的源对象 {@code Map} key
@@ -68,7 +72,7 @@ public class CopyOptions implements Serializable {
 	/**
 	 * 自定义类型转换器，默认使用全局万能转换器转换
 	 */
-	protected TypeConverter converter = (type, value) -> {
+	public TypeConverter converter = (type, value) -> {
 		if (null == value) {
 			return null;
 		}
@@ -177,7 +181,7 @@ public class CopyOptions implements Serializable {
 	 * @param <R>   返回值类型
 	 * @param funcs 忽略的目标对象中属性列表，设置一个属性列表，不拷贝这些属性值
 	 * @return CopyOptions
-	 * 
+	 *
 	 */
 	@SuppressWarnings("unchecked")
 	public <P, R> CopyOptions setIgnoreProperties(Func1<P, R>... funcs) {
@@ -200,7 +204,7 @@ public class CopyOptions implements Serializable {
 	 * 设置忽略字段的注入错误
 	 *
 	 * @return CopyOptions
-	 * 
+	 *
 	 */
 	public CopyOptions ignoreError() {
 		return setIgnoreError(true);
@@ -221,7 +225,7 @@ public class CopyOptions implements Serializable {
 	 * 设置忽略字段的大小写
 	 *
 	 * @return CopyOptions
-	 * 
+	 *
 	 */
 	public CopyOptions ignoreCase() {
 		return setIgnoreCase(true);
@@ -246,7 +250,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param fieldNameEditor 字段属性编辑器，用于自定义属性转换规则，例如驼峰转下划线等
 	 * @return CopyOptions
-	 * 
+	 *
 	 */
 	public CopyOptions setFieldNameEditor(Editor<String> fieldNameEditor) {
 		this.fieldNameEditor = fieldNameEditor;
@@ -258,7 +262,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param fieldValueEditor 字段属性值编辑器，用于自定义属性值转换规则，例如null转""等
 	 * @return CopyOptions
-	 * 
+	 *
 	 */
 	public CopyOptions setFieldValueEditor(BiFunction<String, Object, Object> fieldValueEditor) {
 		this.fieldValueEditor = fieldValueEditor;
@@ -271,9 +275,8 @@ public class CopyOptions implements Serializable {
 	 * @param fieldName  字段名
 	 * @param fieldValue 字段值
 	 * @return 编辑后的字段值
-	 * 
 	 */
-	protected Object editFieldValue(String fieldName, Object fieldValue) {
+	public Object editFieldValue(String fieldName, Object fieldValue) {
 		return (null != this.fieldValueEditor) ?
 				this.fieldValueEditor.apply(fieldName, fieldValue) : fieldValue;
 	}
@@ -283,7 +286,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param transientSupport 是否支持
 	 * @return this
-	 * 
+	 *
 	 */
 	public CopyOptions setTransientSupport(boolean transientSupport) {
 		this.transientSupport = transientSupport;
@@ -295,7 +298,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param override 是否覆盖目标值
 	 * @return this
-	 * 
+	 *
 	 */
 	public CopyOptions setOverride(boolean override) {
 		this.override = override;
@@ -307,7 +310,7 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param converter 转换器
 	 * @return this
-	 * 
+	 *
 	 */
 	public CopyOptions setConverter(TypeConverter converter) {
 		this.converter = converter;
@@ -321,9 +324,8 @@ public class CopyOptions implements Serializable {
 	 * @param targetType 目标类型
 	 * @param fieldValue 字段值
 	 * @return 编辑后的字段值
-	 * 
 	 */
-	protected Object convertField(Type targetType, Object fieldValue) {
+	public Object convertField(Type targetType, Object fieldValue) {
 		return (null != this.converter) ?
 				this.converter.convert(targetType, fieldValue) : fieldValue;
 	}
@@ -333,9 +335,8 @@ public class CopyOptions implements Serializable {
 	 *
 	 * @param fieldName 字段名
 	 * @return 编辑后的字段名
-	 * 
 	 */
-	protected String editFieldName(String fieldName) {
+	public String editFieldName(String fieldName) {
 		return (null != this.fieldNameEditor) ? this.fieldNameEditor.edit(fieldName) : fieldName;
 	}
 
@@ -346,7 +347,7 @@ public class CopyOptions implements Serializable {
 	 * @param value 值
 	 * @return 是否保留
 	 */
-	protected boolean testPropertyFilter(Field field, Object value) {
+	public boolean testPropertyFilter(Field field, Object value) {
 		return null == this.propertiesFilter || this.propertiesFilter.test(field, value);
 	}
 
@@ -356,7 +357,7 @@ public class CopyOptions implements Serializable {
 	 * @param key {@link Map} key
 	 * @return 是否保留
 	 */
-	protected boolean testKeyFilter(Object key) {
+	public boolean testKeyFilter(Object key) {
 		return CollUtil.isEmpty(this.ignoreKeySet) || !this.ignoreKeySet.contains(key);
 	}
 }

@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.abstra;
 
 import com.spring.cloud.base.utils.interf.Copier;
-import com.spring.cloud.base.utils.CopyOptions;
+import com.spring.cloud.base.utils.bean.CopyOptions;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 
 /**
@@ -16,7 +16,7 @@ public abstract class AbsCopier<S, T> implements Copier<T> {
 	/**
 	 * 拷贝选项
 	 */
-	protected final CopyOptions copyOptions;
+	public final CopyOptions copyOptions;
 
 	public AbsCopier(S source, T target, CopyOptions copyOptions) {
 		this.source = source;

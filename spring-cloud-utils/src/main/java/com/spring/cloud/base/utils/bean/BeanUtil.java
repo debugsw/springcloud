@@ -1,5 +1,6 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.bean;
 
+import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.base.BeanDesc;
 import com.spring.cloud.base.utils.base.BeanDescCache;
 import com.spring.cloud.base.utils.base.BeanPath;

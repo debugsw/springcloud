@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.abstra.AbstractConverter;
 import com.spring.cloud.base.utils.base.ReflectUtil;
+import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.exception.ConvertException;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.map.Pair;

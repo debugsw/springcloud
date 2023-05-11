@@ -11,6 +11,7 @@ import com.spring.cloud.base.jwt.utils.JSONUtil;
 import com.spring.cloud.base.jwt.utils.MutablePair;
 import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.base.Mutable;
+import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.str.StrUtil;
 

@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.map.BiMap;

@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils.base;
 
 import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.list.ListUtil;
 import com.spring.cloud.base.utils.map.MapUtil;

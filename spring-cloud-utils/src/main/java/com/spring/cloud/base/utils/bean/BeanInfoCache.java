@@ -1,4 +1,4 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.bean;
 
 import com.spring.cloud.base.utils.map.Func0;
 import com.spring.cloud.base.utils.map.ReferenceConcurrentMap;

@@ -2,6 +2,7 @@ package com.springcloud.base.log.utils;
 
 import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.base.BeanPath;
+import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.map.BasicTypeGetter;
 import com.spring.cloud.base.utils.map.Func0;
 import com.spring.cloud.base.utils.map.Pair;

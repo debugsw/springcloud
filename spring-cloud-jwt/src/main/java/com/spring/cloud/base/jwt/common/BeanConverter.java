@@ -1,8 +1,8 @@
 package com.spring.cloud.base.jwt.common;
 
-import com.spring.cloud.base.utils.BeanCopier;
-import com.spring.cloud.base.utils.BeanUtil;
-import com.spring.cloud.base.utils.CopyOptions;
+import com.spring.cloud.base.utils.bean.BeanCopier;
+import com.spring.cloud.base.utils.bean.BeanUtil;
+import com.spring.cloud.base.utils.bean.CopyOptions;
 import com.spring.cloud.base.utils.TypeUtil;
 import com.spring.cloud.base.utils.abstra.AbstractConverter;
 import com.spring.cloud.base.utils.base.ReflectUtil;

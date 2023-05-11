@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.list;
 
-import com.spring.cloud.base.utils.BeanUtil;
+import com.spring.cloud.base.utils.bean.BeanUtil;
 
 /**
  * @Author: ls
