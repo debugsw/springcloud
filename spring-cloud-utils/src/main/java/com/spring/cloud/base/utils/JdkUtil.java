@@ -34,7 +34,7 @@ public class JdkUtil {
 
 		// JVM名称
 		final String jvmName = _getJvmName();
-		IS_ANDROID = jvmName.equals("Dalvik");
+		IS_ANDROID = "Dalvik".equals(jvmName);
 	}
 
 	/**
