@@ -17,6 +17,7 @@ import java.util.Map;
  */
 public class EntryConverter extends AbstractConverter<Map.Entry<?, ?>> {
 
+	private static final long serialVersionUID = -7561930541136429447L;
 	/**
 	 * Pair类型
 	 */

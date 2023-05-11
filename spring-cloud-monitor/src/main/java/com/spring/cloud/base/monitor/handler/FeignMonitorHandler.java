@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ClassUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -39,7 +38,7 @@ public class FeignMonitorHandler {
     @Getter
     private final MultiValueMap<String, String> urlMap = new LinkedMultiValueMap<>();
 
-    @Autowired(required = false)
+    @Resource
     private NacosMonitorHandler nacosHandler;
 
     @Resource

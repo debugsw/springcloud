@@ -10,4 +10,5 @@ import com.springcloud.base.core.vo.Vo;
  **/
 public class PageReceiveVo extends PageReceiveModel implements Vo {
 
+    private static final long serialVersionUID = 8243465679850662171L;
 }

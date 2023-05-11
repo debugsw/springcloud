@@ -34,6 +34,7 @@ public class MultiCurrencyMoney implements Serializable, Comparable<MultiCurrenc
      */
     private static final int[] CENT_FACTORS = new int[]{1, 10, 100, 1000, 10000,
             100000};
+    private static final long serialVersionUID = 6685309031489369301L;
 
     /**
      * 金额，以分为单位。

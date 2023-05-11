@@ -10,11 +10,13 @@ import com.springcloud.base.core.vo.Vo;
  **/
 public class PageResultVo<T> extends PageResultModel<T> implements Vo {
 
+    private static final long serialVersionUID = -7021302852971165750L;
+
     /**
      * 将 PageResultModel 转换为 PageResultVo;
      *
      * @param pageResultModel pageResultModel
-     * @param <S> 泛型对象
+     * @param <S>             泛型对象
      * @return PageResultVo
      */
     public static <S> PageResultVo<S> newInstance(PageResultModel<S> pageResultModel) {

@@ -9,6 +9,8 @@ import java.util.*;
  */
 public class ListValueMap<K, V> extends AbsCollValueMap<K, V, List<V>> {
 
+	private static final long serialVersionUID = 2143995220439567244L;
+
 	/**
 	 * 构造
 	 */

@@ -13,8 +13,12 @@ import lombok.EqualsAndHashCode;
 @Data
 public class DefaultException extends RuntimeException {
 
+    private static final long serialVersionUID = -3658390753852448234L;
+
     private String code;
+
     private String err;
+
     private Object data;
 
     public DefaultException(String code, String msg) {

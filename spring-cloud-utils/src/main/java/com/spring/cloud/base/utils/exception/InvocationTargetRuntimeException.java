@@ -7,6 +7,8 @@ package com.spring.cloud.base.utils.exception;
  */
 public class InvocationTargetRuntimeException extends UtilException {
 
+	private static final long serialVersionUID = 7956412770860499420L;
+
 	public InvocationTargetRuntimeException(Throwable e) {
 		super(e);
 	}

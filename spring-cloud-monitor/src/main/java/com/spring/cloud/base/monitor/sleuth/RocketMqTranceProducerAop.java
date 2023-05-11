@@ -9,8 +9,8 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.MDC;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
 import java.util.Objects;
 
 /**
@@ -22,9 +22,10 @@ import java.util.Objects;
 @Slf4j
 //@ConditionalOnSleuthWeb
 public class RocketMqTranceProducerAop {
-    @Autowired
+    @Resource
     private Tracer tracer;
-    @Autowired
+
+    @Resource
     private TelnetProperties telnetProperties;
 
     @Before("execution(* org.apache.rocketmq.client.producer.DefaultMQProducer.send*(..))")

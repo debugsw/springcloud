@@ -12,6 +12,8 @@ import java.util.concurrent.ConcurrentMap;
  */
 public class WeakConcurrentMap<K, V> extends ReferenceConcurrentMap<K, V> {
 
+	private static final long serialVersionUID = -3014181870820020845L;
+
 	/**
 	 * 构造
 	 */

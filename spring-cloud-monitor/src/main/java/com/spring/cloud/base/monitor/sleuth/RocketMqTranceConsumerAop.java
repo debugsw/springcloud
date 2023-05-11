@@ -7,7 +7,8 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.MDC;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.Resource;
 
 /**
  * @Author: ls
@@ -19,7 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 //sleuth 3.0.0后支持
 //@ConditionalOnSleuthWeb
 public class RocketMqTranceConsumerAop {
-    @Autowired
+
+    @Resource
     private TelnetProperties telnetProperties;
 
     @Before("execution(* org.apache.rocketmq.spring.core.RocketMQListener.onMessage(..))")
