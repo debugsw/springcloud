@@ -14,7 +14,6 @@ public abstract class SimpleIoAction implements IoAction<ByteBuffer> {
 	@Override
 	public void accept(AioSession session) {
 	}
-
 	@Override
 	public void failed(Throwable exc, AioSession session) {
 		StaticLog.error(exc);

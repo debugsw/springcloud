@@ -18,19 +18,15 @@ public class SocketRuntimeException extends RuntimeException {
 	public SocketRuntimeException(String message) {
 		super(message);
 	}
-
 	public SocketRuntimeException(String messageTemplate, Object... params) {
 		super(StrUtil.format(messageTemplate, params));
 	}
-
 	public SocketRuntimeException(String message, Throwable throwable) {
 		super(message, throwable);
 	}
-
 	public SocketRuntimeException(String message, Throwable throwable, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, throwable, enableSuppression, writableStackTrace);
 	}
-
 	public SocketRuntimeException(Throwable throwable, String messageTemplate, Object... params) {
 		super(StrUtil.format(messageTemplate, params), throwable);
 	}

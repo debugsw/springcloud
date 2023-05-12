@@ -24,12 +24,10 @@ import java.nio.channels.AsynchronousServerSocketChannel;
 public class AioServer implements Closeable {
 	private static final Log log = LogFactory.get();
 	private static final AcceptHandler ACCEPT_HANDLER = new AcceptHandler();
-
 	private AsynchronousChannelGroup group;
 	private AsynchronousServerSocketChannel channel;
 	protected IoAction<ByteBuffer> ioAction;
 	protected final SocketConfig config;
-
 
 	/**
 	 * 构造
@@ -59,9 +57,9 @@ public class AioServer implements Closeable {
 	 */
 	public AioServer init(InetSocketAddress address) {
 		try {
-			this.group = AsynchronousChannelGroup.withFixedThreadPool(//
-					config.getThreadPoolSize(), // 默认线程池大小
-					ThreadFactoryBuilder.create().setNamePrefix("SpringCloud-socket-").build()//
+			this.group = AsynchronousChannelGroup.withFixedThreadPool(
+					config.getThreadPoolSize(),
+					ThreadFactoryBuilder.create().setNamePrefix("SpringCloud-socket-").build()
 			);
 			this.channel = AsynchronousServerSocketChannel.open(group).bind(address);
 		} catch (IOException e) {
@@ -162,7 +160,6 @@ public class AioServer implements Closeable {
 			this.notify();
 		}
 	}
-
 
 	/**
 	 * 开始监听

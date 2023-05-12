@@ -20,7 +20,7 @@ public class SocketUtil {
 	 * 获取远程端的地址信息，包括host和端口<br>
 	 * null表示channel为null或者远程主机未连接
 	 *
-	 * @param channel {@link AsynchronousSocketChannel}
+	 * @param channel
 	 * @return 远程端的地址信息，包括host和端口，null表示channel为null或者远程主机未连接
 	 * @throws IORuntimeException IO异常
 	 */
@@ -28,7 +28,6 @@ public class SocketUtil {
 		try {
 			return (null == channel) ? null : channel.getRemoteAddress();
 		} catch (ClosedChannelException e) {
-			// Channel未打开或已关闭，返回null表示未连接
 			return null;
 		} catch (IOException e) {
 			throw new IORuntimeException(e);

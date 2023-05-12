@@ -22,7 +22,6 @@ import java.util.concurrent.TimeUnit;
 public class AioSession implements Closeable{
 
 	private static final ReadHandler READ_HANDLER = new ReadHandler();
-
 	private final AsynchronousSocketChannel channel;
 	private final IoAction<ByteBuffer> ioAction;
 	private ByteBuffer readBuffer;

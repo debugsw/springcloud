@@ -49,7 +49,6 @@ public class ChannelUtil {
 		} catch (IOException e) {
 			throw new IORuntimeException(e);
 		}
-
 		try {
 			channel.connect(address).get();
 		} catch (InterruptedException | ExecutionException e) {
