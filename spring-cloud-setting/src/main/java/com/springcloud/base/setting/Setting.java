@@ -148,7 +148,6 @@ public class Setting extends AbsSetting implements Map<String, String> {
 	public Setting(Resource resource, Charset charset, boolean isUseVariable) {
 		this.init(resource, charset, isUseVariable);
 	}
-	// ------------------------------------------------------------------------------------- Constructor end
 
 	/**
 	 * 初始化设定文件
@@ -334,8 +333,6 @@ public class Setting extends AbsSetting implements Map<String, String> {
 		return props;
 	}
 
-	// --------------------------------------------------------------------------------- Functions
-
 	/**
 	 * 持久化当前设置，会覆盖掉之前的设置<br>
 	 * 持久化不会保留之前的分组，注意如果配置文件在jar内部或者在exe中，此方法会报错。
@@ -429,8 +426,6 @@ public class Setting extends AbsSetting implements Map<String, String> {
 		this.charset = charset;
 		return this;
 	}
-
-	// ------------------------------------------------- Map interface with group
 
 	/**
 	 * 某个分组对应的键值对是否为空
@@ -590,7 +585,6 @@ public class Setting extends AbsSetting implements Map<String, String> {
 		return this;
 	}
 
-	// ------------------------------------------------- Override Map interface
 	@Override
 	public boolean isEmpty() {
 		return this.groupedMap.isEmpty();

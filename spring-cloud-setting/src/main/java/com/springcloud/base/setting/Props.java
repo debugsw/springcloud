@@ -89,7 +89,6 @@ public final class Props extends Properties implements BasicTypeGetter<String>, 
 		return new Props(resource, charset);
 	}
 
-
 	/**
 	 * 构造
 	 */
