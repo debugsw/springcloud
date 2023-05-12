@@ -26,7 +26,6 @@ public class JSONStrFormatter {
 	 */
 	public static String format(String json) {
 		final StringBuilder result = new StringBuilder();
-
 		Character wrapChar = null;
 		boolean isEscapeMode = false;
 		int length = json.length();
@@ -34,30 +33,22 @@ public class JSONStrFormatter {
 		char key;
 		for (int i = 0; i < length; i++) {
 			key = json.charAt(i);
-
 			if (CharUtil.DOUBLE_QUOTES == key || CharUtil.SINGLE_QUOTE == key) {
 				if (null == wrapChar) {
-					
 					wrapChar = key;
 				} else if (isEscapeMode) {
-					
 					isEscapeMode = false;
 				} else if (wrapChar.equals(key)) {
-					
 					wrapChar = null;
 				}
-
 				if ((i > 1) && (json.charAt(i - 1) == CharUtil.COLON)) {
 					result.append(CharUtil.SPACE);
 				}
-
 				result.append(key);
 				continue;
 			}
-
 			if (CharUtil.BACKSLASH == key) {
 				if (null != wrapChar) {
-					
 					isEscapeMode = !isEscapeMode;
 					result.append(key);
 					continue;
@@ -65,63 +56,39 @@ public class JSONStrFormatter {
 					result.append(key);
 				}
 			}
-
 			if (null != wrapChar) {
-				
 				result.append(key);
 				continue;
 			}
-
-			
 			if ((key == CharUtil.BRACKET_START) || (key == CharUtil.DELIM_START)) {
-				
 				if ((i > 1) && (json.charAt(i - 1) == CharUtil.COLON)) {
 					result.append(NEW_LINE);
 					result.append(indent(number));
 				}
 				result.append(key);
-				
 				result.append(NEW_LINE);
-				
 				number++;
 				result.append(indent(number));
-
 				continue;
 			}
-
-			
 			if ((key == CharUtil.BRACKET_END) || (key == CharUtil.DELIM_END)) {
-				
 				result.append(NEW_LINE);
-				
 				number--;
 				result.append(indent(number));
-				
 				result.append(key);
-				
-
-
-
-				
 				continue;
 			}
-
-			
 			if ((key == ',')) {
 				result.append(key);
 				result.append(NEW_LINE);
 				result.append(indent(number));
 				continue;
 			}
-
 			if ((i > 1) && (json.charAt(i - 1) == CharUtil.COLON)) {
 				result.append(CharUtil.SPACE);
 			}
-
-			
 			result.append(key);
 		}
-
 		return result.toString();
 	}
 

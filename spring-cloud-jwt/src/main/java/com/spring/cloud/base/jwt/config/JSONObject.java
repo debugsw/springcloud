@@ -174,7 +174,6 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
 			ObjectMapper.of(source).map(this, null);
 			return;
 		}
-
 		if (source instanceof Map) {
 			Object value;
 			for (String name : names) {
@@ -265,108 +264,49 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
 		BeanPath.create(expression).set(this, value);
 	}
 
-	/**
-	 * PUT 键值对到JSONObject中，在忽略null模式下，如果值为{@code null}，将此键移除
-	 *
-	 * @param key   键
-	 * @param value 值对象. 可以是以下类型: Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or the JSONNull.NULL.
-	 * @return this.
-	 * @throws JSONException 值是无穷数字抛出此异常
-	 * @deprecated 此方法存在歧义，原Map接口返回的是之前的值，重写后返回this了，未来版本此方法会修改，请使用{@link #set(String, Object)}
-	 */
 	@Override
 	@Deprecated
 	public JSONObject put(String key, Object value) throws JSONException {
 		return set(key, value);
 	}
 
-	/**
-	 * 设置键值对到JSONObject中，在忽略null模式下，如果值为{@code null}，将此键移除
-	 *
-	 * @param key   键
-	 * @param value 值对象. 可以是以下类型: Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or the JSONNull.NULL.
-	 * @return this.
-	 * @throws JSONException 值是无穷数字抛出此异常
-	 */
 	public JSONObject set(String key, Object value) throws JSONException {
 		return set(key, value, null, false);
 	}
 
-	/**
-	 * 设置键值对到JSONObject中，在忽略null模式下，如果值为{@code null}，将此键移除
-	 *
-	 * @param key            键
-	 * @param value          值对象. 可以是以下类型: Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or the JSONNull.NULL.
-	 * @param filter         键值对过滤编辑器，可以通过实现此接口，完成解析前对键值对的过滤和修改操作，{@code null}表示不过滤
-	 * @param checkDuplicate 是否检查重复键，如果为{@code true}，则出现重复键时抛出{@link JSONException}异常
-	 * @return this.
-	 * @throws JSONException 值是无穷数字抛出此异常
-	 */
 	public JSONObject set(String key, Object value, Filter<MutablePair<String, Object>> filter, boolean checkDuplicate) throws JSONException {
 		if (null == key) {
 			return this;
 		}
-
-
 		if (null != filter) {
 			final MutablePair<String, Object> pair = new MutablePair<>(key, value);
 			if (filter.accept(pair)) {
-
 				key = pair.getKey();
 				value = pair.getValue();
 			} else {
-
 				return this;
 			}
 		}
-
 		final boolean ignoreNullValue = this.config.isIgnoreNullValue();
 		if (ObjectUtil.isNull(value) && ignoreNullValue) {
-
 			this.remove(key);
 		} else {
 			if (checkDuplicate && containsKey(key)) {
 				throw new JSONException("Duplicate key \"{}\"", key);
 			}
-
 			super.put(key, JSONUtil.wrap(InternalJSONUtil.testValidity(value), this.config));
 		}
 		return this;
 	}
 
-	/**
-	 * 一次性Put 键值对，如果key已经存在抛出异常，如果键值中有null值，忽略
-	 *
-	 * @param key   键
-	 * @param value 值对象，可以是以下类型: Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or the JSONNull.NULL.
-	 * @return this.
-	 * @throws JSONException 值是无穷数字、键重复抛出异常
-	 */
 	public JSONObject putOnce(String key, Object value) throws JSONException {
 		return setOnce(key, value, null);
 	}
 
-	/**
-	 * 一次性Put 键值对，如果key已经存在抛出异常，如果键值中有null值，忽略
-	 *
-	 * @param key    键
-	 * @param value  值对象，可以是以下类型: Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or the JSONNull.NULL.
-	 * @param filter 键值对过滤编辑器，可以通过实现此接口，完成解析前对键值对的过滤和修改操作，{@code null}表示不过滤
-	 * @return this
-	 * @throws JSONException 值是无穷数字、键重复抛出异常
-	 */
 	public JSONObject setOnce(String key, Object value, Filter<MutablePair<String, Object>> filter) throws JSONException {
 		return set(key, value, filter, true);
 	}
 
-	/**
-	 * 在键和值都为非空的情况下put到JSONObject中
-	 *
-	 * @param key   键
-	 * @param value 值对象，可以是以下类型: Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or the JSONNull.NULL.
-	 * @return this.
-	 * @throws JSONException 值是无穷数字
-	 */
 	public JSONObject putOpt(String key, Object value) throws JSONException {
 		if (key != null && value != null) {
 			this.set(key, value);
@@ -381,15 +321,6 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
 		}
 	}
 
-	/**
-	 * 积累值。类似于set，当key对应value已经存在时，与value组成新的JSONArray. <br>
-	 * 如果只有一个值，此值就是value，如果多个值，则是添加到新的JSONArray中
-	 *
-	 * @param key   键
-	 * @param value 被积累的值
-	 * @return this.
-	 * @throws JSONException 如果给定键为{@code null}或者键对应的值存在且为非JSONArray
-	 */
 	public JSONObject accumulate(String key, Object value) throws JSONException {
 		InternalJSONUtil.testValidity(value);
 		Object object = this.getObj(key);
@@ -403,14 +334,6 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
 		return this;
 	}
 
-	/**
-	 * 追加值，如果key无对应值，就添加一个JSONArray，其元素只有value，如果值已经是一个JSONArray，则添加到值JSONArray中。
-	 *
-	 * @param key   键
-	 * @param value 值
-	 * @return this.
-	 * @throws JSONException 如果给定键为{@code null}或者键对应的值存在且为非JSONArray
-	 */
 	public JSONObject append(String key, Object value) throws JSONException {
 		InternalJSONUtil.testValidity(value);
 		Object object = this.getObj(key);
@@ -424,13 +347,6 @@ public class JSONObject extends MapWrapper<String, Object> implements JSON, JSON
 		return this;
 	}
 
-	/**
-	 * 对值加一，如果值不存在，赋值1，如果为数字类型，做加一操作
-	 *
-	 * @param key A key string.
-	 * @return this.
-	 * @throws JSONException 如果存在值非Integer, Long, Double, 或 Float.
-	 */
 	public JSONObject increment(String key) throws JSONException {
 		Object value = this.getObj(key);
 		if (value == null) {

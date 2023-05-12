@@ -1,6 +1,5 @@
 package com.spring.cloud.base.jwt.config;
 
-
 import com.spring.cloud.base.jwt.JSONArray;
 import com.spring.cloud.base.jwt.JSONParser;
 import com.spring.cloud.base.jwt.JSONTokener;
@@ -51,8 +50,6 @@ public class ObjectMapper {
 		if (null == source) {
 			return;
 		}
-
-		
 		final JSONSerializer serializer = GlobalSerializeMapping.getSerializer(source.getClass());
 		if (serializer instanceof JSONObjectSerializer) {
 			serializer.serialize(jsonObject, source);
@@ -69,7 +66,6 @@ public class ObjectMapper {
 			final Map.Entry entry = (Map.Entry) source;
 			jsonObject.set(Convert.toStr(entry.getKey()), entry.getValue(), filter, jsonObject.getConfig().isCheckDuplicate());
 		} else if (source instanceof CharSequence) {
-			
 			mapFromStr((CharSequence) source, jsonObject, filter);
 		} else if (source instanceof Reader) {
 			mapFromTokener(new JSONTokener((Reader) source, jsonObject.getConfig()), jsonObject, filter);
@@ -101,13 +97,10 @@ public class ObjectMapper {
 		if (null == source) {
 			return;
 		}
-
 		final JSONSerializer serializer = GlobalSerializeMapping.getSerializer(source.getClass());
 		if (null != serializer && JSONArray.class.equals(TypeUtil.getTypeArgument(serializer.getClass()))) {
-			
 			serializer.serialize(jsonArray, source);
 		} else if (source instanceof CharSequence) {
-			
 			mapFromStr((CharSequence) source, jsonArray, filter);
 		} else if (source instanceof Reader) {
 			mapFromTokener(new JSONTokener((Reader) source, jsonArray.getConfig()), jsonArray, filter);
@@ -115,11 +108,9 @@ public class ObjectMapper {
 			mapFromTokener(new JSONTokener((InputStream) source, jsonArray.getConfig()), jsonArray, filter);
 		} else if (source instanceof byte[]) {
 			final byte[] bytesSource = (byte[]) source;
-			
 			if (bytesSource.length > 1 && '[' == bytesSource[0] && ']' == bytesSource[bytesSource.length - 1]) {
 				mapFromTokener(new JSONTokener(IoUtil.toStream(bytesSource), jsonArray.getConfig()), jsonArray, filter);
 			} else {
-				
 				for (final byte b : bytesSource) {
 					jsonArray.add(b);
 				}

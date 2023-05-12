@@ -16,7 +16,6 @@ import com.spring.cloud.base.utils.str.StrUtil;
 public class JSONXMLSerializer {
 	/**
 	 * 转换JSONObject为XML
-	 * Convert a JSONObject into a well-formed, element-normal XML string.
 	 *
 	 * @param object A JSONObject.
 	 * @return A string.
@@ -51,20 +50,13 @@ public class JSONXMLSerializer {
 		if (null == object) {
 			return null;
 		}
-
 		final StringBuilder sb = new StringBuilder();
 		if (object instanceof JSONObject) {
-
-			
 			appendTag(sb, tagName, false);
-
-			
 			((JSONObject) object).forEach((key, value) -> {
 				if (ArrayUtil.isArray(value)) {
 					value = new JSONArray(value);
 				}
-
-				
 				if (ArrayUtil.contains(contentKeys, key)) {
 					if (value instanceof JSONArray) {
 						int i = 0;
@@ -92,26 +84,18 @@ public class JSONXMLSerializer {
 					sb.append(toXml(value, key, contentKeys));
 				}
 			});
-
-			
 			appendTag(sb, tagName, true);
 			return sb.toString();
 		}
-
 		if (ArrayUtil.isArray(object)) {
 			object = new JSONArray(object);
 		}
-
 		if (object instanceof JSONArray) {
 			for (Object val : (JSONArray) object) {
-				
-				
-				
 				sb.append(toXml(val, tagName == null ? "array" : tagName, contentKeys));
 			}
 			return sb.toString();
 		}
-
 		return wrapWithTag(EscapeUtil.escapeXml(object.toString()), tagName);
 	}
 
@@ -143,7 +127,6 @@ public class JSONXMLSerializer {
 		if (StrUtil.isBlank(tagName)) {
 			return StrUtil.wrap(content, "\"");
 		}
-
 		if (StrUtil.isEmpty(content)) {
 			return "<" + tagName + "/>";
 		} else {

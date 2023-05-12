@@ -75,7 +75,6 @@ public class DateConverter extends AbstractConverter<Date> {
 		} else if (value instanceof Number) {
 			return wrap(((Number) value).longValue());
 		} else {
-			
 			final String valueStr = convertToStr(value);
 			final DateTime dateTime = StrUtil.isBlank(this.format) 
 					? DateUtil.parse(valueStr) 
@@ -84,7 +83,6 @@ public class DateConverter extends AbstractConverter<Date> {
 				return wrap(dateTime);
 			}
 		}
-
 		throw new ConvertException("Can not convert {}:[{}] to {}", value.getClass().getName(), value, this.targetType.getName());
 	}
 
@@ -111,7 +109,6 @@ public class DateConverter extends AbstractConverter<Date> {
 		if (java.sql.Timestamp.class == targetType) {
 			return date.toTimestamp();
 		}
-
 		throw new UnsupportedOperationException(StrUtil.format("Unsupported target Date type: {}", this.targetType.getName()));
 	}
 
@@ -123,11 +120,8 @@ public class DateConverter extends AbstractConverter<Date> {
 	 */
 	private java.util.Date wrap(long mills) {
 		if (GlobalCustomFormat.FORMAT_SECONDS.equals(this.format)) {
-			
 			return DateUtil.date(mills * 1000);
 		}
-
-		
 		if (java.util.Date.class == targetType) {
 			return new java.util.Date(mills);
 		}
@@ -143,7 +137,6 @@ public class DateConverter extends AbstractConverter<Date> {
 		if (java.sql.Timestamp.class == targetType) {
 			return new java.sql.Timestamp(mills);
 		}
-
 		throw new UnsupportedOperationException(StrUtil.format("Unsupported target Date type: {}", this.targetType.getName()));
 	}
 

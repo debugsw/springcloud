@@ -115,12 +115,10 @@ public class JSONWriter extends Writer {
 	 * @return this
 	 */
 	public JSONWriter end() {
-		
 		writeLF().writeSpace(indent);
 		writeRaw(arrayMode ? CharUtil.BRACKET_END : CharUtil.DELIM_END);
 		flush();
 		arrayMode = false;
-		
 		needSeparator = true;
 		return this;
 	}
@@ -135,7 +133,6 @@ public class JSONWriter extends Writer {
 		if (needSeparator) {
 			writeRaw(CharUtil.COMMA);
 		}
-		
 		writeLF().writeSpace(indentFactor + indent);
 		return writeRaw(JSONUtil.quote(key));
 	}
@@ -181,7 +178,6 @@ public class JSONWriter extends Writer {
 		if (JSONUtil.isNull(pair.getValue()) && config.isIgnoreNullValue()) {
 			return this;
 		}
-
 		if (null == filter || filter.accept(pair)) {
 			if (false == arrayMode) {
 				
@@ -223,7 +219,6 @@ public class JSONWriter extends Writer {
 			if (needSeparator) {
 				writeRaw(CharUtil.COMMA);
 			}
-			
 			writeLF().writeSpace(indentFactor + indent);
 		} else {
 			writeRaw(CharUtil.COLON).writeSpace(1);
@@ -261,7 +256,6 @@ public class JSONWriter extends Writer {
 				writeStrValue(value.toString());
 				return this;
 			}
-
 			final String format = (null == config) ? null : config.getDateFormat();
 			writeRaw(formatDate(value, format));
 		} else if (value instanceof Boolean) {
@@ -283,7 +277,6 @@ public class JSONWriter extends Writer {
 	 * @param number 数字
 	 */
 	private void writeNumberValue(Number number) {
-		
 		final boolean isStripTrailingZeros = null == config || config.isStripTrailingZeros();
 		writeRaw(NumberUtil.toStr(number, isStripTrailingZeros));
 	}
@@ -319,10 +312,7 @@ public class JSONWriter extends Writer {
 	}
 
 	/**
-	 * 写出字符串值，并包装引号并转义字符<br>
-	 * 对所有双引号做转义处理（使用双反斜杠做转义）<br>
-	 * 为了能在HTML中较好的显示，会将&lt;/转义为&lt;\/<br>
-	 * JSON字符串中不能包含控制字符和未经转义的引号和反斜杠
+	 * 写出字符串值，并包装引号并转义字符
 	 *
 	 * @param csq 字符串
 	 */
@@ -404,16 +394,12 @@ public class JSONWriter extends Writer {
 			} else {
 				dateStr = DateUtil.format(Convert.toDate(dateObj), format);
 			}
-
 			if (GlobalCustomFormat.FORMAT_SECONDS.equals(format)
 					|| GlobalCustomFormat.FORMAT_MILLISECONDS.equals(format)) {
 				return dateStr;
 			}
-			
 			return JSONUtil.quote(dateStr);
 		}
-
-		
 		long timeMillis;
 		if (dateObj instanceof TemporalAccessor) {
 			timeMillis = TemporalAccessorUtil.toEpochMilli((TemporalAccessor) dateObj);

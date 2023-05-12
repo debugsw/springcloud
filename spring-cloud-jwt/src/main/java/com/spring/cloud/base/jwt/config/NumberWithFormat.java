@@ -14,7 +14,6 @@ import java.util.Date;
  */
 public class NumberWithFormat extends Number implements TypeConverter {
 	private static final long serialVersionUID = 1L;
-
 	private final Number number;
 	private final String format;
 
@@ -41,11 +40,7 @@ public class NumberWithFormat extends Number implements TypeConverter {
 			} else if(String.class == clazz){
 				return toString();
 			}
-
-
 		}
-
-
 		return Convert.convertWithCheck(targetType, this.number, null, false);
 	}
 
