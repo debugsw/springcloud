@@ -1,4 +1,9 @@
-package com.spring.cloud.base.captcha;
+package com.spring.cloud.base.captcha.utils;
+
+import com.spring.cloud.base.captcha.CircleCaptcha;
+import com.spring.cloud.base.captcha.GifCaptcha;
+import com.spring.cloud.base.captcha.LineCaptcha;
+import com.spring.cloud.base.captcha.ShearCaptcha;
 
 /**
  * @Author: ls

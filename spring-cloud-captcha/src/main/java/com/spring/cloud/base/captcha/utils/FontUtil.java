@@ -1,4 +1,4 @@
-package com.spring.cloud.base.captcha;
+package com.spring.cloud.base.captcha.utils;
 
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;

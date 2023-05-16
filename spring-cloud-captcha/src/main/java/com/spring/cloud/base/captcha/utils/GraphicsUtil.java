@@ -1,5 +1,7 @@
-package com.spring.cloud.base.captcha;
+package com.spring.cloud.base.captcha.utils;
 
+import com.spring.cloud.base.captcha.utils.FontUtil;
+import com.spring.cloud.base.captcha.utils.ImgUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 
 import java.awt.*;
