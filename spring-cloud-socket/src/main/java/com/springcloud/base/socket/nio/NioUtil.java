@@ -24,11 +24,9 @@ public class NioUtil {
 		if (channel == null) {
 			return;
 		}
-
 		try {
 			channel.configureBlocking(false);
 			// 注册通道
-			//noinspection MagicConstant
 			channel.register(selector, ops.getValue());
 		} catch (IOException e) {
 			throw new IORuntimeException(e);

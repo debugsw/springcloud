@@ -24,7 +24,6 @@ public class ChannelUtil {
 	 * @return {@link AsynchronousChannelGroup}
 	 */
 	public static AsynchronousChannelGroup createFixedGroup(int poolSize) {
-
 		try {
 			return AsynchronousChannelGroup.withFixedThreadPool(
 					poolSize,

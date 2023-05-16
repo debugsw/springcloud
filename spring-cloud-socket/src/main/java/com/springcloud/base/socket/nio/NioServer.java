@@ -20,9 +20,7 @@ import java.util.Iterator;
  */
 public class NioServer implements Closeable {
 	private static final Log log = Log.get();
-
 	private static final AcceptHandler ACCEPT_HANDLER = new AcceptHandler();
-
 	private Selector selector;
 	private ServerSocketChannel serverSocketChannel;
 	private ChannelHandler handler;
@@ -50,7 +48,6 @@ public class NioServer implements Closeable {
 			this.serverSocketChannel.configureBlocking(false);
 			// 绑定端口号
 			this.serverSocketChannel.bind(address);
-
 			// 打开一个选择器
 			this.selector = Selector.open();
 			// 服务器套接字注册到Selector中 并指定Selector监控连接事件
@@ -59,9 +56,7 @@ public class NioServer implements Closeable {
 			close();
 			throw new IORuntimeException(e);
 		}
-
 		log.debug("Server listen on: [{}]...", address);
-
 		return this;
 	}
 
@@ -131,7 +126,6 @@ public class NioServer implements Closeable {
 		if (key.isAcceptable()) {
 			ACCEPT_HANDLER.completed((ServerSocketChannel) key.channel(), this);
 		}
-
 		// 读事件就绪
 		if (key.isReadable()) {
 			final SocketChannel socketChannel = (SocketChannel) key.channel();
