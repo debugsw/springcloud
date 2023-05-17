@@ -1,4 +1,4 @@
-package com.spring.cloud.base.jwt;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.jwt.config.JSONConfig;
 import com.spring.cloud.base.jwt.exception.JSONException;
@@ -57,7 +57,7 @@ public interface JSON extends Cloneable, Serializable {
 	 *
 	 * @return 格式化后的JSON字符串
 	 * @throws JSONException 包含非法数抛出此异常
-	 * 
+	 *
 	 */
 	default String toStringPretty() throws JSONException {
 		return this.toJSONString(4);
@@ -118,7 +118,7 @@ public interface JSON extends Cloneable, Serializable {
 	 * @param <T>       Bean类型
 	 * @param reference {@link TypeReference}类型参考子类，可以获取其泛型参数中的Type类型
 	 * @return 实体类对象
-	 * 
+	 *
 	 */
 	default <T> T toBean(TypeReference<T> reference) {
 		return toBean(reference.getType());
@@ -130,7 +130,7 @@ public interface JSON extends Cloneable, Serializable {
 	 * @param <T>  Bean类型
 	 * @param type {@link Type}
 	 * @return 实体类对象
-	 * 
+	 *
 	 */
 	default <T> T toBean(Type type) {
 		return JSONConverter.jsonConvert(type, this, getConfig());
@@ -143,7 +143,7 @@ public interface JSON extends Cloneable, Serializable {
 	 * @param type        {@link Type}
 	 * @param ignoreError 是否忽略转换错误
 	 * @return 实体类对象
-	 * 
+	 *
 	 * @deprecated 请使用 {@link #toBean(Type)}, ignoreError在JSONConfig中生效
 	 */
 	@Deprecated

@@ -1,4 +1,4 @@
-package com.spring.cloud.base.jwt;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.jwt.config.JSONObject;
 import com.spring.cloud.base.jwt.utils.MutablePair;
@@ -41,11 +41,9 @@ public class JSONParser {
 	 */
 	public void parseTo(JSONObject jsonObject, Filter<MutablePair<String, Object>> filter) {
 		final JSONTokener tokener = this.tokener;
-
 		if (tokener.nextClean() != '{') {
 			throw tokener.syntaxError("A JSONObject text must begin with '{'");
 		}
-
 		char prev;
 		char c;
 		String key;
@@ -66,24 +64,15 @@ public class JSONParser {
 					tokener.back();
 					key = tokener.nextValue().toString();
 			}
-
-			
-
 			c = tokener.nextClean();
 			if (c != ':') {
 				throw tokener.syntaxError("Expected a ':' after a key");
 			}
-
 			jsonObject.set(key, tokener.nextValue(), filter, jsonObject.getConfig().isCheckDuplicate());
-
-			
-
 			switch (tokener.nextClean()) {
 				case ';':
 				case ',':
 					if (tokener.nextClean() == '}') {
-						
-						
 						return;
 					}
 					tokener.back();
@@ -104,7 +93,6 @@ public class JSONParser {
 	 */
 	public void parseTo(JSONArray jsonArray, Filter<Mutable<Object>> filter) {
 		final JSONTokener x = this.tokener;
-
 		if (x.nextClean() != '[') {
 			throw x.syntaxError("A JSONArray text must start with '['");
 		}

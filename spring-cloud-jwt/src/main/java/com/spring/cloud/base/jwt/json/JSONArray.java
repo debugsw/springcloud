@@ -1,4 +1,4 @@
-package com.spring.cloud.base.jwt;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.jwt.config.JSONConfig;
 import com.spring.cloud.base.jwt.config.JSONObject;
@@ -387,11 +387,11 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	 * @return 替换的值，即之前的值
 	 */
 	public Object set(int index, Object element, Filter<MutablePair<Integer, Object>> filter) {
-		
+
 		if (null != filter) {
 			final MutablePair<Integer, Object> pair = new MutablePair<>(index, element);
 			if (filter.accept(pair)) {
-				
+
 				element = pair.getValue();
 			}
 		}
@@ -511,7 +511,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 
 		CollUtil.forEach(this, (value, index) -> jsonWriter.writeField(new MutablePair<>(index, value), filter));
 		jsonWriter.end();
-		
+
 		return writer;
 	}
 
@@ -530,7 +530,7 @@ public class JSONArray implements JSON, JSONGetter<Integer>, List<Object>, Rando
 	 * @return 是否加入成功
 	 */
 	public boolean addRaw(Object obj, Filter<Mutable<Object>> filter) {
-		
+
 		if (null != filter) {
 			final Mutable<Object> mutable = new MutableObj<>(obj);
 			if (filter.accept(mutable)) {

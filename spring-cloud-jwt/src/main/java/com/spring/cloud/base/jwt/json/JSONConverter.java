@@ -1,4 +1,4 @@
-package com.spring.cloud.base.jwt;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.jwt.common.BeanConverter;
 import com.spring.cloud.base.jwt.config.GlobalSerializeMapping;
@@ -7,7 +7,10 @@ import com.spring.cloud.base.jwt.config.JSONDeserializer;
 import com.spring.cloud.base.jwt.config.JSONObject;
 import com.spring.cloud.base.jwt.utils.InternalJSONUtil;
 import com.spring.cloud.base.jwt.utils.JSONUtil;
-import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.ArrayConverter;
+import com.spring.cloud.base.utils.Convert;
+import com.spring.cloud.base.utils.ConverterRegistry;
+import com.spring.cloud.base.utils.TypeUtil;
 import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.bean.BeanUtil;
@@ -28,7 +31,7 @@ import java.util.Map;
 public class JSONConverter implements Converter<JSON> {
 
 	static {
-		
+
 		final ConverterRegistry registry = ConverterRegistry.getInstance();
 		registry.putCustom(JSON.class, JSONConverter.class);
 		registry.putCustom(JSONObject.class, JSONConverter.class);
@@ -75,8 +78,6 @@ public class JSONConverter implements Converter<JSON> {
 		if (JSONUtil.isNull(value)) {
 			return null;
 		}
-
-		
 		if (targetType instanceof Class) {
 			final Class<?> clazz = (Class<?>) targetType;
 			if (JSONBeanParser.class.isAssignableFrom(clazz)) {
@@ -87,11 +88,9 @@ public class JSONConverter implements Converter<JSON> {
 				target.parse(value);
 				return (T) target;
 			} else if (targetType == byte[].class && value instanceof CharSequence) {
-				
 				return (T) Base64.decode((CharSequence) value);
 			}
 		}
-
 		return jsonToBean(targetType, value, jsonConfig.isIgnoreError());
 	}
 
@@ -110,41 +109,28 @@ public class JSONConverter implements Converter<JSON> {
 		if (JSONUtil.isNull(value)) {
 			return null;
 		}
-
 		if (value instanceof JSON) {
 			final JSONDeserializer<?> deserializer = GlobalSerializeMapping.getDeserializer(targetType);
 			if (null != deserializer) {
-				
 				return (T) deserializer.deserialize((JSON) value);
 			}
-
-			
-			
 			if (value instanceof JSONGetter
 					&& targetType instanceof Class
-					
 					&& (!Map.Entry.class.isAssignableFrom((Class<?>) targetType)
 					&& BeanUtil.hasSetter((Class<?>) targetType))) {
-
 				final JSONConfig config = ((JSONGetter<?>) value).getConfig();
 				final Converter<T> converter = new BeanConverter<>(targetType,
 						InternalJSONUtil.toCopyOptions(config).setIgnoreError(ignoreError));
 				return converter.convertWithCheck(value, null, ignoreError);
 			}
 		}
-
 		final T targetValue = Convert.convertWithCheck(targetType, value, null, ignoreError);
-
 		if (null == targetValue && !ignoreError) {
 			if (StrUtil.isBlankIfStr(value)) {
-				
-				
 				return null;
 			}
-
 			throw new ConvertException("Can not convert {} to type {}", value, ObjectUtil.defaultIfNull(TypeUtil.getClass(targetType), targetType));
 		}
-
 		return targetValue;
 	}
 

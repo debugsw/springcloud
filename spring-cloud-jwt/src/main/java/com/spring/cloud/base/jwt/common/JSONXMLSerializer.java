@@ -1,6 +1,6 @@
 package com.spring.cloud.base.jwt.common;
 
-import com.spring.cloud.base.jwt.JSONArray;
+import com.spring.cloud.base.jwt.json.JSONArray;
 import com.spring.cloud.base.jwt.config.JSONObject;
 import com.spring.cloud.base.jwt.exception.JSONException;
 import com.spring.cloud.base.utils.ArrayUtil;

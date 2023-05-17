@@ -1,4 +1,4 @@
-package com.spring.cloud.base.jwt;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.jwt.config.JSONObject;
 
@@ -20,17 +20,14 @@ public class JSONObjectIter implements Iterable<JSONObject> {
 	@Override
 	public Iterator<JSONObject> iterator() {
 		return new Iterator<JSONObject>() {
-
 			@Override
 			public boolean hasNext() {
 				return iterator.hasNext();
 			}
-
 			@Override
 			public JSONObject next() {
 				return (JSONObject) iterator.next();
 			}
-
 			@Override
 			public void remove() {
 				iterator.remove();

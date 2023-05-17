@@ -1,9 +1,9 @@
 package com.spring.cloud.base.jwt.config;
 
-import com.spring.cloud.base.jwt.JSON;
-import com.spring.cloud.base.jwt.JSONArray;
-import com.spring.cloud.base.jwt.JSONConverter;
-import com.spring.cloud.base.jwt.JSONGetter;
+import com.spring.cloud.base.jwt.json.JSON;
+import com.spring.cloud.base.jwt.json.JSONArray;
+import com.spring.cloud.base.jwt.json.JSONConverter;
+import com.spring.cloud.base.jwt.json.JSONGetter;
 import com.spring.cloud.base.jwt.exception.JSONException;
 import com.spring.cloud.base.jwt.utils.InternalJSONUtil;
 import com.spring.cloud.base.jwt.utils.JSONUtil;

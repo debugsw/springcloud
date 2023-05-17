@@ -1,6 +1,6 @@
 package com.spring.cloud.base.jwt.config;
 
-import com.spring.cloud.base.jwt.JSON;
+import com.spring.cloud.base.jwt.json.JSON;
 import com.spring.cloud.base.jwt.exception.JSONException;
 
 import java.time.LocalDate;

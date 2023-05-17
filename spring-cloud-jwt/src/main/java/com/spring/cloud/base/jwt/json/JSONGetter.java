@@ -1,5 +1,6 @@
-package com.spring.cloud.base.jwt;
+package com.spring.cloud.base.jwt.json;
 
+import com.spring.cloud.base.jwt.OptNullBasicTypeFromObjectGetter;
 import com.spring.cloud.base.jwt.config.JSONConfig;
 import com.spring.cloud.base.jwt.config.JSONObject;
 import com.spring.cloud.base.jwt.config.NumberWithFormat;
@@ -72,7 +73,6 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 		if (JSONUtil.isNull(object)) {
 			return null;
 		}
-
 		if (object instanceof JSON) {
 			return (JSONArray) object;
 		}
@@ -91,7 +91,6 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 		if (JSONUtil.isNull(object)) {
 			return null;
 		}
-
 		if (object instanceof JSON) {
 			return (JSONObject) object;
 		}
@@ -143,7 +142,6 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 		if (formatOps.isPresent()) {
 			final String format = formatOps.get();
 			if (StrUtil.isNotBlank(format)) {
-				
 				final String str = Convert.toStr(obj);
 				if (null == str) {
 					return defaultValue;
@@ -151,7 +149,6 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 				return DateUtil.parse(str, format);
 			}
 		}
-
 		return Convert.toDate(obj, defaultValue);
 	}
 
@@ -163,7 +160,6 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 	 * @return {@link LocalDateTime}
 	 */
 	default LocalDateTime getLocalDateTime(K key, LocalDateTime defaultValue) {
-		
 		final Object obj = getObj(key);
 		if (JSONUtil.isNull(obj)) {
 			return defaultValue;
@@ -171,12 +167,10 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 		if (obj instanceof LocalDateTime) {
 			return (LocalDateTime) obj;
 		}
-
 		final Optional<String> formatOps = Optional.ofNullable(getConfig()).map(JSONConfig::getDateFormat);
 		if (formatOps.isPresent()) {
 			final String format = formatOps.get();
 			if (StrUtil.isNotBlank(format)) {
-				
 				final String str = Convert.toStr(obj);
 				if (null == str) {
 					return defaultValue;
@@ -184,7 +178,6 @@ public interface JSONGetter<K> extends OptNullBasicTypeFromObjectGetter<K> {
 				return LocalDateTimeUtil.parse(str, format);
 			}
 		}
-
 		return Convert.toLocalDateTime(obj, defaultValue);
 	}
 

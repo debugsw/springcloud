@@ -1,4 +1,4 @@
-package com.spring.cloud.base.jwt;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.jwt.config.JSONConfig;
 import com.spring.cloud.base.jwt.config.JSONObject;
