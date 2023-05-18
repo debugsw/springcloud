@@ -142,7 +142,6 @@ public class BeanPath implements Serializable {
 			patternPart = patternParts.get(i);
 			subBean = getFieldValue(subBean, patternPart);
 			if (null == subBean) {
-				// 支持表达式的第一个对象为Bean本身（若用户定义表达式$开头，则不做此操作）
 				if (isFirst && !this.isStartWith && BeanUtil.isMatchName(bean, patternPart, true)) {
 					subBean = bean;
 					isFirst = false;
@@ -160,7 +159,6 @@ public class BeanPath implements Serializable {
 			return null;
 		}
 		if (StrUtil.contains(expression, ':')) {
-			// [start:end:step] 模式
 			final List<String> parts = StrUtil.splitTrim(expression, ':');
 			final int start = Integer.parseInt(parts.get(0));
 			final int end = Integer.parseInt(parts.get(1));
@@ -205,7 +203,6 @@ public class BeanPath implements Serializable {
 	private void init(final String expression) {
 		final List<String> localPatternParts = new ArrayList<>();
 		final int length = expression.length();
-
 		final StringBuilder builder = new StringBuilder();
 		char c;
 		boolean isNumStart = false;
@@ -213,47 +210,34 @@ public class BeanPath implements Serializable {
 		for (int i = 0; i < length; i++) {
 			c = expression.charAt(i);
 			if (0 == i && '$' == c) {
-				// 忽略开头的$符，表示当前对象
 				isStartWith = true;
 				continue;
 			}
-
 			if ('\'' == c) {
-				// 结束
 				isInWrap = (!isInWrap);
 				continue;
 			}
-
 			if (!isInWrap && ArrayUtil.contains(EXP_CHARS, c)) {
-				// 处理边界符号
 				if (CharUtil.BRACKET_END == c) {
-					// 中括号（数字下标）结束
 					if (!isNumStart) {
 						throw new IllegalArgumentException(StrUtil.format("Bad expression '{}':{}, we find ']' but no '[' !", expression, i));
 					}
 					isNumStart = false;
-					// 中括号结束加入下标
 				} else {
 					if (isNumStart) {
-						// 非结束中括号情况下发现起始中括号报错（中括号未关闭）
 						throw new IllegalArgumentException(StrUtil.format("Bad expression '{}':{}, we find '[' but no ']' !", expression, i));
 					} else if (CharUtil.BRACKET_START == c) {
-						// 数字下标开始
 						isNumStart = true;
 					}
-					// 每一个边界符之前的表达式是一个完整的KEY，开始处理KEY
 				}
 				if (builder.length() > 0) {
 					localPatternParts.add(builder.toString());
 				}
 				builder.setLength(0);
 			} else {
-				// 非边界符号，追加字符
 				builder.append(c);
 			}
 		}
-
-		// 末尾边界符检查
 		if (isNumStart) {
 			throw new IllegalArgumentException(StrUtil.format("Bad expression '{}':{}, we find '[' but no ']' !", expression, length - 1));
 		} else {
@@ -261,8 +245,6 @@ public class BeanPath implements Serializable {
 				localPatternParts.add(builder.toString());
 			}
 		}
-
-		// 不可变List
 		this.patternParts = ListUtil.unmodifiable(localPatternParts);
 	}
 }
