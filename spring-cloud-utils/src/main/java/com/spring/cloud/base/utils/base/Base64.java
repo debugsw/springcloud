@@ -227,8 +227,6 @@ public class Base64 {
 		return Base64Encoder.encode(arr, isMultiLine, isUrlSafe);
 	}
 
-	// -------------------------------------------------------------------- decode
-
 	/**
 	 * base64解码
 	 *
@@ -327,14 +325,10 @@ public class Base64 {
 		if (base64 == null || base64.length() < 2) {
 			return false;
 		}
-
 		final byte[] bytes = StrUtil.utf8Bytes(base64);
-
 		if (bytes.length != base64.length()) {
-			// 如果长度不相等，说明存在双字节字符，肯定不是Base64，直接返回false
 			return false;
 		}
-
 		return isBase64(bytes);
 	}
 
@@ -353,13 +347,11 @@ public class Base64 {
 		for (byte base64Byte : base64Bytes) {
 			if (hasPadding) {
 				if ('=' != base64Byte) {
-					// 前一个字符是'='，则后边的字符都必须是'='，即'='只能都位于结尾
 					return false;
 				}
 			} else if ('=' == base64Byte) {
-				// 发现'=' 标记之
 				hasPadding = true;
-			} else if (false == (Base64Decoder.isBase64Code(base64Byte) || isWhiteSpace(base64Byte))) {
+			} else if (!(Base64Decoder.isBase64Code(base64Byte) || isWhiteSpace(base64Byte))) {
 				return false;
 			}
 		}

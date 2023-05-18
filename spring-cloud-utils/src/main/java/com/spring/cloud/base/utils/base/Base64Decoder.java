@@ -114,11 +114,9 @@ public class Base64Decoder {
 				octet[octetId++] = (byte) (((sestet2 & 3) << 6) | sestet3);
 			}
 		}
-
 		if (octetId == octet.length) {
 			return octet;
 		} else {
-			// 如果有非Base64字符混入，则实际结果比解析的要短，截取之
 			return (byte[]) ArrayUtil.copy(octet, new byte[octetId], octetId);
 		}
 	}

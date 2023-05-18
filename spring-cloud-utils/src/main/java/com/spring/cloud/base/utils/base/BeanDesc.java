@@ -29,6 +29,7 @@ public class BeanDesc implements Serializable {
 	 * 属性Map
 	 */
 	private final Map<String, PropDesc> propMap = new LinkedHashMap<>();
+
 	/**
 	 * 构造
 	 *
@@ -39,6 +40,7 @@ public class BeanDesc implements Serializable {
 		this.beanClass = beanClass;
 		init();
 	}
+
 	/**
 	 * 获取Bean的全类名
 	 *
@@ -128,10 +130,8 @@ public class BeanDesc implements Serializable {
 		final Method[] gettersAndSetters = ReflectUtil.getMethods(this.beanClass, ReflectUtil::isGetterOrSetterIgnoreCase);
 		PropDesc prop;
 		for (Field field : ReflectUtil.getFields(this.beanClass)) {
-			// 排除静态属性和对象子类
 			if (!ModifierUtil.isStatic(field) && !ReflectUtil.isOuterClassField(field)) {
 				prop = createProp(field, gettersAndSetters);
-				// 只有不存在时才放入，防止父类属性覆盖子类属性
 				this.propMap.putIfAbsent(prop.getFieldName(), prop);
 			}
 		}
@@ -139,20 +139,12 @@ public class BeanDesc implements Serializable {
 	}
 
 	/**
-	 * 根据字段创建属性描述<br>
+	 * 根据字段创建属性描述
 	 * 查找Getter和Setter方法时会：
-	 *
-	 * <pre>
-	 * 1. 忽略字段和方法名的大小写
-	 * 2. Getter查找getXXX、isXXX、getIsXXX
-	 * 3. Setter查找setXXX、setIsXXX
-	 * 4. Setter忽略参数值与字段值不匹配的情况，因此有多个参数类型的重载时，会调用首次匹配的
-	 * </pre>
 	 *
 	 * @param field   字段
 	 * @param methods 类中所有的方法
 	 * @return {@link PropDesc}
-	 *
 	 */
 	private PropDesc createProp(Field field, Method[] methods) {
 		final PropDesc prop = findProp(field, methods, false);
@@ -182,7 +174,6 @@ public class BeanDesc implements Serializable {
 		final String fieldName = field.getName();
 		final Class<?> fieldType = field.getType();
 		final boolean isBooleanField = BooleanUtil.isBoolean(fieldType);
-
 		Method getter = null;
 		Method setter = null;
 		String methodName;
@@ -210,7 +201,7 @@ public class BeanDesc implements Serializable {
 	}
 
 	/**
-	 * 方法是否为Getter方法<br>
+	 * 方法是否为Getter方法
 	 * 匹配规则如下（忽略大小写）：
 	 *
 	 * <pre>
@@ -231,35 +222,27 @@ public class BeanDesc implements Serializable {
 	private boolean isMatchGetter(String methodName, String fieldName, boolean isBooleanField, boolean ignoreCase) {
 		final String handledFieldName;
 		if (ignoreCase) {
-			// 全部转为小写，忽略大小写比较
 			methodName = methodName.toLowerCase();
 			handledFieldName = fieldName.toLowerCase();
 			fieldName = handledFieldName;
 		} else {
 			handledFieldName = StrUtil.upperFirst(fieldName);
 		}
-
-		// 针对Boolean类型特殊检查
 		if (isBooleanField) {
 			if (fieldName.startsWith("is")) {
 				// 字段已经是is开头
-				if (methodName.equals(fieldName)
-						|| ("get" + handledFieldName).equals(methodName)
-						|| ("is" + handledFieldName).equals(methodName)
-				) {
+				if (methodName.equals(fieldName) || ("get" + handledFieldName).equals(methodName) || ("is" + handledFieldName).equals(methodName)) {
 					return true;
 				}
 			} else if (("is" + handledFieldName).equals(methodName)) {
 				return true;
 			}
 		}
-
-		// 包括boolean的任何类型只有一种匹配情况：name -》 getName
 		return ("get" + handledFieldName).equals(methodName);
 	}
 
 	/**
-	 * 方法是否为Setter方法<br>
+	 * 方法是否为Setter方法
 	 * 匹配规则如下（忽略大小写）：
 	 *
 	 * <pre>
@@ -278,24 +261,17 @@ public class BeanDesc implements Serializable {
 	private boolean isMatchSetter(String methodName, String fieldName, boolean isBooleanField, boolean ignoreCase) {
 		final String handledFieldName;
 		if (ignoreCase) {
-			// 全部转为小写，忽略大小写比较
 			methodName = methodName.toLowerCase();
 			handledFieldName = fieldName.toLowerCase();
 			fieldName = handledFieldName;
 		} else {
 			handledFieldName = StrUtil.upperFirst(fieldName);
 		}
-
-		// 非标准Setter方法跳过
 		if (!methodName.startsWith("set")) {
 			return false;
 		}
-
-		// 针对Boolean类型特殊检查
 		if (isBooleanField && fieldName.startsWith("is")) {
-			if (("set" + StrUtil.removePrefix(fieldName, "is")).equals(methodName)
-					|| ("set" + handledFieldName).equals(methodName)
-			) {
+			if (("set" + StrUtil.removePrefix(fieldName, "is")).equals(methodName) || ("set" + handledFieldName).equals(methodName)) {
 				return true;
 			}
 		}

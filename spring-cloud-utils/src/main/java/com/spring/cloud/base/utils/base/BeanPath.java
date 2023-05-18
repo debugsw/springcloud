@@ -1,6 +1,9 @@
 package com.spring.cloud.base.utils.base;
 
-import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.CharUtil;
+import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.list.ListUtil;
@@ -17,7 +20,6 @@ import java.util.*;
  */
 public class BeanPath implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * 表达式边界符号数组
 	 */
@@ -27,23 +29,7 @@ public class BeanPath implements Serializable {
 	protected List<String> patternParts;
 
 	/**
-	 * 解析Bean路径表达式为Bean模式<br>
-	 * Bean表达式，用于获取多层嵌套Bean中的字段值或Bean对象<br>
-	 * 根据给定的表达式，查找Bean中对应的属性值对象。 表达式分为两种：
-	 * <ol>
-	 * <li>.表达式，可以获取Bean对象中的属性（字段）值或者Map中key对应的值</li>
-	 * <li>[]表达式，可以获取集合等对象中对应index的值</li>
-	 * </ol>
-	 * <p>
-	 * 表达式栗子：
-	 *
-	 * <pre>
-	 * persion
-	 * persion.name
-	 * persons[3]
-	 * person.friends[5].name
-	 * ['person']['friends'][5]['name']
-	 * </pre>
+	 * 解析Bean路径表达式为Bean模式
 	 *
 	 * @param expression 表达式
 	 * @return BeanPath
@@ -81,14 +67,7 @@ public class BeanPath implements Serializable {
 	}
 
 	/**
-	 * 设置表达式指定位置（或filed对应）的值<br>
-	 * 若表达式指向一个List则设置其坐标对应位置的值，若指向Map则put对应key的值，Bean则设置字段的值<br>
-	 * 注意：
-	 *
-	 * <pre>
-	 * 1. 如果为List，如果下标不大于List长度，则替换原有值，否则追加值
-	 * 2. 如果为数组，如果下标不大于数组长度，则替换原有值，否则追加值
-	 * </pre>
+	 * 设置表达式指定位置（或filed对应）的值
 	 *
 	 * @param bean  Bean、Map或List
 	 * @param value 值
@@ -115,10 +94,8 @@ public class BeanPath implements Serializable {
 		if (null == subBean) {
 			final List<String> parentParts = getParentParts(patternParts);
 			this.set(bean, parentParts, lastIsNumber(parentParts), nextNumberPart ? new ArrayList<>() : new HashMap<>(16));
-			//set中有可能做过转换，因此此处重新获取bean
 			subBean = this.get(patternParts, bean, true);
 		}
-
 		final Object newSubBean = BeanUtil.setFieldValue(subBean, patternParts.get(patternParts.size() - 1), value);
 		if (newSubBean != subBean) {
 			this.set(bean, getParentParts(patternParts), nextNumberPart, newSubBean);
@@ -182,7 +159,6 @@ public class BeanPath implements Serializable {
 		if (StrUtil.isBlank(expression)) {
 			return null;
 		}
-
 		if (StrUtil.contains(expression, ':')) {
 			// [start:end:step] 模式
 			final List<String> parts = StrUtil.splitTrim(expression, ':');
@@ -198,7 +174,6 @@ public class BeanPath implements Serializable {
 				return ArrayUtil.sub(bean, start, end, step);
 			}
 		} else if (StrUtil.contains(expression, ',')) {
-			// [num0,num1,num2...]模式或者['key0','key1']模式
 			final List<String> keys = StrUtil.splitTrim(expression, ',');
 			if (bean instanceof Collection) {
 				return CollUtil.getAny((Collection<?>) bean, Convert.convert(int[].class, keys));
@@ -210,7 +185,6 @@ public class BeanPath implements Serializable {
 					unWrappedKeys[i] = StrUtil.unWrap(keys.get(i), '\'');
 				}
 				if (bean instanceof Map) {
-					// 只支持String为key的Map
 					return MapUtil.getAny((Map<String, ?>) bean, unWrappedKeys);
 				} else {
 					final Map<String, Object> map = BeanUtil.beanToMap(bean);
@@ -218,10 +192,8 @@ public class BeanPath implements Serializable {
 				}
 			}
 		} else {
-			// 数字或普通字符串
 			return BeanUtil.getFieldValue(bean, expression);
 		}
-
 		return null;
 	}
 
