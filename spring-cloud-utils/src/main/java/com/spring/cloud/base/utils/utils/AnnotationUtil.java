@@ -1,5 +1,6 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
+import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.Func1;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;

@@ -1,7 +1,7 @@
 package com.spring.cloud.base.http.factory;
 
 import com.spring.cloud.base.http.utils.SSLUtil;
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 
 import javax.net.ssl.SSLSocket;

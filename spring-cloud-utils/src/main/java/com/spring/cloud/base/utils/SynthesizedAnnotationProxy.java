@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.interf.AnnotationAttributeValueProvider;
 import com.spring.cloud.base.utils.interf.SynthesizedAnnotation;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.Opt;
+import com.spring.cloud.base.utils.utils.AnnotationUtil;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;

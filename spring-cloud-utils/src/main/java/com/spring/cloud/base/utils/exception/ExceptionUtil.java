@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.exception;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.FastByteArrayOutputStream;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrUtil;

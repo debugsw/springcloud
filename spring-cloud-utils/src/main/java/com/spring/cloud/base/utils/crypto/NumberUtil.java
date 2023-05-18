@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.crypto;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.CharUtil;
 import com.spring.cloud.base.utils.exception.UtilException;

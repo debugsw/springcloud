@@ -6,7 +6,7 @@ import com.spring.cloud.base.jwt.json.JSONNull;
 import com.spring.cloud.base.jwt.json.JSONString;
 import com.spring.cloud.base.jwt.common.XML;
 import com.spring.cloud.base.jwt.config.*;
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.FileReader;
 import com.spring.cloud.base.utils.HexUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;

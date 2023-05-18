@@ -3,6 +3,7 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.impl.ParameterizedTypeImpl;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.lang.reflect.*;
 import java.util.Map;

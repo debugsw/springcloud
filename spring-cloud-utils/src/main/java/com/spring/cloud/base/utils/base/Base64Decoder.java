@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.base;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.CharsetUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 

@@ -6,6 +6,7 @@ import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.MapConverter;
 import com.spring.cloud.base.utils.map.TypeReference;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.ByteUtil;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;

@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

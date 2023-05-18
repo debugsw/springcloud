@@ -1,7 +1,7 @@
 package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.http.exception.HttpException;
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.RandomUtil;
 import com.spring.cloud.base.utils.exception.UtilException;

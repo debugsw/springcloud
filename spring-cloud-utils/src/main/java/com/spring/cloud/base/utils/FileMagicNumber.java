@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.utils.ArrayUtil;
+
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Objects;

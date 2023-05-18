@@ -1,6 +1,6 @@
 package com.spring.cloud.base.captcha.utils;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.crypto.RandomUtil;
 import com.spring.cloud.base.utils.str.StrUtil;

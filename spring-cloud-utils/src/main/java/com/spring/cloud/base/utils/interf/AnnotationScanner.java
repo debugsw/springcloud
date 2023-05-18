@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.interf;
 
-import com.spring.cloud.base.utils.AnnotationUtil;
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.AnnotationUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.EmptyAnnotationScanner;
 import com.spring.cloud.base.utils.GenericAnnotationScanner;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;

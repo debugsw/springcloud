@@ -5,6 +5,7 @@ import com.spring.cloud.base.utils.interf.LineHandler;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.ResourceUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.io.*;
 import java.net.URI;

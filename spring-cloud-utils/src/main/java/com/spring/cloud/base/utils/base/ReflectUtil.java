@@ -8,6 +8,7 @@ import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.NullWrapperBean;
 import com.spring.cloud.base.utils.map.WeakConcurrentMap;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.lang.reflect.*;
 import java.util.*;

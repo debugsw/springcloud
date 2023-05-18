@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.abstra.AbstractAnnotationSynthesizer;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.*;
 import com.spring.cloud.base.utils.map.Opt;
+import com.spring.cloud.base.utils.utils.AnnotationUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.*;

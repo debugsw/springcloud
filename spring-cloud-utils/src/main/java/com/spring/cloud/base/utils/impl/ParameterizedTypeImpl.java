@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.impl;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.Serializable;

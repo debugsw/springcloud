@@ -1,7 +1,7 @@
 package com.spring.cloud.base.captcha;
 
 import com.spring.cloud.base.captcha.utils.ImgUtil;
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.FileTypeUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 

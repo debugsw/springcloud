@@ -3,7 +3,7 @@ package com.spring.cloud.base.http;
 import com.spring.cloud.base.http.utils.HttpUtil;
 import com.spring.cloud.base.http.utils.NetUtil;
 import com.spring.cloud.base.http.utils.UserAgentUtil;
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.CharsetUtil;
 import com.spring.cloud.base.utils.CollUtil;
 import com.spring.cloud.base.utils.IoUtil;

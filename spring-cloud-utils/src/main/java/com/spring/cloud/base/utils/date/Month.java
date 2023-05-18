@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.date;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.Assert;
 
 import java.time.format.TextStyle;

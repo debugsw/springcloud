@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.str.StrBuilder;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.io.File;
 import java.io.IOException;

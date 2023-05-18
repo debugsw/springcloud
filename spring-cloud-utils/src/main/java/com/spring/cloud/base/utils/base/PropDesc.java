@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.base;
 
-import com.spring.cloud.base.utils.AnnotationUtil;
+import com.spring.cloud.base.utils.utils.AnnotationUtil;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.ModifierUtil;
 import com.spring.cloud.base.utils.TypeUtil;

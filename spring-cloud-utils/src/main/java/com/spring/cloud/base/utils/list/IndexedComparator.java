@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.list;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.Assert;
 
 import java.util.Comparator;

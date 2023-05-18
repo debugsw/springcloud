@@ -5,6 +5,7 @@ import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.date.DateUtil;
 import com.spring.cloud.base.utils.map.BooleanUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.ByteUtil;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

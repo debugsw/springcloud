@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

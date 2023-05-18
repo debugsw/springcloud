@@ -1,6 +1,6 @@
 package com.springcloud.base.setting;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.IoUtil;
 import com.spring.cloud.base.utils.interf.Filter;
 

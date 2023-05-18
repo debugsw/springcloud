@@ -1,6 +1,6 @@
 package com.springcloud.base.log.utils;
 
-import com.spring.cloud.base.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.io.Serializable;
 

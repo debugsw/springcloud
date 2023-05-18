@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.abstra.AbstractTypeAnnotationScanner;
 import com.spring.cloud.base.utils.interf.AnnotationScanner;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
