@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.ByteUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;

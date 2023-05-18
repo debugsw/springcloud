@@ -5,6 +5,8 @@ import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.map.ClassLoaderUtil;
 import com.spring.cloud.base.utils.map.ResourceUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
+import com.spring.cloud.base.utils.utils.CharsetUtil;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,6 +1,6 @@
 package com.spring.cloud.base.http;
 
-import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.Resource;
 

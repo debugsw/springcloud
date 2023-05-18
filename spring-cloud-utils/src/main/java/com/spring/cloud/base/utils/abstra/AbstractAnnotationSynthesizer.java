@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.*;
 import com.spring.cloud.base.utils.map.MapUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;

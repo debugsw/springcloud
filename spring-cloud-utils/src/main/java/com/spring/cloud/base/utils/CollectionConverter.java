@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.Converter;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.lang.reflect.Type;
 import java.util.Collection;

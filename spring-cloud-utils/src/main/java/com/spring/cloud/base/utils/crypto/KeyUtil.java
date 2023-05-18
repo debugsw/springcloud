@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.exception.CryptoException;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;

@@ -1,5 +1,6 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
+import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.Func1;
 import com.spring.cloud.base.utils.crypto.IterUtil;
@@ -14,7 +15,6 @@ import com.spring.cloud.base.utils.map.Editor;
 import com.spring.cloud.base.utils.map.EnumerationIter;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
-import com.spring.cloud.base.utils.utils.ArrayUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;

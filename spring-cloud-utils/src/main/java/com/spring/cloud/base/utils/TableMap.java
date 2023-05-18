@@ -3,6 +3,7 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.list.ListUtil;
 import com.spring.cloud.base.utils.map.MapUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.io.Serializable;
 import java.util.*;

@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CharsetUtil;
 
 import java.nio.charset.Charset;
 

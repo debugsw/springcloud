@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.utils.ArrayUtil;
-import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.str.StrUtil;
 

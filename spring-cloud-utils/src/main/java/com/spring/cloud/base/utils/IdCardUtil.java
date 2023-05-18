@@ -5,6 +5,7 @@ import com.spring.cloud.base.utils.date.DatePattern;
 import com.spring.cloud.base.utils.date.DateTime;
 import com.spring.cloud.base.utils.date.DateUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
 
 import java.io.Serializable;
 import java.util.Date;

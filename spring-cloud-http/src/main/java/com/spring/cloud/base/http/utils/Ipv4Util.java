@@ -2,7 +2,7 @@ package com.spring.cloud.base.http.utils;
 
 import com.spring.cloud.base.http.MaskBit;
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.CharUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.PatternPool;
 import com.spring.cloud.base.utils.crypto.Validator;

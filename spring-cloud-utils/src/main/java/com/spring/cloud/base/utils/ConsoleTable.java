@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;

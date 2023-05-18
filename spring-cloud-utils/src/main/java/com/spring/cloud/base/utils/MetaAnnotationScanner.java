@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.AnnotationScanner;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.utils.AnnotationUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;

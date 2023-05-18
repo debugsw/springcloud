@@ -1,8 +1,8 @@
 package com.spring.cloud.base.utils.base;
 
 import com.spring.cloud.base.utils.utils.ArrayUtil;
-import com.spring.cloud.base.utils.CharUtil;
-import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.crypto.NumberUtil;

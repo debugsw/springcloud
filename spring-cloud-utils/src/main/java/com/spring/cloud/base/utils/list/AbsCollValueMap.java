@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.list;
 
-import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.map.MapWrapper;
 
 import java.util.Collection;

@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.str.StrBuilder;
+import com.spring.cloud.base.utils.utils.CharUtil;
 
 /**
  * @Author: ls

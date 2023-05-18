@@ -8,7 +8,7 @@ import com.spring.cloud.base.jwt.exception.JSONException;
 import com.spring.cloud.base.jwt.utils.JSONUtil;
 import com.spring.cloud.base.jwt.utils.MutablePair;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
-import com.spring.cloud.base.utils.CharUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.date.DateUtil;

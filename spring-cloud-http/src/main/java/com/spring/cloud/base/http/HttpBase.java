@@ -1,7 +1,7 @@
 package com.spring.cloud.base.http;
 
-import com.spring.cloud.base.utils.CharsetUtil;
-import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.CharsetUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.map.CaseInsensitiveMap;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.map.Resource;

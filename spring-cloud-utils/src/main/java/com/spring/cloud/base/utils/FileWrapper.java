@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.utils.CharsetUtil;
+
 import java.io.File;
 import java.io.Serializable;
 import java.nio.charset.Charset;

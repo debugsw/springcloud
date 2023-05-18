@@ -8,6 +8,7 @@ import com.spring.cloud.base.utils.interf.StreamProgress;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrBuilder;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CharsetUtil;
 
 import java.io.File;
 import java.io.InputStream;

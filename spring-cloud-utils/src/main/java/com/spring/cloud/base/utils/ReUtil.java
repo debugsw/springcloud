@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.interf.RegexPool;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.util.*;
 import java.util.function.Consumer;

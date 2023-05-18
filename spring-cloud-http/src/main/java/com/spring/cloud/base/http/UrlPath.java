@@ -4,6 +4,8 @@ import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.list.ListUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.nio.charset.Charset;
 import java.util.LinkedList;

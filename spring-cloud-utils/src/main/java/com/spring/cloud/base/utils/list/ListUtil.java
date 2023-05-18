@@ -2,7 +2,7 @@ package com.spring.cloud.base.utils.list;
 
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.crypto.Matcher;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 

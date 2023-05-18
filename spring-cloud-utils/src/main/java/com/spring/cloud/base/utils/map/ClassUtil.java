@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.CharsetUtil;
 
 import java.io.IOException;
 import java.lang.reflect.Field;

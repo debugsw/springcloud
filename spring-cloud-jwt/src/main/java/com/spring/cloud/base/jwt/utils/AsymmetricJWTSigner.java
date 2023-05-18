@@ -1,7 +1,7 @@
 package com.spring.cloud.base.jwt.utils;
 
 import com.spring.cloud.base.jwt.JWTSigner;
-import com.spring.cloud.base.utils.CharsetUtil;
+import com.spring.cloud.base.utils.utils.CharsetUtil;
 import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.crypto.Sign;
 import com.spring.cloud.base.utils.str.StrUtil;

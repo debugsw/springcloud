@@ -9,7 +9,7 @@ import com.spring.cloud.base.jwt.utils.InternalJSONUtil;
 import com.spring.cloud.base.jwt.utils.JSONUtil;
 import com.spring.cloud.base.jwt.utils.MutablePair;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
-import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.base.BeanPath;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;

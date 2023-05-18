@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.interf;
 
-import com.spring.cloud.base.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.Map;

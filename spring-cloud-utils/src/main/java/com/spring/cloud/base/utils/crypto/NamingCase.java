@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.crypto;
 
-import com.spring.cloud.base.utils.CharUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
 import com.spring.cloud.base.utils.str.StrBuilder;
 import com.spring.cloud.base.utils.str.StrUtil;
 

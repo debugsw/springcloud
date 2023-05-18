@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.abstra.AbstractTypeAnnotationScanner;
 import com.spring.cloud.base.utils.interf.AnnotationScanner;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;

@@ -10,7 +10,7 @@ import com.spring.cloud.base.jwt.exception.JSONException;
 import com.spring.cloud.base.jwt.map.CaseInsensitiveLinkedMap;
 import com.spring.cloud.base.jwt.map.CaseInsensitiveTreeMap;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
-import com.spring.cloud.base.utils.CharUtil;
+import com.spring.cloud.base.utils.utils.CharUtil;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.bean.CopyOptions;
 import com.spring.cloud.base.utils.crypto.NumberUtil;

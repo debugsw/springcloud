@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.crypto.IterUtil;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.nio.charset.Charset;
 import java.util.Iterator;

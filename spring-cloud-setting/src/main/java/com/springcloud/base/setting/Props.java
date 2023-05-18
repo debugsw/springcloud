@@ -6,6 +6,7 @@ import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.*;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CharsetUtil;
 import com.springcloud.base.log.StaticLog;
 
 import java.io.BufferedReader;

@@ -7,6 +7,8 @@ import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.map.BiMap;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.CharsetUtil;
+import com.spring.cloud.base.utils.utils.CollUtil;
 import org.w3c.dom.*;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
