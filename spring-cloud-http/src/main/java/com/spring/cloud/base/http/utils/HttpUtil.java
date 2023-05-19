@@ -10,6 +10,7 @@ import com.spring.cloud.base.utils.str.StrBuilder;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.CharsetUtil;
 import com.spring.cloud.base.utils.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 
 import java.io.File;
 import java.io.InputStream;

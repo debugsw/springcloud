@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.map;
 
-import com.spring.cloud.base.utils.ReferenceUtil;
+import com.spring.cloud.base.utils.utils.ReferenceUtil;
 
 import java.lang.ref.Reference;
 import java.util.concurrent.ConcurrentMap;

@@ -6,6 +6,7 @@ import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.CharUtil;
 import com.spring.cloud.base.utils.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;

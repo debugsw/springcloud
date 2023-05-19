@@ -14,6 +14,7 @@ import com.spring.cloud.base.utils.bean.BeanUtil;
 import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 
 import java.io.InputStream;
 import java.io.Reader;

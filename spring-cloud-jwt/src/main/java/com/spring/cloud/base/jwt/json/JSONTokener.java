@@ -4,7 +4,7 @@ import com.spring.cloud.base.jwt.config.JSONConfig;
 import com.spring.cloud.base.jwt.config.JSONObject;
 import com.spring.cloud.base.jwt.exception.JSONException;
 import com.spring.cloud.base.jwt.utils.InternalJSONUtil;
-import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.*;

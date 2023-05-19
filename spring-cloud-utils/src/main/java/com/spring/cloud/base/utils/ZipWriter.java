@@ -5,6 +5,7 @@ import com.spring.cloud.base.utils.map.Resource;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 
 import java.io.*;
 import java.nio.charset.Charset;

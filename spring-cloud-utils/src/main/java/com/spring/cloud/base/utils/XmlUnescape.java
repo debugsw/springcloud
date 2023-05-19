@@ -1,5 +1,7 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.utils.InternalEscapeUtil;
+
 /**
  * @Author: ls
  * @Description: XML的UNESCAPE

@@ -30,7 +30,7 @@ public class AnnotationUtil {
 	/**
 	 * 元注解
 	 */
-	static final Set<Class<? extends Annotation>> META_ANNOTATIONS = CollUtil.newHashSet(Target.class,
+	public static final Set<Class<? extends Annotation>> META_ANNOTATIONS = CollUtil.newHashSet(Target.class,
 			Retention.class,
 			Inherited.class,
 			Documented.class,
@@ -545,7 +545,7 @@ public class AnnotationUtil {
 	 *
 	 * @param method 方法
 	 */
-	static boolean isAttributeMethod(Method method) {
+	public static boolean isAttributeMethod(Method method) {
 		return method.getParameterCount() == 0 && method.getReturnType() != void.class;
 	}
 

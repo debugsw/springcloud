@@ -2,7 +2,7 @@ package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.http.factory.AndroidSupportSSLFactory;
 import com.spring.cloud.base.http.factory.DefaultSSLFactory;
-import com.spring.cloud.base.utils.JdkUtil;
+import com.spring.cloud.base.utils.utils.JdkUtil;
 
 import javax.net.ssl.SSLSocketFactory;
 

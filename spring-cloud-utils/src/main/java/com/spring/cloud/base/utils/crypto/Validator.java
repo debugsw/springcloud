@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.IdCardUtil;
+import com.spring.cloud.base.utils.utils.IdCardUtil;
 import com.spring.cloud.base.utils.PatternPool;
 import com.spring.cloud.base.utils.ReUtil;
 import com.spring.cloud.base.utils.date.DateUtil;

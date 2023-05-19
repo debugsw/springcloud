@@ -1,7 +1,7 @@
 package com.springcloud.base.log;
 
 import com.spring.cloud.base.utils.Console;
-import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 import com.spring.cloud.base.utils.map.ResourceUtil;
 
 import java.io.InputStream;

@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.crypto;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.HexUtil;
+import com.spring.cloud.base.utils.utils.HexUtil;
 import com.spring.cloud.base.utils.exception.CryptoException;
 import org.bouncycastle.crypto.CipherParameters;
 import org.bouncycastle.crypto.Digest;

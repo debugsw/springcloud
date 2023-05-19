@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.map;
 
-import com.spring.cloud.base.utils.JdkUtil;
+import com.spring.cloud.base.utils.utils.JdkUtil;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -6,10 +6,7 @@ import com.spring.cloud.base.utils.map.Resource;
 import com.spring.cloud.base.utils.map.ResourceUtil;
 import com.spring.cloud.base.utils.map.UrlResource;
 import com.spring.cloud.base.utils.str.StrUtil;
-import com.spring.cloud.base.utils.utils.CharUtil;
-import com.spring.cloud.base.utils.utils.CharsetUtil;
-import com.spring.cloud.base.utils.utils.CollUtil;
-import com.spring.cloud.base.utils.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.*;
 import com.springcloud.base.log.StaticLog;
 
 import java.io.File;

@@ -16,6 +16,7 @@ import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.ModifierUtil;
 
 import java.beans.*;
 import java.lang.reflect.Field;

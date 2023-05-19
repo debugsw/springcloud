@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.base;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.ModifierUtil;
+import com.spring.cloud.base.utils.utils.ModifierUtil;
 import com.spring.cloud.base.utils.map.BooleanUtil;
 import com.spring.cloud.base.utils.map.CaseInsensitiveMap;
 import com.spring.cloud.base.utils.str.StrUtil;

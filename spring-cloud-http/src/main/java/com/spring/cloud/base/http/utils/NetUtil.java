@@ -2,7 +2,7 @@ package com.spring.cloud.base.http.utils;
 
 import com.spring.cloud.base.http.UserPassAuthenticator;
 import com.spring.cloud.base.utils.utils.CollUtil;
-import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 import com.spring.cloud.base.utils.crypto.RandomUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;

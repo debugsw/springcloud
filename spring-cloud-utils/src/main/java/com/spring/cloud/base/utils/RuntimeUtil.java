@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.CharUtil;
 import com.spring.cloud.base.utils.utils.CharsetUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 
 import java.io.File;
 import java.io.IOException;

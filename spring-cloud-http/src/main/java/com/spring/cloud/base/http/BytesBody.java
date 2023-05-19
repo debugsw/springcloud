@@ -1,6 +1,6 @@
 package com.spring.cloud.base.http;
 
-import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 
 import java.io.OutputStream;
 

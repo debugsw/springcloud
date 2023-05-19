@@ -3,6 +3,7 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 
 import java.io.File;
 import java.io.IOException;

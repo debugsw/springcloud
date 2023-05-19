@@ -6,7 +6,7 @@ import com.spring.cloud.base.http.utils.UserAgentUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.CharsetUtil;
 import com.spring.cloud.base.utils.utils.CollUtil;
-import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.list.ListValueMap;
 import com.spring.cloud.base.utils.map.CaseInsensitiveMap;

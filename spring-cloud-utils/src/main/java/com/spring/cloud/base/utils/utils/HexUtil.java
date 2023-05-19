@@ -1,4 +1,4 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
 import com.spring.cloud.base.utils.base.Base16Codec;
 import com.spring.cloud.base.utils.exception.UtilException;

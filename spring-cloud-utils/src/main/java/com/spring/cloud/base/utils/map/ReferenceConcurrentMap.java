@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.utils.CollUtil;
-import com.spring.cloud.base.utils.ReferenceUtil;
+import com.spring.cloud.base.utils.utils.ReferenceUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 
 import java.io.Serializable;

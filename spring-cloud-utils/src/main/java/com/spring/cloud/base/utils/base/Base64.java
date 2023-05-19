@@ -2,7 +2,7 @@ package com.spring.cloud.base.utils.base;
 
 import com.spring.cloud.base.utils.utils.CharsetUtil;
 import com.spring.cloud.base.utils.utils.FileUtil;
-import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.File;

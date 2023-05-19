@@ -8,7 +8,7 @@ import com.spring.cloud.base.jwt.common.XML;
 import com.spring.cloud.base.jwt.config.*;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.FileReader;
-import com.spring.cloud.base.utils.HexUtil;
+import com.spring.cloud.base.utils.utils.HexUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.ClassUtil;

@@ -1,11 +1,11 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
 /**
  * @Author: ls
  * @Description: 内部Escape工具类
  * @Date: 2023/4/13 16:11
  */
-class InternalEscapeUtil {
+public class InternalEscapeUtil {
 
 	/**
 	 * 将数组中的0和1位置的值互换，即键值转换

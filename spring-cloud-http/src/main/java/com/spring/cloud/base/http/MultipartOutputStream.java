@@ -2,7 +2,7 @@ package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.http.utils.HttpUtil;
 import com.spring.cloud.base.utils.Convert;
-import com.spring.cloud.base.utils.IoUtil;
+import com.spring.cloud.base.utils.utils.IoUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.Resource;
 import com.spring.cloud.base.utils.str.StrUtil;

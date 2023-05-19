@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.interf.StreamProgress;
+import com.spring.cloud.base.utils.utils.IoUtil;
 
 /**
  * @Author: ls
