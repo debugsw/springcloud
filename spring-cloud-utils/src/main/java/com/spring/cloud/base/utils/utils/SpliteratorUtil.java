@@ -1,4 +1,6 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
+
+import com.spring.cloud.base.utils.TransSpliterator;
 
 import java.util.Spliterator;
 import java.util.function.Function;

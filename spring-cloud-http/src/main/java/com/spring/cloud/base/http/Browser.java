@@ -1,7 +1,7 @@
 package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.utils.utils.CollUtil;
-import com.spring.cloud.base.utils.ReUtil;
+import com.spring.cloud.base.utils.utils.ReUtil;
 
 import java.util.List;
 import java.util.regex.Pattern;

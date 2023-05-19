@@ -1,7 +1,7 @@
 package com.springcloud.base.socket;
 
 import com.spring.cloud.base.utils.utils.IoUtil;
-import com.spring.cloud.base.utils.RuntimeUtil;
+import com.spring.cloud.base.utils.utils.RuntimeUtil;
 
 import java.io.Serializable;
 

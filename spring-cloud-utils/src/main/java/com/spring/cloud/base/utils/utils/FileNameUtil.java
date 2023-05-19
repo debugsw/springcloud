@@ -1,8 +1,6 @@
 package com.spring.cloud.base.utils.utils;
 
-import com.spring.cloud.base.utils.ReUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
-import com.spring.cloud.base.utils.utils.CharUtil;
 
 import java.io.File;
 import java.util.regex.Pattern;
