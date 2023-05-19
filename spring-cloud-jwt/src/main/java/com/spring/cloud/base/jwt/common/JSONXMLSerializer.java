@@ -5,7 +5,7 @@ import com.spring.cloud.base.jwt.config.JSONObject;
 import com.spring.cloud.base.jwt.exception.JSONException;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.CharUtil;
-import com.spring.cloud.base.utils.EscapeUtil;
+import com.spring.cloud.base.utils.utils.EscapeUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 /**

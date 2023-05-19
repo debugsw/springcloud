@@ -6,6 +6,7 @@ import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.interf.LineHandler;
 import com.spring.cloud.base.utils.utils.CharUtil;
 import com.spring.cloud.base.utils.utils.CharsetUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 
 import java.io.File;
 import java.io.IOException;

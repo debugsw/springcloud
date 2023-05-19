@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.utils.CharsetUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 
 import java.io.File;
 import java.io.Serializable;

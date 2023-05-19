@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.interf.EnumItem;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.map.WeakConcurrentMap;
+import com.spring.cloud.base.utils.utils.EnumUtil;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;

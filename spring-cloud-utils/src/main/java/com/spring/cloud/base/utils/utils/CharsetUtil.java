@@ -1,7 +1,6 @@
 package com.spring.cloud.base.utils.utils;
 
 import com.spring.cloud.base.utils.CharsetDetector;
-import com.spring.cloud.base.utils.FileUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 import java.io.File;

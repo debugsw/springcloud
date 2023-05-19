@@ -1,6 +1,6 @@
 package com.springcloud.base.setting;
 
-import com.spring.cloud.base.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 import com.spring.cloud.base.utils.URLUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.str.StrUtil;

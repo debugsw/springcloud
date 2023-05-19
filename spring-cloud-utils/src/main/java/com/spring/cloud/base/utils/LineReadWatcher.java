@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.interf.LineHandler;
+import com.spring.cloud.base.utils.utils.FileUtil;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;

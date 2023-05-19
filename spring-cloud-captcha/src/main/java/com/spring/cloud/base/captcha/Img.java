@@ -4,7 +4,7 @@ import com.spring.cloud.base.captcha.utils.FontUtil;
 import com.spring.cloud.base.captcha.utils.GraphicsUtil;
 import com.spring.cloud.base.captcha.utils.ImgUtil;
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 import com.spring.cloud.base.utils.IoUtil;
 import com.spring.cloud.base.utils.crypto.NumberUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;

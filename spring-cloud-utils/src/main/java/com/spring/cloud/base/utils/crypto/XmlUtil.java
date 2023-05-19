@@ -9,6 +9,8 @@ import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.CharsetUtil;
 import com.spring.cloud.base.utils.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.EscapeUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 import org.w3c.dom.*;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;

@@ -1,5 +1,9 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
+import com.spring.cloud.base.utils.Html4Escape;
+import com.spring.cloud.base.utils.Html4Unescape;
+import com.spring.cloud.base.utils.XmlEscape;
+import com.spring.cloud.base.utils.XmlUnescape;
 import com.spring.cloud.base.utils.interf.Filter;
 import com.spring.cloud.base.utils.str.StrUtil;
 
@@ -16,7 +20,7 @@ public class EscapeUtil {
 	private static final String NOT_ESCAPE_CHARS = "*@-_+./";
 
 	private static final Filter<Character> JS_ESCAPE_FILTER
-			= c -> false == (Character.isDigit(c) || Character.isLowerCase(c) || Character.isUpperCase(c) || StrUtil.contains(NOT_ESCAPE_CHARS, c));
+			= c -> !(Character.isDigit(c) || Character.isLowerCase(c) || Character.isUpperCase(c) || StrUtil.contains(NOT_ESCAPE_CHARS, c));
 
 	/**
 	 * 转义XML中的特殊字符

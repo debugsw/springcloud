@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.map;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 import com.spring.cloud.base.utils.URLUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.NoResourceException;

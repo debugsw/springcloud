@@ -4,6 +4,7 @@ import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.Resource;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 
 import java.io.*;
 import java.nio.charset.Charset;

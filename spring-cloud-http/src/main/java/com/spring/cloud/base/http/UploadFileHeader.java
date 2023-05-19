@@ -1,6 +1,6 @@
 package com.spring.cloud.base.http;
 
-import com.spring.cloud.base.utils.FileUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
 
 /**

@@ -1,14 +1,12 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
+import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.FileWriter;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.interf.LineHandler;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.ResourceUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
-import com.spring.cloud.base.utils.utils.ArrayUtil;
-import com.spring.cloud.base.utils.utils.CharUtil;
-import com.spring.cloud.base.utils.utils.CharsetUtil;
-import com.spring.cloud.base.utils.utils.CollUtil;
 
 import java.io.*;
 import java.net.URI;
@@ -1825,7 +1823,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static byte[] readBytes(File file) throws IORuntimeException {
-		return FileReader.create(file).readBytes();
+		return com.spring.cloud.base.utils.FileReader.create(file).readBytes();
 	}
 
 	/**
@@ -1884,7 +1882,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static String readString(File file, Charset charset) throws IORuntimeException {
-		return FileReader.create(file, charset).readString();
+		return com.spring.cloud.base.utils.FileReader.create(file, charset).readString();
 	}
 
 	/**
@@ -2016,7 +2014,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static <T extends Collection<String>> T readLines(File file, String charset, T collection) throws IORuntimeException {
-		return FileReader.create(file, CharsetUtil.charset(charset)).readLines(collection);
+		return com.spring.cloud.base.utils.FileReader.create(file, CharsetUtil.charset(charset)).readLines(collection);
 	}
 
 	/**
@@ -2030,7 +2028,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static <T extends Collection<String>> T readLines(File file, Charset charset, T collection) throws IORuntimeException {
-		return FileReader.create(file, charset).readLines(collection);
+		return com.spring.cloud.base.utils.FileReader.create(file, charset).readLines(collection);
 	}
 
 	/**
@@ -2242,7 +2240,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static void readLines(File file, Charset charset, LineHandler lineHandler) throws IORuntimeException {
-		FileReader.create(file, charset).readLines(lineHandler);
+		com.spring.cloud.base.utils.FileReader.create(file, charset).readLines(lineHandler);
 	}
 
 	/**
@@ -2310,7 +2308,7 @@ public class FileUtil extends PathUtil {
 	 * @return 从文件中load出的数据
 	 * @throws IORuntimeException IO异常
 	 */
-	public static <T> T loadUtf8(String path, FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
+	public static <T> T loadUtf8(String path, com.spring.cloud.base.utils.FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
 		return load(path, CharsetUtil.CHARSET_UTF_8, readerHandler);
 	}
 
@@ -2324,8 +2322,8 @@ public class FileUtil extends PathUtil {
 	 * @return 从文件中load出的数据
 	 * @throws IORuntimeException IO异常
 	 */
-	public static <T> T load(String path, String charset, FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
-		return FileReader.create(file(path), CharsetUtil.charset(charset)).read(readerHandler);
+	public static <T> T load(String path, String charset, com.spring.cloud.base.utils.FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
+		return com.spring.cloud.base.utils.FileReader.create(file(path), CharsetUtil.charset(charset)).read(readerHandler);
 	}
 
 	/**
@@ -2338,8 +2336,8 @@ public class FileUtil extends PathUtil {
 	 * @return 从文件中load出的数据
 	 * @throws IORuntimeException IO异常
 	 */
-	public static <T> T load(String path, Charset charset, FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
-		return FileReader.create(file(path), charset).read(readerHandler);
+	public static <T> T load(String path, Charset charset, com.spring.cloud.base.utils.FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
+		return com.spring.cloud.base.utils.FileReader.create(file(path), charset).read(readerHandler);
 	}
 
 	/**
@@ -2351,7 +2349,7 @@ public class FileUtil extends PathUtil {
 	 * @return 从文件中load出的数据
 	 * @throws IORuntimeException IO异常
 	 */
-	public static <T> T loadUtf8(File file, FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
+	public static <T> T loadUtf8(File file, com.spring.cloud.base.utils.FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
 		return load(file, CharsetUtil.CHARSET_UTF_8, readerHandler);
 	}
 
@@ -2365,8 +2363,8 @@ public class FileUtil extends PathUtil {
 	 * @return 从文件中load出的数据
 	 * @throws IORuntimeException IO异常
 	 */
-	public static <T> T load(File file, Charset charset, FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
-		return FileReader.create(file, charset).read(readerHandler);
+	public static <T> T load(File file, Charset charset, com.spring.cloud.base.utils.FileReader.ReaderHandler<T> readerHandler) throws IORuntimeException {
+		return com.spring.cloud.base.utils.FileReader.create(file, charset).read(readerHandler);
 	}
 
 	/**
@@ -2450,7 +2448,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static BufferedWriter getWriter(File file, Charset charset, boolean isAppend) throws IORuntimeException {
-		return FileWriter.create(file, charset).getWriter(isAppend);
+		return com.spring.cloud.base.utils.FileWriter.create(file, charset).getWriter(isAppend);
 	}
 
 	/**
@@ -2574,7 +2572,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static File writeString(String content, File file, String charset) throws IORuntimeException {
-		return FileWriter.create(file, CharsetUtil.charset(charset)).write(content);
+		return com.spring.cloud.base.utils.FileWriter.create(file, CharsetUtil.charset(charset)).write(content);
 	}
 
 	/**
@@ -2587,7 +2585,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static File writeString(String content, File file, Charset charset) throws IORuntimeException {
-		return FileWriter.create(file, charset).write(content);
+		return com.spring.cloud.base.utils.FileWriter.create(file, charset).write(content);
 	}
 
 	/**
@@ -2650,7 +2648,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static File appendString(String content, File file, String charset) throws IORuntimeException {
-		return FileWriter.create(file, CharsetUtil.charset(charset)).append(content);
+		return com.spring.cloud.base.utils.FileWriter.create(file, CharsetUtil.charset(charset)).append(content);
 	}
 
 	/**
@@ -2663,7 +2661,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static File appendString(String content, File file, Charset charset) throws IORuntimeException {
-		return FileWriter.create(file, charset).append(content);
+		return com.spring.cloud.base.utils.FileWriter.create(file, charset).append(content);
 	}
 
 	/**
@@ -2872,7 +2870,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static <T> File writeLines(Collection<T> list, File file, String charset, boolean isAppend) throws IORuntimeException {
-		return FileWriter.create(file, CharsetUtil.charset(charset)).writeLines(list, isAppend);
+		return com.spring.cloud.base.utils.FileWriter.create(file, CharsetUtil.charset(charset)).writeLines(list, isAppend);
 	}
 
 	/**
@@ -2887,7 +2885,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static <T> File writeLines(Collection<T> list, File file, Charset charset, boolean isAppend) throws IORuntimeException {
-		return FileWriter.create(file, charset).writeLines(list, isAppend);
+		return com.spring.cloud.base.utils.FileWriter.create(file, charset).writeLines(list, isAppend);
 	}
 
 	/**
@@ -2902,7 +2900,7 @@ public class FileUtil extends PathUtil {
 	 *
 	 */
 	public static File writeUtf8Map(Map<?, ?> map, File file, String kvSeparator, boolean isAppend) throws IORuntimeException {
-		return FileWriter.create(file, CharsetUtil.CHARSET_UTF_8).writeMap(map, kvSeparator, isAppend);
+		return com.spring.cloud.base.utils.FileWriter.create(file, CharsetUtil.CHARSET_UTF_8).writeMap(map, kvSeparator, isAppend);
 	}
 
 	/**
@@ -2917,7 +2915,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static File writeMap(Map<?, ?> map, File file, Charset charset, String kvSeparator, boolean isAppend) throws IORuntimeException {
-		return FileWriter.create(file, charset).writeMap(map, kvSeparator, isAppend);
+		return com.spring.cloud.base.utils.FileWriter.create(file, charset).writeMap(map, kvSeparator, isAppend);
 	}
 
 	/**
@@ -2957,7 +2955,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static File writeBytes(byte[] data, File dest, int off, int len, boolean isAppend) throws IORuntimeException {
-		return FileWriter.create(dest).write(data, off, len, isAppend);
+		return com.spring.cloud.base.utils.FileWriter.create(dest).write(data, off, len, isAppend);
 	}
 
 	/**
@@ -3008,7 +3006,7 @@ public class FileUtil extends PathUtil {
 	 * @throws IORuntimeException IO异常
 	 */
 	public static long writeToStream(File file, OutputStream out) throws IORuntimeException {
-		return FileReader.create(file).writeToStream(out);
+		return com.spring.cloud.base.utils.FileReader.create(file).writeToStream(out);
 	}
 
 	/**

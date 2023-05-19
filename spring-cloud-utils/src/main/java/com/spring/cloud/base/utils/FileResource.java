@@ -3,6 +3,7 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.NoResourceException;
 import com.spring.cloud.base.utils.map.Resource;
+import com.spring.cloud.base.utils.utils.FileUtil;
 
 import java.io.File;
 import java.io.InputStream;

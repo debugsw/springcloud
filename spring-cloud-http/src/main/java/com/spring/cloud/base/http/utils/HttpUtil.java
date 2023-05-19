@@ -9,6 +9,7 @@ import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrBuilder;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.CharsetUtil;
+import com.spring.cloud.base.utils.utils.FileUtil;
 
 import java.io.File;
 import java.io.InputStream;

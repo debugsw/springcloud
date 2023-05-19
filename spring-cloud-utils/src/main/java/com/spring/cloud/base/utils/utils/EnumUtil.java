@@ -1,5 +1,7 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
+import com.spring.cloud.base.utils.Assert;
+import com.spring.cloud.base.utils.LambdaUtil;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.Func1;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
@@ -84,7 +86,7 @@ public class EnumUtil {
 	 * @param value        值
 	 * @param defaultValue 无对应枚举值返回的默认值
 	 * @return 枚举值
-	 * 
+	 *
 	 */
 	public static <E extends Enum<E>> E fromString(Class<E> enumClass, String value, E defaultValue) {
 		return ObjectUtil.defaultIfNull(fromStringQuietly(enumClass, value), defaultValue);
@@ -97,13 +99,12 @@ public class EnumUtil {
 	 * @param enumClass 枚举类
 	 * @param value     值
 	 * @return 枚举值
-	 * 
+	 *
 	 */
 	public static <E extends Enum<E>> E fromStringQuietly(Class<E> enumClass, String value) {
 		if (null == enumClass || StrUtil.isBlank(value)) {
 			return null;
 		}
-
 		try {
 			return fromString(enumClass, value);
 		} catch (IllegalArgumentException e) {
@@ -124,14 +125,12 @@ public class EnumUtil {
 		if (value instanceof CharSequence) {
 			value = value.toString().trim();
 		}
-
 		final Field[] fields = ReflectUtil.getFields(enumClass);
 		final Enum<?>[] enums = enumClass.getEnumConstants();
 		String fieldName;
 		for (Field field : fields) {
 			fieldName = field.getName();
 			if (field.getType().isEnum() || "ENUM$VALUES".equals(fieldName) || "ordinal".equals(fieldName)) {
-				// 跳过一些特殊字段
 				continue;
 			}
 			for (Enum<?> enumObj : enums) {
@@ -190,7 +189,7 @@ public class EnumUtil {
 	 *
 	 * @param clazz 枚举类
 	 * @return 字段名列表
-	 * 
+	 *
 	 */
 	public static List<String> getFieldNames(Class<? extends Enum<?>> clazz) {
 		final List<String> names = new ArrayList<>();
@@ -201,7 +200,7 @@ public class EnumUtil {
 			if (field.getType().isEnum() || name.contains("$VALUES") || "ordinal".equals(name)) {
 				continue;
 			}
-			if (false == names.contains(name)) {
+			if (!names.contains(name)) {
 				names.add(name);
 			}
 		}
@@ -215,7 +214,7 @@ public class EnumUtil {
 	 * @param predicate 条件
 	 * @param <E>       枚举类型
 	 * @return 对应枚举 ，获取不到时为 {@code null}
-	 * 
+	 *
 	 */
 	public static <E extends Enum<E>> E getBy(Class<E> enumClass, Predicate<? super E> predicate) {
 		return Arrays.stream(enumClass.getEnumConstants())
@@ -248,7 +247,7 @@ public class EnumUtil {
 	 * @param value       条件字段值
 	 * @param defaultEnum 条件找不到则返回结果使用这个
 	 * @return 对应枚举 ，获取不到时为 {@code null}
-	 * 
+	 *
 	 */
 	public static <E extends Enum<E>, C> E getBy(Func1<E, C> condition, C value, E defaultEnum) {
 		return ObjectUtil.defaultIfNull(getBy(condition, value), defaultEnum);
@@ -264,7 +263,7 @@ public class EnumUtil {
 	 * @param <F>       想要获取的字段类型
 	 * @param <C>       条件字段类型
 	 * @return 对应枚举中另一字段值 ，获取不到时为 {@code null}
-	 * 
+	 *
 	 */
 	public static <E extends Enum<E>, F, C> F getFieldBy(Func1<E, F> field,
 														 Function<E, C> condition, C value) {
@@ -286,7 +285,7 @@ public class EnumUtil {
 	 * @param <E>       枚举类型
 	 * @param enumClass 枚举类
 	 * @return 枚举字符串值和枚举对象的Map对应，使用LinkedHashMap保证有序
-	 * 
+	 *
 	 */
 	public static <E extends Enum<E>> LinkedHashMap<String, E> getEnumMap(final Class<E> enumClass) {
 		final LinkedHashMap<String, E> map = new LinkedHashMap<>();
