@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.map;
 
-import com.spring.cloud.base.utils.TypeUtil;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 
 import java.lang.reflect.Type;
 

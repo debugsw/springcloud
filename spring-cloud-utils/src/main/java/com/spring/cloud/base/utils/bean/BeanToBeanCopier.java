@@ -1,7 +1,7 @@
 package com.spring.cloud.base.utils.bean;
 
 import com.spring.cloud.base.utils.Assert;
-import com.spring.cloud.base.utils.TypeUtil;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 import com.spring.cloud.base.utils.abstra.AbsCopier;
 import com.spring.cloud.base.utils.base.PropDesc;
 

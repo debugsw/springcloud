@@ -10,7 +10,7 @@ import com.spring.cloud.base.jwt.utils.JSONUtil;
 import com.spring.cloud.base.utils.ArrayConverter;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.ConverterRegistry;
-import com.spring.cloud.base.utils.TypeUtil;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 import com.spring.cloud.base.utils.base.Base64;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.bean.BeanUtil;

@@ -10,6 +10,7 @@ import com.spring.cloud.base.utils.map.MapConverter;
 import com.spring.cloud.base.utils.map.SafeConcurrentHashMap;
 import com.spring.cloud.base.utils.map.TypeReference;
 import com.spring.cloud.base.utils.utils.ServiceLoaderUtil;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;

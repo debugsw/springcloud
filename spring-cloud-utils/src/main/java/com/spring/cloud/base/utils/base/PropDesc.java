@@ -3,7 +3,7 @@ package com.spring.cloud.base.utils.base;
 import com.spring.cloud.base.utils.utils.AnnotationUtil;
 import com.spring.cloud.base.utils.Convert;
 import com.spring.cloud.base.utils.utils.ModifierUtil;
-import com.spring.cloud.base.utils.TypeUtil;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 import com.spring.cloud.base.utils.exception.BeanException;
 import com.spring.cloud.base.utils.map.ClassUtil;
 

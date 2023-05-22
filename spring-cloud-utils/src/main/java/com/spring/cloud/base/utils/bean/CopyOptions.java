@@ -3,7 +3,7 @@ package com.spring.cloud.base.utils.bean;
 import com.spring.cloud.base.utils.utils.ArrayUtil;
 import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.Convert;
-import com.spring.cloud.base.utils.LambdaUtil;
+import com.spring.cloud.base.utils.utils.LambdaUtil;
 import com.spring.cloud.base.utils.crypto.Func1;
 import com.spring.cloud.base.utils.interf.TypeConverter;
 import com.spring.cloud.base.utils.map.Editor;

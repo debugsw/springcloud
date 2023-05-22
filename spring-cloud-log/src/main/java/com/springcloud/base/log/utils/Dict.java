@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.map.BasicTypeGetter;
 import com.spring.cloud.base.utils.map.Func0;
 import com.spring.cloud.base.utils.map.Pair;
 import com.spring.cloud.base.utils.utils.CollUtil;
+import com.spring.cloud.base.utils.utils.LambdaUtil;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

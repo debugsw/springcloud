@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.exception.ConvertException;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.map.Pair;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 
 import java.lang.reflect.Type;
 import java.util.Map;

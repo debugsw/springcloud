@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.abstra.AbsCopier;
 import com.spring.cloud.base.utils.bean.CopyOptions;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 
 import java.lang.reflect.Type;
 import java.util.Map;

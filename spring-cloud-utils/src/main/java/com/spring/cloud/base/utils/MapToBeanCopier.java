@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.bean.CopyOptions;
 import com.spring.cloud.base.utils.map.CaseInsensitiveMap;
 import com.spring.cloud.base.utils.map.MapWrapper;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 
 import java.lang.reflect.Type;
 import java.util.Map;

@@ -1,5 +1,6 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
+import com.spring.cloud.base.utils.RFC3986;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.CharsetUtil;

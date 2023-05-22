@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.map.WeakConcurrentMap;
+import com.spring.cloud.base.utils.utils.TypeUtil;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -65,9 +66,7 @@ public class ActualTypeMapperPool {
 		// 查找方法定义所在类或接口中此泛型参数的位置
 		final Type[] result = new Type[typeVariables.length];
 		for (int i = 0; i < typeVariables.length; i++) {
-			result[i] = (typeVariables[i] instanceof TypeVariable)
-					? getActualType(type, (TypeVariable<?>) typeVariables[i])
-					: typeVariables[i];
+			result[i] = (typeVariables[i] instanceof TypeVariable) ? getActualType(type, (TypeVariable<?>) typeVariables[i]) : typeVariables[i];
 		}
 		return result;
 	}
