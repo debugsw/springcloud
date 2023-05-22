@@ -1,6 +1,6 @@
 package com.spring.cloud.base.http;
 
-import com.spring.cloud.base.utils.URLUtil;
+import com.spring.cloud.base.utils.utils.URLUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 
 import java.io.IOException;

@@ -1,5 +1,7 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.utils;
 
+import com.spring.cloud.base.utils.Assert;
+import com.spring.cloud.base.utils.URLDecoder;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.map.ClassLoaderUtil;
@@ -330,7 +332,7 @@ public class URLUtil extends URLEncodeUtil {
 	 * 
 	 */
 	public static String decode(String content, Charset charset) {
-		return URLDecoder.decode(content, charset);
+		return com.spring.cloud.base.utils.URLDecoder.decode(content, charset);
 	}
 
 	/**

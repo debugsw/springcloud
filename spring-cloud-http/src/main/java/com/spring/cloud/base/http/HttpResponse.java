@@ -10,6 +10,7 @@ import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.FileUtil;
 import com.spring.cloud.base.utils.utils.IoUtil;
 import com.spring.cloud.base.utils.utils.ReUtil;
+import com.spring.cloud.base.utils.utils.URLUtil;
 
 import java.io.*;
 import java.net.HttpCookie;

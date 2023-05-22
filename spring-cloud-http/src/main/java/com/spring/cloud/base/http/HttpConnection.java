@@ -2,7 +2,7 @@ package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.http.exception.HttpException;
 import com.spring.cloud.base.http.utils.HttpUtil;
-import com.spring.cloud.base.utils.URLUtil;
+import com.spring.cloud.base.utils.utils.URLUtil;
 import com.spring.cloud.base.utils.base.ReflectUtil;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.map.MapUtil;
