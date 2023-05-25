@@ -1,7 +1,7 @@
 package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.http.factory.AndroidSupportSSLFactory;
-import com.spring.cloud.base.http.factory.DefaultSSLFactory;
+import com.spring.cloud.base.http.factory.CustomProtocolsSSLFactory;
 import com.spring.cloud.base.utils.utils.JdkUtil;
 
 import javax.net.ssl.SSLSocketFactory;
@@ -27,7 +27,7 @@ public class DefaultSSLInfo {
             // 兼容android低版本SSL连接
             DEFAULT_SSF = new AndroidSupportSSLFactory();
         } else {
-            DEFAULT_SSF = new DefaultSSLFactory();
+            DEFAULT_SSF = new CustomProtocolsSSLFactory();
         }
     }
 }
