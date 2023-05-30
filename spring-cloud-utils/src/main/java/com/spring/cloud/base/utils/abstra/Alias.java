@@ -1,4 +1,4 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.abstra;
 
 import java.lang.annotation.*;
 

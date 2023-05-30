@@ -51,7 +51,7 @@ public class GroupTimeInterval implements Serializable {
 	}
 
 	/**
-	 * 重新计时并返回从开始到当前的持续时间秒<br>
+	 * 重新计时并返回从开始到当前的持续时间秒
 	 * 如果此分组下没有记录，则返回0;
 	 *
 	 * @param id 分组ID

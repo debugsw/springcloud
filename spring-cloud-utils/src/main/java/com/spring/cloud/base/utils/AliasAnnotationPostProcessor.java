@@ -1,5 +1,6 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.abstra.Alias;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.AnnotationAttribute;
 import com.spring.cloud.base.utils.interf.AnnotationSynthesizer;

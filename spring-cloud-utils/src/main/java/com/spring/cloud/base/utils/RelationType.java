@@ -1,5 +1,8 @@
 package com.spring.cloud.base.utils;
 
+import com.spring.cloud.base.utils.abstra.Alias;
+import com.spring.cloud.base.utils.abstra.Link;
+
 /**
  * @Author: ls
  * @Description: 注解属性的关系类型

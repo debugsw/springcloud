@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.abstra.AbstractAnnotationSynthesizer;
+import com.spring.cloud.base.utils.abstra.Alias;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.interf.*;
 import com.spring.cloud.base.utils.map.Opt;

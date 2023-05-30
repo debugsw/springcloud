@@ -1,4 +1,6 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.abstra;
+
+import com.spring.cloud.base.utils.RelationType;
 
 import java.lang.annotation.*;
 

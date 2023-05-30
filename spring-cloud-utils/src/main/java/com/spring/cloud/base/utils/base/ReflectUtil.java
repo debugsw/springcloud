@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils.base;
 
 import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.abstra.Alias;
 import com.spring.cloud.base.utils.exception.InvocationTargetRuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.interf.Filter;
