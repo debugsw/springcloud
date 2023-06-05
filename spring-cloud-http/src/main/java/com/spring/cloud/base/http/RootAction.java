@@ -51,7 +51,6 @@ public class RootAction implements Action {
 	 *
 	 * @param rootDir        网页根目录
 	 * @param indexFileNames 主页文件名列表
-	 * @since 5.4.0
 	 */
 	public RootAction(File rootDir, String... indexFileNames) {
 		this.rootDir = rootDir;

@@ -68,7 +68,6 @@ public class NetUtil {
 	 *
 	 * @param ipv6Str 字符串
 	 * @return 大整数, 如发生异常返回 null
-	 * @since 5.5.7
 	 * @deprecated 拼写错误，请使用{@link #ipv6ToBigInteger(String)}
 	 */
 	@Deprecated
@@ -81,7 +80,6 @@ public class NetUtil {
 	 *
 	 * @param ipv6Str 字符串
 	 * @return 大整数, 如发生异常返回 null
-	 * @since 5.5.7
 	 */
 	public static BigInteger ipv6ToBigInteger(String ipv6Str) {
 		try {
@@ -99,7 +97,6 @@ public class NetUtil {
 	 *
 	 * @param bigInteger 大整数
 	 * @return IPv6字符串, 如发生异常返回 null
-	 * @since 5.5.7
 	 */
 	public static String bigIntegerToIPv6(BigInteger bigInteger) {
 		try {
@@ -156,7 +153,6 @@ public class NetUtil {
 	 * 来自org.springframework.util.SocketUtils
 	 *
 	 * @return 可用的端口
-	 * @since 4.5.4
 	 */
 	public static int getUsableLocalPort() {
 		return getUsableLocalPort(PORT_RANGE_MIN);
@@ -169,7 +165,6 @@ public class NetUtil {
 	 *
 	 * @param minPort 端口最小值（包含）
 	 * @return 可用的端口
-	 * @since 4.5.4
 	 */
 	public static int getUsableLocalPort(int minPort) {
 		return getUsableLocalPort(minPort, PORT_RANGE_MAX);
@@ -206,7 +201,6 @@ public class NetUtil {
 	 * @param minPort      端口最小值（包含）
 	 * @param maxPort      端口最大值（包含）
 	 * @return 可用的端口
-	 * @since 4.5.4
 	 */
 	public static TreeSet<Integer> getUsableLocalPorts(int numRequested, int minPort, int maxPort) {
 		final TreeSet<Integer> availablePorts = new TreeSet<>();
@@ -349,7 +343,6 @@ public class NetUtil {
 	 * 获取本机所有网卡
 	 *
 	 * @return 所有网卡，异常返回{@code null}
-	 * @since 3.0.1
 	 */
 	public static Collection<NetworkInterface> getNetworkInterfaces() {
 		Enumeration<NetworkInterface> networkInterfaces;
@@ -392,7 +385,6 @@ public class NetUtil {
 	 *
 	 * @param addressList 地址{@link Inet4Address} 列表
 	 * @return IP地址字符串列表
-	 * @since 4.5.17
 	 */
 	public static LinkedHashSet<String> toIpList(Set<InetAddress> addressList) {
 		final LinkedHashSet<String> ipSet = new LinkedHashSet<>();
@@ -466,12 +458,9 @@ public class NetUtil {
 	/**
 	 * 获取本机网卡IP地址，这个地址为所有网卡中非回路地址的第一个<br>
 	 * 如果获取失败调用 {@link InetAddress#getLocalHost()}方法获取。<br>
-	 * 此方法不会抛出异常，获取失败将返回{@code null}<br>
-	 * <p>
-	 * 参考：http://stackoverflow.com/questions/9481865/getting-the-ip-address-of-the-current-machine-using-java
+	 * 此方法不会抛出异常，获取失败将返回{@code null}
 	 *
 	 * @return 本机网卡IP地址，获取失败返回{@code null}
-	 * @since 3.0.7
 	 */
 	public static String getLocalhostStr() {
 		InetAddress localhost = getLocalhost();
@@ -582,7 +571,6 @@ public class NetUtil {
 	 *
 	 * @param inetAddress {@link InetAddress}
 	 * @return 硬件地址
-	 * @since 5.7.3
 	 */
 	public static byte[] getHardwareAddress(InetAddress inetAddress) {
 		if (null == inetAddress) {
@@ -615,7 +603,6 @@ public class NetUtil {
 	 * 注意此方法会触发反向DNS解析，导致阻塞，阻塞时间取决于网络！
 	 *
 	 * @return 主机名称
-	 * @since 5.4.4
 	 */
 	public static String getLocalHostName() {
 		if (StrUtil.isNotBlank(localhostName)) {
@@ -658,7 +645,6 @@ public class NetUtil {
 	 * @param isBlock 是否阻塞方式
 	 * @param data    需要发送的数据
 	 * @throws IORuntimeException IO异常
-	 * @since 3.3.0
 	 */
 	public static void netCat(String host, int port, boolean isBlock, ByteBuffer data) throws IORuntimeException {
 		try (SocketChannel channel = SocketChannel.open(createAddress(host, port))) {

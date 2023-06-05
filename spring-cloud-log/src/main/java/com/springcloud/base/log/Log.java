@@ -25,7 +25,6 @@ public interface Log extends TraceLog, DebugLog, InfoLog, WarnLog, ErrorLog {
 	 *
 	 * @param name 自定义的日志发出者名称
 	 * @return Log
-	 * @since 5.0.0
 	 */
 	static Log get(String name) {
 		return LogFactory.get(name);
@@ -33,7 +32,6 @@ public interface Log extends TraceLog, DebugLog, InfoLog, WarnLog, ErrorLog {
 
 	/**
 	 * @return 获得日志，自动判定日志发出者
-	 * @since 5.0.0
 	 */
 	static Log get() {
 		return LogFactory.get(CallerUtil.getCallerCaller());

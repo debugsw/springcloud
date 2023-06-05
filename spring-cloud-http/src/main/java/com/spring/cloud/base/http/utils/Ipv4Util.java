@@ -341,7 +341,6 @@ public class Ipv4Util {
 	 *
 	 * @param ipAddress IP地址
 	 * @return 是否为内网IP
-	 * @since 5.7.18
 	 */
 	public static boolean isInnerIP(String ipAddress) {
 		boolean isInnerIp;

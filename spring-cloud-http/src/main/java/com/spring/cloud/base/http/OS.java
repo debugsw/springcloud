@@ -30,7 +30,6 @@ public class OS extends UserAgentInfo {
 	 * @param name         浏览器名称
 	 * @param regex        关键字或表达式
 	 * @param versionRegex 匹配版本的正则
-	 * @since 5.7.4
 	 */
 	synchronized public static void addCustomOs(String name, String regex, String versionRegex) {
 		oses.add(new OS(name, regex, versionRegex));
@@ -54,7 +53,6 @@ public class OS extends UserAgentInfo {
 	 * @param name         系统名称
 	 * @param regex        关键字或表达式
 	 * @param versionRegex 版本正则表达式
-	 * @since 5.7.4
 	 */
 	public OS(String name, String regex, String versionRegex) {
 		super(name, regex);

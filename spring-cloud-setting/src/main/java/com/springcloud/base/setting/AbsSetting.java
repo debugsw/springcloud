@@ -56,7 +56,6 @@ public abstract class AbsSetting implements OptNullBasicTypeFromStringGetter<Str
 	 * @param group        分组
 	 * @param defaultValue 默认值
 	 * @return 值，如果字符串为{@code null}或者""返回默认值
-	 * @since 5.2。4
 	 */
 	public String getStrNotEmpty(String key, String group, String defaultValue) {
 		final String value = getByGroup(key, group);
@@ -319,7 +318,6 @@ public abstract class AbsSetting implements OptNullBasicTypeFromStringGetter<Str
 	 * @param <T>       bean类型
 	 * @param beanClass Bean类型
 	 * @return Bean
-	 * @since 5.0.6
 	 */
 	public <T> T toBean(Class<T> beanClass) {
 		return toBean(null, beanClass);

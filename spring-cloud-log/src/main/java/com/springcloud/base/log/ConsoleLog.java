@@ -49,7 +49,6 @@ public class ConsoleLog extends AbstractLog {
 	 * 设置自定义的日志显示级别
 	 *
 	 * @param customLevels 自定义级别
-	 * @since 4.1.10
 	 */
 	public static void setLevel(Levels customLevels) {
 		Assert.notNull(customLevels);

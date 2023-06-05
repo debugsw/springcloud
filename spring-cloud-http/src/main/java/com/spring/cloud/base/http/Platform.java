@@ -107,7 +107,6 @@ public class Platform extends UserAgentInfo {
 	 * 是否为Iphone或者iPod设备
 	 *
 	 * @return 是否为Iphone或者iPod设备
-	 * @since 5.2.3
 	 */
 	public boolean isIPhoneOrIPod() {
 		return this.equals(IPHONE) || this.equals(IPOD);
@@ -117,7 +116,6 @@ public class Platform extends UserAgentInfo {
 	 * 是否为Iphone或者iPod设备
 	 *
 	 * @return 是否为Iphone或者iPod设备
-	 * @since 5.2.3
 	 */
 	public boolean isIPad() {
 		return this.equals(IPAD);
@@ -127,7 +125,6 @@ public class Platform extends UserAgentInfo {
 	 * 是否为IOS平台，包括IPhone、IPod、IPad
 	 *
 	 * @return 是否为IOS平台，包括IPhone、IPod、IPad
-	 * @since 5.2.3
 	 */
 	public boolean isIos() {
 		return isIPhoneOrIPod() || isIPad();
@@ -137,7 +134,6 @@ public class Platform extends UserAgentInfo {
 	 * 是否为Android平台，包括Android和Google TV
 	 *
 	 * @return 是否为Android平台，包括Android和Google TV
-	 * @since 5.2.3
 	 */
 	public boolean isAndroid() {
 		return this.equals(ANDROID) || this.equals(GOOGLE_TV);

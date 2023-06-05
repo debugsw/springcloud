@@ -40,7 +40,6 @@ public class HttpServerBase implements Closeable {
 	 * 获取{@link HttpContext}
 	 *
 	 * @return {@link HttpContext}
-	 * @since 5.5.7
 	 */
 	public HttpContext getHttpContext() {
 		return getHttpExchange().getHttpContext();

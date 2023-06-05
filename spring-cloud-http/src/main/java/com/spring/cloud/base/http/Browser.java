@@ -83,7 +83,6 @@ public class Browser extends UserAgentInfo {
 	 * @param name         浏览器名称
 	 * @param regex        关键字或表达式
 	 * @param versionRegex 匹配版本的正则
-	 * @since 5.7.4
 	 */
 	synchronized public static void addCustomBrowser(String name, String regex, String versionRegex) {
 		browers.add(new Browser(name, regex, versionRegex));

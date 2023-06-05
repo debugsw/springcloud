@@ -122,7 +122,6 @@ public class UserAgent implements Serializable {
 	 * 获取系统版本
 	 *
 	 * @return 系统版本
-	 * @since 5.7.4
 	 */
 	public String getOsVersion() {
 		return this.osVersion;
@@ -132,7 +131,6 @@ public class UserAgent implements Serializable {
 	 * 设置系统版本
 	 *
 	 * @param osVersion 系统版本
-	 * @since 5.7.4
 	 */
 	public void setOsVersion(String osVersion) {
 		this.osVersion = osVersion;
