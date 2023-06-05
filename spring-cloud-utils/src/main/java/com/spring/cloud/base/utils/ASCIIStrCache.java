@@ -17,7 +17,7 @@ public class ASCIIStrCache {
 	}
 
 	/**
-	 * 字符转为字符串<br>
+	 * 字符转为字符串
 	 * 如果为ASCII字符，使用缓存
 	 *
 	 * @param c 字符

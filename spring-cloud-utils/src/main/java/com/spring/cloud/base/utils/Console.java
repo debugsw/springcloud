@@ -27,12 +27,6 @@ public class Console {
 		out.println();
 	}
 
-	/**
-	 * 同 System.out.println()方法，打印控制台日志<br>
-	 * 如果传入打印对象为{@link Throwable}对象，那么同时打印堆栈
-	 *
-	 * @param obj 要打印的对象
-	 */
 	public static void log(Object obj) {
 		if (obj instanceof Throwable) {
 			final Throwable e = (Throwable) obj;
@@ -42,13 +36,6 @@ public class Console {
 		}
 	}
 
-	/**
-	 * 同 System.out.println()方法，打印控制台日志<br>
-	 * 如果传入打印对象为{@link Throwable}对象，那么同时打印堆栈
-	 *
-	 * @param obj1      第一个要打印的对象
-	 * @param otherObjs 其它要打印的对象
-	 */
 	public static void log(Object obj1, Object... otherObjs) {
 		if (ArrayUtil.isEmpty(otherObjs)) {
 			log(obj1);
@@ -119,14 +106,6 @@ public class Console {
 		print(TEMPLATE_VAR, obj);
 	}
 
-	/**
-	 * 同 System.out.println()方法，打印控制台日志<br>
-	 * 如果传入打印对象为{@link Throwable}对象，那么同时打印堆栈
-	 *
-	 * @param obj1      第一个要打印的对象
-	 * @param otherObjs 其它要打印的对象
-	 * 
-	 */
 	public static void print(Object obj1, Object... otherObjs) {
 		if (ArrayUtil.isEmpty(otherObjs)) {
 			print(obj1);

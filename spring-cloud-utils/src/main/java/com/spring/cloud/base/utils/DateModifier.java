@@ -36,23 +36,6 @@ public class DateModifier {
 		return modify(calendar, dateField, modifyType, false);
 	}
 
-	/**
-	 * 修改日期，取起始值或者结束值<br>
-	 * 可选是否归零毫秒。
-	 *
-	 * <p>
-	 * 在{@link ModifyType#TRUNCATE}模式下，毫秒始终要归零,
-	 * 但是在{@link ModifyType#CEILING}和{@link ModifyType#ROUND}模式下，
-	 * 有时候由于毫秒部分必须为0（如MySQL数据库中），因此在此加上选项。
-	 * </p>
-	 *
-	 * @param calendar            {@link Calendar}
-	 * @param dateField           日期字段，即保留到哪个日期字段
-	 * @param modifyType          修改类型，包括舍去、四舍五入、进一等
-	 * @param truncateMillisecond 是否归零毫秒
-	 * @return 修改后的{@link Calendar}
-	 *
-	 */
 	public static Calendar modify(Calendar calendar, int dateField, ModifyType modifyType, boolean truncateMillisecond) {
 		// AM_PM上下午特殊处理
 		if (Calendar.AM_PM == dateField) {

@@ -55,22 +55,13 @@ public class Convert {
 		return convert(String[].class, value);
 	}
 
-	/**
-	 * 转换为字符<br>
-	 * 如果给定的值为null，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value        被转换的值
-	 * @param defaultValue 转换错误时的默认值
-	 * @return 结果
-	 */
 	public static Character toChar(Object value, Character defaultValue) {
 		return convertQuietly(Character.class, value, defaultValue);
 	}
 
 	/**
-	 * 转换为字符<br>
-	 * 如果给定的值为{@code null}，或者转换失败，返回默认值{@code null}<br>
+	 * 转换为字符
+	 * 如果给定的值为{@code null}，或者转换失败，返回默认值{@code null}
 	 * 转换失败不会报错
 	 *
 	 * @param value 被转换的值
@@ -91,8 +82,8 @@ public class Convert {
 	}
 
 	/**
-	 * 转换为byte<br>
-	 * 如果给定的值为{@code null}，或者转换失败，返回默认值<br>
+	 * 转换为byte
+	 * 如果给定的值为{@code null}，或者转换失败，返回默认值
 	 * 转换失败不会报错
 	 *
 	 * @param value        被转换的值
@@ -103,14 +94,6 @@ public class Convert {
 		return convertQuietly(Byte.class, value, defaultValue);
 	}
 
-	/**
-	 * 转换为byte<br>
-	 * 如果给定的值为{@code null}，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value 被转换的值
-	 * @return 结果
-	 */
 	public static Byte toByte(Object value) {
 		return toByte(value, null);
 	}
@@ -135,27 +118,10 @@ public class Convert {
 		return convert(byte[].class, value);
 	}
 
-	/**
-	 * 转换为Short<br>
-	 * 如果给定的值为{@code null}，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value        被转换的值
-	 * @param defaultValue 转换错误时的默认值
-	 * @return 结果
-	 */
 	public static Short toShort(Object value, Short defaultValue) {
 		return convertQuietly(Short.class, value, defaultValue);
 	}
 
-	/**
-	 * 转换为Short<br>
-	 * 如果给定的值为{@code null}，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value 被转换的值
-	 * @return 结果
-	 */
 	public static Short toShort(Object value) {
 		return toShort(value, null);
 	}
@@ -170,27 +136,10 @@ public class Convert {
 		return convert(Short[].class, value);
 	}
 
-	/**
-	 * 转换为Number<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value        被转换的值
-	 * @param defaultValue 转换错误时的默认值
-	 * @return 结果
-	 */
 	public static Number toNumber(Object value, Number defaultValue) {
 		return convertQuietly(Number.class, value, defaultValue);
 	}
 
-	/**
-	 * 转换为Number<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value 被转换的值
-	 * @return 结果
-	 */
 	public static Number toNumber(Object value) {
 		return toNumber(value, null);
 	}
@@ -205,27 +154,10 @@ public class Convert {
 		return convert(Number[].class, value);
 	}
 
-	/**
-	 * 转换为int<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value        被转换的值
-	 * @param defaultValue 转换错误时的默认值
-	 * @return 结果
-	 */
 	public static Integer toInt(Object value, Integer defaultValue) {
 		return convertQuietly(Integer.class, value, defaultValue);
 	}
 
-	/**
-	 * 转换为int<br>
-	 * 如果给定的值为{@code null}，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value 被转换的值
-	 * @return 结果
-	 */
 	public static Integer toInt(Object value) {
 		return toInt(value, null);
 	}
@@ -240,27 +172,10 @@ public class Convert {
 		return convert(Integer[].class, value);
 	}
 
-	/**
-	 * 转换为long<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value        被转换的值
-	 * @param defaultValue 转换错误时的默认值
-	 * @return 结果
-	 */
 	public static Long toLong(Object value, Long defaultValue) {
 		return convertQuietly(Long.class, value, defaultValue);
 	}
 
-	/**
-	 * 转换为long<br>
-	 * 如果给定的值为{@code null}，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value 被转换的值
-	 * @return 结果
-	 */
 	public static Long toLong(Object value) {
 		return toLong(value, null);
 	}
@@ -275,27 +190,10 @@ public class Convert {
 		return convert(Long[].class, value);
 	}
 
-	/**
-	 * 转换为double<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value        被转换的值
-	 * @param defaultValue 转换错误时的默认值
-	 * @return 结果
-	 */
 	public static Double toDouble(Object value, Double defaultValue) {
 		return convertQuietly(Double.class, value, defaultValue);
 	}
 
-	/**
-	 * 转换为double<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value 被转换的值
-	 * @return 结果
-	 */
 	public static Double toDouble(Object value) {
 		return toDouble(value, null);
 	}
@@ -310,27 +208,10 @@ public class Convert {
 		return convert(Double[].class, value);
 	}
 
-	/**
-	 * 转换为Float<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value        被转换的值
-	 * @param defaultValue 转换错误时的默认值
-	 * @return 结果
-	 */
 	public static Float toFloat(Object value, Float defaultValue) {
 		return convertQuietly(Float.class, value, defaultValue);
 	}
 
-	/**
-	 * 转换为Float<br>
-	 * 如果给定的值为空，或者转换失败，返回默认值{@code null}<br>
-	 * 转换失败不会报错
-	 *
-	 * @param value 被转换的值
-	 * @return 结果
-	 */
 	public static Float toFloat(Object value) {
 		return toFloat(value, null);
 	}
@@ -673,16 +554,6 @@ public class Convert {
 		return convertQuietly(type, value, null);
 	}
 
-	/**
-	 * 转换值为指定类型，不抛异常转换<br>
-	 * 当转换失败时返回默认值
-	 *
-	 * @param <T>          目标类型
-	 * @param type         目标类型
-	 * @param value        值
-	 * @param defaultValue 默认值
-	 * @return 转换后的值
-	 */
 	public static <T> T convertQuietly(Type type, Object value, T defaultValue) {
 		return convertWithCheck(type, value, defaultValue, true);
 	}
@@ -856,16 +727,6 @@ public class Convert {
 		return UnicodeUtil.toString(unicode);
 	}
 
-	/**
-	 * 给定字符串转换字符编码<br>
-	 * 如果参数为空，则返回原字符串，不报错。
-	 *
-	 * @param str           被转码的字符串
-	 * @param sourceCharset 原字符集
-	 * @param destCharset   目标字符集
-	 * @return 转换后的字符串
-	 * @see CharsetUtil#convert(String, String, String)
-	 */
 	public static String convertCharset(String str, String sourceCharset, String destCharset) {
 		if (StrUtil.hasBlank(str, sourceCharset, destCharset)) {
 			return str;
@@ -1010,13 +871,6 @@ public class Convert {
 		return ByteUtil.bytesToShort(bytes);
 	}
 
-	/**
-	 * short转byte数组<br>
-	 * 默认以小端序转换
-	 *
-	 * @param shortValue short值
-	 * @return byte数组
-	 */
 	public static byte[] shortToBytes(short shortValue) {
 		return ByteUtil.shortToBytes(shortValue);
 	}
@@ -1032,13 +886,6 @@ public class Convert {
 		return ByteUtil.bytesToInt(bytes);
 	}
 
-	/**
-	 * int转byte数组<br>
-	 * 默认以小端序转换
-	 *
-	 * @param intValue int值
-	 * @return byte数组
-	 */
 	public static byte[] intToBytes(int intValue) {
 		return ByteUtil.intToBytes(intValue);
 	}

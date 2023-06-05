@@ -27,20 +27,7 @@ public class MethodHandleUtil {
 		return LookupFactory.lookup(callerClass);
 	}
 
-	/**
-	 * 查找指定方法的方法句柄<br>
-	 * 此方法只会查找：
-	 * <ul>
-	 *     <li>当前类的方法（包括构造方法和private方法）</li>
-	 *     <li>父类的方法（包括构造方法和private方法）</li>
-	 *     <li>当前类的static方法</li>
-	 * </ul>
-	 *
-	 * @param callerClass 方法所在类或接口
-	 * @param name        方法名称，{@code null}或者空则查找构造方法
-	 * @param type        返回类型和参数类型
-	 * @return 方法句柄 {@link MethodHandle}，{@code null}表示未找到方法
-	 */
+
 	public static MethodHandle findMethod(Class<?> callerClass, String name, MethodType type) {
 		if (StrUtil.isBlank(name)) {
 			return findConstructor(callerClass, type);
@@ -107,20 +94,7 @@ public class MethodHandleUtil {
 	}
 
 	/**
-	 * 执行接口或对象中的特殊方法（private、static等）<br>
-	 *
-	 * <pre class="code">
-	 *     interface Duck {
-	 *         default String quack() {
-	 *             return "Quack";
-	 *         }
-	 *     }
-	 *
-	 *     Duck duck = (Duck) Proxy.newProxyInstance(
-	 *         ClassLoaderUtil.getClassLoader(),
-	 *         new Class[] { Duck.class },
-	 *         MethodHandleUtil::invokeDefault);
-	 * </pre>
+	 * 执行接口或对象中的特殊方法（private、static等
 	 *
 	 * @param <T>        返回结果类型
 	 * @param obj        接口的子对象或代理对象
@@ -152,47 +126,12 @@ public class MethodHandleUtil {
 		return invoke(false, obj, method, args);
 	}
 
-	/**
-	 * 执行接口或对象中的特殊方法（private、static等）<br>
-	 *
-	 * <pre class="code">
-	 *     interface Duck {
-	 *         default String quack() {
-	 *             return "Quack";
-	 *         }
-	 *     }
-	 *
-	 *     Duck duck = (Duck) Proxy.newProxyInstance(
-	 *         ClassLoaderUtil.getClassLoader(),
-	 *         new Class[] { Duck.class },
-	 *         MethodHandleUtil::invoke);
-	 * </pre>
-	 *
-	 * @param <T>    返回结果类型
-	 * @param obj    接口的子对象或代理对象
-	 * @param method 方法
-	 * @param args   参数
-	 * @return 结果
-	 */
 	public static <T> T invokeSpecial(Object obj, Method method, Object... args) {
 		return invoke(true, obj, method, args);
 	}
 
 	/**
-	 * 执行接口或对象中的方法<br>
-	 *
-	 * <pre class="code">
-	 *     interface Duck {
-	 *         default String quack() {
-	 *             return "Quack";
-	 *         }
-	 *     }
-	 *
-	 *     Duck duck = (Duck) Proxy.newProxyInstance(
-	 *         ClassLoaderUtil.getClassLoader(),
-	 *         new Class[] { Duck.class },
-	 *         MethodHandleUtil::invoke);
-	 * </pre>
+	 * 执行接口或对象中的方法
 	 *
 	 * @param <T>       返回结果类型
 	 * @param isSpecial 是否为特殊方法（private、static等）

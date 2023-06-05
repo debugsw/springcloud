@@ -178,18 +178,6 @@ public class EnumUtil {
 		return list;
 	}
 
-	/**
-	 * 获得枚举类中所有的字段名<br>
-	 * 除用户自定义的字段名，也包括“name”字段，例如：
-	 *
-	 * <pre>
-	 *   EnumUtil.getFieldNames(Color.class) == ["name", "index"]
-	 * </pre>
-	 *
-	 * @param clazz 枚举类
-	 * @return 字段名列表
-	 *
-	 */
 	public static List<String> getFieldNames(Class<? extends Enum<?>> clazz) {
 		final List<String> names = new ArrayList<>();
 		final Field[] fields = ReflectUtil.getFields(clazz);

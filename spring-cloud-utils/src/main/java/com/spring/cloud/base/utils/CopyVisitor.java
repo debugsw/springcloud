@@ -68,18 +68,6 @@ public class CopyVisitor extends SimpleFileVisitor<Path> {
 		return FileVisitResult.CONTINUE;
 	}
 
-	/**
-	 * 根据源文件或目录路径，拼接生成目标的文件或目录路径<br>
-	 * 原理是首先截取源路径，得到相对路径，再和目标路径拼接
-	 *
-	 * <p>
-	 * 如：源路径是 /opt/test/，需要拷贝的文件是 /opt/test/a/a.txt，得到相对路径 a/a.txt<br>
-	 * 目标路径是/home/，则得到最终目标路径是 /home/a/a.txt
-	 * </p>
-	 *
-	 * @param file 需要拷贝的文件或目录Path
-	 * @return 目标Path
-	 */
 	private Path resolveTarget(Path file) {
 		return target.resolve(source.relativize(file));
 	}

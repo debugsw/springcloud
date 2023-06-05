@@ -211,14 +211,6 @@ public class XMLTokener extends JSONTokener {
 		}
 	}
 
-	/**
-	 * Get the next XML Token. These tokens are found inside of angle brackets. <br>
-	 * It may be one of these characters: {@code / > = ! ?} or it may be a string wrapped in single quotes or double
-	 * quotes, or it may be a name.
-	 *
-	 * @return a String or a Character.
-	 * @throws JSONException If the XML is not well formed.
-	 */
 	public Object nextToken() throws JSONException {
 		char c;
 		char q;
@@ -241,9 +233,6 @@ public class XMLTokener extends JSONTokener {
 				return XML.BANG;
 			case '?':
 				return XML.QUEST;
-
-			
-
 			case '"':
 			case '\'':
 				q = c;
@@ -263,9 +252,6 @@ public class XMLTokener extends JSONTokener {
 					}
 				}
 			default:
-
-				
-
 				sb = new StringBuilder();
 				for (; ; ) {
 					sb.append(c);
@@ -294,13 +280,6 @@ public class XMLTokener extends JSONTokener {
 		}
 	}
 
-	/**
-	 * Skip characters until past the requested string. If it is not found, we are left at the end of the source with a result of false.
-	 *
-	 * @param to A string to skip past.
-	 * @return 是否成功skip
-	 * @throws JSONException JSON异常
-	 */
 	public boolean skipPast(String to) throws JSONException {
 		boolean b;
 		char c;
@@ -309,11 +288,6 @@ public class XMLTokener extends JSONTokener {
 		int offset = 0;
 		int length = to.length();
 		char[] circle = new char[length];
-
-		/*
-		 * First fill the circle buffer with as many characters as are in the to string. If we reach an early end, bail.
-		 */
-
 		for (i = 0; i < length; i += 1) {
 			c = next();
 			if (c == 0) {
@@ -321,15 +295,9 @@ public class XMLTokener extends JSONTokener {
 			}
 			circle[i] = c;
 		}
-
-		/* We will loop, possibly for all of the remaining characters. */
-
 		for (; ; ) {
 			j = offset;
 			b = true;
-
-			/* Compare the circle buffer with the to string. */
-
 			for (i = 0; i < length; i += 1) {
 				if (circle[j] != to.charAt(i)) {
 					b = false;
@@ -340,22 +308,13 @@ public class XMLTokener extends JSONTokener {
 					j -= length;
 				}
 			}
-
-			/* If we exit the loop with b intact, then victory is ours. */
-
 			if (b) {
 				return true;
 			}
-
-			/* Get the next character. If there isn't one, then defeat is ours. */
-
 			c = next();
 			if (c == 0) {
 				return false;
 			}
-			/*
-			 * Shove the character in the circle buffer and advance the circle offset. The offset is mod n.
-			 */
 			circle[offset] = c;
 			offset += 1;
 			if (offset >= length) {

@@ -201,7 +201,7 @@ public class JWTValidator {
 	}
 
 	/**
-	 * 验证指定字段的时间不能晚于当前时间<br>
+	 * 验证指定字段的时间不能晚于当前时间
 	 * 被检查的日期不存在则跳过
 	 *
 	 * @param fieldName   字段名
@@ -224,7 +224,7 @@ public class JWTValidator {
 	}
 
 	/**
-	 * 验证指定字段的时间不能早于当前时间<br>
+	 * 验证指定字段的时间不能早于当前时间
 	 * 被检查的日期不存在则跳过
 	 *
 	 * @param fieldName   字段名

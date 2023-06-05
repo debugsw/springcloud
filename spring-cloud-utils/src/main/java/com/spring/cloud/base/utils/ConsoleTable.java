@@ -45,7 +45,7 @@ public class ConsoleTable {
 	private List<Integer> columnCharNumber;
 
 	/**
-	 * 设置是否使用全角模式<br>
+	 * 设置是否使用全角模式
 	 * 当包含中文字符时，输出的表格可能无法对齐，因此当设置为全角模式时，全部字符转为全角。
 	 *
 	 * @param isSBCMode 是否全角模式

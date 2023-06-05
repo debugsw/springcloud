@@ -82,12 +82,6 @@ public class FileWriter extends FileWrapper {
 		this(FileUtil.file(filePath), CharsetUtil.charset(charset));
 	}
 
-	/**
-	 * 构造<br>
-	 * 编码使用 {@link FileWrapper#DEFAULT_CHARSET}
-	 *
-	 * @param file 文件
-	 */
 	public FileWriter(File file) {
 		this(file, DEFAULT_CHARSET);
 	}
@@ -301,14 +295,6 @@ public class FileWriter extends FileWrapper {
 		return file;
 	}
 
-	/**
-	 * 将流的内容写入文件<br>
-	 * 此方法会自动关闭输入流
-	 *
-	 * @param in 输入流，不关闭
-	 * @return dest
-	 * @throws IORuntimeException IO异常
-	 */
 	public File writeFromStream(InputStream in) throws IORuntimeException {
 		return writeFromStream(in, true);
 	}

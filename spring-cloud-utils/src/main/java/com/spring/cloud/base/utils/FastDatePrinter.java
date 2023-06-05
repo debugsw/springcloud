@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * {@link java.text.SimpleDateFormat} 的线程安全版本，用于将 {@link Date} 格式化输出<br>
+ * {@link java.text.SimpleDateFormat} 的线程安全版本，用于将 {@link Date} 格式化输出
  * Thanks to Apache Commons Lang 3.5
  *
  * @see FastDateParser
@@ -29,13 +29,6 @@ public class FastDatePrinter extends AbstractDateBasic implements DatePrinter {
 	 */
 	private transient int mMaxLengthEstimate;
 
-	/**
-	 * 构造，内部使用<br>
-	 *
-	 * @param pattern  使用{@link java.text.SimpleDateFormat} 相同的日期格式
-	 * @param timeZone 非空时区{@link TimeZone}
-	 * @param locale   非空{@link Locale} 日期地理位置
-	 */
 	public FastDatePrinter(String pattern, TimeZone timeZone, Locale locale) {
 		super(pattern, timeZone, locale);
 		init();

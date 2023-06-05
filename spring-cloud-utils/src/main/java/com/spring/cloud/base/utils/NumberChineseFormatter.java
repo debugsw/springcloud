@@ -15,7 +15,7 @@ import java.math.RoundingMode;
 public class NumberChineseFormatter {
 
 	/**
-	 * 中文形式，奇数位置是简体，偶数位置是记账繁体，0共用<br>
+	 * 中文形式，奇数位置是简体，偶数位置是记账繁体，0共用
 	 * 使用混合数组提高效率和数组复用
 	 **/
 	private static final char[] DIGITS = {'零', '一', '壹', '二', '贰', '三', '叁', '四', '肆', '五', '伍',
@@ -193,7 +193,7 @@ public class NumberChineseFormatter {
 	}
 
 	/**
-	 * 格式化-999~999之间的数字<br>
+	 * 格式化-999~999之间的数字
 	 * 这个方法显示10~19以下的数字时使用"十一"而非"一十一"。
 	 *
 	 * @param amount           数字

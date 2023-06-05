@@ -113,14 +113,6 @@ public class ConverterRegistry implements Serializable {
 		return this;
 	}
 
-	/**
-	 * 获得转换器<br>
-	 *
-	 * @param <T>           转换的目标类型
-	 * @param type          类型
-	 * @param isCustomFirst 是否自定义转换器优先
-	 * @return 转换器
-	 */
 	public <T> Converter<T> getConverter(Type type, boolean isCustomFirst) {
 		Converter<T> converter;
 		if (isCustomFirst) {
