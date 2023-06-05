@@ -53,7 +53,6 @@ public class SocketUtil {
 	 * @param port     端口
 	 * @return {@link Socket}
 	 * @throws IORuntimeException IO异常
-	 * @since 5.7.8
 	 */
 	public static Socket connect(String hostname, int port) throws IORuntimeException {
 		return connect(hostname, port, -1);
@@ -67,7 +66,6 @@ public class SocketUtil {
 	 * @param connectionTimeout 连接超时
 	 * @return {@link Socket}
 	 * @throws IORuntimeException IO异常
-	 * @since 5.7.8
 	 */
 	public static Socket connect(final String hostname, int port, int connectionTimeout) throws IORuntimeException {
 		return connect(new InetSocketAddress(hostname, port), connectionTimeout);
@@ -80,7 +78,6 @@ public class SocketUtil {
 	 * @param connectionTimeout 连接超时
 	 * @return {@link Socket}
 	 * @throws IORuntimeException IO异常
-	 * @since 5.7.8
 	 */
 	public static Socket connect(InetSocketAddress address, int connectionTimeout) throws IORuntimeException {
 		final Socket socket = new Socket();

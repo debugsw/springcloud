@@ -395,7 +395,6 @@ public class WatchMonitor extends WatchServer {
 	 *
 	 * @param path 路径
 	 * @return 获取的最后一个子路径
-	 * @since 3.1.2
 	 */
 	public static Path getLastPathEle(Path path) {
 		return FileUtil.getPathEle(path, path.getNameCount() - 1);

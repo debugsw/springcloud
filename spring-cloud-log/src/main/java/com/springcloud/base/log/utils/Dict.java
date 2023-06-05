@@ -60,7 +60,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 *
 	 * @param pairs 键值对
 	 * @return Dict
-	 * @since 5.4.1
 	 */
 	@SafeVarargs
 	public static Dict of(Pair<String, Object>... pairs) {
@@ -87,7 +86,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 *
 	 * @param keysAndValues 键值对列表，必须奇数参数为key，偶数参数为value
 	 * @return Dict
-	 * @since 5.4.1
 	 */
 	public static Dict of(Object... keysAndValues) {
 		final Dict dict = create();
@@ -155,7 +153,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 * @param initialCapacity 初始容量
 	 * @param loadFactor      容量增长因子，0~1，即达到容量的百分之多少时扩容
 	 * @param caseInsensitive 是否大小写不敏感
-	 * @since 4.5.16
 	 */
 	public Dict(int initialCapacity, float loadFactor, boolean caseInsensitive) {
 		super(initialCapacity, loadFactor);
@@ -189,7 +186,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 * @param <T>  Bean类型
 	 * @param bean Bean
 	 * @return Bean
-	 * @since 3.3.1
 	 */
 	public <T> T toBeanIgnoreCase(T bean) {
 		BeanUtil.fillBeanWithMapIgnoreCase(this, bean, false);
@@ -300,7 +296,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 *
 	 * @param keys 键列表
 	 * @return Dict 结果
-	 * @since 4.0.10
 	 */
 	public Dict filter(String... keys) {
 		final Dict result = new Dict(keys.length, 1);
@@ -350,7 +345,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 * @param <T>  值类型
 	 * @param attr 字段名
 	 * @return 字段值
-	 * @since 4.6.3
 	 */
 	public <T> T getBean(String attr) {
 		return get(attr, null);
@@ -519,7 +513,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 * @param expression 表达式
 	 * @return 对象
 	 * @see BeanPath#get(Object)
-	 * @since 5.7.14
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> T getByPath(String expression) {
@@ -549,7 +542,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 * @param resultType 返回值类型
 	 * @return 对象
 	 * @see BeanPath#get(Object)
-	 * @since 5.7.14
 	 */
 	public <T> T getByPath(String expression, Class<T> resultType) {
 		return Convert.convert(resultType, getByPath(expression));
@@ -648,7 +640,6 @@ public class Dict extends LinkedHashMap<String, Object> implements BasicTypeGett
 	 *
 	 * @param fields lambda,不能为空
 	 * @return this
-	 * @since 5.7.23
 	 */
 	public Dict setFields(Func0<?>... fields) {
 		Arrays.stream(fields).forEach(f -> set(LambdaUtil.getFieldName(f), f.callWithRuntimeException()));

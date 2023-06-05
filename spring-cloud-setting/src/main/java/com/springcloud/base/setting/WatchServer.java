@@ -107,7 +107,6 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 	 *
 	 * @param action      监听回调函数，实现此函数接口用于处理WatchEvent事件
 	 * @param watchFilter 监听过滤接口，通过实现此接口过滤掉不需要监听的情况，null表示不过滤
-	 * @since 5.4.0
 	 */
 	public void watch(WatchAction action, Filter<WatchEvent<?>> watchFilter) {
 		WatchKey wk;

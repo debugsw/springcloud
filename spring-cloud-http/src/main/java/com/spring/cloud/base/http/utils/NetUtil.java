@@ -178,7 +178,6 @@ public class NetUtil {
 	 * @param minPort 端口最小值（包含）
 	 * @param maxPort 端口最大值（包含）
 	 * @return 可用的端口
-	 * @since 4.5.4
 	 */
 	public static int getUsableLocalPort(int minPort, int maxPort) {
 		final int maxPortExclude = maxPort + 1;
@@ -318,7 +317,6 @@ public class NetUtil {
 	 *
 	 * @param name 网络接口名，例如Linux下默认是eth0
 	 * @return 网卡，未找到返回{@code null}
-	 * @since 5.0.7
 	 */
 	public static NetworkInterface getNetworkInterface(String name) {
 		Enumeration<NetworkInterface> networkInterfaces;
@@ -372,7 +370,6 @@ public class NetUtil {
 	 * 返回的IP列表有序，按照系统设备顺序
 	 *
 	 * @return IP地址列表 {@link LinkedHashSet}
-	 * @since 4.5.17
 	 */
 	public static LinkedHashSet<String> localIpv6s() {
 		final LinkedHashSet<InetAddress> localAddressList = localAddressList(t -> t instanceof Inet6Address);
@@ -411,7 +408,6 @@ public class NetUtil {
 	 *
 	 * @param addressFilter 过滤器，null表示不过滤，获取所有地址
 	 * @return 过滤后的地址对象列表
-	 * @since 4.5.17
 	 */
 	public static LinkedHashSet<InetAddress> localAddressList(Filter<InetAddress> addressFilter) {
 		return localAddressList(null, addressFilter);
@@ -482,7 +478,6 @@ public class NetUtil {
 	 * <p>
 	 *
 	 * @return 本机网卡IP地址，获取失败返回{@code null}
-	 * @since 3.0.1
 	 */
 	public static InetAddress getLocalhost() {
 		final LinkedHashSet<InetAddress> localAddressList = localAddressList(address -> {
@@ -592,7 +587,6 @@ public class NetUtil {
 	 * 获得本机物理地址
 	 *
 	 * @return 本机物理地址
-	 * @since 5.7.3
 	 */
 	public static byte[] getLocalHardwareAddress() {
 		return getHardwareAddress(getLocalhost());
@@ -628,7 +622,6 @@ public class NetUtil {
 	 * @param host 域名或IP地址，空表示任意地址
 	 * @param port 端口，0表示系统分配临时端口
 	 * @return {@link InetSocketAddress}
-	 * @since 3.3.0
 	 */
 	public static InetSocketAddress createAddress(String host, int port) {
 		if (StrUtil.isBlank(host)) {
@@ -662,7 +655,6 @@ public class NetUtil {
 	 * @param port Server端口
 	 * @param data 数据
 	 * @throws IORuntimeException IO异常
-	 * @since 3.3.0
 	 */
 	public static void netCat(String host, int port, byte[] data) throws IORuntimeException {
 		OutputStream out = null;
@@ -684,7 +676,6 @@ public class NetUtil {
 	 * @param ip   需要验证的IP
 	 * @param cidr CIDR规则
 	 * @return 是否在范围内
-	 * @since 4.0.6
 	 */
 	public static boolean isInRange(String ip, String cidr) {
 		final int maskSplitMarkIndex = cidr.lastIndexOf(Ipv4Util.IP_MASK_SPLIT_MARK);
@@ -703,7 +694,6 @@ public class NetUtil {
 	 *
 	 * @param unicode Unicode域名
 	 * @return puny code
-	 * @since 4.1.22
 	 */
 	public static String idnToASCII(String unicode) {
 		return IDN.toASCII(unicode);
@@ -714,7 +704,6 @@ public class NetUtil {
 	 *
 	 * @param ip 获得的IP地址
 	 * @return 第一个非unknown IP地址
-	 * @since 4.4.1
 	 */
 	public static String getMultistageReverseProxyIp(String ip) {
 		// 多级反向代理检测
@@ -735,7 +724,6 @@ public class NetUtil {
 	 *
 	 * @param checkString 被检测的字符串
 	 * @return 是否未知
-	 * @since 5.2.6
 	 */
 	public static boolean isUnknown(String checkString) {
 		return StrUtil.isBlank(checkString) || "unknown".equalsIgnoreCase(checkString);
@@ -771,7 +759,6 @@ public class NetUtil {
 	 *
 	 * @param cookieStr Cookie字符串
 	 * @return cookie字符串
-	 * @since 5.2.6
 	 */
 	public static List<HttpCookie> parseCookies(String cookieStr) {
 		if (StrUtil.isBlank(cookieStr)) {
@@ -786,7 +773,6 @@ public class NetUtil {
 	 * @param address 远程地址
 	 * @param timeout 检测超时
 	 * @return 远程端口是否开启
-	 * @since 5.3.2
 	 */
 	public static boolean isOpen(InetSocketAddress address, int timeout) {
 		try (Socket sc = new Socket()) {
@@ -802,7 +788,6 @@ public class NetUtil {
 	 *
 	 * @param user 用户名
 	 * @param pass 密码，考虑安全，此处不使用String
-	 * @since 5.7.2
 	 */
 	public static void setGlobalAuthenticator(String user, char[] pass) {
 		setGlobalAuthenticator(new UserPassAuthenticator(user, pass));
@@ -812,7 +797,6 @@ public class NetUtil {
 	 * 设置全局验证
 	 *
 	 * @param authenticator 验证器
-	 * @since 5.7.2
 	 */
 	public static void setGlobalAuthenticator(Authenticator authenticator) {
 		Authenticator.setDefault(authenticator);
@@ -824,7 +808,6 @@ public class NetUtil {
 	 * @param hostName  主机域名
 	 * @param attrNames 属性
 	 * @return DNS信息
-	 * @since 5.7.7
 	 */
 	public static List<String> getDnsInfo(String hostName, String... attrNames) {
 		final String uri = StrUtil.addPrefixIfNot(hostName, "dns:");

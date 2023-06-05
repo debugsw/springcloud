@@ -151,7 +151,6 @@ public class SettingLoader {
 	 * 赋值分隔符（用于分隔键值对）
 	 *
 	 * @param assignFlag 正则
-	 * @since 4.6.5
 	 */
 	public void setAssignFlag(char assignFlag) {
 		this.assignFlag = assignFlag;
@@ -170,7 +169,6 @@ public class SettingLoader {
 	 * 持久化当前设置，会覆盖掉之前的设置
 	 *
 	 * @param file 设置文件
-	 * @since 5.4.3
 	 */
 	public void store(File file) {
 		Assert.notNull(file, "File to store must be not null !");
