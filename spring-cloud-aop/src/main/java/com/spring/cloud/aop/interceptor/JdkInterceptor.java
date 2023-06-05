@@ -20,12 +20,6 @@ public class JdkInterceptor implements InvocationHandler, Serializable {
 	private final Object target;
 	private final Aspect aspect;
 
-	/**
-	 * 构造
-	 *
-	 * @param target 被代理对象
-	 * @param aspect 切面实现
-	 */
 	public JdkInterceptor(Object target, Aspect aspect) {
 		this.target = target;
 		this.aspect = aspect;

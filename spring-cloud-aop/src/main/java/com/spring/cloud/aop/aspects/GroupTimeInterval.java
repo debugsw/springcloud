@@ -52,7 +52,7 @@ public class GroupTimeInterval implements Serializable {
 
 	/**
 	 * 重新计时并返回从开始到当前的持续时间秒
-	 * 如果此分组下没有记录，则返回0;
+	 * 如果此分组下没有记录，则返回0
 	 *
 	 * @param id 分组ID
 	 * @return 重新计时并返回从开始到当前的持续时间
@@ -63,8 +63,8 @@ public class GroupTimeInterval implements Serializable {
 	}
 
 	/**
-	 * 从开始到当前的间隔时间（毫秒数）<br>
-	 * 如果使用纳秒计时，返回纳秒差，否则返回毫秒差<br>
+	 * 从开始到当前的间隔时间（毫秒数）
+	 * 如果使用纳秒计时，返回纳秒差，否则返回毫秒差
 	 * 如果分组下没有开始时间，返回{@code null}
 	 *
 	 * @param id 分组ID

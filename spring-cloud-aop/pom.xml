@@ -16,6 +16,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.springcloud.base</groupId>
             <artifactId>spring-cloud-utils</artifactId>
@@ -37,6 +38,7 @@
             <scope>compile</scope>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
 
 

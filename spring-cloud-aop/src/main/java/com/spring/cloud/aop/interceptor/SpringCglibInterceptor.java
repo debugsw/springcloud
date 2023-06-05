@@ -18,22 +18,11 @@ public class SpringCglibInterceptor implements MethodInterceptor, Serializable {
 	private final Object target;
 	private final Aspect aspect;
 
-	/**
-	 * 构造
-	 *
-	 * @param target 被代理对象
-	 * @param aspect 切面实现
-	 */
 	public SpringCglibInterceptor(Object target, Aspect aspect) {
 		this.target = target;
 		this.aspect = aspect;
 	}
 
-	/**
-	 * 获得目标对象
-	 *
-	 * @return 目标对象
-	 */
 	public Object getTarget() {
 		return this.target;
 	}
