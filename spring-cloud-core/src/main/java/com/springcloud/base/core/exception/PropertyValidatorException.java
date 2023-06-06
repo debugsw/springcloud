@@ -7,6 +7,8 @@ package com.springcloud.base.core.exception;
  */
 public class PropertyValidatorException extends DefaultException {
 
+    private static final long serialVersionUID = 3052438913049213630L;
+
     public static final String CODE = "1022";
 
     public PropertyValidatorException(String msg) {

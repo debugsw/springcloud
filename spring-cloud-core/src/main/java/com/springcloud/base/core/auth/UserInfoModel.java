@@ -13,22 +13,16 @@ public class UserInfoModel {
     
     private String id;
 
-    
     private String username;
 
-    
     private String nickname;
 
-    
     private String mobile;
 
-    
     private Integer gender;
 
-    
     private String deptId;
 
-    
     private DeptInfoModel deptInfo;
 
 }

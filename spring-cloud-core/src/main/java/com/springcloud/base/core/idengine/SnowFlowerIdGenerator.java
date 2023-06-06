@@ -61,11 +61,6 @@ public class SnowFlowerIdGenerator {
         return info;
     }
 
-    /**
-     * init
-     *
-     * @param workerId worker id (0~1024)
-     */
     public void initialize(long workerId) {
         if (workerId > WORKER_ID_MAX_VALUE || workerId < 0) {
             throw new IllegalArgumentException(String.format(
@@ -75,12 +70,6 @@ public class SnowFlowerIdGenerator {
         this.workerId = workerId;
     }
 
-    /**
-     * Block to the next millisecond until a new timestamp is obtained
-     *
-     * @param lastTimestamp The time intercept of the last ID generated
-     * @return Current timestamp
-     */
     private long waitUntilNextTime(long lastTimestamp) {
         long time = System.currentTimeMillis();
         while (time <= lastTimestamp) {

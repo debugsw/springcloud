@@ -14,15 +14,11 @@ public class RoleInfoModel {
     
     private String id;
 
-    
     private String code;
 
-    
     private String name;
 
-    
     private List<ResourceInfoModel> resourceInfo;
 
-    
     private List<OrgInfoModel> orgInfo;
 }
