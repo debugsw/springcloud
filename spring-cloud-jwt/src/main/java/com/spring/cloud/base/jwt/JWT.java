@@ -1,6 +1,6 @@
 package com.spring.cloud.base.jwt;
 
-import com.spring.cloud.base.jwt.config.JSONObject;
+import com.spring.cloud.base.jwt.json.JSONObject;
 import com.spring.cloud.base.jwt.exception.JWTException;
 import com.spring.cloud.base.jwt.utils.AlgorithmUtil;
 import com.spring.cloud.base.jwt.utils.JWTSignerUtil;

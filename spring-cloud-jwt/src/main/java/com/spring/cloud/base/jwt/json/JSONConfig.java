@@ -1,4 +1,4 @@
-package com.spring.cloud.base.jwt.config;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.utils.list.CompareUtil;
 

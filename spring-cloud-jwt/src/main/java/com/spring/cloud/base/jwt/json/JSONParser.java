@@ -1,6 +1,5 @@
 package com.spring.cloud.base.jwt.json;
 
-import com.spring.cloud.base.jwt.config.JSONObject;
 import com.spring.cloud.base.jwt.utils.MutablePair;
 import com.spring.cloud.base.utils.base.Mutable;
 import com.spring.cloud.base.utils.interf.Filter;

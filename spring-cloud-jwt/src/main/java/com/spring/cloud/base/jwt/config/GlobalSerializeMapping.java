@@ -1,6 +1,6 @@
 package com.spring.cloud.base.jwt.config;
 
-import com.spring.cloud.base.jwt.json.JSON;
+import com.spring.cloud.base.jwt.json.*;
 import com.spring.cloud.base.utils.map.SafeConcurrentHashMap;
 
 import java.lang.reflect.Type;

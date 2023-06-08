@@ -1,4 +1,4 @@
-package com.spring.cloud.base.jwt.exception;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.utils.exception.ExceptionUtil;
 import com.spring.cloud.base.utils.str.StrUtil;

@@ -1,8 +1,7 @@
-package com.spring.cloud.base.jwt.common;
+package com.spring.cloud.base.jwt.json;
 
 import com.spring.cloud.base.jwt.XMLTokener;
-import com.spring.cloud.base.jwt.config.JSONObject;
-import com.spring.cloud.base.jwt.exception.JSONException;
+import com.spring.cloud.base.jwt.common.XML;
 import com.spring.cloud.base.jwt.utils.InternalJSONUtil;
 
 /**

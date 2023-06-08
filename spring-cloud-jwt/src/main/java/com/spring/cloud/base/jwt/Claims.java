@@ -1,7 +1,7 @@
 package com.spring.cloud.base.jwt;
 
-import com.spring.cloud.base.jwt.config.JSONConfig;
-import com.spring.cloud.base.jwt.config.JSONObject;
+import com.spring.cloud.base.jwt.json.JSONConfig;
+import com.spring.cloud.base.jwt.json.JSONObject;
 import com.spring.cloud.base.jwt.utils.JSONUtil;
 import com.spring.cloud.base.utils.Assert;
 import com.spring.cloud.base.utils.base.Base64;

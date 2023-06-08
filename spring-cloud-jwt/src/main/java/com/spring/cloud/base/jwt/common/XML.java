@@ -1,7 +1,9 @@
 package com.spring.cloud.base.jwt.common;
 
-import com.spring.cloud.base.jwt.config.JSONObject;
-import com.spring.cloud.base.jwt.exception.JSONException;
+import com.spring.cloud.base.jwt.json.JSONObject;
+import com.spring.cloud.base.jwt.json.JSONException;
+import com.spring.cloud.base.jwt.json.JSONXMLParser;
+import com.spring.cloud.base.jwt.json.JSONXMLSerializer;
 import com.spring.cloud.base.utils.utils.CharUtil;
 
 /**

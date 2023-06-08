@@ -1,10 +1,5 @@
-package com.spring.cloud.base.jwt.config;
+package com.spring.cloud.base.jwt.json;
 
-import com.spring.cloud.base.jwt.json.JSON;
-import com.spring.cloud.base.jwt.json.JSONArray;
-import com.spring.cloud.base.jwt.json.JSONNull;
-import com.spring.cloud.base.jwt.json.JSONString;
-import com.spring.cloud.base.jwt.exception.JSONException;
 import com.spring.cloud.base.jwt.utils.JSONUtil;
 import com.spring.cloud.base.jwt.utils.MutablePair;
 import com.spring.cloud.base.utils.utils.ArrayUtil;

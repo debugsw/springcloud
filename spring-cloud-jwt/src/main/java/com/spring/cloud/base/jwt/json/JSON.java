@@ -1,7 +1,5 @@
 package com.spring.cloud.base.jwt.json;
 
-import com.spring.cloud.base.jwt.config.JSONConfig;
-import com.spring.cloud.base.jwt.exception.JSONException;
 import com.spring.cloud.base.utils.base.BeanPath;
 import com.spring.cloud.base.utils.map.TypeReference;
 

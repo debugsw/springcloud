@@ -1,6 +1,4 @@
-package com.spring.cloud.base.jwt.config;
-
-import com.spring.cloud.base.jwt.json.JSONArray;
+package com.spring.cloud.base.jwt.json;
 
 /**
  * @Author: ls
