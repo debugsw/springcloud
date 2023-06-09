@@ -1,4 +1,4 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.file;
 
 import com.spring.cloud.base.utils.utils.CharsetUtil;
 import com.spring.cloud.base.utils.utils.FileUtil;

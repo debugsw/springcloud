@@ -5,6 +5,7 @@ import com.spring.cloud.base.http.utils.HttpUtil;
 import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
+import com.spring.cloud.base.utils.file.FileResource;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.map.Resource;
 import com.spring.cloud.base.utils.str.StrUtil;

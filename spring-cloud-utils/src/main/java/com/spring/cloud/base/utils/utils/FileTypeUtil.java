@@ -1,6 +1,6 @@
 package com.spring.cloud.base.utils.utils;
 
-import com.spring.cloud.base.utils.FileMagicNumber;
+import com.spring.cloud.base.utils.file.FileMagicNumber;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.MapUtil;

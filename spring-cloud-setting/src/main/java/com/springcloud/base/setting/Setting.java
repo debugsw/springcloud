@@ -1,6 +1,7 @@
 package com.springcloud.base.setting;
 
 import com.spring.cloud.base.utils.*;
+import com.spring.cloud.base.utils.file.FileResource;
 import com.spring.cloud.base.utils.map.ClassPathResource;
 import com.spring.cloud.base.utils.map.Resource;
 import com.spring.cloud.base.utils.map.ResourceUtil;

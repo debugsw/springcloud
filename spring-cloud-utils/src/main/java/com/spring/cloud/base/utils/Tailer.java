@@ -3,6 +3,7 @@ package com.spring.cloud.base.utils;
 import com.spring.cloud.base.utils.date.DateUnit;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
+import com.spring.cloud.base.utils.file.FileMode;
 import com.spring.cloud.base.utils.interf.LineHandler;
 import com.spring.cloud.base.utils.utils.CharUtil;
 import com.spring.cloud.base.utils.utils.CharsetUtil;

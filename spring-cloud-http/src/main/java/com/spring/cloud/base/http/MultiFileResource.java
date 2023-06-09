@@ -1,6 +1,6 @@
 package com.spring.cloud.base.http;
 
-import com.spring.cloud.base.utils.FileResource;
+import com.spring.cloud.base.utils.file.FileResource;
 import com.spring.cloud.base.utils.map.Resource;
 
 import java.io.File;
