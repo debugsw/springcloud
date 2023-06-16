@@ -1,4 +1,4 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.str;
 
 import com.spring.cloud.base.utils.interf.Replacer;
 import com.spring.cloud.base.utils.str.StrBuilder;
@@ -22,7 +22,7 @@ public abstract class StrReplacer implements Replacer<CharSequence>, Serializabl
 	 * @param out 输出
 	 * @return 处理的原字符串长度，0表示跳过此字符
 	 */
-	protected abstract int replace(CharSequence str, int pos, StrBuilder out);
+	public abstract int replace(CharSequence str, int pos, StrBuilder out);
 
 	@Override
 	public CharSequence replace(CharSequence t) {

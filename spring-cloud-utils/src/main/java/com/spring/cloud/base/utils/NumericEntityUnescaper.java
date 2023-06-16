@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.str.StrBuilder;
+import com.spring.cloud.base.utils.str.StrReplacer;
 import com.spring.cloud.base.utils.utils.CharUtil;
 
 /**
@@ -12,7 +13,7 @@ public class NumericEntityUnescaper extends StrReplacer {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected int replace(CharSequence str, int pos, StrBuilder out) {
+	public int replace(CharSequence str, int pos, StrBuilder out) {
 		final int len = str.length();
 		if (str.charAt(pos) == '&' && pos < len - 2 && str.charAt(pos + 1) == '#') {
 			int start = pos + 2;

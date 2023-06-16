@@ -1,5 +1,7 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.str;
 
+import com.spring.cloud.base.utils.Assert;
+import com.spring.cloud.base.utils.IoCopier;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.interf.StreamProgress;
 import com.spring.cloud.base.utils.utils.IoUtil;

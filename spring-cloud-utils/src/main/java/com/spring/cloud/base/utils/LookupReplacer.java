@@ -1,6 +1,7 @@
 package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.str.StrBuilder;
+import com.spring.cloud.base.utils.str.StrReplacer;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,7 +50,7 @@ public class LookupReplacer extends StrReplacer {
 	}
 
 	@Override
-	protected int replace(CharSequence str, int pos, StrBuilder out) {
+	public int replace(CharSequence str, int pos, StrBuilder out) {
 		if (prefixSet.contains(str.charAt(pos))) {
 			int max = this.maxLength;
 			if (pos + this.maxLength > str.length()) {

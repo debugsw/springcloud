@@ -2,6 +2,7 @@ package com.spring.cloud.base.utils;
 
 import com.spring.cloud.base.utils.interf.Chain;
 import com.spring.cloud.base.utils.str.StrBuilder;
+import com.spring.cloud.base.utils.str.StrReplacer;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -41,7 +42,7 @@ public class ReplacerChain extends StrReplacer implements Chain<StrReplacer, Rep
 	}
 
 	@Override
-	protected int replace(CharSequence str, int pos, StrBuilder out) {
+	public int replace(CharSequence str, int pos, StrBuilder out) {
 		int consumed = 0;
 		for (StrReplacer strReplacer : replacers) {
 			consumed = strReplacer.replace(str, pos, out);

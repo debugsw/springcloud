@@ -1,5 +1,7 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.str;
 
+import com.spring.cloud.base.utils.Assert;
+import com.spring.cloud.base.utils.TextFinder;
 import com.spring.cloud.base.utils.crypto.CharSequenceUtil;
 
 /**
@@ -13,12 +15,6 @@ public class StrFinder extends TextFinder {
 	private final CharSequence strToFind;
 	private final boolean caseInsensitive;
 
-	/**
-	 * 构造
-	 *
-	 * @param strToFind       被查找的字符串
-	 * @param caseInsensitive 是否忽略大小写
-	 */
 	public StrFinder(CharSequence strToFind, boolean caseInsensitive) {
 		Assert.notEmpty(strToFind);
 		this.strToFind = strToFind;

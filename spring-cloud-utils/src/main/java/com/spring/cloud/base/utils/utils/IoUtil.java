@@ -7,6 +7,7 @@ import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.interf.LineHandler;
 import com.spring.cloud.base.utils.interf.StreamProgress;
 import com.spring.cloud.base.utils.str.StrUtil;
+import com.spring.cloud.base.utils.str.StreamCopier;
 
 import java.io.*;
 import java.nio.CharBuffer;
