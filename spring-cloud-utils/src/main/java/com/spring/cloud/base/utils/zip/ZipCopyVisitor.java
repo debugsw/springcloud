@@ -1,4 +1,4 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.zip;
 
 import com.spring.cloud.base.utils.str.StrUtil;
 

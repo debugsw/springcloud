@@ -1,4 +1,4 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.zip;
 
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.map.Resource;

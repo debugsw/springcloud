@@ -1,16 +1,15 @@
 package com.spring.cloud.base.utils.utils;
 
 import com.spring.cloud.base.utils.LimitedInputStream;
-import com.spring.cloud.base.utils.ZipCopyVisitor;
-import com.spring.cloud.base.utils.ZipReader;
-import com.spring.cloud.base.utils.ZipWriter;
+import com.spring.cloud.base.utils.zip.ZipCopyVisitor;
+import com.spring.cloud.base.utils.zip.ZipReader;
+import com.spring.cloud.base.utils.zip.ZipWriter;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.exception.UtilException;
 import com.spring.cloud.base.utils.map.EnumerationIter;
 import com.spring.cloud.base.utils.map.Resource;
 import com.spring.cloud.base.utils.str.StrUtil;
-import com.spring.cloud.base.utils.utils.*;
 
 import java.io.*;
 import java.nio.charset.Charset;
