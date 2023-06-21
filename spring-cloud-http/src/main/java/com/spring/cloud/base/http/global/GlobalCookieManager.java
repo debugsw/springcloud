@@ -1,5 +1,7 @@
-package com.spring.cloud.base.http;
+package com.spring.cloud.base.http.global;
 
+import com.spring.cloud.base.http.HttpConnection;
+import com.spring.cloud.base.http.ThreadLocalCookieStore;
 import com.spring.cloud.base.utils.utils.URLUtil;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 

@@ -1,4 +1,8 @@
-package com.spring.cloud.base.http;
+package com.spring.cloud.base.http.global;
+
+import com.spring.cloud.base.http.HttpInterceptor;
+import com.spring.cloud.base.http.HttpRequest;
+import com.spring.cloud.base.http.HttpResponse;
 
 /**
  * @Author: ls
@@ -69,7 +73,7 @@ public enum GlobalInterceptor {
      *
      * @return
      */
-    HttpInterceptor.Chain<HttpRequest> getCopiedRequestInterceptor() {
+    public HttpInterceptor.Chain<HttpRequest> getCopiedRequestInterceptor() {
         final HttpInterceptor.Chain<HttpRequest> copied = new HttpInterceptor.Chain<>();
         for (HttpInterceptor<HttpRequest> interceptor : this.requestInterceptors) {
             copied.addChain(interceptor);
@@ -82,7 +86,7 @@ public enum GlobalInterceptor {
      *
      * @return
      */
-    HttpInterceptor.Chain<HttpResponse> getCopiedResponseInterceptor() {
+    public HttpInterceptor.Chain<HttpResponse> getCopiedResponseInterceptor() {
         final HttpInterceptor.Chain<HttpResponse> copied = new HttpInterceptor.Chain<>();
         for (HttpInterceptor<HttpResponse> interceptor : this.responseInterceptors) {
             copied.addChain(interceptor);

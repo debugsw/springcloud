@@ -1,5 +1,6 @@
 package com.spring.cloud.base.http;
 
+import com.spring.cloud.base.http.global.GlobalThreadPool;
 import com.spring.cloud.base.utils.Console;
 import com.spring.cloud.base.utils.exception.IORuntimeException;
 import com.spring.cloud.base.utils.str.StrUtil;

@@ -1,5 +1,6 @@
-package com.spring.cloud.base.http;
+package com.spring.cloud.base.http.global;
 
+import com.spring.cloud.base.http.Header;
 import com.spring.cloud.base.utils.utils.CollUtil;
 import com.spring.cloud.base.utils.map.MapUtil;
 import com.spring.cloud.base.utils.str.StrUtil;
@@ -18,7 +19,7 @@ public enum GlobalHeaders {
     /**
      * 存储头信息
      */
-    final Map<String, List<String>> headers = new HashMap<>();
+    final public Map<String, List<String>> headers = new HashMap<>();
 
     /**
      * 构造

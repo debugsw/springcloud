@@ -1,5 +1,6 @@
 package com.spring.cloud.base.http;
 
+import com.spring.cloud.base.http.global.GlobalInterceptor;
 import com.spring.cloud.base.http.utils.SSLUtil;
 import com.spring.cloud.base.utils.Assert;
 

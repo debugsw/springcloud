@@ -1,4 +1,4 @@
-package com.spring.cloud.base.http;
+package com.spring.cloud.base.http.global;
 
 import com.spring.cloud.base.utils.ExecutorBuilder;
 import com.spring.cloud.base.utils.exception.UtilException;

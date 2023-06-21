@@ -1,6 +1,7 @@
 package com.spring.cloud.base.http;
 
 import com.spring.cloud.base.http.exception.HttpException;
+import com.spring.cloud.base.http.global.GlobalCookieManager;
 import com.spring.cloud.base.http.utils.HttpUtil;
 import com.spring.cloud.base.utils.*;
 import com.spring.cloud.base.utils.crypto.ObjectUtil;
