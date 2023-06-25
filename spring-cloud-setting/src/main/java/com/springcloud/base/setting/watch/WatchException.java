@@ -1,4 +1,4 @@
-package com.springcloud.base.setting;
+package com.springcloud.base.setting.watch;
 
 import com.spring.cloud.base.utils.exception.ExceptionUtil;
 import com.spring.cloud.base.utils.str.StrUtil;

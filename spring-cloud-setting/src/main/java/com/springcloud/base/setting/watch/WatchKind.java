@@ -1,4 +1,4 @@
-package com.springcloud.base.setting;
+package com.springcloud.base.setting.watch;
 
 import java.nio.file.StandardWatchEventKinds;
 import java.nio.file.WatchEvent;
