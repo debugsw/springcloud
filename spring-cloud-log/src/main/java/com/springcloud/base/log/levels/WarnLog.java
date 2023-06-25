@@ -1,49 +1,49 @@
-package com.springcloud.base.log;
+package com.springcloud.base.log.levels;
 
 /**
  * @Author: ls
- * @Description: TRACE级别日志接口
+ * @Description: WARN级别日志接口
  * @Date: 2023/4/25 10:03
  */
-public interface TraceLog {
+public interface WarnLog {
 	/**
 	 * 等级是否开启
 	 *
-	 * @return TRACE
+	 * @return WARN
 	 */
-	boolean isTraceEnabled();
+	boolean isWarnEnabled();
 
 	/**
-	 * 打印 TRACE 等级的日志
+	 * 打印 WARN 等级的日志
 	 *
 	 * @param t 错误对象
 	 */
-	void trace(Throwable t);
+	void warn(Throwable t);
 
 	/**
-	 * 打印 TRACE 等级的日志
+	 * 打印 WARN 等级的日志
 	 *
 	 * @param format    消息模板
 	 * @param arguments 参数
 	 */
-	void trace(String format, Object... arguments);
+	void warn(String format, Object... arguments);
 
 	/**
-	 * 打印 TRACE 等级的日志
+	 * 打印 WARN 等级的日志
 	 *
 	 * @param t         错误对象
 	 * @param format    消息模板
 	 * @param arguments 参数
 	 */
-	void trace(Throwable t, String format, Object... arguments);
+	void warn(Throwable t, String format, Object... arguments);
 
 	/**
-	 * 打印 TRACE 等级的日志
+	 * 打印 WARN 等级的日志
 	 *
 	 * @param fqcn      完全限定类名(Fully Qualified Class Name)，用于定位日志位置
 	 * @param t         错误对象
 	 * @param format    消息模板
 	 * @param arguments 参数
 	 */
-	void trace(String fqcn, Throwable t, String format, Object... arguments);
+	void warn(String fqcn, Throwable t, String format, Object... arguments);
 }

@@ -1,6 +1,7 @@
 package com.springcloud.base.log;
 
 import com.springcloud.base.log.enums.Levels;
+import com.springcloud.base.log.levels.*;
 import com.springcloud.base.log.utils.CallerUtil;
 
 /**
