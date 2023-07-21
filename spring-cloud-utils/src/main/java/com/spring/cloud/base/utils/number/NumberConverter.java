@@ -1,4 +1,4 @@
-package com.spring.cloud.base.utils;
+package com.spring.cloud.base.utils.number;
 
 import com.spring.cloud.base.utils.abstra.AbstractConverter;
 import com.spring.cloud.base.utils.crypto.NumberUtil;

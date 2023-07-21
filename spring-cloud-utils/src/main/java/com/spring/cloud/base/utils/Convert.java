@@ -5,6 +5,8 @@ import com.spring.cloud.base.utils.map.BasicType;
 import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.MapConverter;
 import com.spring.cloud.base.utils.map.TypeReference;
+import com.spring.cloud.base.utils.number.NumberChineseFormatter;
+import com.spring.cloud.base.utils.number.NumberWordFormatter;
 import com.spring.cloud.base.utils.str.StrUtil;
 import com.spring.cloud.base.utils.utils.*;
 

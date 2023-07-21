@@ -9,6 +9,7 @@ import com.spring.cloud.base.utils.map.ClassUtil;
 import com.spring.cloud.base.utils.map.MapConverter;
 import com.spring.cloud.base.utils.map.SafeConcurrentHashMap;
 import com.spring.cloud.base.utils.map.TypeReference;
+import com.spring.cloud.base.utils.number.NumberConverter;
 import com.spring.cloud.base.utils.utils.ServiceLoaderUtil;
 import com.spring.cloud.base.utils.utils.TypeUtil;
 

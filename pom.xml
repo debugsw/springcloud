@@ -15,6 +15,7 @@
         <module>spring-cloud-setting</module>
         <module>spring-cloud-socket</module>
         <module>spring-cloud-aop</module>
+        <module>spring-cloud-dev</module>
     </modules>
 
     <parent>
