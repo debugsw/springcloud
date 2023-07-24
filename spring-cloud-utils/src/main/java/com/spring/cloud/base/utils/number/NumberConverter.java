@@ -51,12 +51,12 @@ public class NumberConverter extends AbstractConverter<Number> {
 	}
 
 	@Override
-	protected Number convertInternal(Object value) {
+	public Number convertInternal(Object value) {
 		return convert(value, this.targetType, this::convertToStr);
 	}
 
 	@Override
-	protected String convertToStr(Object value) {
+	public String convertToStr(Object value) {
 		final String result = StrUtil.trim(super.convertToStr(value));
 		if (null != result && result.length() > 1) {
 			final char c = Character.toUpperCase(result.charAt(result.length() - 1));
@@ -84,7 +84,7 @@ public class NumberConverter extends AbstractConverter<Number> {
 	 * @return 转换后的数字
 	 *
 	 */
-	protected static Number convert(Object value, Class<? extends Number> targetType, Function<Object, String> toStrFunc) {
+	public static Number convert(Object value, Class<? extends Number> targetType, Function<Object, String> toStrFunc) {
 		// 枚举转换为数字默认为其顺序
 		if (value instanceof Enum) {
 			return convert(((Enum<?>) value).ordinal(), targetType, toStrFunc);

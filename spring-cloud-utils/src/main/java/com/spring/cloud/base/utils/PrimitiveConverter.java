@@ -33,12 +33,12 @@ public class PrimitiveConverter extends AbstractConverter<Object> {
 	}
 
 	@Override
-	protected Object convertInternal(Object value) {
+	public Object convertInternal(Object value) {
 		return PrimitiveConverter.convert(value, this.targetType, this::convertToStr);
 	}
 
 	@Override
-	protected String convertToStr(Object value) {
+	public String convertToStr(Object value) {
 		return StrUtil.trim(super.convertToStr(value));
 	}
 

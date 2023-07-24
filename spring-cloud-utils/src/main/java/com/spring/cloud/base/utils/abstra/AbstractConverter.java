@@ -74,7 +74,7 @@ public abstract class AbstractConverter<T> implements Converter<T>, Serializable
 	 * @param value 值
 	 * @return 转换后的类型
 	 */
-	protected abstract T convertInternal(Object value);
+	public abstract T convertInternal(Object value);
 
 	/**
 	 * 值转为String，用于内部转换中需要使用String中转的情况<br>
@@ -89,7 +89,7 @@ public abstract class AbstractConverter<T> implements Converter<T>, Serializable
 	 * @param value 值
 	 * @return String
 	 */
-	protected String convertToStr(Object value) {
+	public String convertToStr(Object value) {
 		if (null == value) {
 			return null;
 		}
