@@ -8,10 +8,6 @@
 
 链接：https://github.com/alibaba/spring-cloud-alibaba/wiki/版本说明
 
-![https://tft-zlgl-test.cdtft.cn/dev/git/dev/spring/cloud/readme/img.png](img.png)
-
-![https://tft-zlgl-test.cdtft.cn/dev/git/dev/spring/cloud/readme/img_1.png](img_1.png)
-
 ### spring-cloud-captcha 功能说明
 
 - [x] 共同场景使用的类以及方法
